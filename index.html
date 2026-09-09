@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>El Salvador Trails</title>
+
+  <!-- Font Imports -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=EB+Garamond:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet"/>
+
+  <!-- Font Awesome Brands CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    try {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary": "#e9c262",
+              "background": "#fbf8ed",
+              "surface": "#580F00",
+              "surface-dim": "#580F00",
+              "surface-container-low": "#580F00",
+              "on-surface": "#ffffff",
+              "on-background": "#3A2416",
+              "primary-fixed": "#ffdf98",
+              "primary-fixed-dim": "#e9c262",
+              "surface-container-lowest": "#2A0500"
+            },
+            "fontFamily": {
+              "display": ["Adlery Pro", "serif"],
+              "body": ["Fira Sans", "sans-serif"],
+              "label": ["Cinzel", "serif"]
+            }
+          }
+        }
+      }
+    } catch (_e) {}
+  </script>
+
+  <!-- Cambio de tema: se ejecuta en la cabecera para evitar parpadeo -->
+  <script src="theme.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="carrousel.css">
+</head>
+<body class="font-body" data-i18n-page-title="page.index.title">
+
+  <!-- Barra de navegación fija -->
+  <nav class="fixed-nav-light">
+    <div class="brand">
+      <img src="assets/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
+      <div>
+        <span class="brand-word-title">El Salvador Trails</span>
+        <span class="brand-subtext"></span>
+      </div>
+    </div>
+
+    <ul class="nav-links-list">
+      <li><a href="index.html" class="active" data-i18n="nav.home">Página Inicial</a></li>
+      <li><a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+      <li><a href="real-estate.html" data-i18n="nav.realestate">Bienes Raíces</a></li>
+      <li><a href="#" data-i18n="nav.payment">Pago en Línea</a></li>
+    </ul>
+
+    <div class="nav-right-container">
+      <button class="help-tutorial-btn" data-i18n-aria="nav.help" data-i18n-title="nav.help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8"/>
+        </svg>
+        <span data-i18n="nav.help">Cómo usar este sitio</span>
+      </button>
+
+      <!-- Botón de cambio de modo (sol/luna) -->
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">
+        <span id="theme-toggle-icon" class="material-symbols-outlined">dark_mode</span>
+      </button>
+
+      <div class="lang-switcher-pill">
+        <button class="active">ES</button>
+        <button class="">EN</button>
+        <button class="">PT</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative pt-28">
+    <!-- Patrón decorativo de fondo -->
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div class="brand-pattern-base pattern-sun w-[800px] h-[800px] -top-64 -left-64"></div>
+    </div>
+
+    <!-- Hero: Carrusel de destinos -->
+    <section class="relative w-full z-10 py-4 px-8 md:px-16 flex justify-center">
+      <div class="dashboard-container w-full max-w-6xl">
+        <article class="destination-card p-12">
+          <!-- Capas de fondo dinámicas (cross-fade) -->
+          <div id="bg-layer-1" class="bg-layer active"></div>
+          <div id="bg-layer-2" class="bg-layer"></div>
+          <div class="bg-overlay"></div>
+
+          <header class="card-header mb-12">
+            <h1 class="font-bold mb-2" data-i18n="hero.title">Top destinos más buscados del país</h1>
+            <p class="text-sm md:text-base" data-i18n="hero.subtitle">Elige los mejores destinos nacionales para viajar junto a tu familia y amigos.</p>
+
+            <nav class="tabs-nav flex gap-3 mt-8 flex-wrap" data-i18n-aria="carousel.nav" aria-label="Navegación de destinos">
+              <button class="tab-btn active" data-i18n="tab.elTunco">El Tunco</button>
+              <button class="tab-btn" data-i18n="tab.rutaFlores">Ruta de las Flores</button>
+              <button class="tab-btn" data-i18n="tab.lagoCoatepeque">Lago de Coatepeque</button>
+              <button class="tab-btn" data-i18n="tab.volcanSantaAna">Volcán de Santa Ana</button>
+            </nav>
+          </header>
+
+          <section class="content-grid grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="text-column">
+              <h2 class="brand-title mb-6" data-i18n="hero.brandTitle">Descubre El Salvador</h2>
+
+              <div class="slide-details border-l-2 pl-6 mb-8">
+                <h3 id="slide-title" class="text-2xl mb-2" data-i18n="slide0.title">Playa El Sunzal</h3>
+                <p id="slide-desc" class="text-sm leading-relaxed" data-i18n="slide0.desc">Ubicada en La Libertad, es un referente mundial para el surf. Destaca por su icónica formación rocosa en la orilla, sus imponentes olas, una vibrante vida nocturna y atardeceres espectaculares sobre el océano Pacífico.</p>
+              </div>
+
+              <button class="cta-btn" data-i18n="hero.cta">Explora el Catálogo de Tours</button>
+            </div>
+
+            <div class="gallery-column">
+              <div class="main-image-wrapper aspect-video rounded-xl overflow-hidden shadow-2xl">
+                <img id="main-image" src="assets/slide_0.jpg" data-i18n-aria="carousel.mainImg" alt="Destinos El Salvador" class="w-full h-full object-cover">
+              </div>
+              <div class="thumbnails-container grid grid-cols-4 gap-3 mt-4" id="thumbnails-container"></div>
+            </div>
+          </section>
+        </article>
+      </div>
+    </section>
+
+    <!-- Divisor ornamental -->
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- Sección Carrusel de Testimonios (Mural de Feedback destacado) -->
+    <section class="testimonials-section relative z-10 py-8">
+      <div class="text-center mb-8">
+        <h2 class="font-display text-2xl md:text-4xl font-bold text-[var(--brand)] dark:text-[var(--accent)] mb-3" data-i18n="testimonials.title">
+          Lo que dicen nuestros viajeros
+        </h2>
+        <p class="text-sm md:text-base max-w-2xl mx-auto text-[var(--text-muted)]" data-i18n="testimonials.subtitle">
+          Experiencias reales de quienes han recorrido los senderos de El Salvador con nosotros.
+        </p>
+      </div>
+
+      <!-- Viewport del Carrusel -->
+      <div class="testimonials-viewport" id="testimonials-viewport">
+        <div class="testimonials-track" id="testimonials-track">
+          <!-- Tarjetas renderizadas dinámicamente desde content/reviews.json -->
+        </div>
+      </div>
+
+      <!-- Controles: Anterior, Dots, Siguiente -->
+      <div class="testimonials-controls">
+        <button id="testimonials-prev-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.prev" aria-label="Testimonio anterior">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+
+        <div class="testimonials-dots" id="testimonials-dots"></div>
+
+        <button id="testimonials-next-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.next" aria-label="Siguiente testimonio">
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+
+      <!-- CTA para dejar feedback / testimonio -->
+      <div class="text-center mt-10">
+        <button id="open-feedback-btn" class="help-tutorial-btn inline-flex items-center gap-2 mx-auto px-6 py-3 text-sm font-semibold">
+          <span class="material-symbols-outlined text-base">rate_review</span>
+          <span data-i18n="testimonials.cta">¿Viajaste con nosotros? Comparte tu experiencia</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Modal para Enviar Feedback (Oculto por defecto, modera Mario/Ellen) -->
+    <div id="feedback-modal" class="feedback-dialog-overlay" aria-hidden="true" role="dialog">
+      <div class="feedback-dialog-box">
+        <div class="flex items-center justify-between mb-4 border-b pb-3 border-[var(--border)]">
+          <h3 class="font-display text-xl font-bold text-[var(--brand)] dark:text-[var(--accent)]" data-i18n="feedback.modal.title">
+            Comparte tu experiencia
+          </h3>
+          <button id="close-feedback-btn" class="text-2xl text-[var(--text-muted)] hover:text-[var(--text)] transition-colors" data-i18n-aria="feedback.form.close" aria-label="Cerrar">&times;</button>
+        </div>
+
+        <p class="text-xs text-[var(--text-muted)] mb-5" data-i18n="feedback.modal.subtitle">
+          Tu reseña nos ayuda a seguir brindando viajes seguros y memorables.
+        </p>
+
+        <div id="feedback-form-success" class="hidden mb-4 p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-700 dark:text-green-300 text-sm">
+          <span data-i18n="feedback.form.success">¡Muchas gracias! Tu reseña ha sido enviada y será publicada tras la revisión de nuestro equipo.</span>
+        </div>
+
+        <form id="feedback-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.name">Tu nombre</label>
+            <input type="text" required class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]" placeholder="Ej. Sarah Jenkins">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.country">País de origen (opcional)</label>
+            <input type="text" class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]" placeholder="Ej. Canadá, Estados Unidos, etc.">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.rating">Calificación</label>
+            <select class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]">
+              <option value="5">⭐⭐⭐⭐⭐ (5 / 5 - Excelente)</option>
+              <option value="4">⭐⭐⭐⭐ (4 / 5 - Muy buena)</option>
+              <option value="3">⭐⭐⭐ (3 / 5 - Buena)</option>
+              <option value="2">⭐⭐ (2 / 5 - Regular)</option>
+              <option value="1">⭐ (1 / 5 - Insatisfactoria)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.comment">Tu reseña o testimonio</label>
+            <textarea rows="4" required class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]" placeholder="Cuéntanos cómo fue tu experiencia..."></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.photos">Adjuntar fotos (opcional, máx. 4 imágenes)</label>
+            <input type="file" accept="image/jpeg,image/png,image/webp" multiple class="w-full text-xs text-[var(--text-muted)] file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[var(--brand-soft)] file:text-[var(--brand)] dark:file:text-[var(--accent)] hover:file:opacity-80">
+          </div>
+
+          <p class="text-xs text-[var(--text-muted)] italic" data-i18n="feedback.form.note">
+            Nota: Toda reseña entra en estado pendiente y es moderada por nuestro equipo antes de publicarse.
+          </p>
+
+          <div class="pt-2">
+            <button type="submit" class="btn-accent w-full py-3" data-i18n="feedback.form.submit">
+              Enviar para revisión
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Divisor ornamental -->
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- Conecta con nosotros -->
+    <section class="social-connect w-full py-12 flex flex-col items-center">
+      <div class="flex gap-12 items-center">
+        <span class="social-connect-title" data-i18n="social.connect">Conecta con nosotros</span>
+        <div class="flex gap-8">
+          <a class="social-connect-icon" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="social-connect-icon" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a class="social-connect-icon" href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (tipografía oficial del brand: Adlery Pro bajo el ícono) -->
+  <footer class="footer-light flex flex-col items-center py-16 w-full">
+    <img src="assets/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4">
+
+    <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
+
+    <div class="footer-links flex gap-10 mb-6">
+      <a href="#" data-i18n="footer.privacy">Pólitica de Privacidad</a>
+      <a href="#" data-i18n="footer.terms">Términos de Servicio</a>
+      <a href="#" data-i18n="footer.contact">Contacto</a>
+    </div>
+
+    <div class="flex gap-6 mb-6">
+      <a href="#" class="footer-social text-xl" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="footer-social text-xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <p class="copyright-text uppercase" data-i18n="footer.copyright">© 2026 El Salvador Trails.</p>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+  <script src="testimonials.js"></script>
+</body>
+</html>

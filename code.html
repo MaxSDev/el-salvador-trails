@@ -1,0 +1,254 @@
+<html class="dark" lang="es"><head></head><body class="font-body-md text-on-surface selection:bg-primary-container/30">
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Fira+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#e9c262",
+                    "error-container": "#ffdad6",
+                    "secondary": "#b41e00",
+                    "surface-container-highest": "#eae1d6",
+                    "surface-container-low": "#4D0A00", /* Deepened maroon */
+                    "on-background": "#ffffff",
+                    "on-primary-fixed-variant": "#5a4300",
+                    "tertiary-fixed-dim": "#bbd224",
+                    "secondary-fixed": "#ffdad3",
+                    "primary-fixed": "#ffdf98",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#f5ede2",
+                    "on-secondary-fixed-variant": "#8d1500",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#fffbff",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#d7ef43",
+                    "surface-bright": "#5A0F00",
+                    "surface-dim": "#350700", /* Richer dark burgundy base */
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#ffb4a5",
+                    "primary-container": "#fad170",
+                    "primary": "#e9c262", 
+                    "surface-container": "#4D0A00",
+                    "on-tertiary-fixed": "#191e00",
+                    "tertiary-container": "#cbe236",
+                    "inverse-surface": "#f5ede2",
+                    "background": "#3D0800", /* Primary deep rich burgundy */
+                    "outline-variant": "#7f7665",
+                    "on-primary-fixed": "#251a00",
+                    "on-tertiary-fixed-variant": "#424b00",
+                    "inverse-on-surface": "#1f1b15",
+                    "on-surface": "#ffffff",
+                    "on-secondary-fixed": "#3e0500",
+                    "tertiary": "#bbd224",
+                    "surface-tint": "#e9c262",
+                    "inverse-primary": "#775a00",
+                    "secondary-container": "#de2e0b",
+                    "surface-container-lowest": "#2A0500",
+                    "on-primary-container": "#755800",
+                    "outline": "#d1c5b2",
+                    "surface-variant": "#2A0500",
+                    "surface": "#3D0800",
+                    "surface-container-high": "#5A0F00",
+                    "on-tertiary-container": "#191e00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "section-gap": "120px"
+            },
+            "fontFamily": {
+                    "headline-md": ["EB Garamond"],
+                    "body-md": ["Fira Sans"],
+                    "body-lg": ["Fira Sans"],
+                    "display-lg": ["EB Garamond"],
+                    "label-standard": ["Fira Sans"],
+                    "headline-sm": ["EB Garamond"],
+                    "label-caps": ["Fira Sans"]
+            }
+          }
+        }
+      }
+    }catch(_e){}</script>
+<style>
+    .glass-caption {
+        background: rgba(42, 5, 0, 0.85); /* Deep burgundy glass */
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+    }
+    .brand-pattern-base {
+        background-size: contain;
+        background-repeat: no-repeat;
+        mix-blend-mode: overlay;
+        opacity: 0.18; /* Slightly increased opacity to ensure visibility on darker background */
+        pointer-events: none;
+        position: absolute;
+        filter: brightness(0) invert(1);
+    }
+    .pattern-coffee { background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0VvXukxoDughemzut0q7PWXv-5B5J7lPZghgPJ6JUhgLe0IEKscAmoc1DrjaZC4phmnvWZh9W1Jn03ipnZUYH1IaAaAfsNZSa0w7nwUA2mpS-fpgH2RUnc0wTLd1SKN2rZAXR2Tv1wtm-bxT0O-Ifa9i3VHyb0RpSefzpgP50Hvrr0Bk06-_vK9IXY7Mki6UEs76W1OPUlw2p_amj0vIOs4rp_UGijq0xj4v-kxpB1NIIOI4iMoE59G-heH6RNw2Xsr8cd9oDsYUg'); }
+    .pattern-sun { background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA5swxJNNsKHtdfblNwWE5amPxLjaF7-DUrBCC52gCECIvPPNbgs9VBeLCrRtjNuJBk0sAeORwncrooldWHaiYKLGPzpbKUjm-z0tFl-zpUDzQ9SZnDEV9Qj0MVQG1KS31ljw-fg84tSD20koneOqO_gyiWqHRB1y_6PDXKjjE4IiNxmGtik0wNF_jV6X5Su9i7tntI48dAnbt4LFyGPWV6rauQErnwBuDUD8Yy7oywfOILvvSs1n-K5Q64ZPhP__j1LliCymrEqL0G'); }
+    .pattern-crops { background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZJC3S4C9xhrVZk01Ixwk43mQuBAOACjjd6L1le3I_HXT8XeHDJetFNAxyPW2USf0tIMbaFf0IaSHksBKaS5WYt3aCgIGs1Si2_rbVjnsvsNcUWHU0nhEUaVUKiXR3MbfNXcxUkJG6n46yK0cGKi-AQw_4nT5lNBWB3Yz7MvZZmAZfSZXeQZeMxE1wlvc24gUaSEo6pLVC_bmUMAKxhcIk7ROfexyM_G26Y7KUWwFEVP6JqdOukBlCzBDpNih6fwIK1oMyfjJEVpXi'); }
+    .logo-symbol {
+        background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbM4BGngycdu6XdlUIBXJ1pOCoRdq1DWzRZzzp8X9NIFrrLWOdGGWpM758nBJBHZFdttKL4XZVaPMTwmFod7jJHYBYa7kmjNURnXFc37jK5-PyrAuEcTneIimAAtwJP2oj-LomnZQNp8pfofiWIRzscp6lUu4mPa4oONzbxyRYTaNrxqZOJ5AkR11lh_5R6tL_HiKb0hLfpM7QjIKKYyPLYXcFwDKs4HmG0uiz7lFj5D1ie1rW4kXQ2RG82il2fr1720U3-o_Ud4tj');
+        background-size: 1000px;
+        background-position: -270px -80px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+</style>
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto bg-surface-container-low/95 backdrop-blur-xl border-b border-white/10">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="logo-symbol shrink-0 border border-white/20"></div>
+<span class="font-headline-sm text-headline-sm font-medium text-primary">El Salvador Trails</span>
+</div>
+<div class="hidden md:flex items-center gap-6 ml-4">
+<a class="font-label-standard text-label-standard text-primary border-b-2 border-primary pb-1 transition-colors duration-300" href="#">Página Inicial</a>
+<a class="font-label-standard text-label-standard text-white/80 hover:text-primary transition-colors duration-300" href="#">Catálogo de Tours</a>
+<a class="font-label-standard text-label-standard text-white/80 hover:text-primary transition-colors duration-300" href="#">Pago en Línea</a>
+<a class="font-label-standard text-label-standard text-white/80 hover:text-primary transition-colors duration-300" href="#">Feedback</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-white/60">
+<button class="hover:text-primary transition-colors">ES</button>
+<span class="opacity-30">|</span>
+<button class="hover:text-primary transition-colors">EN</button>
+<span class="opacity-30">|</span>
+<button class="hover:text-primary transition-colors">PT</button>
+</div>
+<div class="flex items-center gap-3 ml-4">
+<button class="material-symbols-outlined text-white/70 hover:text-primary transition-colors" title="Language">language</button>
+<button class="material-symbols-outlined text-white/70 hover:text-primary transition-colors" title="Help">help_outline</button>
+</div>
+</div>
+</nav>
+<main class="relative bg-background">
+<!-- Heritage Decorative Patterns (Watermarks) -->
+<div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="brand-pattern-base pattern-sun w-[800px] h-[800px] -top-64 -left-64 opacity-[0.1]"></div>
+<div class="brand-pattern-base pattern-coffee w-96 h-96 top-[20%] right-10 rotate-12 opacity-[0.12]"></div>
+<div class="brand-pattern-base pattern-crops w-80 h-80 bottom-[30%] left-20 -rotate-6 opacity-[0.12]"></div>
+<div class="brand-pattern-base pattern-coffee w-72 h-72 bottom-[10%] right-40 opacity-[0.1]"></div>
+</div>
+<!-- Hero Carousel Section -->
+<section class="relative w-full h-[921px] flex flex-col pt-28 overflow-hidden z-10 pb-16">
+<!-- Destination Tabs -->
+<div class="container mx-auto px-margin-desktop mb-8">
+<div class="flex gap-10">
+<button class="px-6 py-2 rounded-full font-label-caps text-label-caps bg-primary text-surface-container-lowest font-bold tracking-wider">EL TUNCO</button>
+<button class="px-6 py-2 rounded-full font-label-caps text-label-caps bg-white/10 text-white/70 hover:bg-white/20 transition-colors tracking-wider border border-white/10">RUTA DE LAS FLORES</button>
+<button class="px-6 py-2 rounded-full font-label-caps text-label-caps bg-white/10 text-white/70 hover:bg-white/20 transition-colors tracking-wider border border-white/10">LAGO DE COATEPEQUE</button>
+<button class="px-6 py-2 rounded-full font-label-caps text-label-caps bg-white/10 text-white/70 hover:bg-white/20 transition-colors tracking-wider border border-white/10">VOLCÁN DE SANTA ANA</button>
+</div>
+</div>
+<!-- Hero Image Wrapper -->
+<div class="relative flex-grow w-full overflow-hidden group border-y border-white/10">
+<div class="absolute inset-0 transition-transform duration-1000 scale-105 group-hover:scale-100">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAiJI49Lq2UlL0kvAbScjK6bMJpwcVnYQA0bC7TrYEIss5gCWfO5K8zzaMurP53ZX2xwK3ibgaAT7TTsxlbTYdRr5clXEPmbC5HzUfnEMll_o1rA3uwXkN5P9J891XRrElKoxlEHzIzMyJRngJHRg3BUunzxEYZEHEs7Q-9K7sY_MRPVyp3ZgAVxE4NqO8v7ZwGuTqdU9GYIXkk3TgaTxVerLWVgwIXtqjCeRPdXCps3CSf0Q_WEhf6-Oz2g-ivNLG3xJ7e4qYtRRH_");'></div>
+</div>
+<button class="absolute top-8 right-8 z-30 w-10 h-10 rounded-full glass-caption border border-white/20 flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-[20px]">help_outline</span>
+</button>
+<!-- Glassmorphic Caption Overlay -->
+<div class="absolute inset-0 flex items-center px-margin-desktop pointer-events-none">
+<div class="max-w-2xl p-8 pointer-events-auto">
+<h1 class="font-display-lg text-[80px] text-white leading-none mb-8 uppercase font-bold tracking-tighter drop-shadow-2xl">DESCUBRE EL<br/>SALVADOR</h1>
+<div class="glass-caption p-8 rounded-xl border border-white/20 shadow-2xl">
+<h2 class="font-headline-sm text-headline-sm text-primary-fixed mb-4">Ruta de las Flores</h2>
+<p class="font-body-lg text-body-lg text-white/90 mb-8 leading-relaxed">Un encantador recorrido montañoso que conecta pintorescos pueblos llenos de color, murales artísticos, un clima fresco espectacular, cafetales tradicionales y la calidez inigualable de la gente local.</p>
+<button class="px-10 py-4 bg-primary text-surface-container-lowest font-label-standard text-label-standard font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 rounded-lg shadow-lg">Explora el Catálogo de Tours</button>
+</div>
+</div>
+</div>
+<!-- Thumbnail Strip -->
+<div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
+<div class="container mx-auto px-margin-desktop flex gap-4 justify-end">
+<div class="w-32 h-20 border-2 border-primary-fixed overflow-hidden cursor-pointer hover:opacity-100 transition-opacity rounded-lg">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCuG72XkOft0H9bIAzT6karn05pUkE8LaEJ9cVmC_SlN7vyqfkF5Cf4FSSJSiu7IxErRUyb125PiLCFGMasyROTGpy8ddhRmvs6LdrsjsFnT7Zg01-ZR1-6ultqQziiXdzQ-_Fr3x0gUi5ZfrwGJz8O6t8gm2tlWoeFxLKUh2e7ZFOLDB0ttHivQHKD8tAdOcVokOIGidMopC8s3jww1oEgNBmm_zhI0idpwdf4CC2-Zt8VuwMEWi6zJljlIcvCFz_psLdgluJwZlue");'></div>
+</div>
+<div class="w-32 h-20 border border-white/40 opacity-60 overflow-hidden cursor-pointer hover:opacity-100 transition-opacity rounded-lg">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQdnNFIwCqpSONMkwiJEw0XVR7YWMxgVoCEt6ry9YUVhaVsZ5WdGvEKH59Bh0Q8-qx8ni-yxVj_9LYMBQzD2rwzYn0IR6H0sDxyCGk90VmD2FygLdD5IzRbEyyg8S6yjX0O36qD9YPeF6ogBK8sdXETHbfR87M_DgJMDw8SNi1WWwFDRkRjmwg20nnZ-iGVd2H8pNhQSDgvvW4MzSxoq2iE-gGb7VG2gFl3U2i_c84chRc0SMEYMVqSTbaNrHr58gkZFy1rJ8K3J1u");'></div>
+</div>
+<div class="w-32 h-20 border border-white/40 opacity-60 overflow-hidden cursor-pointer hover:opacity-100 transition-opacity rounded-lg">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfterL_q00AzhDuLVENyZXh5Gh-CjsBrNuHmgnieO_tfwxox5QyqxkdI-MQSMGznDRUubNes-AMEIHtkqzp1naGYhdHx8WvFxKzlRX1uRSx0Yu_bqtkNcztUrb9d-OcpADEkFV3XnQ9Yadcmbu6DB2UCJpA5hu8-D2buPQT2KLZbfRsA7P4_BQb8X5lO5vib405lJCb9Gn7f99IMsmqC9pXLa6jMsZHVSSU7BA_fSnVY3f2W5Jxv755DCi5RFpdJxJjLpCBsOUv_c7");'></div>
+</div>
+<div class="w-32 h-20 border border-white/40 opacity-60 overflow-hidden cursor-pointer hover:opacity-100 transition-opacity rounded-lg">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDAj25jj0_uHNVJH1fDdjOH-Z54tl6CfpXuZwVyZ7TKRiOHRdtevsG8WtP6x1EGCigXZOT_tvR_tbZM-ocRiVQycgQRv86kwaNtsqE81l0KbJFkaKWSmSm0X8BhpR8lOUILmOwqABwipzS4JFlqbrITDDz2XbHr0zwHQ58WlomcrX-jJa0RWNqT4bxRc09XdyVdMjwYl1d1d7aHGQYWU-LaxM8lnbKwjvSb0lfbkl9wiWHI79RNAgm6vvzV1L-JiwOr02iSrXC948v0");'></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Media Row -->
+<section class="w-full py-24 flex justify-center items-center bg-white/5 relative z-10 border-y border-white/10 overflow-hidden">
+<div class="brand-pattern-base pattern-crops w-64 h-64 -left-10 top-1/2 -translate-y-1/2 opacity-[0.08]"></div>
+<div class="brand-pattern-base pattern-coffee w-64 h-64 -right-10 top-1/2 -translate-y-1/2 opacity-[0.08] rotate-45"></div>
+<div class="flex gap-12 items-center relative z-20">
+<span class="font-label-caps text-label-caps text-primary tracking-[0.3em]">CONNECT WITH US</span>
+<div class="flex gap-8">
+<a class="text-white/70 hover:text-primary transition-all transform hover:scale-125" href="#">
+<span class="material-symbols-outlined text-[24px]">face_nod</span>
+</a>
+<a class="text-white/70 hover:text-primary transition-all transform hover:scale-125" href="#">
+<span class="material-symbols-outlined text-[24px]">title</span>
+</a>
+<a class="text-white/70 hover:text-primary transition-all transform hover:scale-125" href="#">
+<span class="material-symbols-outlined text-[24px]">photo_camera</span>
+</a>
+<a class="text-white/70 hover:text-primary transition-all transform hover:scale-125" href="#">
+<span class="material-symbols-outlined text-[24px]">smart_display</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="flex flex-col items-center gap-unit py-24 w-full bg-surface-container relative z-10 overflow-hidden border-t border-white/10">
+<!-- Watermark patterns in footer -->
+<div class="brand-pattern-base pattern-sun w-[600px] h-[600px] -bottom-32 -right-32 opacity-[0.08]"></div>
+<div class="brand-pattern-base pattern-coffee w-48 h-48 -bottom-10 -left-10 opacity-[0.1]"></div>
+<div class="mb-8 flex flex-col items-center relative z-20">
+<div class="logo-symbol mb-4 scale-125 border border-white/20 shadow-lg"></div>
+<span class="font-headline-sm text-headline-sm text-primary mb-2">El Salvador Trails</span>
+<p class="font-label-caps text-label-caps text-white/50 tracking-wider">Vivid Heritage Experiences.</p>
+</div>
+<div class="flex gap-10 mb-10 relative z-20">
+<a class="font-label-caps text-label-caps text-white/40 hover:text-primary transition-colors" href="#">PRIVACY POLICY</a>
+<a class="font-label-caps text-label-caps text-white/40 hover:text-primary transition-colors" href="#">TERMS OF SERVICE</a>
+<a class="font-label-caps text-label-caps text-white/40 hover:text-primary transition-colors" href="#">CAREERS</a>
+</div>
+<p class="font-label-caps text-label-caps text-white/30 relative z-20">© 2024 El Salvador Trails. All Rights Reserved.</p>
+<div class="mt-8 flex items-center gap-4 relative z-20">
+<div class="w-12 h-0.5 bg-primary/30"></div>
+<div class="w-2 h-2 rotate-45 border border-primary/40"></div>
+<div class="w-12 h-0.5 bg-primary/30"></div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+</script></body></html>

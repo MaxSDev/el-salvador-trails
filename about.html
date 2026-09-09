@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>El Salvador Trails — About Us</title>
+
+  <!-- Font Imports -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=EB+Garamond:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet"/>
+
+  <!-- Font Awesome Brands CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    try {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary": "#e9c262",
+              "background": "#fbf8ed",
+              "surface": "#580F00",
+              "on-background": "#3A2416"
+            },
+            "fontFamily": {
+              "display": ["Fraunces", "serif"],
+              "body": ["Fira Sans", "sans-serif"],
+              "label": ["Cinzel", "serif"]
+            }
+          }
+        }
+      }
+    } catch (_e) {}
+  </script>
+
+  <!-- Cambio de tema: se ejecuta en la cabecera para evitar parpadeo -->
+  <script src="theme.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos específicos para About Us alineados con tokens */
+    .about-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .about-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    }
+    .dark .about-card:hover {
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+    .trust-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: var(--brand-soft);
+      border: 1px solid var(--border);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--brand);
+    }
+    .dark .trust-badge-pill {
+      color: var(--accent);
+    }
+    .founder-portrait-frame {
+      border: 2px solid var(--accent);
+      border-radius: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(233, 194, 98, 0.15), rgba(126, 21, 0, 0.1));
+    }
+  </style>
+</head>
+<body class="font-body" data-i18n-page-title="page.about.title">
+
+  <!-- Barra de navegación fija -->
+  <nav class="fixed-nav-light">
+    <div class="brand">
+      <img src="assets/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
+      <div>
+        <span class="brand-word-title">El Salvador Trails</span>
+        <span class="brand-subtext"></span>
+      </div>
+    </div>
+
+    <ul class="nav-links-list">
+      <li><a href="index.html" data-i18n="nav.home">Página Inicial</a></li>
+      <li><a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a></li>
+      <li><a href="about.html" class="active" data-i18n="nav.about">About Us</a></li>
+      <li><a href="real-estate.html" data-i18n="nav.realestate">Bienes Raíces</a></li>
+      <li><a href="#" data-i18n="nav.payment">Pago en Línea</a></li>
+    </ul>
+
+    <div class="nav-right-container">
+      <button class="help-tutorial-btn" data-i18n-aria="nav.help" data-i18n-title="nav.help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8"/>
+        </svg>
+        <span data-i18n="nav.help">Cómo usar este sitio</span>
+      </button>
+
+      <!-- Botón de cambio de modo (sol/luna) -->
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">
+        <span id="theme-toggle-icon" class="material-symbols-outlined">dark_mode</span>
+      </button>
+
+      <div class="lang-switcher-pill">
+        <button class="active">ES</button>
+        <button class="">EN</button>
+        <button class="">PT</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative pt-28">
+    <!-- Patrón decorativo de fondo -->
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div class="brand-pattern-base pattern-sun w-[800px] h-[800px] -top-64 -left-64"></div>
+    </div>
+
+    <!-- Hero de About Us -->
+    <section class="relative z-10 py-12 px-6 md:px-16 max-w-6xl mx-auto text-center">
+      <span class="trust-badge-pill mb-4" data-i18n="about.hero.badge">Nuestra Trayectoria</span>
+      <h1 class="font-display text-3xl md:text-5xl font-bold mb-4 leading-tight text-[var(--brand)] dark:text-[var(--accent)]" data-i18n="about.hero.title">
+        Detrás de Cada Sendero, una Historia de Pasión y Confianza
+      </h1>
+      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-[var(--text-muted)]" data-i18n="about.hero.subtitle">
+        Compartiendo la auténtica riqueza cultural y natural de El Salvador con viajeros de todo el mundo.
+      </p>
+    </section>
+
+    <!-- Sección Biografía del Fundador -->
+    <section class="relative z-10 py-8 px-6 md:px-16 max-w-6xl mx-auto">
+      <div class="about-card p-8 md:p-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Columna Izquierda: Tarjeta / Fotografía y Reconocimientos -->
+          <div class="lg:col-span-4 flex flex-col items-center text-center">
+            <div class="founder-portrait-frame w-48 h-48 md:w-56 md:h-56 rounded-full flex items-center justify-center mb-6 shadow-xl">
+              <!-- Representación visual respetuosa y profesional -->
+              <span class="material-symbols-outlined text-7xl text-[var(--brand)] dark:text-[var(--accent)]">person_pin</span>
+            </div>
+
+            <h2 class="font-display text-2xl font-bold text-[var(--brand)] dark:text-[var(--accent)] mb-1" data-i18n="about.founder.name">
+              Mario Domínguez
+            </h2>
+            <p class="font-medium text-sm text-[var(--text-muted)] mb-6" data-i18n="about.founder.role">
+              Fundador y Guía de Turismo de El Salvador Trails
+            </p>
+
+            <!-- Sellos de Confianza y Seguridad -->
+            <div class="w-full flex flex-col gap-3 text-left">
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-[var(--brand-soft)] border border-[var(--border)]">
+                <span class="material-symbols-outlined text-[var(--brand)] dark:text-[var(--accent)] text-2xl">verified</span>
+                <span class="text-xs font-semibold text-[var(--text)]" data-i18n="about.trust.exp">Más de 20 años de experiencia en turismo</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-[var(--brand-soft)] border border-[var(--border)]">
+                <span class="material-symbols-outlined text-[var(--brand)] dark:text-[var(--accent)] text-2xl">badge</span>
+                <span class="text-xs font-semibold text-[var(--text)]" data-i18n="about.trust.cert">Guía certificado con credenciales oficiales</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-[var(--brand-soft)] border border-[var(--border)]">
+                <span class="material-symbols-outlined text-[var(--brand)] dark:text-[var(--accent)] text-2xl">trophy</span>
+                <span class="text-xs font-semibold text-[var(--text)]" data-i18n="about.trust.tripadvisor">Trayectoria reconocida (#1 en TripAdvisor)</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-[var(--brand-soft)] border border-[var(--border)]">
+                <span class="material-symbols-outlined text-[var(--brand)] dark:text-[var(--accent)] text-2xl">security</span>
+                <span class="text-xs font-semibold text-[var(--text)]" data-i18n="about.trust.safety">Acompañamiento seguro y personalizado</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Texto Biográfico Completo del Cliente -->
+          <div class="lg:col-span-8 flex flex-col gap-5 text-sm md:text-base leading-relaxed text-[var(--text)]">
+            <p data-i18n="about.founder.p1">
+              Nací en San Salvador, El Salvador, un país que desde temprana edad despertó en mí una profunda admiración por su historia, cultura y riqueza natural. Mi trayectoria profesional en el turismo ha estado marcada por una pasión constante por compartir experiencias auténticas con viajeros de todo el mundo.
+            </p>
+            <p data-i18n="about.founder.p2">
+              Viví en Brasil durante los períodos 1983-1995 y 2016-2024, donde amplié mis conocimientos sobre la industria turística y obtuve las credenciales oficiales como guía de turismo en el Estado de Sergipe. Esta experiencia internacional me permitió desarrollar una visión más amplia del turismo y fortalecer mis habilidades para la atención de visitantes de diferentes culturas y nacionalidades.
+            </p>
+            <p data-i18n="about.founder.p3">
+              Desde 1999 me he desempeñado profesionalmente en el sector turístico tanto en El Salvador como en Brasil. Entre 2001 y 2016 fundé y dirigí una operadora turística en El Salvador, logrando posicionarla entre las mejores del país y alcanzando el reconocimiento de los viajeros en Tripadvisor, donde fue calificada como la número uno en su categoría. Estos años de trabajo me permitieron acumular una valiosa experiencia en la creación de recorridos, atención al cliente y desarrollo de productos turísticos de alta calidad.
+            </p>
+            <p data-i18n="about.founder.p4">
+              En 2024 regresé a mi país natal para iniciar una nueva etapa con la fundación de El Salvador Trails (Senderos de El Salvador), un proyecto que nace con la misma pasión y entusiasmo que inspiraron mi primera empresa turística el 1 de julio de 2001. Hoy, con una visión renovada, busco crear nuevas rutas, experiencias y aventuras que permitan a cada visitante descubrir la extraordinaria historia, cultura, gastronomía y naturaleza de El Salvador y Centroamérica.
+            </p>
+
+            <blockquote class="border-l-4 border-[var(--accent)] pl-4 py-2 my-2 italic font-display text-base md:text-lg text-[var(--brand)] dark:text-[var(--accent)]" data-i18n="about.founder.welcome">
+              Bienvenidos a El Salvador Trails, donde cada sendero cuenta una historia y cada experiencia se convierte en una aventura inolvidable.
+            </blockquote>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Nuestros Pilares (Visión, Misión, Compromiso) -->
+    <section class="relative z-10 py-12 px-6 md:px-16 max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-display text-2xl md:text-4xl font-bold text-[var(--brand)] dark:text-[var(--accent)]" data-i18n="about.values.heading">
+          Nuestros Pilares
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Visión -->
+        <article class="about-card p-8 flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-full bg-[var(--brand-soft)] flex items-center justify-center mb-6 text-[var(--brand)] dark:text-[var(--accent)]">
+            <span class="material-symbols-outlined text-3xl">visibility</span>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-4 text-[var(--brand)] dark:text-[var(--accent)]" data-i18n="about.values.vision.title">
+            Nuestra Visión
+          </h3>
+          <p class="text-sm leading-relaxed text-[var(--text-muted)]" data-i18n="about.values.vision.desc">
+            Ser la operadora turística más comprometida con la creación de experiencias auténticas en El Salvador y Centroamérica, transformando cada viaje en un recuerdo único, significativo e inolvidable.
+          </p>
+        </article>
+
+        <!-- Misión -->
+        <article class="about-card p-8 flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-full bg-[var(--brand-soft)] flex items-center justify-center mb-6 text-[var(--brand)] dark:text-[var(--accent)]">
+            <span class="material-symbols-outlined text-3xl">explore</span>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-4 text-[var(--brand)] dark:text-[var(--accent)]" data-i18n="about.values.mission.title">
+            Nuestra Misión
+          </h3>
+          <p class="text-sm leading-relaxed text-[var(--text-muted)]" data-i18n="about.values.mission.desc">
+            Brindar servicios turísticos con los más altos estándares de calidad, profesionalismo y calidez humana, superando las expectativas de nuestros visitantes.
+          </p>
+        </article>
+
+        <!-- Compromiso -->
+        <article class="about-card p-8 flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-full bg-[var(--brand-soft)] flex items-center justify-center mb-6 text-[var(--brand)] dark:text-[var(--accent)]">
+            <span class="material-symbols-outlined text-3xl">handshake</span>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-4 text-[var(--brand)] dark:text-[var(--accent)]" data-i18n="about.values.commitment.title">
+            Nuestro Compromiso
+          </h3>
+          <p class="text-sm leading-relaxed text-[var(--text-muted)]" data-i18n="about.values.commitment.desc">
+            Ofrecer un servicio basado en la puntualidad, la seguridad, el respeto y la atención personalizada, garantizando experiencias memorables para cada viajero que confía en nosotros.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Banner CTA -->
+    <section class="relative z-10 py-12 px-6 md:px-16 max-w-6xl mx-auto text-center">
+      <div class="about-card p-10 bg-gradient-to-r from-[var(--surface)] to-[var(--brand-soft)]">
+        <h3 class="font-display text-2xl md:text-3xl font-bold mb-4 text-[var(--brand)] dark:text-[var(--accent)]">
+          ¿Listo para descubrir El Salvador de la mano de un experto?
+        </h3>
+        <p class="text-sm md:text-base mb-8 max-w-2xl mx-auto text-[var(--text-muted)]">
+          Explora nuestras excursiones de un día o diseña un paquete vacacional completo adaptado a tu ritmo.
+        </p>
+        <a href="tours.html" class="cta-btn inline-block" data-i18n="about.cta.tours">
+          Explorar Catálogo de Tours
+        </a>
+      </div>
+    </section>
+
+    <!-- Divisor ornamental -->
+    <div class="ornate-divider mx-16 my-12"></div>
+
+    <!-- Conecta con nosotros -->
+    <section class="social-connect w-full py-12 flex flex-col items-center relative z-10">
+      <div class="flex gap-12 items-center relative z-20">
+        <span class="social-connect-title" data-i18n="social.connect">Conecta con nosotros</span>
+        <div class="flex gap-8">
+          <a class="social-connect-icon" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="social-connect-icon" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a class="social-connect-icon" href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (tipografía oficial del brand: Adlery Pro bajo el ícono) -->
+  <footer class="footer-light flex flex-col items-center py-16 w-full relative z-10">
+    <img src="assets/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4">
+
+    <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
+
+    <div class="footer-links flex gap-10 mb-6">
+      <a href="#" data-i18n="footer.privacy">Pólitica de Privacidad</a>
+      <a href="#" data-i18n="footer.terms">Términos de Servicio</a>
+      <a href="#" data-i18n="footer.contact">Contacto</a>
+    </div>
+
+    <div class="flex gap-6 mb-6">
+      <a href="#" class="footer-social text-xl" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="footer-social text-xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <p class="copyright-text uppercase" data-i18n="footer.copyright">© 2026 El Salvador Trails.</p>
+  </footer>
+
+  <script src="i18n.js"></script>
+</body>
+</html>

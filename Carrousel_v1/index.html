@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Salvador - Top destinos más buscados</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="dashboard-container">
+    <article class="destination-card">
+      <!-- Dynamic Background Layers for Cross-fade inside the card -->
+      <div id="bg-layer-1" class="bg-layer active"></div>
+      <div id="bg-layer-2" class="bg-layer"></div>
+      <div class="bg-overlay"></div>
+      
+      <header class="card-header">
+        <h1>Top destinos más buscados del país</h1>
+        <p>Elige los mejores destinos nacionales para viajar junto a tu familia y amigos.</p>
+        
+        <nav class="tabs-nav" aria-label="Navegación de destinos">
+          <button class="tab-btn active">El Tunco</button>
+          <button class="tab-btn">Ruta de las Flores</button>
+          <button class="tab-btn">Lago de Coatepeque</button>
+          <button class="tab-btn">Volcán de Santa Ana</button>
+          <button class="tab-btn">El Boquerón</button>
+          <button class="tab-btn">Suchitoto</button>
+        </nav>
+      </header>
+
+      <section class="content-grid">
+        
+        <div class="text-column">
+          <h2 class="brand-title">Descubre El Salvador</h2>
+          
+          <div class="slide-details">
+            <h3 id="slide-title">Playa El Sunzal</h3>
+            <p id="slide-desc">Ubicada en La Libertad, es un referente mundial para el surf. Destaca por su icónica formación rocosa en la orilla, sus imponentes olas, una vibrante vida nocturna y atardeceres espectaculares sobre el océano Pacífico.</p>
+          </div>
+          
+          <button class="cta-btn">Explora el Catálogo de Tours</button>
+        </div>
+
+        <div class="gallery-column">
+          <div class="main-image-wrapper">
+            <img id="main-image" src="assets/slide_0.jpg" alt="Destinos El Salvador">
+          </div>
+          
+          <div class="thumbnails-container" id="thumbnails-container">
+            <!-- Thumbnails injected by JS -->
+          </div>
+        </div>
+        
+      </section>
+    </article>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

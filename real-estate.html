@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>El Salvador Trails — Bienes Raíces</title>
+
+  <!-- Font Imports -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=EB+Garamond:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet"/>
+
+  <!-- Font Awesome Brands CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    try {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary": "#e9c262",
+              "background": "#fbf8ed",
+              "surface": "#580F00",
+              "on-background": "#3A2416"
+            },
+            "fontFamily": {
+              "display": ["Fraunces", "serif"],
+              "body": ["Fira Sans", "sans-serif"],
+              "label": ["Cinzel", "serif"]
+            }
+          }
+        }
+      }
+    } catch (_e) {}
+  </script>
+
+  <!-- Cambio de tema: se ejecuta en la cabecera para evitar parpadeo -->
+  <script src="theme.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Estilos específicos para la página de Bienes Raíces (placeholder) */
+    .coming-soon-wrapper {
+      min-height: calc(100vh - 280px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .coming-soon-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--brand-soft);
+      border: 2px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      transition: background-color 0.35s ease, border-color 0.35s ease;
+    }
+
+    .coming-soon-icon .material-symbols-outlined {
+      font-size: 56px;
+      color: var(--brand);
+      transition: color 0.35s ease;
+    }
+
+    .coming-soon-title {
+      font-family: 'Fraunces', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 0.5rem;
+      transition: color 0.35s ease;
+    }
+
+    .coming-soon-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .coming-soon-message {
+      font-family: 'Fira Sans', sans-serif;
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      line-height: 1.7;
+      transition: color 0.35s ease;
+    }
+
+    .under-construction-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 2rem;
+      padding: 10px 24px;
+      border-radius: 999px;
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none;
+      cursor: default;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+  </style>
+</head>
+<body class="font-body" data-i18n-page-title="page.realestate.title">
+
+  <!-- Barra de navegación fija -->
+  <nav class="fixed-nav-light">
+    <div class="brand">
+      <img src="assets/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
+      <div>
+        <span class="brand-word-title">El Salvador Trails</span>
+        <span class="brand-subtext"></span>
+      </div>
+    </div>
+
+    <ul class="nav-links-list">
+      <li><a href="index.html" data-i18n="nav.home">Página Inicial</a></li>
+      <li><a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+      <li><a href="real-estate.html" class="active" data-i18n="nav.realestate">Bienes Raíces</a></li>
+      <li><a href="#" data-i18n="nav.payment">Pago en Línea</a></li>
+    </ul>
+
+    <div class="nav-right-container">
+      <button class="help-tutorial-btn" data-i18n-aria="nav.help" data-i18n-title="nav.help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8"/>
+        </svg>
+        <span data-i18n="nav.help">Cómo usar este sitio</span>
+      </button>
+
+      <!-- Botón de cambio de modo (sol/luna) -->
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">
+        <span id="theme-toggle-icon" class="material-symbols-outlined">dark_mode</span>
+      </button>
+
+      <div class="lang-switcher-pill">
+        <button class="active">ES</button>
+        <button class="">EN</button>
+        <button class="">PT</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative pt-28">
+    <!-- Patrón decorativo de fondo -->
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div class="brand-pattern-base pattern-sun w-[800px] h-[800px] -top-64 -left-64"></div>
+    </div>
+
+    <!-- Contenido placeholder: En construcción -->
+    <section class="relative w-full z-10 coming-soon-wrapper">
+      <div class="coming-soon-icon">
+        <span class="material-symbols-outlined">construction</span>
+      </div>
+
+      <h1 class="coming-soon-title" data-i18n="realestate.title">Bienes Raíces</h1>
+      <p class="coming-soon-subtitle" data-i18n="realestate.subtitle">Próximamente</p>
+      <p class="coming-soon-message" data-i18n="realestate.message">Esta sección está actualmente en construcción. Pronto podrá explorar las mejores propiedades disponibles en El Salvador.</p>
+
+      <div class="under-construction-badge">
+        <span class="material-symbols-outlined" style="font-size: 16px;">engineering</span>
+        <span data-i18n="realestate.subtitle">Próximamente</span>
+      </div>
+    </section>
+
+    <!-- Divisor ornamental -->
+    <div class="ornate-divider mx-16"></div>
+
+    <!-- Conecta con nosotros -->
+    <section class="social-connect w-full py-24 flex flex-col items-center relative z-10">
+      <div class="flex gap-12 items-center relative z-20">
+        <span class="social-connect-title" data-i18n="social.connect">Conecta con nosotros</span>
+        <div class="flex gap-8">
+          <a class="social-connect-icon" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="social-connect-icon" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a class="social-connect-icon" href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-light flex flex-col items-center py-16 w-full relative z-10">
+    <img src="assets/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4">
+
+    <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
+
+    <div class="footer-links flex gap-10 mb-6">
+      <a href="#" data-i18n="footer.privacy">Pólitica de Privacidad</a>
+      <a href="#" data-i18n="footer.terms">Términos de Servicio</a>
+      <a href="#" data-i18n="footer.contact">Contacto</a>
+    </div>
+
+    <div class="flex gap-6 mb-6">
+      <a href="#" class="footer-social text-xl" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="footer-social text-xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <p class="copyright-text uppercase" data-i18n="footer.copyright">© 2026 El Salvador Trails.</p>
+  </footer>
+
+  <script src="i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+/* ==========================================================================
+   El Salvador Trails — Carrusel de destinos
+   Tokens de tema definidos en styles.css (:root claro / .dark oscuro)
+
+   Modo claro:  foto de fondo SUAVE con overlay crema (corrección aplicada)
+   Modo oscuro: foto de fondo DIM con overlay mahogany (look aprobado)
+   ========================================================================== */
+
+/* ---- Contenedor ---- */
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* ---- Tarjeta de destino ---- */
+.destination-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--carousel-card-bg);
+  border: 1px solid var(--carousel-border);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: var(--carousel-shadow);
+  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* ---- Fondo dinámico dentro de la tarjeta (cross-fade) ---- */
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: var(--bg-layer-filter);
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, filter 0.35s ease;
+}
+
+.bg-layer.active {
+  opacity: 1;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: -1;
+  transition: background-color 0.35s ease;
+}
+
+/* ---- Header ---- */
+.card-header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 3rem;
+}
+
+.card-header h1 {
+  font-family: var(--font-card-heading);
+  font-size: var(--card-heading-size);
+  font-weight: 700;
+  color: var(--card-heading);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  transition: color 0.35s ease;
+}
+
+.card-header p {
+  color: var(--card-text);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  transition: color 0.35s ease;
+}
+
+/* ---- Pestañas de destinos ---- */
+.tabs-nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: var(--tab-bg);
+  border: 1px solid var(--tab-border);
+  color: var(--tab-text);
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-family: var(--font-tabs);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.tab-btn.active {
+  background: var(--tab-active-bg);
+  border-color: var(--tab-active-bg);
+  color: var(--tab-active-text);
+  font-weight: 600;
+}
+
+.tab-btn:not(.active):hover {
+  background: var(--tab-hover-bg);
+}
+
+/* ---- Rejilla de contenido ---- */
+.content-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* ---- Columna izquierda ---- */
+.text-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-card-brand);
+  font-size: var(--brand-title-size);
+  font-weight: 900;
+  line-height: 0.95;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--brand);
+  transition: color 0.35s ease;
+}
+
+.slide-details {
+  border-left: 2px solid var(--accent);
+  padding-left: 22px;
+  margin-bottom: 2rem;
+  min-height: 110px;
+  transition: opacity 0.3s ease, border-color 0.35s ease;
+}
+
+.slide-details h3 {
+  font-family: var(--font-card-title);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--card-title);
+  margin-bottom: 0.7rem;
+  transition: color 0.35s ease;
+}
+
+.slide-details p {
+  font-size: 0.98rem;
+  color: var(--card-text);
+  line-height: 1.6;
+  transition: color 0.35s ease;
+}
+
+.cta-btn {
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  border: none;
+  padding: 13px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: fit-content;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.cta-btn:hover {
+  background: var(--cta-hover-bg);
+  color: var(--cta-hover-text);
+  transform: translateY(-2px);
+}
+
+/* ---- Columna derecha (galería) ---- */
+.gallery-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.main-image-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px var(--main-img-shadow);
+  transition: box-shadow 0.35s ease;
+}
+
+.main-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease-in-out;
+}
+
+/* ---- Miniaturas ---- */
+.thumbnails-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 11px;
+}
+
+.thumb-btn {
+  background: none;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  transition: border-color 0.3s, opacity 0.3s;
+}
+
+.thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.thumb-btn.active {
+  outline: 2px solid var(--thumb-outline);
+  outline-offset: -2px;
+  border-color: var(--thumb-outline);
+}
+
+.thumb-btn.active img,
+.thumb-btn:hover img {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   AJUSTES ESPECÍFICOS DEL MODO OSCURO (aprobado)
+   ========================================================================== */
+.dark .tab-btn {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+.dark .tab-btn.active {
+  font-weight: 700;
+}
+.dark .card-header h1 {
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.dark .slide-details h3 {
+  font-weight: 400;
+}
+.dark .brand-title {
+  font-weight: 900;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 900px) {
+  .destination-card {
+    padding: 2rem;
+  }
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .brand-title {
+    font-size: calc(var(--brand-title-size) * 0.8);
+  }
+  .card-header {
+    margin-bottom: 2rem;
+  }
+}
