@@ -1,0 +1,13 @@
+{
+  "name": "el-salvador-trails-static-site",
+  "description": "Sitio estático optimizado de El Salvador Trails",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "media:check": "node scripts/check-responsive-media.mjs",
+    "images:optimize": "node scripts/optimize-images.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}

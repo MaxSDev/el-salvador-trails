@@ -43,17 +43,24 @@
   </script>
 
   <!-- Cambio de tema: se ejecuta en la cabecera para evitar parpadeo -->
-  <script src="theme.js"></script>
+  <script src="js/theme.js"></script>
 
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="carrousel.css">
+  <meta name="description" content="El Salvador Trails — Descubre El Salvador: volcanes, lagos, playas, Ruta de las Flores y Centro Histórico con guías certificados." />
+  <meta property="og:title" content="El Salvador Trails" />
+  <meta property="og:description" content="Top destinos más buscados del país con guías locales certificados." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg" />
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/carrousel.css">
 </head>
 <body class="font-body" data-i18n-page-title="page.index.title">
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <!-- Barra de navegación fija -->
-  <nav class="fixed-nav-light">
+  <nav class="fixed-nav-light" aria-label="Principal">
     <div class="brand">
-      <img src="assets/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
+      <img src="assets/icons/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
       <div>
         <span class="brand-word-title">El Salvador Trails</span>
         <span class="brand-subtext"></span>
@@ -61,16 +68,15 @@
     </div>
 
     <ul class="nav-links-list">
-      <li><a href="index.html" class="active" data-i18n="nav.home">Página Inicial</a></li>
+      <li><a href="index.html" class="active" aria-current="page" data-i18n="nav.home">Página Inicial</a></li>
       <li><a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a></li>
       <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
       <li><a href="real-estate.html" data-i18n="nav.realestate">Bienes Raíces</a></li>
-      <li><a href="#" data-i18n="nav.payment">Pago en Línea</a></li>
     </ul>
 
     <div class="nav-right-container">
-      <button class="help-tutorial-btn" data-i18n-aria="nav.help" data-i18n-title="nav.help">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="help-tutorial-btn" type="button" data-help-open data-i18n-aria="nav.help" data-i18n-title="nav.help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/>
           <polygon points="10 8 16 12 10 16 10 8"/>
         </svg>
@@ -82,15 +88,25 @@
         <span id="theme-toggle-icon" class="material-symbols-outlined">dark_mode</span>
       </button>
 
-      <div class="lang-switcher-pill">
-        <button class="active">ES</button>
-        <button class="">EN</button>
-        <button class="">PT</button>
+      <div class="lang-switcher-pill" role="group" aria-label="Idioma / Language">
+        <button type="button" class="active" data-lang="es" title="Español" aria-label="Español"><img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon"></button>
+        <button type="button" data-lang="en" title="English" aria-label="English"><img src="https://flagcdn.com/w40/us.png" alt="English" class="flag-icon"></button>
+        <button type="button" data-lang="pt" title="Português (Brasil)" aria-label="Português (Brasil)"><img src="https://flagcdn.com/w40/br.png" alt="Português" class="flag-icon"></button>
       </div>
+
+      <button class="nav-hamburger" type="button" data-menu-toggle aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" class="active" data-i18n="nav.home">Página Inicial</a>
+    <a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a>
+    <a href="about.html" data-i18n="nav.about">About Us</a>
+    <a href="real-estate.html" data-i18n="nav.realestate">Bienes Raíces</a>
+  </div>
 
-  <main class="relative pt-28">
+  <main class="relative pt-28" id="main-content">
     <!-- Patrón decorativo de fondo -->
     <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
       <div class="brand-pattern-base pattern-sun w-[800px] h-[800px] -top-64 -left-64"></div>
@@ -110,10 +126,10 @@
             <p class="text-sm md:text-base" data-i18n="hero.subtitle">Elige los mejores destinos nacionales para viajar junto a tu familia y amigos.</p>
 
             <nav class="tabs-nav flex gap-3 mt-8 flex-wrap" data-i18n-aria="carousel.nav" aria-label="Navegación de destinos">
-              <button class="tab-btn active" data-i18n="tab.elTunco">El Tunco</button>
-              <button class="tab-btn" data-i18n="tab.rutaFlores">Ruta de las Flores</button>
-              <button class="tab-btn" data-i18n="tab.lagoCoatepeque">Lago de Coatepeque</button>
-              <button class="tab-btn" data-i18n="tab.volcanSantaAna">Volcán de Santa Ana</button>
+              <button class="tab-btn active" data-carousel-tab="0" data-i18n="tab.elSunzal">Playa El Sunzal</button>
+              <button class="tab-btn" data-carousel-tab="1" data-i18n="tab.rutaFlores">Ruta de las Flores</button>
+              <button class="tab-btn" data-carousel-tab="2" data-i18n="tab.lagoCoatepeque">Lago de Coatepeque</button>
+              <button class="tab-btn" data-carousel-tab="3" data-i18n="tab.centroHistorico">Centro Histórico</button>
             </nav>
           </header>
 
@@ -126,12 +142,16 @@
                 <p id="slide-desc" class="text-sm leading-relaxed" data-i18n="slide0.desc">Ubicada en La Libertad, es un referente mundial para el surf. Destaca por su icónica formación rocosa en la orilla, sus imponentes olas, una vibrante vida nocturna y atardeceres espectaculares sobre el océano Pacífico.</p>
               </div>
 
-              <button class="cta-btn" data-i18n="hero.cta">Explora el Catálogo de Tours</button>
+              <a href="tours.html" class="cta-btn" data-i18n="hero.cta">Explora el Catálogo de Tours</a>
             </div>
 
             <div class="gallery-column">
               <div class="main-image-wrapper aspect-video rounded-xl overflow-hidden shadow-2xl">
-                <img id="main-image" src="assets/slide_0.jpg" data-i18n-aria="carousel.mainImg" alt="Destinos El Salvador" class="w-full h-full object-cover">
+                <picture>
+                  <source type="image/avif" srcset="assets/optimized/img/slide_0-480.avif 480w, assets/optimized/img/slide_0-768.avif 768w, assets/optimized/img/slide_0-1200.avif 1200w, assets/optimized/img/slide_0-1920.avif 1920w" sizes="(max-width: 767px) 100vw, 50vw">
+                  <source type="image/webp" srcset="assets/optimized/img/slide_0-480.webp 480w, assets/optimized/img/slide_0-768.webp 768w, assets/optimized/img/slide_0-1200.webp 1200w, assets/optimized/img/slide_0-1920.webp 1920w" sizes="(max-width: 767px) 100vw, 50vw">
+                  <img id="main-image" src="assets/img/slide_0.jpg" data-i18n-aria="carousel.mainImg" alt="Destinos El Salvador" width="4032" height="2268" class="w-full h-full object-cover" decoding="async" fetchpriority="high">
+                </picture>
               </div>
               <div class="thumbnails-container grid grid-cols-4 gap-3 mt-4" id="thumbnails-container"></div>
             </div>
@@ -140,24 +160,262 @@
       </div>
     </section>
 
+    <!-- Barra de cotización (1 minuto, sin pagos en línea) -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Cotización rápida">
+      <form id="home-quote" class="quote-bar w-full max-w-6xl">
+        <p class="quote-bar-title" data-i18n="home.quote.title">Cotiza tu sendero en 1 minuto</p>
+        <div class="quote-bar-fields">
+          <label class="quote-field">
+            <span data-i18n="home.quote.destination">¿A dónde quieres ir?</span>
+            <select id="home-quote-dest"></select>
+          </label>
+          <label class="quote-field">
+            <span data-i18n="home.quote.date">Fecha estimada</span>
+            <input type="date" id="home-quote-date" />
+          </label>
+          <label class="quote-field">
+            <span data-i18n="home.quote.group">Grupo</span>
+            <select id="home-quote-group">
+              <option value="2 adultos" data-i18n="home.quote.groupOpt">2 adultos</option>
+              <option value="2 adultos + niños">2 adultos + niños</option>
+              <option value="Grupo 4-6">Grupo 4-6</option>
+              <option value="Grupo 7+">Grupo 7+</option>
+            </select>
+          </label>
+          <button type="submit" class="btn-accent quote-submit">
+            <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
+            <span data-i18n="home.quote.submit">Cotizar por WhatsApp</span>
+          </button>
+        </div>
+        <p class="quote-bar-note" data-i18n="home.quote.note">Sin pagos en línea: te responde Mario con precio según tu grupo.</p>
+      </form>
+    </section>
+
+    <!-- Tira de confianza -->
+    <section class="relative w-full z-10 px-8 flex justify-center" aria-label="Confianza">
+      <ul class="trust-strip">
+        <li><span class="material-symbols-outlined" aria-hidden="true">star</span><span>★ <span data-i18n="home.trust.rating">5.0 en reseñas verificadas</span></span></li>
+        <li><span class="material-symbols-outlined" aria-hidden="true">hiking</span><span data-i18n="home.trust.exp">+20 años de turismo</span></li>
+        <li><span class="material-symbols-outlined" aria-hidden="true">verified</span><span data-i18n="home.trust.trip">#1 en TripAdvisor</span></li>
+        <li><span class="material-symbols-outlined" aria-hidden="true">translate</span><span data-i18n="home.trust.lang">ES · EN · PT</span></li>
+      </ul>
+    </section>
+
     <!-- Divisor ornamental -->
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- Tours destacados -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Tours destacados">
+      <div class="w-full max-w-6xl">
+        <div class="text-center mb-8">
+          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.featured.eyebrow">Los más pedidos</p>
+          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.featured.title">Senderos que enamoran</h2>
+          <p class="text-muted max-w-[640px] mx-auto" data-i18n="home.featured.sub">Day Tours de un día y paquetes multi-día con recojo en hotel y guía certificado.</p>
+        </div>
+        <div id="home-featured-day" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        <div id="home-featured-pkg" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"></div>
+        <div class="text-center mt-8">
+          <a href="tours.html" class="btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-lg">
+            <span data-i18n="home.featured.all">Ver catálogo completo</span>
+            <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- Categorías por estilo -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Categorías">
+      <div class="w-full max-w-6xl">
+        <div class="text-center mb-8">
+          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.cats.eyebrow">Explora por estilo</p>
+          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.cats.title">Elige tu forma de viajar</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a href="tours.html" class="cat-card">
+            <picture>
+              <source type="image/avif" srcset="assets/optimized/img/slide_0-480.avif 480w, assets/optimized/img/slide_0-768.avif 768w, assets/optimized/img/slide_0-1200.avif 1200w, assets/optimized/img/slide_0-1920.avif 1920w" sizes="(max-width: 639px) 100vw, 50vw">
+              <source type="image/webp" srcset="assets/optimized/img/slide_0-480.webp 480w, assets/optimized/img/slide_0-768.webp 768w, assets/optimized/img/slide_0-1200.webp 1200w, assets/optimized/img/slide_0-1920.webp 1920w" sizes="(max-width: 639px) 100vw, 50vw">
+              <img src="assets/img/slide_0.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async">
+            </picture>
+            <span class="trail-sign"><span class="material-symbols-outlined" aria-hidden="true">surfing</span><span class="trail-sign-label" data-i18n="home.cats.c1t">Playas & Surf</span></span>
+            <span class="cat-count">2 · <span data-i18n="home.cats.count">tours</span></span>
+            <span class="cat-desc" data-i18n="home.cats.c1d">El Sunzal, El Tunco y la costa de La Libertad.</span>
+          </a>
+          <a href="tours.html" class="cat-card">
+            <picture>
+              <source type="image/avif" srcset="assets/optimized/tours/volcan-santa-ana/IMG_9697-480.avif 480w, assets/optimized/tours/volcan-santa-ana/IMG_9697-768.avif 768w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1200.avif 1200w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1920.avif 1920w" sizes="(max-width: 639px) 100vw, 50vw">
+              <source type="image/webp" srcset="assets/optimized/tours/volcan-santa-ana/IMG_9697-480.webp 480w, assets/optimized/tours/volcan-santa-ana/IMG_9697-768.webp 768w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1200.webp 1200w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1920.webp 1920w" sizes="(max-width: 639px) 100vw, 50vw">
+              <img src="assets/tours/volcan-santa-ana/IMG_9697.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async">
+            </picture>
+            <span class="trail-sign"><span class="material-symbols-outlined" aria-hidden="true">landscape</span><span class="trail-sign-label" data-i18n="home.cats.c2t">Volcanes & Naturaleza</span></span>
+            <span class="cat-count">1 · <span data-i18n="home.cats.count">tours</span></span>
+            <span class="cat-desc" data-i18n="home.cats.c2d">Santa Ana, Coatepeque y Cerro Verde.</span>
+          </a>
+          <a href="tours.html" class="cat-card">
+            <picture>
+              <source type="image/avif" srcset="assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-480.avif 480w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-768.avif 768w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1200.avif 1200w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1920.avif 1920w" sizes="(max-width: 639px) 100vw, 50vw">
+              <source type="image/webp" srcset="assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-480.webp 480w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-768.webp 768w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1200.webp 1200w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1920.webp 1920w" sizes="(max-width: 639px) 100vw, 50vw">
+              <img src="assets/tours/ruta-maya/PHOTO-2026-09-06-11-28-28.jpg" alt="" width="4000" height="2250" loading="lazy" decoding="async">
+            </picture>
+            <span class="trail-sign"><span class="material-symbols-outlined" aria-hidden="true">temple_buddhist</span><span class="trail-sign-label" data-i18n="home.cats.c3t">Ruta Maya & Cultura</span></span>
+            <span class="cat-count">2 · <span data-i18n="home.cats.count">tours</span></span>
+            <span class="cat-desc" data-i18n="home.cats.c3d">Joya de Cerén, Tazumal y Suchitoto.</span>
+          </a>
+          <a href="tours.html" class="cat-card">
+            <picture>
+              <source type="image/avif" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.avif 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.avif 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.avif 1200w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1920.avif 1920w" sizes="(max-width: 639px) 100vw, 50vw">
+              <source type="image/webp" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.webp 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.webp 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.webp 1200w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1920.webp 1920w" sizes="(max-width: 639px) 100vw, 50vw">
+              <img src="assets/tours/city-tour-san-salvador/IMG_2503.jpg" alt="" width="2268" height="4032" loading="lazy" decoding="async">
+            </picture>
+            <span class="trail-sign"><span class="material-symbols-outlined" aria-hidden="true">location_city</span><span class="trail-sign-label" data-i18n="home.cats.c4t">Pueblos Vivos</span></span>
+            <span class="cat-count">1 · <span data-i18n="home.cats.count">tours</span></span>
+            <span class="cat-desc" data-i18n="home.cats.c4d">Ruta de las Flores y Centro Histórico.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- Senderos para ti (editorial) -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Inspiración">
+      <div class="w-full max-w-6xl">
+        <div class="text-center mb-8">
+          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.editorial.eyebrow">Senderos para ti</p>
+          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.editorial.title">Historias que se caminan</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="tours.html" class="tour-card flex flex-col">
+            <div class="aspect-[16/10] w-full overflow-hidden"><picture><source type="image/avif" srcset="assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-480.avif 480w, assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-768.avif 768w, assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 33vw"><source type="image/webp" srcset="assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-480.webp 480w, assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-768.webp 768w, assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw"><img src="assets/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async" class="w-full h-full object-cover"></picture></div>
+            <div class="p-8"><h3 class="font-display text-xl font-bold text-brand mb-2" data-i18n="home.editorial.e1t">Amanecer entre volcanes</h3><p class="text-sm text-muted" data-i18n="home.editorial.e1d">Sube el Ilamatepec y desayuna frente a la laguna turquesa del cráter.</p></div>
+          </a>
+          <a href="tours.html" class="tour-card flex flex-col">
+            <div class="aspect-[16/10] w-full overflow-hidden"><picture><source type="image/avif" srcset="assets/optimized/img/slide_1-480.avif 480w, assets/optimized/img/slide_1-768.avif 768w, assets/optimized/img/slide_1-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 33vw"><source type="image/webp" srcset="assets/optimized/img/slide_1-480.webp 480w, assets/optimized/img/slide_1-768.webp 768w, assets/optimized/img/slide_1-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw"><img src="assets/img/slide_1.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async" class="w-full h-full object-cover"></picture></div>
+            <div class="p-8"><h3 class="font-display text-xl font-bold text-brand mb-2" data-i18n="home.editorial.e2t">Café de altura</h3><p class="text-sm text-muted" data-i18n="home.editorial.e2d">Ruta de las Flores, fincas y cata con productores locales.</p></div>
+          </a>
+          <a href="tours.html" class="tour-card flex flex-col">
+            <div class="aspect-[16/10] w-full overflow-hidden"><picture><source type="image/avif" srcset="assets/optimized/img/slide_0-480.avif 480w, assets/optimized/img/slide_0-768.avif 768w, assets/optimized/img/slide_0-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 33vw"><source type="image/webp" srcset="assets/optimized/img/slide_0-480.webp 480w, assets/optimized/img/slide_0-768.webp 768w, assets/optimized/img/slide_0-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw"><img src="assets/img/slide_0.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async" class="w-full h-full object-cover"></picture></div>
+            <div class="p-8"><h3 class="font-display text-xl font-bold text-brand mb-2" data-i18n="home.editorial.e3t">Atardecer surf</h3><p class="text-sm text-muted" data-i18n="home.editorial.e3d">El Sunzal y El Tunco: olas, pupusas y Pacífico dorado.</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- Planifica tu viaje -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Planifica">
+      <div class="w-full max-w-6xl">
+        <div class="text-center mb-8">
+          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.plan.eyebrow">Planifica tu viaje</p>
+          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.plan.title">Todo resuelto antes de salir</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="plan-card"><span class="material-symbols-outlined" aria-hidden="true">directions_bus</span><h3 data-i18n="home.plan.p1t">Transporte incluido</h3><p data-i18n="home.plan.p1d">Ida y vuelta cómoda desde tu hotel.</p></div>
+          <div class="plan-card"><span class="material-symbols-outlined" aria-hidden="true">restaurant</span><h3 data-i18n="home.plan.p2t">Comida típica</h3><p data-i18n="home.plan.p2d">Almuerzos locales y cata de café.</p></div>
+          <div class="plan-card"><span class="material-symbols-outlined" aria-hidden="true">badge</span><h3 data-i18n="home.plan.p3t">Guía certificado</h3><p data-i18n="home.plan.p3d">Mario te acompaña todo el recorrido.</p></div>
+          <div class="plan-card"><span class="material-symbols-outlined" aria-hidden="true">pin_drop</span><h3 data-i18n="home.plan.p4t">Recojo en hotel</h3><p data-i18n="home.plan.p4d">Punto de encuentro claro con foto.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- Por qué + stats -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Por qué nosotros">
+      <div class="w-full max-w-6xl text-center">
+        <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.why.eyebrow">Por qué nosotros</p>
+        <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-8" data-i18n="home.why.title">Viaja con quien conoce el sendero</h2>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-num" data-count="20" data-suffix="+">20+</span><span class="stat-label" data-i18n="home.stats.years">años de turismo</span></div>
+          <div class="stat"><span class="stat-num" data-count="6">6</span><span class="stat-label" data-i18n="home.stats.tours">tours insignia</span></div>
+          <div class="stat"><span class="stat-num" data-count="3">3</span><span class="stat-label" data-i18n="home.stats.langs">idiomas</span></div>
+          <div class="stat"><span class="stat-num" data-count="100" data-suffix="%">100%</span><span class="stat-label" data-i18n="home.stats.private">privado y seguro</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- Cómo funciona -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Cómo funciona">
+      <div class="w-full max-w-6xl">
+        <div class="text-center mb-8">
+          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.steps.eyebrow">Así de fácil</p>
+          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.steps.title">De la idea al sendero en 3 pasos</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="step-card"><span class="step-num" aria-hidden="true">1</span><h3 data-i18n="home.steps.s1t">1. Elige tu tour</h3><p data-i18n="home.steps.s1d">Abre el que te guste y mira fotos, ruta y detalles.</p></div>
+          <div class="step-card"><span class="step-num" aria-hidden="true">2</span><h3 data-i18n="home.steps.s2t">2. Indica tu grupo</h3><p data-i18n="home.steps.s2d">Adultos, niños y fecha estimada. Niños &lt;12 al 50%.</p></div>
+          <div class="step-card"><span class="step-num" aria-hidden="true">3</span><h3 data-i18n="home.steps.s3t">3. Cotiza y viaja</h3><p data-i18n="home.steps.s3d">Te responde Mario por WhatsApp o correo. Sin pagos raros.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- Guía Mario preview -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Tu guía">
+      <div class="guide-preview w-full max-w-6xl">
+        <img src="assets/img/founder-mario.jpg" alt="Mario Domínguez, guía fundador" loading="lazy" data-media-placeholder onerror="this.style.display='none'" />
+        <div>
+          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.guide.eyebrow">Tu guía</p>
+          <h2 class="font-display text-[28px] md:text-[36px] font-bold text-brand mb-3" data-i18n="home.guide.title">Hola, soy Mario</h2>
+          <p class="text-muted mb-6" data-i18n="home.guide.text">20+ años creando rutas en El Salvador y Brasil. Te recojo, te cuento y te cuido como a un amigo.</p>
+          <a href="about.html" class="btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-lg"><span data-i18n="home.guide.cta">Conoce mi historia</span><span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- FAQ -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Preguntas">
+      <div class="w-full max-w-3xl">
+        <div class="text-center mb-8">
+          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.faq.eyebrow">Dudas comunes</p>
+          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.faq.title">Antes de cotizar</h2>
+        </div>
+        <details class="faq-item"><summary data-i18n="home.faq.q1">¿Es seguro viajar con ustedes?</summary><p data-i18n="home.faq.a1">Sí: transporte privado, guía certificado, grupos pequeños y rutas probadas por 20+ años.</p></details>
+        <details class="faq-item"><summary data-i18n="home.faq.q2">¿Recogen en mi hotel?</summary><p data-i18n="home.faq.a2">Sí, en San Salvador y zonas acordadas. El punto exacto lleva foto en cada tour.</p></details>
+        <details class="faq-item"><summary data-i18n="home.faq.q3">¿Los niños pagan menos?</summary><p data-i18n="home.faq.a3">Menores de 12 años gozan de tarifa especial al 50%.</p></details>
+        <details class="faq-item"><summary data-i18n="home.faq.q4">¿Qué debo llevar al volcán?</summary><p data-i18n="home.faq.a4">Calzado con agarre, agua, bloqueador y chaqueta ligera. Dificultad moderada, ~3h entre subida y bajada.</p></details>
+        <details class="faq-item"><summary data-i18n="home.faq.q5">¿En qué idioma es el tour?</summary><p data-i18n="home.faq.a5">Español, English y Português, según tu preferencia al cotizar.</p></details>
+      </div>
+    </section>
+
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <!-- CTA final -->
+    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Reserva">
+      <div class="final-cta w-full max-w-6xl">
+        <h2 class="font-display text-[28px] md:text-[40px] font-bold mb-3" data-i18n="home.final.title">¿Listo para tu sendero?</h2>
+        <p class="mb-8 opacity-90" data-i18n="home.final.sub">Escríbenos hoy y mañana ya estás caminando El Salvador.</p>
+        <div class="flex gap-4 flex-wrap justify-center">
+          <a class="btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-lg" href="https://wa.me/50370000000?text=%C2%A1Hola%20Mario!%20Quiero%20cotizar%20un%20tour." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span data-i18n="home.final.quote">Cotizar por WhatsApp</span></a>
+          <a class="final-ghost" href="tours.html"><span data-i18n="home.final.catalog">Ver catálogo</span></a>
+        </div>
+        <p class="agenda-strip"><span data-i18n="home.agenda.t1">Cosecha de café · Nov–Feb</span><span aria-hidden="true">✶</span><span data-i18n="home.agenda.t2">Surf · May–Oct</span><span aria-hidden="true">✶</span><span data-i18n="home.agenda.t3">Pueblos vivos · todo el año</span></p>
+      </div>
+    </section>
+
     <div class="ornate-divider mx-16 my-16"></div>
 
     <!-- Sección Carrusel de Testimonios (Mural de Feedback destacado) -->
     <section class="testimonials-section relative z-10 py-8">
-      <div class="text-center mb-8">
-        <h2 class="font-display text-2xl md:text-4xl font-bold text-[var(--brand)] dark:text-[var(--accent)] mb-3" data-i18n="testimonials.title">
-          Lo que dicen nuestros viajeros
-        </h2>
-        <p class="text-sm md:text-base max-w-2xl mx-auto text-[var(--text-muted)]" data-i18n="testimonials.subtitle">
-          Experiencias reales de quienes han recorrido los senderos de El Salvador con nosotros.
-        </p>
+      <div class="w-full max-w-6xl mx-auto text-center mb-8">
+        <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-accent" data-i18n="feedback.eyebrow">Lo que dicen nuestros viajeros</p>
+        <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="feedback.title">Historias que nos hacen seguir</h2>
+        <p class="text-muted max-w-[640px] mx-auto" data-i18n="feedback.subtitle">Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de El Salvador Trails.</p>
+        <p class="review-summary"><span class="review-summary-label" data-i18n="home.summary.label">Viajeros destacan</span><span id="review-keywords" class="review-keywords"></span></p>
       </div>
 
       <!-- Viewport del Carrusel -->
       <div class="testimonials-viewport" id="testimonials-viewport">
         <div class="testimonials-track" id="testimonials-track">
-          <!-- Tarjetas renderizadas dinámicamente desde content/reviews.json -->
+          <!-- Tarjetas renderizadas dinámicamente desde data/reviews.json -->
         </div>
       </div>
 
@@ -249,42 +507,67 @@
     <!-- Divisor ornamental -->
     <div class="ornate-divider mx-16 my-16"></div>
 
-    <!-- Conecta con nosotros -->
-    <section class="social-connect w-full py-12 flex flex-col items-center">
-      <div class="flex gap-12 items-center">
-        <span class="social-connect-title" data-i18n="social.connect">Conecta con nosotros</span>
-        <div class="flex gap-8">
-          <a class="social-connect-icon" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a class="social-connect-icon" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a class="social-connect-icon" href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
+    <!-- Conecta con nosotros: banda ampliada (5 redes consistente) -->
+    <section class="social-band w-full py-16 flex flex-col items-center">
+      <span class="social-connect-title mb-2" data-i18n="social.title">Síguenos y viaja con nosotros</span>
+      <p class="text-sm mb-2 text-muted px-6 text-center" data-i18n="social.subtitle">Volcanes al amanecer, cafetales, playas y la calidez de nuestra gente: síguenos y empieza a soñar con tu próxima aventura.</p>
+      <p class="text-sm font-bold mb-6 text-brand" data-i18n="social.handle">@elsalvadortrails</p>
+      <div class="flex gap-5 flex-wrap justify-center">
+        <a class="social-connect-icon" href="https://www.facebook.com/elsalvadortrails" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-connect-icon" href="https://www.instagram.com/elsalvadortrails" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-connect-icon" href="https://www.tiktok.com/@elsalvadortrails" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a class="social-connect-icon" href="https://www.youtube.com/@elsalvadortrails" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-connect-icon" href="https://wa.me/50370000000" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </section>
   </main>
 
   <!-- Footer (tipografía oficial del brand: Adlery Pro bajo el ícono) -->
   <footer class="footer-light flex flex-col items-center py-16 w-full">
-    <img src="assets/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4">
+    <img src="assets/icons/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4" loading="lazy">
 
     <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
 
-    <div class="footer-links flex gap-10 mb-6">
-      <a href="#" data-i18n="footer.privacy">Pólitica de Privacidad</a>
-      <a href="#" data-i18n="footer.terms">Términos de Servicio</a>
-      <a href="#" data-i18n="footer.contact">Contacto</a>
+    <div class="footer-links flex gap-10 mb-6 flex-wrap justify-center px-6">
+      <a href="mailto:hola@elsalvadortrails.com" data-i18n="footer.contact">Contacto</a>
+      <a href="https://wa.me/50370000000" target="_blank" rel="noopener">WhatsApp</a>
     </div>
 
-    <div class="flex gap-6 mb-6">
-      <a href="#" class="footer-social text-xl" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#" class="footer-social text-xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <div class="flex gap-6 mb-6 flex-wrap justify-center">
+      <a href="https://www.facebook.com/elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.youtube.com/@elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://wa.me/50370000000" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
 
     <p class="copyright-text uppercase" data-i18n="footer.copyright">© 2026 El Salvador Trails.</p>
   </footer>
 
-  <script src="i18n.js"></script>
-  <script src="script.js"></script>
-  <script src="testimonials.js"></script>
+  <!-- Botón flotante WhatsApp -->
+  <a class="wa-float" href="https://wa.me/50370000000?text=%C2%A1Hola%20Mario!%20Quiero%20cotizar%20un%20tour." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+
+  <!-- Modal tutorial -->
+  <div class="tutorial-overlay" data-help-modal role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <div class="tutorial-box">
+      <h2 id="help-title" class="font-display text-2xl font-bold text-brand" data-i18n="help.title">Cómo usar este sitio</h2>
+      <ol>
+        <li data-i18n="help.step1">1. Explora el catálogo y abre el tour que te interese.</li>
+        <li data-i18n="help.step2">2. Presiona el botón dorado para ver fotos, itinerario y detalles.</li>
+        <li data-i18n="help.step3">3. Indica adultos, niños y fecha, y cotiza por WhatsApp o correo.</li>
+      </ol>
+      <button type="button" class="btn-accent w-full py-3 mt-6 rounded-lg" data-help-close data-i18n="help.close">Entendido</button>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="data/media-manifest.js"></script>
+  <script src="js/media.js"></script>
+  <script src="data/tours-data.js"></script>
+  <script src="data/reviews-data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/testimonials.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

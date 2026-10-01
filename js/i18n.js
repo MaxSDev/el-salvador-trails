@@ -1,0 +1,888 @@
+/* ==========================================================================
+   El Salvador Trails — Sistema i18n (ES / EN / PT)
+
+   - Diccionarios centralizados por clave, preparados para edición vía dashboard.
+   - Selector de idioma persistido en localStorage ('est-lang').
+   - Re-render automático de todos los elementos [data-i18n].
+   - Texto de interfaz NUNCA hardcodeado en el HTML: siempre data-i18n="clave".
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  /* ──────────────────────────────────────────────────────────────
+     DICcionarios — cada clave cubre un fragmento de UI en las 3
+     páginas principales (index, tours, real-estate).
+     Agregar texto aquí es la ÚNICA forma de editar el sitio.
+     ────────────────────────────────────────────────────────────── */
+  var DICTIONARIES = {
+    es: {
+      // ---- Meta ----
+      "html.lang":            "es",
+      "page.index.title":     "El Salvador Trails",
+      "page.tours.title":     "El Salvador Trails — Catálogo de Tours",
+      "page.realestate.title":"El Salvador Trails — Bienes Raíces",
+      "page.about.title":     "El Salvador Trails — About Us",
+
+      // ---- Navegación ----
+      "nav.home":             "Página Inicial",
+      "nav.tours":            "Catálogo de Tours",
+      "nav.about":            "About Us",
+      "nav.realestate":       "Bienes Raíces",
+      "nav.payment":          "Pago en Línea",
+      "nav.feedback":         "Feedback",
+      "nav.help":             "Cómo usar este sitio",
+      "nav.menu":             "Abrir menú",
+      "nav.closeMenu":        "Cerrar menú",
+      "help.title":           "Cómo usar este sitio",
+      "help.step1":           "1. Explora el catálogo y abre el tour que te interese.",
+      "help.step2":           "2. Presiona el botón dorado para ver fotos, itinerario y detalles.",
+      "help.step3":           "3. Indica adultos, niños y fecha, y cotiza por WhatsApp o correo.",
+      "help.close":           "Entendido",
+      "personalized.contact": "Pedir experiencia personalizada",
+      "personalized.note":    "Cuéntanos tu idea y diseñamos tu ruta a medida.",
+
+      // ---- Home expandido ----
+      "home.quote.title":       "Cotiza tu sendero en 1 minuto",
+      "home.quote.destination":"¿A dónde quieres ir?",
+      "home.quote.date":        "Fecha estimada",
+      "home.quote.group":       "Grupo",
+      "home.quote.groupOpt":    "2 adultos",
+      "home.quote.submit":      "Cotizar por WhatsApp",
+      "home.quote.note":        "Sin pagos en línea: te responde Mario con precio según tu grupo.",
+      "home.trust.rating":      "5.0 en reseñas verificadas",
+      "home.trust.exp":         "+20 años de turismo",
+      "home.trust.trip":        "#1 en TripAdvisor",
+      "home.trust.lang":        "ES · EN · PT",
+      "home.featured.eyebrow":  "Los más pedidos",
+      "home.featured.title":    "Senderos que enamoran",
+      "home.featured.sub":      "Day Tours de un día y paquetes multi-día con recojo en hotel y guía certificado.",
+      "home.featured.all":      "Ver catálogo completo",
+      "home.cats.eyebrow":      "Explora por estilo",
+      "home.cats.title":        "Elige tu forma de viajar",
+      "home.cats.c1t":          "Playas & Surf",
+      "home.cats.c1d":          "El Sunzal, El Tunco y la costa de La Libertad.",
+      "home.cats.c2t":          "Volcanes & Naturaleza",
+      "home.cats.c2d":          "Santa Ana, Coatepeque y Cerro Verde.",
+      "home.cats.c3t":          "Ruta Maya & Cultura",
+      "home.cats.c3d":          "Joya de Cerén, Tazumal y Suchitoto.",
+      "home.cats.c4t":          "Pueblos Vivos",
+      "home.cats.c4d":          "Ruta de las Flores y Centro Histórico.",
+      "home.cats.count":        "tours",
+      "home.editorial.eyebrow": "Senderos para ti",
+      "home.editorial.title":   "Historias que se caminan",
+      "home.editorial.e1t":     "Amanecer entre volcanes",
+      "home.editorial.e1d":     "Sube el Ilamatepec y desayuna frente a la laguna turquesa del cráter.",
+      "home.editorial.e2t":     "Café de altura",
+      "home.editorial.e2d":     "Ruta de las Flores, fincas y cata con productores locales.",
+      "home.editorial.e3t":     "Atardecer surf",
+      "home.editorial.e3d":     "El Sunzal y El Tunco: olas, pupusas y Pacífico dorado.",
+      "home.plan.eyebrow":      "Planifica tu viaje",
+      "home.plan.title":        "Todo resuelto antes de salir",
+      "home.plan.p1t":          "Transporte incluido",
+      "home.plan.p1d":          "Ida y vuelta cómoda desde tu hotel.",
+      "home.plan.p2t":          "Comida típica",
+      "home.plan.p2d":          "Almuerzos locales y cata de café.",
+      "home.plan.p3t":          "Guía certificado",
+      "home.plan.p3d":          "Mario te acompaña todo el recorrido.",
+      "home.plan.p4t":          "Recojo en hotel",
+      "home.plan.p4d":          "Punto de encuentro claro con foto.",
+      "home.why.eyebrow":       "Por qué nosotros",
+      "home.why.title":         "Viaja con quien conoce el sendero",
+      "home.stats.years":       "años de turismo",
+      "home.stats.tours":       "tours insignia",
+      "home.stats.langs":       "idiomas",
+      "home.stats.private":     "privado y seguro",
+      "home.steps.eyebrow":     "Así de fácil",
+      "home.steps.title":       "De la idea al sendero en 3 pasos",
+      "home.steps.s1t":         "1. Elige tu tour",
+      "home.steps.s1d":         "Abre el que te guste y mira fotos, ruta y detalles.",
+      "home.steps.s2t":         "2. Indica tu grupo",
+      "home.steps.s2d":         "Adultos, niños y fecha estimada. Niños <12 al 50%.",
+      "home.steps.s3t":         "3. Cotiza y viaja",
+      "home.steps.s3d":         "Te responde Mario por WhatsApp o correo. Sin pagos raros.",
+      "home.guide.eyebrow":     "Tu guía",
+      "home.guide.title":       "Hola, soy Mario",
+      "home.guide.text":        "20+ años creando rutas en El Salvador y Brasil. Te recojo, te cuento y te cuido como a un amigo.",
+      "home.guide.cta":         "Conoce mi historia",
+      "home.faq.eyebrow":       "Dudas comunes",
+      "home.faq.title":         "Antes de cotizar",
+      "home.faq.q1":            "¿Es seguro viajar con ustedes?",
+      "home.faq.a1":            "Sí: transporte privado, guía certificado, grupos pequeños y rutas probadas por 20+ años.",
+      "home.faq.q2":            "¿Recogen en mi hotel?",
+      "home.faq.a2":            "Sí, en San Salvador y zonas acordadas. El punto exacto lleva foto en cada tour.",
+      "home.faq.q3":            "¿Los niños pagan menos?",
+      "home.faq.a3":            "Menores de 12 años gozan de tarifa especial al 50%.",
+      "home.faq.q4":            "¿Qué debo llevar al volcán?",
+      "home.faq.a4":            "Calzado con agarre, agua, bloqueador y chaqueta ligera. Dificultad moderada, ~3h entre subida y bajada.",
+      "home.faq.q5":            "¿En qué idioma es el tour?",
+      "home.faq.a5":            "Español, English y Português, según tu preferencia al cotizar.",
+      "home.final.title":       "¿Listo para tu sendero?",
+      "home.final.sub":         "Escríbenos hoy y mañana ya estás caminando El Salvador.",
+      "home.final.quote":       "Cotizar por WhatsApp",
+      "home.final.catalog":     "Ver catálogo",
+      "home.summary.label":     "Viajeros destacan",
+      "home.agenda.t1":         "Cosecha de café · Nov–Feb",
+      "home.agenda.t2":         "Surf · May–Oct",
+      "home.agenda.t3":         "Pueblos vivos · todo el año",
+      "tour.meta.from":         "Desde — cotizar",
+      "tour.meta.new":          "Nuevo",
+      "tour.meeting.title":     "Punto de encuentro",
+      "tour.meeting.map":       "Ver en mapa",
+
+      // ---- Hero / Carrusel (index.html) ----
+      "hero.title":           "Top destinos más buscados del país",
+      "hero.subtitle":        "Elige los mejores destinos nacionales para viajar junto a tu familia y amigos.",
+      "hero.brandTitle":      "Descubre El Salvador",
+      "hero.cta":             "Explora el Catálogo de Tours",
+      // Tabs del carrusel (alineados con slides)
+      "tab.elSunzal":         "Playa El Sunzal",
+      "tab.rutaFlores":       "Ruta de las Flores",
+      "tab.lagoCoatepeque":   "Lago de Coatepeque",
+      "tab.centroHistorico":  "Centro Histórico",
+
+      // ---- Slides del carrusel ----
+      "slide0.title":         "Playa El Sunzal",
+      "slide0.desc":          "Ubicada en La Libertad, es un referente mundial para el surf. Destaca por su icónica formación rocosa en la orilla, sus imponentes olas, una vibrante vida nocturna y atardeceres espectaculares sobre el océano Pacífico.",
+      "slide1.title":         "Ruta de las Flores",
+      "slide1.desc":          "Un encantador recorrido montañoso que conecta pintorescos pueblos llenos de color, murales artísticos, un clima fresco espectacular, cafetales tradicionales y la calidez inigualable de la gente local.",
+      "slide2.title":         "Lago de Coatepeque",
+      "slide2.desc":          "Un majestuoso lago de origen volcánico ubicado en Santa Ana, catalogado como uno de los más hermosos del mundo. Sus aguas cristalinas cambian periódicamente a un asombroso color azul turquesa.",
+      "slide3.title":         "Centro Histórico",
+      "slide3.desc":          "Un lugar ideal para recorrer la historia, la arquitectura y la vida cultural de San Salvador. Sus plazas, edificios emblemáticos y espacios renovados ofrecen una visita agradable para quienes desean conocer un poco más del corazón de la ciudad.",
+
+      // ---- Catálogo de Tours (tours.html) ----
+      "catalog.title":        "Catálogo de Tours",
+      // Day Tours
+      "dayTours.heading":     "Day Tours",
+      "dayTours.item1":       "Excursiones guiadas de un día completo.",
+      "dayTours.item2":       "Visitas a volcanes, lagos y centros históricos.",
+      "dayTours.item3":       "Transporte cómodo de ida y vuelta incluido.",
+      "dayTours.item4":       "Almuerzos tradicionales con comida local.",
+      "dayTours.cta":         "Ver más",
+      // Tour Packages
+      "tourPackages.heading": "Tour Packages",
+      "tourPackages.item1":   "Itinerarios completos de varios días.",
+      "tourPackages.item2":   "Hospedaje seleccionado en hoteles.",
+      "tourPackages.item3":   "Exploración exhaustiva de los mejores destinos.",
+      "tourPackages.item4":   "Guías dedicados durante todo el viaje.",
+      "tourPackages.cta":     "Ver más",
+      // Personalized Experience
+      "personalized.heading": "Personalized Experience",
+      "personalized.item1":   "Rutas diseñadas a tu propio gusto y ritmo.",
+      "personalized.item2":   "Guías privados especializados.",
+      "personalized.item3":   "Actividades exclusivas y paradas culinarias.",
+      "personalized.item4":   "Perfecto para parejas, familias o grupos selectos.",
+      "personalized.cta":     "Ver más",
+
+      // ---- Bienes Raíces (multi-socio) ----
+      "realestate.title":     "Bienes Raíces",
+      "realestate.subtitle":  "Negocios y socios locales",
+      "realestate.message":   "Descubre emprendimientos locales aliados: hospedaje, gastronomía y experiencias. Empezamos con Art Haus y sumaremos más socios.",
+      "realestate.empty":     "Próximamente",
+      "realestate.emptyMsg":  "Estamos preparando los primeros socios. Vuelve pronto.",
+      "realestate.visit":     "Visitar negocio",
+      "realestate.partner":   "Socio aliado",
+      "realestate.contact":   "Preguntar por este negocio",
+
+      // ---- Social Connect ----
+      "social.connect":       "Conecta con nosotros",
+"social.title":         "Síguenos y viaja con nosotros",
+"social.subtitle":      "Volcanes al amanecer, cafetales, playas y la calidez de nuestra gente: síguenos y empieza a soñar con tu próxima aventura.",
+"social.handle":        "@elsalvadortrails",
+
+      // ---- Footer ----
+      "footer.brand":         "El Salvador Trails",
+      "footer.privacy":       "Política de Privacidad",
+      "footer.terms":         "Términos de Servicio",
+      "footer.contact":       "Contacto",
+      "footer.copyright":     "© 2026 El Salvador Trails.",
+
+      // ---- Tema ----
+      "theme.toggle.dark":    "Cambiar a modo oscuro",
+      "theme.toggle.light":   "Cambiar a modo claro",
+      "theme.icon.dark":      "dark_mode",
+      "theme.icon.light":     "light_mode",
+
+      // ---- Detalle de Tours ----
+      "tour.viewTour":        "Presiona aquí para ver el tour",
+      "tour.viewDetails":     "Ver detalles",
+      "tour.itinerary":       "Itinerario",
+      "tour.included":        "Incluido",
+      "tour.highlights":      "Destacados",
+      "catalog.back":         "Volver",
+      "personalized.comingSoon": "Próximamente",
+
+      // ---- Modal de tours (accesibilidad) ----
+      "tour.modal.close":     "Cerrar modal",
+      "tour.modal.prev":      "Imagen anterior",
+      "tour.modal.next":      "Siguiente imagen",
+      "tour.modal.imgN":      "Imagen",
+      // ---- Carrusel (accesibilidad) ----
+      "carousel.nav":         "Navegación de destinos",
+      "carousel.mainImg":     "Destinos El Salvador",
+      "carousel.thumb":       "Miniatura",
+
+      // ---- About Us ----
+      "about.hero.badge":     "Nuestra Trayectoria",
+      "about.hero.title":     "Detrás de Cada Sendero, una Historia de Pasión y Confianza",
+      "about.hero.subtitle":  "Compartiendo la auténtica riqueza cultural y natural de El Salvador con viajeros de todo el mundo.",
+      "about.founder.name":   "Mario Domínguez",
+      "about.founder.role":   "Fundador y Guía de Turismo de El Salvador Trails",
+      "about.founder.p1":     "Nací en San Salvador, El Salvador, un país que desde temprana edad despertó en mí una profunda admiración por su historia, cultura y riqueza natural. Mi trayectoria profesional en el turismo ha estado marcada por una pasión constante por compartir experiencias auténticas con viajeros de todo el mundo.",
+      "about.founder.p2":     "Viví en Brasil durante los períodos 1983-1995 y 2016-2024, donde amplié mis conocimientos sobre la industria turística y obtuve las credenciales oficiales como guía de turismo en el Estado de Sergipe. Esta experiencia internacional me permitió desarrollar una visión más amplia del turismo y fortalecer mis habilidades para la atención de visitantes de diferentes culturas y nacionalidades.",
+      "about.founder.p3":     "Desde 1999 me he desempeñado profesionalmente en el sector turístico tanto en El Salvador como en Brasil. Entre 2001 y 2016 fundé y dirigí una operadora turística en El Salvador, logrando posicionarla entre las mejores del país y alcanzando el reconocimiento de los viajeros en Tripadvisor, donde fue calificada como la número uno en su categoría. Estos años de trabajo me permitieron acumular una valiosa experiencia en la creación de recorridos, atención al cliente y desarrollo de productos turísticos de alta calidad.",
+      "about.founder.p4":     "En 2024 regresé a mi país natal para iniciar una nueva etapa con la fundación de El Salvador Trails (Senderos de El Salvador), un proyecto que nace con la misma pasión y entusiasmo que inspiraron mi primera empresa turística el 1 de julio de 2001. Hoy, con una visión renovada, busco crear nuevas rutas, experiencias y aventuras que permitan a cada visitante descubrir la extraordinaria historia, cultura, gastronomía y naturaleza de El Salvador y Centroamérica.",
+      "about.founder.welcome":"Bienvenidos a El Salvador Trails, donde cada sendero cuenta una historia y cada experiencia se convierte en una aventura inolvidable.",
+      "about.values.heading": "Nuestros Pilares",
+      "about.values.vision.title": "Nuestra Visión",
+      "about.values.vision.desc": "Ser la operadora turística más comprometida con la creación de experiencias auténticas en El Salvador y Centroamérica, transformando cada viaje en un recuerdo único, significativo e inolvidable.",
+      "about.values.mission.title": "Nuestra Misión",
+      "about.values.mission.desc": "Brindar servicios turísticos con los más altos estándares de calidad, profesionalismo y calidez humana, superando las expectativas de nuestros visitantes.",
+      "about.values.commitment.title": "Nuestro Compromiso",
+      "about.values.commitment.desc": "Ofrecer un servicio basado en la puntualidad, la seguridad, el respeto y la atención personalizada, garantizando experiencias memorables para cada viajero que confía en nosotros.",
+      "about.trust.exp":      "Más de 20 años de experiencia en turismo",
+      "about.trust.cert":     "Guía certificado con credenciales oficiales",
+      "about.trust.tripadvisor": "Trayectoria reconocida (#1 en TripAdvisor)",
+      "about.trust.safety":   "Acompañamiento seguro y personalizado",
+      "about.cta.tours":      "Explorar Catálogo de Tours",
+
+      // ---- Carrusel de Testimonios & Feedback (Home) ----
+      "feedback.eyebrow":     "Lo que dicen nuestros viajeros",
+      "feedback.title":       "Historias que nos hacen seguir",
+      "feedback.subtitle":    "Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de El Salvador Trails.",
+      "testimonials.title":   "Lo que dicen nuestros viajeros",
+      "testimonials.subtitle":"Experiencias reales de quienes han recorrido los senderos de El Salvador con nosotros.",
+      "testimonials.cta":     "¿Viajaste con nosotros? Comparte tu experiencia",
+      "testimonials.photos":  "Fotos del viaje",
+      "testimonials.verified":"Viaje verificado",
+      "testimonials.prev":    "Testimonio anterior",
+      "testimonials.next":    "Siguiente testimonio",
+      "feedback.modal.title": "Comparte tu experiencia",
+      "feedback.modal.subtitle": "Tu reseña nos ayuda a seguir brindando viajes seguros y memorables.",
+      "feedback.form.name":   "Tu nombre",
+      "feedback.form.country":"País de origen (opcional)",
+      "feedback.form.rating": "Calificación",
+      "feedback.form.comment":"Tu reseña o testimonio",
+      "feedback.form.photos": "Adjuntar fotos (opcional, máx. 4 imágenes)",
+      "feedback.form.submit": "Enviar para revisión",
+      "feedback.form.close":  "Cerrar",
+      "feedback.form.success":"¡Muchas gracias! Tu reseña ha sido enviada y será publicada tras la revisión de nuestro equipo.",
+
+      // ---- Política de Precios y Cotizaciones ----
+      "tour.pricing.heading":     "Precios y condiciones: contáctenos",
+      "tour.pricing.notice":      "Nuestras tarifas se adaptan al tamaño y necesidades específicas de su grupo (los niños menores de 12 años gozan de tarifa especial al 50%). Permítanos diseñar su cotización personalizada.",
+      "tour.pricing.groupTitle":  "Indique la composición de su grupo para cotizar:",
+      "tour.pricing.adults":      "Adultos",
+      "tour.pricing.children":    "Niños (<12 años - 50%)",
+      "tour.pricing.date":        "Fecha estimada",
+      "tour.pricing.whatsappBtn": "Cotizar por WhatsApp",
+      "tour.pricing.emailBtn":    "Cotizar por Correo",
+      "tour.video.button":        "Ver video del tour",
+      "tour.video.tiktok":        "TikTok",
+      "tour.video.instagram":     "Instagram"
+    },
+
+    en: {
+      "html.lang":            "en",
+      "page.index.title":     "El Salvador Trails",
+      "page.tours.title":     "El Salvador Trails — Tour Catalog",
+      "page.realestate.title":"El Salvador Trails — Real Estate",
+      "page.about.title":     "El Salvador Trails — About Us",
+
+      "nav.home":             "Home",
+      "nav.tours":            "Tour Catalog",
+      "nav.about":            "About Us",
+      "nav.realestate":       "Real Estate",
+      "nav.payment":          "Online Payment",
+      "nav.feedback":         "Feedback",
+      "nav.help":             "How to use this site",
+      "nav.menu":             "Open menu",
+      "nav.closeMenu":        "Close menu",
+      "help.title":           "How to use this site",
+      "help.step1":           "1. Browse the catalog and open the tour you like.",
+      "help.step2":           "2. Tap the gold button to see photos, itinerary and details.",
+      "help.step3":           "3. Enter adults, children and date, then quote via WhatsApp or email.",
+      "help.close":           "Got it",
+      "personalized.contact": "Request a personalized experience",
+      "personalized.note":    "Tell us your idea and we design your custom route.",
+      "home.quote.title":       "Quote your trail in 1 minute",
+      "home.quote.destination":"Where do you want to go?",
+      "home.quote.date":        "Estimated date",
+      "home.quote.group":       "Group",
+      "home.quote.groupOpt":    "2 adults",
+      "home.quote.submit":      "Quote via WhatsApp",
+      "home.quote.note":        "No online payments: Mario replies with a price for your group.",
+      "home.trust.rating":      "5.0 in verified reviews",
+      "home.trust.exp":         "20+ years in tourism",
+      "home.trust.trip":        "#1 on TripAdvisor",
+      "home.trust.lang":        "EN · ES · PT",
+      "home.featured.eyebrow":  "Most booked",
+      "home.featured.title":    "Trails travelers love",
+      "home.featured.sub":      "One-day tours and multi-day packages with hotel pickup and certified guide.",
+      "home.featured.all":      "View full catalog",
+      "home.cats.eyebrow":      "Browse by style",
+      "home.cats.title":        "Choose how to travel",
+      "home.cats.c1t":          "Beaches & Surf",
+      "home.cats.c1d":          "El Sunzal, El Tunco and La Libertad coast.",
+      "home.cats.c2t":          "Volcanoes & Nature",
+      "home.cats.c2d":          "Santa Ana, Coatepeque and Cerro Verde.",
+      "home.cats.c3t":          "Maya Route & Culture",
+      "home.cats.c3d":          "Joya de Cerén, Tazumal and Suchitoto.",
+      "home.cats.c4t":          "Living Towns",
+      "home.cats.c4d":          "Flower Route and Historic Center.",
+      "home.cats.count":        "tours",
+      "home.editorial.eyebrow": "Trails for you",
+      "home.editorial.title":   "Stories you walk",
+      "home.editorial.e1t":     "Sunrise among volcanoes",
+      "home.editorial.e1d":     "Climb Ilamatepec and breakfast facing the turquoise crater lagoon.",
+      "home.editorial.e2t":     "High-altitude coffee",
+      "home.editorial.e2d":     "Flower Route, farms and tasting with local growers.",
+      "home.editorial.e3t":     "Surf sunset",
+      "home.editorial.e3d":     "El Sunzal and El Tunco: waves, pupusas and golden Pacific.",
+      "home.plan.eyebrow":      "Plan your trip",
+      "home.plan.title":        "Everything solved before you go",
+      "home.plan.p1t":          "Transport included",
+      "home.plan.p1d":          "Comfortable round trip from your hotel.",
+      "home.plan.p2t":          "Local food",
+      "home.plan.p2d":          "Local lunches and coffee tasting.",
+      "home.plan.p3t":          "Certified guide",
+      "home.plan.p3d":          "Mario joins you the whole way.",
+      "home.plan.p4t":          "Hotel pickup",
+      "home.plan.p4d":          "Clear meeting point with photo.",
+      "home.why.eyebrow":       "Why us",
+      "home.why.title":         "Travel with who knows the trail",
+      "home.stats.years":       "years in tourism",
+      "home.stats.tours":       "flagship tours",
+      "home.stats.langs":       "languages",
+      "home.stats.private":     "private & safe",
+      "home.steps.eyebrow":     "This easy",
+      "home.steps.title":       "From idea to trail in 3 steps",
+      "home.steps.s1t":         "1. Pick your tour",
+      "home.steps.s1d":         "Open the one you like and see photos, route and details.",
+      "home.steps.s2t":         "2. Tell us your group",
+      "home.steps.s2d":         "Adults, children and estimated date. Kids <12 at 50%.",
+      "home.steps.s3t":         "3. Quote and go",
+      "home.steps.s3d":         "Mario replies via WhatsApp or email. No strange payments.",
+      "home.guide.eyebrow":     "Your guide",
+      "home.guide.title":       "Hi, I'm Mario",
+      "home.guide.text":        "20+ years crafting routes in El Salvador and Brazil. I pick you up, tell stories and look after you like a friend.",
+      "home.guide.cta":         "Meet my story",
+      "home.faq.eyebrow":       "Common questions",
+      "home.faq.title":         "Before you quote",
+      "home.faq.q1":            "Is it safe to travel with you?",
+      "home.faq.a1":            "Yes: private transport, certified guide, small groups and routes tested for 20+ years.",
+      "home.faq.q2":            "Do you pick up at my hotel?",
+      "home.faq.a2":            "Yes, in San Salvador and agreed areas. Each tour shows the exact point with photo.",
+      "home.faq.q3":            "Do children pay less?",
+      "home.faq.a3":            "Under 12 enjoy a special 50% rate.",
+      "home.faq.q4":            "What should I bring to the volcano?",
+      "home.faq.a4":            "Grip shoes, water, sunscreen and light jacket. Moderate hike, ~3h up and down.",
+      "home.faq.q5":            "What language is the tour?",
+      "home.faq.a5":            "Spanish, English and Portuguese, as you choose when quoting.",
+      "home.final.title":       "Ready for your trail?",
+      "home.final.sub":         "Message us today and tomorrow you are walking El Salvador.",
+      "home.final.quote":       "Quote via WhatsApp",
+      "home.final.catalog":     "View catalog",
+      "home.summary.label":     "Travelers highlight",
+      "home.agenda.t1":         "Coffee harvest · Nov–Feb",
+      "home.agenda.t2":         "Surf · May–Oct",
+      "home.agenda.t3":         "Living towns · year-round",
+      "tour.meta.from":         "From — quote",
+      "tour.meta.new":          "New",
+      "tour.meeting.title":     "Meeting point",
+      "tour.meeting.map":       "View on map",
+
+      "hero.title":           "Top most searched destinations in the country",
+      "hero.subtitle":        "Choose the best national destinations to travel with your family and friends.",
+      "hero.brandTitle":      "Discover El Salvador",
+      "hero.cta":             "Explore the Tour Catalog",
+      "tab.elSunzal":         "El Sunzal Beach",
+      "tab.rutaFlores":       "Flower Route",
+      "tab.lagoCoatepeque":   "Coatepeque Lake",
+      "tab.centroHistorico":  "Historic Center",
+
+      "slide0.title":         "El Sunzal Beach",
+      "slide0.desc":          "Located in La Libertad, it is a world reference for surfing. It stands out for its iconic rocky formation on the shore, its imposing waves, a vibrant nightlife and spectacular sunsets over the Pacific Ocean.",
+      "slide1.title":         "Flower Route",
+      "slide1.desc":          "A charming mountain route that connects picturesque villages full of color, artistic murals, spectacular cool weather, traditional coffee farms and the incomparable warmth of the local people.",
+      "slide2.title":         "Coatepeque Lake",
+      "slide2.desc":          "A majestic volcanic lake located in Santa Ana, rated as one of the most beautiful in the world. Its crystal-clear waters periodically change to an amazing turquoise blue color.",
+      "slide3.title":         "Historic Center",
+      "slide3.desc":          "An ideal place to explore the history, architecture and cultural life of San Salvador. Its plazas, emblematic buildings and renovated spaces offer a pleasant visit for those who want to know more about the heart of the city.",
+
+      "catalog.title":        "Tour Catalog",
+      "dayTours.heading":     "Day Tours",
+      "dayTours.item1":       "Full-day guided excursions.",
+      "dayTours.item2":       "Visits to volcanoes, lakes and historic centers.",
+      "dayTours.item3":       "Comfortable round-trip transportation included.",
+      "dayTours.item4":       "Traditional lunches with local food.",
+      "dayTours.cta":         "Learn more",
+
+      "tourPackages.heading": "Tour Packages",
+      "tourPackages.item1":   "Complete multi-day itineraries.",
+      "tourPackages.item2":   "Selected hotel accommodations.",
+      "tourPackages.item3":   "Thorough exploration of the best destinations.",
+      "tourPackages.item4":   "Dedicated guides throughout the trip.",
+      "tourPackages.cta":     "Learn more",
+
+      "personalized.heading": "Personalized Experience",
+      "personalized.item1":   "Routes designed to your own taste and pace.",
+      "personalized.item2":   "Specialized private guides.",
+      "personalized.item3":   "Exclusive activities and culinary stops.",
+      "personalized.item4":   "Perfect for couples, families or select groups.",
+      "personalized.cta":     "Learn more",
+
+      "realestate.title":     "Real Estate",
+      "realestate.subtitle":  "Local businesses & partners",
+      "realestate.message":   "Discover allied local ventures: lodging, food and experiences. Starting with Art Haus and adding more partners.",
+      "realestate.empty":     "Coming Soon",
+      "realestate.emptyMsg":  "We are preparing the first partners. Check back soon.",
+      "realestate.visit":     "Visit business",
+      "realestate.partner":   "Allied partner",
+      "realestate.contact":   "Ask about this business",
+
+      "social.connect":       "Connect with us",
+"social.title":         "Follow us and travel with us",
+"social.subtitle":      "Volcanoes at sunrise, coffee fields, beaches, and the warmth of our people: follow us and start dreaming of your next adventure.",
+"social.handle":        "@elsalvadortrails",
+
+      "footer.brand":         "El Salvador Trails",
+      "footer.privacy":       "Privacy Policy",
+      "footer.terms":         "Terms of Service",
+      "footer.contact":       "Contact",
+      "footer.copyright":     "© 2026 El Salvador Trails.",
+
+      "theme.toggle.dark":    "Switch to dark mode",
+      "theme.toggle.light":   "Switch to light mode",
+      "theme.icon.dark":      "dark_mode",
+      "theme.icon.light":     "light_mode",
+
+      "tour.viewTour":        "Tap here to view the tour",
+      "tour.viewDetails":     "View details",
+      "tour.itinerary":       "Itinerary",
+      "tour.included":        "Included",
+      "tour.highlights":      "Highlights",
+      "catalog.back":         "Back",
+      "personalized.comingSoon": "Coming Soon",
+
+      // ---- Modal de tours (accesibilidad) ----
+      "tour.modal.close":     "Close modal",
+      "tour.modal.prev":      "Previous image",
+      "tour.modal.next":      "Next image",
+      "tour.modal.imgN":      "Image",
+      // ---- Carrusel (accesibilidad) ----
+      "carousel.nav":         "Destination navigation",
+      "carousel.mainImg":     "El Salvador Destinations",
+      "carousel.thumb":       "Thumbnail",
+
+      // ---- About Us ----
+      "about.hero.badge":     "Our Trajectory",
+      "about.hero.title":     "Behind Every Trail, a Story of Passion and Trust",
+      "about.hero.subtitle":  "Sharing the authentic cultural and natural wealth of El Salvador with travelers from all over the world.",
+      "about.founder.name":   "Mario Domínguez",
+      "about.founder.role":   "Founder & Tour Guide of El Salvador Trails",
+      "about.founder.p1":     "I was born in San Salvador, El Salvador, a country that from an early age inspired in me a deep admiration for its history, culture, and natural beauty. My professional career in tourism has been marked by a constant passion for sharing authentic experiences with travelers worldwide.",
+      "about.founder.p2":     "I lived in Brazil during the periods 1983-1995 and 2016-2024, where I expanded my knowledge of the tourism industry and obtained official credentials as a tour guide in the State of Sergipe. This international experience allowed me to develop a broader vision of tourism and strengthen my skills in serving visitors of diverse cultures and nationalities.",
+      "about.founder.p3":     "Since 1999, I have worked professionally in the tourism sector in both El Salvador and Brazil. Between 2001 and 2016, I founded and managed a tour operator in El Salvador, positioning it among the best in the country and achieving the recognition of travelers on TripAdvisor, where it was ranked number one in its category. These years allowed me to accumulate valuable experience in designing tours, customer care, and high-quality tourism products.",
+      "about.founder.p4":     "In 2024, I returned to my homeland to start a new chapter with the founding of El Salvador Trails, a project born with the same passion and enthusiasm that inspired my first tourism company on July 1, 2001. Today, with a renewed vision, I seek to create new routes, experiences, and adventures that allow every visitor to discover the extraordinary history, culture, gastronomy, and nature of El Salvador and Central America.",
+      "about.founder.welcome":"Welcome to El Salvador Trails, where every trail tells a story and every experience becomes an unforgettable adventure.",
+      "about.values.heading": "Our Pillars",
+      "about.values.vision.title": "Our Vision",
+      "about.values.vision.desc": "To be the tour operator most committed to creating authentic experiences in El Salvador and Central America, turning every trip into a unique, meaningful, and unforgettable memory.",
+      "about.values.mission.title": "Our Mission",
+      "about.values.mission.desc": "To provide tourism services with the highest standards of quality, professionalism, and human warmth, exceeding our visitors' expectations.",
+      "about.values.commitment.title": "Our Commitment",
+      "about.values.commitment.desc": "To offer a service based on punctuality, safety, respect, and personalized care, guaranteeing memorable experiences for every traveler who trusts us.",
+      "about.trust.exp":      "Over 20 years of tourism experience",
+      "about.trust.cert":     "Certified guide with official credentials",
+      "about.trust.tripadvisor": "Proven track record (#1 on TripAdvisor)",
+      "about.trust.safety":   "Safe, reliable, and personalized guidance",
+      "about.cta.tours":      "Explore Tour Catalog",
+
+      // ---- Carrusel de Testimonios & Feedback (Home) ----
+      "feedback.eyebrow":     "What our travelers say",
+      "feedback.title":       "Stories that keep us going",
+      "feedback.subtitle":    "Travelers from around the world share what it was like to discover El Salvador with El Salvador Trails.",
+      "testimonials.title":   "What Our Travelers Say",
+      "testimonials.subtitle":"Real experiences from those who have walked the trails of El Salvador with us.",
+      "testimonials.cta":     "Traveled with us? Share your experience",
+      "testimonials.photos":  "Trip photos",
+      "testimonials.verified":"Verified traveler",
+      "testimonials.prev":    "Previous testimonial",
+      "testimonials.next":    "Next testimonial",
+      "feedback.modal.title": "Share Your Experience",
+      "feedback.modal.subtitle": "Your review helps us continue providing safe and memorable journeys.",
+      "feedback.form.name":   "Your name",
+      "feedback.form.country":"Country of origin (optional)",
+      "feedback.form.rating": "Rating",
+      "feedback.form.comment":"Your review or story",
+      "feedback.form.photos": "Attach photos (optional, up to 4 images)",
+      "feedback.form.submit": "Submit for review",
+      "feedback.form.close":  "Close",
+      "feedback.form.success":"Thank you very much! Your review has been submitted and will appear once reviewed by our team.",
+
+      // ---- Pricing Policy & Quotations ----
+      "tour.pricing.heading":     "Prices and conditions: contact us",
+      "tour.pricing.notice":      "Our rates adapt to the size and specific needs of your group (children under 12 enjoy a special 50% discount). Let us craft your custom quote.",
+      "tour.pricing.groupTitle":  "Specify your group details to request a quote:",
+      "tour.pricing.adults":      "Adults",
+      "tour.pricing.children":    "Children (<12 yrs - 50%)",
+      "tour.pricing.date":        "Estimated date",
+      "tour.pricing.whatsappBtn": "Quote via WhatsApp",
+      "tour.pricing.emailBtn":    "Quote via Email",
+      "tour.video.button":        "Watch tour video",
+      "tour.video.tiktok":        "TikTok",
+      "tour.video.instagram":     "Instagram"
+    },
+
+    pt: {
+      "html.lang":            "pt",
+      "page.index.title":     "El Salvador Trails",
+      "page.tours.title":     "El Salvador Trails — Catálogo de Tours",
+      "page.realestate.title":"El Salvador Trails — Imóveis",
+      "page.about.title":     "El Salvador Trails — About Us",
+
+      "nav.home":             "Página Inicial",
+      "nav.tours":            "Catálogo de Tours",
+      "nav.about":            "About Us",
+      "nav.realestate":       "Imóveis",
+      "nav.payment":          "Pagamento Online",
+      "nav.feedback":         "Feedback",
+      "nav.help":             "Como usar este site",
+      "nav.menu":             "Abrir menu",
+      "nav.closeMenu":        "Fechar menu",
+      "help.title":           "Como usar este site",
+      "help.step1":           "1. Explore o catálogo e abra o tour de seu interesse.",
+      "help.step2":           "2. Toque no botão dourado para ver fotos, roteiro e detalhes.",
+      "help.step3":           "3. Informe adultos, crianças e data, e cote pelo WhatsApp ou e-mail.",
+      "help.close":           "Entendi",
+      "personalized.contact": "Solicitar experiência personalizada",
+      "personalized.note":    "Conte sua ideia e desenhamos seu roteiro sob medida.",
+      "home.quote.title":       "Cote sua trilha em 1 minuto",
+      "home.quote.destination":"Para onde quer ir?",
+      "home.quote.date":        "Data estimada",
+      "home.quote.group":       "Grupo",
+      "home.quote.groupOpt":    "2 adultos",
+      "home.quote.submit":      "Cotar pelo WhatsApp",
+      "home.quote.note":        "Sem pagamento online: Mario responde com preço para seu grupo.",
+      "home.trust.rating":      "5.0 em avaliações verificadas",
+      "home.trust.exp":         "+20 anos de turismo",
+      "home.trust.trip":        "#1 no TripAdvisor",
+      "home.trust.lang":        "PT · ES · EN",
+      "home.featured.eyebrow":  "Mais procurados",
+      "home.featured.title":    "Trilhas que encantam",
+      "home.featured.sub":      "Tours de um dia e pacotes multi-dias com traslado do hotel e guia certificado.",
+      "home.featured.all":      "Ver catálogo completo",
+      "home.cats.eyebrow":      "Explore por estilo",
+      "home.cats.title":        "Escolha como viajar",
+      "home.cats.c1t":          "Praias & Surf",
+      "home.cats.c1d":          "El Sunzal, El Tunco e costa de La Libertad.",
+      "home.cats.c2t":          "Vulcões & Natureza",
+      "home.cats.c2d":          "Santa Ana, Coatepeque e Cerro Verde.",
+      "home.cats.c3t":          "Rota Maia & Cultura",
+      "home.cats.c3d":          "Joya de Cerén, Tazumal e Suchitoto.",
+      "home.cats.c4t":          "Povoados Vivos",
+      "home.cats.c4d":          "Rota das Flores e Centro Histórico.",
+      "home.cats.count":        "tours",
+      "home.editorial.eyebrow": "Trilhas para você",
+      "home.editorial.title":   "Histórias que se caminham",
+      "home.editorial.e1t":     "Amanhecer entre vulcões",
+      "home.editorial.e1d":     "Suba o Ilamatepec e tome café diante da lagoa turquesa da cratera.",
+      "home.editorial.e2t":     "Café de altitude",
+      "home.editorial.e2d":     "Rota das Flores, fazendas e degustação com produtores locais.",
+      "home.editorial.e3t":     "Pôr do sol surf",
+      "home.editorial.e3d":     "El Sunzal e El Tunco: ondas, pupusas e Pacífico dourado.",
+      "home.plan.eyebrow":      "Planeje sua viagem",
+      "home.plan.title":        "Tudo resolvido antes de sair",
+      "home.plan.p1t":          "Transporte incluído",
+      "home.plan.p1d":          "Ida e volta confortável do seu hotel.",
+      "home.plan.p2t":          "Comida típica",
+      "home.plan.p2d":          "Almoços locais e degustação de café.",
+      "home.plan.p3t":          "Guia certificado",
+      "home.plan.p3d":          "Mario acompanha todo o percurso.",
+      "home.plan.p4t":          "Traslado do hotel",
+      "home.plan.p4d":          "Ponto de encontro claro com foto.",
+      "home.why.eyebrow":       "Por que nós",
+      "home.why.title":         "Viaje com quem conhece a trilha",
+      "home.stats.years":       "anos de turismo",
+      "home.stats.tours":       "tours insignia",
+      "home.stats.langs":       "idiomas",
+      "home.stats.private":     "privado e seguro",
+      "home.steps.eyebrow":     "Assim de fácil",
+      "home.steps.title":       "Da ideia à trilha em 3 passos",
+      "home.steps.s1t":         "1. Escolha seu tour",
+      "home.steps.s1d":         "Abra o que gostar e veja fotos, rota e detalhes.",
+      "home.steps.s2t":         "2. Informe seu grupo",
+      "home.steps.s2d":         "Adultos, crianças e data estimada. Menores de 12 com 50%.",
+      "home.steps.s3t":         "3. Cote e viaje",
+      "home.steps.s3d":         "Mario responde pelo WhatsApp ou e-mail. Sem pagamentos estranhos.",
+      "home.guide.eyebrow":     "Seu guia",
+      "home.guide.title":       "Olá, sou Mario",
+      "home.guide.text":        "+20 anos criando rotas em El Salvador e Brasil. Busco você, conto histórias e cuido como amigo.",
+      "home.guide.cta":         "Conheça minha história",
+      "home.faq.eyebrow":       "Dúvidas comuns",
+      "home.faq.title":         "Antes de cotar",
+      "home.faq.q1":            "É seguro viajar com vocês?",
+      "home.faq.a1":            "Sim: transporte privado, guia certificado, grupos pequenos e rotas testadas há +20 anos.",
+      "home.faq.q2":            "Buscam no meu hotel?",
+      "home.faq.a2":            "Sim, em San Salvador e áreas combinadas. Cada tour mostra o ponto exato com foto.",
+      "home.faq.q3":            "Crianças pagam menos?",
+      "home.faq.a3":            "Menores de 12 anos têm tarifa especial de 50%.",
+      "home.faq.q4":            "O que levar ao vulcão?",
+      "home.faq.a4":            "Calçado aderente, água, protetor e jaqueta leve. Caminhada moderada, ~3h ida e volta.",
+      "home.faq.q5":            "Em que idioma é o tour?",
+      "home.faq.a5":            "Espanhol, English e Português, como escolher ao cotar.",
+      "home.final.title":       "Pronto para sua trilha?",
+      "home.final.sub":         "Fale conosco hoje e amanhã já está caminhando por El Salvador.",
+      "home.final.quote":       "Cotar pelo WhatsApp",
+      "home.final.catalog":     "Ver catálogo",
+      "home.summary.label":     "Viajantes destacam",
+      "home.agenda.t1":         "Colheita do café · Nov–Fev",
+      "home.agenda.t2":         "Surf · Mai–Out",
+      "home.agenda.t3":         "Povoados vivos · o ano todo",
+      "tour.meta.from":         "Desde — cotar",
+      "tour.meta.new":          "Novo",
+      "tour.meeting.title":     "Ponto de encontro",
+      "tour.meeting.map":       "Ver no mapa",
+
+      "hero.title":           "Principais destinos mais procurados do país",
+      "hero.subtitle":        "Escolha os melhores destinos nacionais para viajar com sua família e amigos.",
+      "hero.brandTitle":      "Descubra El Salvador",
+      "hero.cta":             "Explore o Catálogo de Tours",
+      "tab.elSunzal":         "Praia El Sunzal",
+      "tab.rutaFlores":       "Rota das Flores",
+      "tab.lagoCoatepeque":   "Lago de Coatepeque",
+      "tab.centroHistorico":  "Centro Histórico",
+
+      "slide0.title":         "Praia El Sunzal",
+      "slide0.desc":          "Localizada em La Libertad, é uma referência mundial para o surf. Destaca-se por sua icônica formação rochosa na margem, suas imponentes ondas, uma vibrante vida noturna e pôr do sol espetaculares sobre o Oceano Pacífico.",
+      "slide1.title":         "Rota das Flores",
+      "slide1.desc":          "Um encantador percurso montanhoso que conecta pitorescos povoados repletos de cor, murais artísticos, um clima fresco espetacular, cafezais tradicionais e a incomparável calorosidade do povo local.",
+      "slide2.title":         "Lago de Coatepeque",
+      "slide2.desc":          "Um majestoso lago de origem vulcânica localizado em Santa Ana, classificado como um dos mais belos do mundo. Suas águas cristalinas mudam periodicamente para uma impressionante cor azul turquesa.",
+      "slide3.title":         "Centro Histórico",
+      "slide3.desc":          "Um lugar ideal para percorrer a história, a arquitetura e a vida cultural de San Salvador. Suas praças, edifícios emblemáticos e espaços renovados oferecem uma visita agradável para quem deseja conhecer mais sobre o coração da cidade.",
+
+      "catalog.title":        "Catálogo de Tours",
+      "dayTours.heading":     "Day Tours",
+      "dayTours.item1":       "Excursões guiadas de um dia completo.",
+      "dayTours.item2":       "Visitas a vulcões, lagos e centros históricos.",
+      "dayTours.item3":       "Transporte confortável de ida e volta incluído.",
+      "dayTours.item4":       "Almoços tradicionais com comida local.",
+      "dayTours.cta":         "Saiba mais",
+
+      "tourPackages.heading": "Pacotes de Tour",
+      "tourPackages.item1":   "Itinerários completos de vários dias.",
+      "tourPackages.item2":   "Hospedagem selecionada em hotéis.",
+      "tourPackages.item3":   "Exploração exaustiva dos melhores destinos.",
+      "tourPackages.item4":   "Guias dedicados durante toda a viagem.",
+      "tourPackages.cta":     "Saiba mais",
+
+      "personalized.heading": "Experiência Personalizada",
+      "personalized.item1":   "Rotas projetadas ao seu próprio gosto e ritmo.",
+      "personalized.item2":   "Guias privados especializados.",
+      "personalized.item3":   "Atividades exclusivas e paradas gastronômicas.",
+      "personalized.item4":   "Perfeito para casais, famílias ou grupos selecionados.",
+      "personalized.cta":     "Saiba mais",
+
+      "realestate.title":     "Imóveis",
+      "realestate.subtitle":  "Negócios e parceiros locais",
+      "realestate.message":   "Descubra empreendimentos locais parceiros: hospedagem, gastronomia e experiências. Começando com Art Haus e mais parceiros em breve.",
+      "realestate.empty":     "Em Breve",
+      "realestate.emptyMsg":  "Estamos preparando os primeiros parceiros. Volte em breve.",
+      "realestate.visit":     "Visitar negócio",
+      "realestate.partner":   "Parceiro aliado",
+      "realestate.contact":   "Perguntar sobre este negócio",
+
+      "social.connect":       "Conecte-se conosco",
+"social.title":         "Siga-nos e viaje conosco",
+"social.subtitle":      "Vulcões ao amanhecer, cafezais, praias e o calor do nosso povo: siga-nos e comece a sonhar com a sua próxima aventura.",
+"social.handle":        "@elsalvadortrails",
+
+      "footer.brand":         "El Salvador Trails",
+      "footer.privacy":       "Política de Privacidade",
+      "footer.terms":         "Termos de Serviço",
+      "footer.contact":       "Contato",
+      "footer.copyright":     "© 2026 El Salvador Trails.",
+
+      "theme.toggle.dark":    "Mudar para modo escuro",
+      "theme.toggle.light":   "Mudar para modo claro",
+      "theme.icon.dark":      "dark_mode",
+      "theme.icon.light":     "light_mode",
+
+      "tour.viewTour":        "Toque aqui para ver o tour",
+      "tour.viewDetails":     "Ver detalhes",
+      "tour.itinerary":       "Itinerário",
+      "tour.included":        "Incluído",
+      "tour.highlights":      "Destaques",
+      "catalog.back":         "Voltar",
+      "personalized.comingSoon": "Em Breve",
+
+      // ---- Modal de tours (accesibilidad) ----
+      "tour.modal.close":     "Fechar modal",
+      "tour.modal.prev":      "Imagem anterior",
+      "tour.modal.next":      "Próxima imagem",
+      "tour.modal.imgN":      "Imagem",
+      // ---- Carrusel (accesibilidad) ----
+      "carousel.nav":         "Navegação de destinos",
+      "carousel.mainImg":     "Destinos El Salvador",
+      "carousel.thumb":       "Miniatura",
+
+      // ---- About Us ----
+      "about.hero.badge":     "Nossa Trajetória",
+      "about.hero.title":     "Atrás de Cada Trilha, uma História de Paixão e Confiança",
+      "about.hero.subtitle":  "Compartilhando a autêntica riqueza cultural e natural de El Salvador com viajantes de todo o mundo.",
+      "about.founder.name":   "Mario Domínguez",
+      "about.founder.role":   "Fundador e Guia de Turismo de El Salvador Trails",
+      "about.founder.p1":     "Nasci em San Salvador, El Salvador, um país que desde jovem despertou em mim uma profunda admiração pela sua história, cultura e riqueza natural. Minha trajetória profissional no turismo sempre foi marcada pela paixão de compartilhar experiências autênticas com viajantes do mundo todo.",
+      "about.founder.p2":     "Vivi no Brasil durante os períodos 1983-1995 e 2016-2024, onde ampliei meus conhecimentos sobre a indústria turística e obtive as credenciais oficiais como guia de turismo no Estado de Sergipe. Esta vivência internacional me permitiu desenvolver uma visão mais ampla do turismo e fortalecer a habilidade de atender visitantes de diferentes culturas e nacionalidades.",
+      "about.founder.p3":     "Desde 1999 atuo profissionalmente no setor turístico tanto em El Salvador quanto no Brasil. Entre 2001 e 2016 fundei e liderei uma operadora de turismo em El Salvador, posicionando-a entre as melhores do país e alcançando o reconhecimento de viajantes no TripAdvisor, onde foi avaliada como número um em sua categoria. Esses anos proporcionaram valiosa experiência na criação de roteiros, atendimento ao cliente e desenvolvimento de produtos de alta qualidade.",
+      "about.founder.p4":     "Em 2024 retornei à minha terra natal para iniciar uma nova etapa com a fundação da El Salvador Trails, projeto nascido com a mesma paixão e entusiasmo que inspiraram minha primeira empresa turística em 1º de julho de 2001. Hoje, com uma visão renovada, busco criar novas rotas, experiências e aventuras para descobrir a extraordinária história, cultura, gastronomia e natureza de El Salvador e América Central.",
+      "about.founder.welcome":"Sejam bem-vindos a El Salvador Trails, onde cada trilha conta uma história e cada experiência se transforma em uma aventura inesquecível.",
+      "about.values.heading": "Nossos Pilares",
+      "about.values.vision.title": "Nossa Visão",
+      "about.values.vision.desc": "Ser a operadora turística mais comprometida com a criação de experiências autênticas em El Salvador e América Central, transformando cada viagem em uma memória única, significativa e inesquecível.",
+      "about.values.mission.title": "Nossa Missão",
+      "about.values.mission.desc": "Prestar serviços turísticos com os mais altos padrões de qualidade, profissionalismo e calidez humana, superando as expectativas de nossos visitantes.",
+      "about.values.commitment.title": "Nosso Compromisso",
+      "about.values.commitment.desc": "Oferecer um atendimento pautado pela pontualidade, segurança, respeito e personalização, garantindo experiências memoráveis para cada viajante que confia em nós.",
+      "about.trust.exp":      "Mais de 20 anos de experiência em turismo",
+      "about.trust.cert":     "Guia certificado com credenciais oficiais",
+      "about.trust.tripadvisor": "Trajetória comprovada (#1 no TripAdvisor)",
+      "about.trust.safety":   "Acompanhamento seguro e personalizado",
+      "about.cta.tours":      "Explorar Catálogo de Tours",
+
+      // ---- Carrusel de Testimonios & Feedback (Home) ----
+      "feedback.eyebrow":     "O que dizem nossos viajantes",
+      "feedback.title":       "Histórias que nos fazem seguir",
+      "feedback.subtitle":    "Viajantes de todo o mundo contam como foi descobrir El Salvador com a El Salvador Trails.",
+      "testimonials.title":   "O que dizem os nossos viajantes",
+      "testimonials.subtitle":"Experiências reais de quem percorreu as trilhas de El Salvador conosco.",
+      "testimonials.cta":     "Viajou conosco? Compartilhe sua experiência",
+      "testimonials.photos":  "Fotos da viagem",
+      "testimonials.verified":"Viajante verificado",
+      "testimonials.prev":    "Depoimento anterior",
+      "testimonials.next":    "Próximo depoimento",
+      "feedback.modal.title": "Compartilhe sua experiência",
+      "feedback.modal.subtitle": "Sua avaliação nos ajuda a continuar proporcionando viagens memoráveis e seguras.",
+      "feedback.form.name":   "Seu nome",
+      "feedback.form.country":"País de origem (opcional)",
+      "feedback.form.rating": "Avaliação",
+      "feedback.form.comment":"Seu depoimento ou comentário",
+      "feedback.form.photos": "Anexar fotos (opcional, máx. 4 imagens)",
+      "feedback.form.submit": "Enviar para moderação",
+      "feedback.form.close":  "Fechar",
+      "feedback.form.success":"Muito obrigado! Sua avaliação foi enviada e será publicada após revisão de nossa equipe.",
+
+      // ---- Política de Preços e Cotações ----
+      "tour.pricing.heading":     "Preços e condições: fale conosco",
+      "tour.pricing.notice":      "Nossas tarifas se adaptam ao tamanho e às necessidades do seu grupo (crianças menores de 12 anos têm 50% de desconto). Permita-nos elaborar uma cotação personalizada.",
+      "tour.pricing.groupTitle":  "Indique a composição do seu grupo:",
+      "tour.pricing.adults":      "Adultos",
+      "tour.pricing.children":    "Crianças (<12 anos - 50%)",
+      "tour.pricing.date":        "Data estimada",
+      "tour.pricing.whatsappBtn": "Cotar pelo WhatsApp",
+      "tour.pricing.emailBtn":    "Cotar por E-mail",
+      "tour.video.button":        "Ver vídeo do tour",
+      "tour.video.tiktok":        "TikTok",
+      "tour.video.instagram":     "Instagram"
+    }
+  };
+
+  /* ── Estado ── */
+  var STORAGE_KEY = 'est-lang';
+  var currentLang = loadLang();
+
+  /* ── Helpers ── */
+
+  function loadLang() {
+    try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && DICTIONARIES[stored]) return stored;
+    } catch (e) { /* ignore */ }
+    return 'es'; // default
+  }
+
+  function saveLang(lang) {
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* ignore */ }
+  }
+
+  /** Obtener traducción para una clave dada */
+  function t(key) {
+    return (DICTIONARIES[currentLang] && DICTIONARIES[currentLang][key]) || key;
+  }
+
+  /** Obtener el idioma activo */
+  function getLang() {
+    return currentLang;
+  }
+
+  /** Aplicar todas las traducciones al DOM */
+  function applyTranslations() {
+    // Actualizar lang attribute
+    document.documentElement.setAttribute('lang', t('html.lang'));
+
+    // Actualizar título de la página
+    var titleKey = document.body.dataset.i18nPageTitle;
+    if (titleKey) document.title = t(titleKey);
+
+    // Texto de elementos
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      el.textContent = t(key);
+    });
+
+    // Atributos aria-label / title
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria');
+      el.setAttribute('aria-label', t(key));
+    });
+    document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-title');
+      el.setAttribute('title', t(key));
+    });
+
+    // Actualizar los botones del lang-switcher
+    document.querySelectorAll('.lang-switcher-pill button').forEach(function (btn) {
+      var lang = btn.getAttribute('data-lang');
+      btn.classList.toggle('active', lang === currentLang);
+    });
+
+    // Notificar al tema para actualizar aria del toggle
+    if (typeof window.__estUpdateThemeLabels === 'function') {
+      window.__estUpdateThemeLabels();
+    }
+  }
+
+  /** Cambiar idioma */
+  function setLang(lang) {
+    if (!DICTIONARIES[lang] || lang === currentLang) return;
+    currentLang = lang;
+    saveLang(lang);
+    applyTranslations();
+  }
+
+  /* ── Exposición global ── */
+  window.__estI18n = {
+    t: t,
+    getLang: getLang,
+    setLang: setLang,
+    applyTranslations: applyTranslations,
+    DICTIONARIES: DICTIONARIES
+  };
+
+  /* ── Inicialización del lang-switcher ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    // Asignar data-lang a los botones del pill
+    document.querySelectorAll('.lang-switcher-pill button').forEach(function (btn) {
+      var code = btn.getAttribute('data-lang') || btn.textContent.trim().toLowerCase();
+      btn.setAttribute('data-lang', code);
+      btn.addEventListener('click', function () {
+        window.__estI18n.setLang(code);
+      });
+    });
+
+    // Aplicar traducciones iniciales
+    applyTranslations();
+  });
+})();

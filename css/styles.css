@@ -1,0 +1,1451 @@
+/* ==========================================================================
+   El Salvador Trails — Sistema de diseño unificado
+   Modo claro (por defecto) / Modo oscuro (clase .dark en <html>)
+
+   Tipografía oficial del brand: Adlery Pro (wordmark del footer bajo el ícono)
+   ========================================================================== */
+
+/* ---- Tipografía local ---- */
+@font-face {
+  font-family: 'Adlery Pro';
+  src: url('../assets/fonts/AdleryPro.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   TOKENS — Modo claro
+   ========================================================================== */
+:root {
+  /* Colores base */
+  --bg: #fbf8ed;
+  --surface: #F7EEDA;
+  --surface-raised: #ffffff;
+  --text: #3A2416;
+  --text-muted: #5C4B3C;
+  --text-faint: rgba(58, 36, 22, 0.78);
+  --brand: #7E1500;
+  --brand-hover: #D12400;
+  --brand-soft: rgba(126, 21, 0, 0.08);
+  --accent: #e9c262;
+  --accent-strong: #E6B300;
+  --on-accent: #3D0800;
+  --lime: #A9BF01;
+  --border: rgba(126, 21, 0, 0.08);
+  --border-strong: rgba(126, 21, 0, 0.2);
+
+  /* Navegación */
+  --nav-bg: #fbf8ed;
+  --nav-border: rgba(126, 21, 0, 0.08);
+  --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+
+  /* Sombras */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.02);
+  --shadow-card-hover: 0 20px 40px rgba(126, 21, 0, 0.06);
+
+  /* Carrusel — fondo de foto SUAVE (corrección modo claro) */
+  --carousel-card-bg: transparent;
+  --carousel-border: rgba(126, 21, 0, 0.14);
+  --carousel-shadow: 0 24px 60px rgba(126, 21, 0, 0.25);
+  --bg-layer-filter: blur(0.5px) brightness(1.1) saturate(1.1);
+  --bg-overlay: rgba(251, 248, 237, 0.82);
+  --card-heading: #7E1500;
+  --card-title: #3A2416;
+  --card-text: #3f3831;
+  --brand-title-size: 2.25rem;
+  --card-heading-size: 1.7rem;
+  --font-card-heading: 'Fraunces', serif;
+  --font-card-brand: 'Fira Sans', sans-serif;
+  --font-card-title: 'Fraunces', serif;
+  --font-tabs: 'Work Sans', sans-serif;
+  --tab-bg: rgba(126, 21, 0, 0.06);
+  --tab-border: rgba(126, 21, 0, 0.18);
+  --tab-text: #3A2416;
+  --tab-hover-bg: rgba(126, 21, 0, 0.12);
+  --tab-active-bg: #e9c262;
+  --tab-active-text: #3D0800;
+  --cta-bg: #e9c262;
+  --cta-text: #3D0800;
+  --cta-hover-bg: #7E1500;
+  --cta-hover-text: #ffffff;
+  --thumb-outline: #e9c262;
+  --main-img-shadow: rgba(126, 21, 0, 0.14);
+
+  /* Decoración */
+  --ornate-divider: linear-gradient(90deg, transparent 0%, rgba(126,21,0,0.15) 20%, #7E1500 50%, rgba(126,21,0,0.15) 80%, transparent 100%);
+  --ornate-glyph-bg: #fbf8ed;
+
+  /* Fondo patrimonial (SVG locales) */
+  --heritage-filter: none;
+  --heritage-blend: multiply;
+  --heritage-opacity: 0.07;
+  --heritage-opacity-strong: 0.10;
+  --heritage-opacity-soft: 0.05;
+  --vignette: radial-gradient(ellipse at center, transparent 52%, rgba(126, 21, 0, 0.05) 135%);
+}
+
+/* ==========================================================================
+   TOKENS — Modo oscuro
+   ========================================================================== */
+.dark {
+  /* Colores base */
+  --bg: #1C1714;
+  --surface: #251E19;
+  --surface-raised: #251E19;
+  --text: #E8DFD4;
+  --text-muted: #9C8B7A;
+  --text-faint: rgba(232, 223, 212, 0.45);
+  --brand: #e9c262;
+  --brand-hover: #E8DFD4;
+  --brand-soft: rgba(233, 194, 98, 0.12);
+  --accent: #e9c262;
+  --accent-strong: #e9c262;
+  --on-accent: #1C1714;
+  --lime: #A9BF01;
+  --border: rgba(233, 194, 98, 0.12);
+  --border-strong: rgba(233, 194, 98, 0.2);
+
+  /* Navegación */
+  --nav-bg: rgba(28, 23, 20, 0.95);
+  --nav-border: rgba(233, 194, 98, 0.1);
+  --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  /* Sombras */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.45);
+
+  /* Carrusel — foto de fondo DIM (look aprobado del modo oscuro) */
+  --carousel-card-bg: rgba(28, 23, 20, 0.6);
+  --carousel-border: rgba(233, 194, 98, 0.2);
+  --carousel-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+  --bg-layer-filter: blur(0.3px) brightness(0.5) saturate(1.2);
+  --bg-overlay: rgba(28, 23, 20, 0.7);
+  --card-heading: #E8DFD4;
+  --card-title: #ffffff;
+  --card-text: #b8a778;
+  --brand-title-size: 2.25rem;
+  --card-heading-size: 1.7rem;
+  --font-card-heading: 'EB Garamond', serif;
+  --font-card-brand: 'Fira Sans', sans-serif;
+  --font-card-title: 'EB Garamond', serif;
+  --font-tabs: 'Cinzel', serif;
+  --tab-bg: rgba(255, 255, 255, 0.05);
+  --tab-border: rgba(233, 194, 98, 0.2);
+  --tab-text: #E8DFD4;
+  --tab-hover-bg: rgba(255, 255, 255, 0.15);
+  --tab-active-bg: #e9c262;
+  --tab-active-text: #1C1714;
+  --cta-bg: #e9c262;
+  --cta-text: #1C1714;
+  --cta-hover-bg: #E8DFD4;
+  --cta-hover-text: #7E1500;
+  --thumb-outline: #e9c262;
+  --main-img-shadow: rgba(0, 0, 0, 0.4);
+
+  /* Decoración */
+  --ornate-divider: linear-gradient(90deg, transparent 0%, rgba(233,194,98,0.18) 20%, #e9c262 50%, rgba(233,194,98,0.18) 80%, transparent 100%);
+  --ornate-glyph-bg: #1C1714;
+
+  /* Fondo patrimonial (SVG locales) — siluetas pergamino sobre madera oscura */
+  --heritage-filter: brightness(0) invert(1);
+  --heritage-blend: normal;
+  --heritage-opacity: 0.045;
+  --heritage-opacity-strong: 0.06;
+  --heritage-opacity-soft: 0.035;
+  --vignette: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.28) 135%);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Fira Sans', sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+picture > img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(233, 194, 98, 0.35);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   HELPERS DE TEMA (para clases utilitarias en el HTML)
+   ========================================================================== */
+.text-brand    { color: var(--brand); }
+.text-body     { color: var(--text); }
+.text-muted    { color: var(--text-muted); }
+.text-faint    { color: var(--text-faint); }
+/* Contraste AA en modo claro: amarillo #e9c262 sobre crema no pasa.
+   En claro el acento de texto usa rojo marca; en oscuro mantiene dorado. */
+.text-accent   { color: var(--brand); }
+.dark .text-accent { color: var(--accent); }
+.text-on-accent { color: var(--on-accent); }
+/* Eyebrows/labels pequeños: siempre legibles (rojo en claro, dorado en oscuro) */
+.eyebrow, .feedback-eyebrow, [data-i18n="feedback.eyebrow"], [data-i18n="about.eyebrow"] { color: var(--brand); }
+.dark .eyebrow, .dark .feedback-eyebrow, .dark [data-i18n="feedback.eyebrow"] { color: var(--accent); }
+.bg-surface    { background-color: var(--surface); }
+.bg-surface-raised { background-color: var(--surface-raised); }
+.bg-accent     { background-color: var(--accent); }
+
+/* ==========================================================================
+   FONDO PATRIMONIAL (Heritage Field)
+   Composición estructurada de los SVG locales de la marca:
+
+     patrimonio-sol (grande)  → amanecer detrás del hero
+     planta-de-cafe           → origen / cultivo (columna izquierda)
+     taza-cafe                → la experiencia (columna derecha)
+     bolsa-de-cafe            → el producto (esquina inferior derecha)
+     cultivos-follaje         → marcos de esquina (arriba derecha / abajo)
+     patrimonio-sol2          → sello solar sobre "Conecta con nosotros"
+
+   Jerarquía de opacidad: hero > esquinas > elementos narrativos.
+   Modo claro: siluetas granate con blend multiply (tinta sobre papel).
+   Modo oscuro: siluetas pergamino con blend normal (fósforo en madera).
+   ========================================================================== */
+.heritage-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heritage-field::after {
+  /* Viñeta suave: enfoca la atención hacia el centro */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--vignette);
+  pointer-events: none;
+}
+
+.heritage-item {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  opacity: var(--heritage-opacity);
+  filter: var(--heritage-filter);
+  mix-blend-mode: var(--heritage-blend);
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
+/* --- Posiciones y tamaños --- */
+.heritage-sun-hero {
+  top: -14%;
+  left: -9%;
+  width: 820px;
+  max-width: 92vw;
+  opacity: var(--heritage-opacity-strong);
+}
+
+.heritage-sun-seal {
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  opacity: var(--heritage-opacity-soft);
+}
+
+.heritage-plant {
+  top: 34%;
+  left: 1.5%;
+  width: 300px;
+}
+
+.heritage-cup {
+  top: 15%;
+  right: 3.5%;
+  width: 290px;
+}
+
+.heritage-bag {
+  bottom: 3%;
+  right: 3%;
+  width: 280px;
+}
+
+.heritage-foliage-tr {
+  top: -1.5%;
+  right: -2.5%;
+  width: 360px;
+  transform: rotate(180deg);
+}
+
+.heritage-foliage-bl {
+  bottom: -1%;
+  left: -1.5%;
+  width: 300px;
+}
+
+/* --- Responsive: simplificar decoración en pantallas pequeñas --- */
+@media (max-width: 767px) {
+  .heritage-plant,
+  .heritage-cup,
+  .heritage-bag,
+  .heritage-foliage-tr,
+  .heritage-foliage-bl,
+  .heritage-sun-seal {
+    display: none;
+  }
+  .heritage-sun-hero {
+    width: 460px;
+    top: -6%;
+    left: -22%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .heritage-cup,
+  .heritage-bag {
+    display: none;
+  }
+  .heritage-plant {
+    width: 210px;
+  }
+  .heritage-foliage-tr {
+    width: 250px;
+  }
+  .heritage-foliage-bl {
+    width: 220px;
+  }
+}
+
+/* ==========================================================================
+   NAVEGACIÓN FIJA
+   ========================================================================== */
+nav.fixed-nav-light {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 56px;
+  height: 92px;
+  background: var(--nav-bg);
+  border-bottom: 2px solid var(--nav-border);
+  box-shadow: var(--nav-shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark-svg {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.brand-word-title {
+  font-family: 'Adlery Pro', serif;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+  color: var(--brand);
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color 0.35s ease;
+}
+.brand-word-title em {
+  color: var(--brand);
+  text-transform: uppercase;
+}
+
+.brand-subtext {
+  display: block;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--lime);
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.nav-links-list {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links-list a {
+  text-decoration: none;
+  color: var(--text);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+.nav-links-list a:hover { color: var(--brand-hover); border-color: var(--accent-strong); }
+.nav-links-list a.active { color: var(--brand); border-color: var(--accent-strong); font-weight: 600; }
+
+.nav-right-container {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.help-tutorial-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1.4px solid var(--brand);
+  color: var(--brand);
+  border-radius: 999px;
+  padding: 7px 14px 7px 10px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.help-tutorial-btn:hover { background: var(--brand-soft); }
+.help-tutorial-btn svg { width: 16px; height: 16px; }
+
+/* Botón de cambio de tema (sol/luna) */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1.4px solid var(--border-strong);
+  background: var(--surface-raised);
+  color: var(--brand);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.theme-toggle-btn:hover {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--bg);
+  transform: scale(1.06);
+}
+.theme-toggle-btn .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.lang-switcher-pill {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+  border: 1px solid var(--border);
+  transition: background-color 0.35s ease, border-color 0.35s ease;
+}
+.lang-switcher-pill button {
+  border: none;
+  background: transparent;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--brand);
+  opacity: 0.55;
+  transition: all 0.2s;
+}
+.lang-switcher-pill button.active {
+  background: var(--brand);
+  color: var(--bg);
+  opacity: 1;
+}
+.lang-switcher-pill button .flag-icon {
+  width: 20px;
+  height: 14px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
+.lang-switcher-pill button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   CONECTA CON NOSOTROS
+   ========================================================================== */
+.social-connect-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--brand);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  transition: color 0.35s ease;
+}
+
+.social-connect-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.4px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  transition: all 0.2s ease;
+}
+.social-connect-icon:hover {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--bg);
+  transform: scale(1.1);
+}
+
+/* Banda social ampliada (home) */
+.social-band {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.social-band .social-connect-icon { width: 52px; height: 52px; font-size: 20px; }
+
+/* ==========================================================================
+   DIVISOR ORNAMENTAL
+   ========================================================================== */
+.ornate-divider {
+  height: 1px;
+  background: var(--ornate-divider);
+  position: relative;
+  margin: 3rem 0;
+  transition: background 0.35s ease;
+}
+.ornate-divider::before {
+  content: "✶";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--brand);
+  font-size: 14px;
+  background: var(--ornate-glyph-bg);
+  padding: 0 16px;
+  transition: color 0.35s ease, background-color 0.35s ease;
+}
+.dark .ornate-divider::before { color: var(--accent); }
+
+/* ==========================================================================
+   FOOTER
+   Tipografía oficial del brand: Adlery Pro bajo el ícono (aprobada)
+   ========================================================================== */
+footer.footer-light {
+  background-color: var(--surface);
+  border-top: 1px solid var(--nav-border);
+  color: var(--text);
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+}
+
+.footer-wordmark {
+  font-family: 'Adlery Pro', serif;
+  font-size: 1.5rem;      /* text-2xl */
+  text-transform: uppercase;
+  letter-spacing: -0.05em; /* tracking-tighter */
+  color: var(--brand);
+  transition: color 0.35s ease;
+}
+
+.footer-links {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  transition: color 0.35s ease;
+}
+.footer-links a {
+  transition: opacity 0.2s, color 0.2s;
+}
+.footer-links a:hover {
+  opacity: 1;
+  color: var(--brand-hover);
+}
+
+.footer-social {
+  color: var(--text);
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+.footer-social:hover {
+  opacity: 1;
+  color: var(--brand);
+}
+
+.copyright-text {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.35s ease;
+}
+
+/* ==========================================================================
+   TARJETAS DE TOURS (página Catálogo)
+   ========================================================================== */
+.tour-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s ease,
+              background-color 0.35s ease;
+}
+.tour-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-strong);
+}
+
+.tour-card h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.875rem;   /* text-3xl */
+  font-weight: 700;
+  color: var(--brand);
+  margin-bottom: 1.25rem;
+  transition: color 0.35s ease;
+}
+
+.tour-card ul {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.625;
+  transition: color 0.35s ease;
+}
+.tour-card ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Botón dorado reutilizable (tours) */
+.btn-accent {
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.btn-accent:hover {
+  background: var(--cta-hover-bg);
+  color: var(--cta-hover-text);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   ACCESIBILIDAD — movimiento reducido
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ==========================================================================
+   RESPONSIVE — navegación
+   ========================================================================== */
+@media (max-width: 1024px) {
+  nav.fixed-nav-light {
+    padding: 0 24px;
+    height: 84px;
+  }
+  .nav-links-list {
+    display: none; /* el menú hamburguesa vendrá en una iteración posterior */
+  }
+  .help-tutorial-btn {
+    display: none;
+  }
+  .brand-word-title {
+    font-size: 17px;
+  }
+}
+
+/* ==========================================================================
+   MODAL DE DETALLE DE TOUR
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.modal-content {
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand) transparent;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: var(--brand);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   LISTA DE TOURS
+   ========================================================================== */
+#tour-list-container {
+  position: relative;
+  z-index: 10;
+  min-height: calc(100vh - 200px);
+}
+
+/* Tarjetas de tour en vista de lista */
+#tour-list-container .tour-card {
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#tour-list-container .tour-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+#tour-list-container .tour-card:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   GALERÍA MOSAICO — Day Tours (vista de lista, categoría "day")
+   Adaptación cálida del patrón "destinations gallery": marco editorial
+   con juntas de papel envejecido, overlay caoba cálido y etiqueta Cinzel.
+   ========================================================================== */
+.dest-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3px;
+  background: var(--surface);                 /* juntas en papel envejecido */
+  border: 1px solid var(--carousel-border);   /* rgba(126,21,0,0.14) */
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.dest-tile {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 16 / 10;
+  background: #251E19;                        /* roble añejado mientras carga */
+  opacity: 0;
+  animation: dest-tile-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes dest-tile-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dest-tile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease-out;
+}
+.dest-tile:hover .dest-tile-img,
+.dest-tile:focus-visible .dest-tile-img {
+  transform: scale(1.05);
+}
+
+/* Overlay cálido (caoba), nunca negro frío */
+.dest-tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(28, 23, 20, 0.72) 0%,
+    rgba(28, 23, 20, 0.28) 45%,
+    rgba(28, 23, 20, 0.08) 100%);
+  transition: opacity 0.5s ease;
+}
+.dest-tile:hover .dest-tile-overlay,
+.dest-tile:focus-visible .dest-tile-overlay {
+  opacity: 0.55;
+}
+
+.dest-tile-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px 22px;
+  text-align: center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dest-tile:hover .dest-tile-label,
+.dest-tile:focus-visible .dest-tile-label {
+  transform: translateY(-8px);
+}
+
+.dest-tile-name {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  line-height: 1.4;
+  color: #FBF8ED;
+  text-shadow: 0 1px 10px rgba(28, 23, 20, 0.6);
+}
+
+/* Indicador dorado que emerge en hover: filete + flecha */
+.dest-tile-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dest-tile:hover .dest-tile-cta,
+.dest-tile:focus-visible .dest-tile-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+.dest-tile-rule {
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+}
+.dest-tile-cta .material-symbols-outlined {
+  font-size: 18px;
+}
+
+/* Foco teclado: dorado del sistema, dibujado hacia adentro (overflow hidden) */
+.dest-tile:focus {
+  outline: none;
+}
+.dest-tile:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+/* Mosaico editorial: 2 columnas en tablet, asimétrico 3×2 en desktop */
+@media (min-width: 640px) {
+  .dest-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dest-tile {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dest-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 280px 280px;
+  }
+  .dest-tile {
+    aspect-ratio: auto;
+  }
+  .dest-tile-1 { grid-column: 1 / 3; grid-row: 1; }  /* City Tour San Salvador — pieza ancha */
+  .dest-tile-2 { grid-column: 3;     grid-row: 1; }  /* Cihuatán & Suchitoto */
+  .dest-tile-3 { grid-column: 1;     grid-row: 2; }  /* Ruta Maya */
+  .dest-tile-4 { grid-column: 2 / 4; grid-row: 2; }  /* Volcán de Santa Ana — pieza ancha */
+}
+
+/* Modo oscuro: juntas en roble y borde más presente */
+.dark .dest-gallery {
+  background: var(--surface);
+  border-color: var(--border-strong);
+}
+
+/* ==========================================================================
+   CONTENIDO DEL MODAL
+   ========================================================================== */
+.prose {
+  font-family: 'Fira Sans', sans-serif;
+  line-height: 1.7;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* Estilos para lista de incluidos */
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-content ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE — modal
+   ========================================================================== */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal-content {
+    max-height: 95vh;
+    margin: 0.5rem;
+  }
+  
+  #tour-list-container .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   ANIMACIONES — prefers-reduced-motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay {
+    animation: none;
+  }
+  
+  .modal-content {
+    transition: none;
+  }
+  
+  #tour-list-container .tour-card {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   CARRUSEL DE TESTIMONIOS & MURAL DE FEEDBACK
+   ========================================================================== */
+.testimonials-section {
+  position: relative;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.testimonials-viewport {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-radius: 1.25rem;
+}
+
+.testimonials-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.testimonial-slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .testimonial-slide {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-slide {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+.testimonial-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 2rem 1.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.09);
+}
+
+.dark .testimonial-card:hover {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+.testimonial-quote-icon {
+  font-family: 'Fraunces', serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.4;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  pointer-events: none;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 3px;
+  color: var(--accent);
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-comment {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  font-style: italic;
+}
+
+.testimonial-author-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+
+.testimonial-avatar-fallback {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  border: 1.5px solid var(--accent);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.dark .testimonial-avatar-fallback {
+  color: var(--accent);
+}
+
+.testimonial-author-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--brand);
+  line-height: 1.2;
+}
+
+.dark .testimonial-author-name {
+  color: var(--accent);
+}
+
+.testimonial-author-country {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.testimonial-photo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  background: var(--brand-soft);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--brand);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dark .testimonial-photo-badge {
+  color: var(--accent);
+}
+
+.testimonials-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.testimonials-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.testimonials-nav-btn:hover {
+  border-color: var(--accent);
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.dark .testimonials-nav-btn:hover {
+  color: var(--accent);
+}
+
+.testimonials-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.testimonial-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.testimonial-dot.active {
+  background: var(--accent);
+  transform: scale(1.25);
+}
+
+/* Modal de feedback */
+.feedback-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(28, 23, 20, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.feedback-dialog-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.feedback-dialog-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  width: 100%;
+  max-width: 34rem;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.feedback-dialog-overlay.active .feedback-dialog-box {
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   FIXES SESIÓN SEPT 2026 — contraste, accesibilidad mayores, señal sendero,
+   menú móvil, cumbre centrada
+   ========================================================================== */
+
+/* Estrellas testimonios: rojo marca en claro (AA), dorado en oscuro */
+.testimonial-stars { color: var(--brand); }
+.dark .testimonial-stars { color: var(--accent); }
+.testimonial-quote-icon { color: var(--brand); opacity: .28; }
+.dark .testimonial-quote-icon { color: var(--accent); opacity: .4; }
+.testimonial-dot.active { background: var(--brand); }
+.dark .testimonial-dot.active { background: var(--accent); }
+
+/* Skip-link accesible */
+.skip-link {
+  position: absolute; left: 16px; top: -60px; z-index: 2000;
+  background: var(--brand); color: #fff; padding: 10px 18px; border-radius: 8px;
+  font-family: 'Work Sans', sans-serif; font-size: 14px; font-weight: 600;
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 12px; color: #fff; }
+.dark .skip-link { background: var(--accent); color: #1C1714; }
+
+/* Botón hamburguesa móvil */
+.nav-hamburger {
+  display: none; width: 44px; height: 44px; border-radius: 10px;
+  border: 1.4px solid var(--border-strong); background: var(--surface-raised);
+  color: var(--brand); cursor: pointer; align-items: center; justify-content: center;
+}
+.nav-hamburger .material-symbols-outlined { font-size: 24px; }
+.mobile-menu {
+  display: none; position: fixed; top: 84px; left: 0; right: 0; z-index: 49;
+  background: var(--nav-bg); border-bottom: 1px solid var(--nav-border);
+  box-shadow: var(--nav-shadow); padding: 12px 24px 20px;
+}
+.mobile-menu.open { display: block; }
+.mobile-menu a {
+  display: block; padding: 12px 4px; font-family: 'Work Sans', sans-serif;
+  font-size: 16px; font-weight: 500; color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a.active { color: var(--brand); font-weight: 700; }
+@media (max-width: 1024px) { .nav-hamburger { display: inline-flex; } }
+
+/* Day Tours: CTA siempre visible (público mayor, táctil, sin hover) */
+.dest-tile-cta {
+  opacity: 1; transform: none;
+  background: rgba(251, 248, 237, 0.94);
+  color: #3D0800; border-radius: 999px; padding: 8px 16px;
+  font-family: 'Work Sans', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: .02em; margin-top: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+}
+.dest-tile-cta .dest-tile-rule { display: none; }
+.dest-tile-cta .material-symbols-outlined { font-size: 18px; color: #7E1500; }
+.dest-tile-cta-text { white-space: nowrap; }
+.dest-tile:hover .dest-tile-cta { background: var(--accent); }
+
+/* Señal tipo parque nacional: flecha + nombre lugar */
+.trail-sign {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--brand); color: #FBF8ED;
+  font-family: 'Cinzel', serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 8px 14px 8px 10px; border-radius: 6px 14px 14px 6px;
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 6px 18px rgba(126,21,0,.25), inset 0 0 0 1px rgba(251,248,237,.25);
+  max-width: 100%;
+}
+.trail-sign .material-symbols-outlined { font-size: 16px; color: var(--accent); flex: none; }
+.trail-sign-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dark .trail-sign { background: #2A0500; color: var(--accent); }
+.dest-tile-sign {
+  position: absolute; top: 12px; left: 12px; z-index: 3; max-width: calc(100% - 24px);
+}
+
+/* Cumbre centrada y condensada, sin caja (feedback Mario) */
+.trust-centered {
+  max-width: 760px; margin-inline: auto; text-align: center;
+}
+.trust-centered .trust-list { text-align: left; }
+
+/* Caption bajo foto con contraste AA */
+.stop-figure figcaption, .dest-caption {
+  color: var(--text-muted);
+}
+
+/* Tutorial modal (Cómo usar este sitio) */
+.tutorial-overlay {
+  position: fixed; inset: 0; z-index: 1000; display: none;
+  align-items: center; justify-content: center; padding: 20px;
+  background: rgba(28,23,20,.7); backdrop-filter: blur(4px);
+}
+.tutorial-overlay.open { display: flex; }
+.tutorial-box {
+  background: var(--surface-raised); color: var(--text);
+  border: 1px solid var(--border); border-radius: 16px;
+  max-width: 560px; width: 100%; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+.tutorial-box ol { margin: 16px 0 0 20px; line-height: 1.7; color: var(--text-muted); }
+.tutorial-box ol strong { color: var(--text); }
+
+/* ==========================================================================
+   HOME EXPANDIDO — cotizador, destacados, categorías, planifica, stats,
+   pasos, guía, FAQ, CTA final, flotante (mismo sistema de diseño)
+   ========================================================================== */
+.quote-bar {
+  background: var(--surface-raised); border: 1px solid var(--border);
+  border-radius: 20px; box-shadow: var(--shadow-card);
+  padding: 24px 28px; margin-top: -8px;
+}
+.quote-bar-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand); margin: 0 0 16px; text-align: center; }
+.quote-bar-fields { display: grid; grid-template-columns: 1.4fr 1fr 1fr auto; gap: 12px; align-items: end; }
+.quote-field { display: flex; flex-direction: column; gap: 6px; font-family: 'Work Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--text); }
+.quote-field select, .quote-field input { border: 1px solid var(--border-strong); border-radius: 10px; background: var(--bg); color: var(--text); padding: 12px; font-size: 14px; font-weight: 400; min-height: 48px; }
+.quote-submit { min-height: 48px; padding: 12px 24px; white-space: nowrap; }
+.quote-bar-note { margin: 12px 0 0; font-size: 12.5px; color: var(--text-muted); text-align: center; }
+@media (max-width: 900px) { .quote-bar-fields { grid-template-columns: 1fr 1fr; } .quote-submit { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .quote-bar-fields { grid-template-columns: 1fr; } }
+
+.trust-strip { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: center; }
+.trust-strip li { display: inline-flex; align-items: center; gap: 8px; font-family: 'Work Sans', sans-serif; font-size: 13.5px; font-weight: 600; color: var(--brand); }
+.trust-strip .material-symbols-outlined { font-size: 19px; }
+.dark .trust-strip li { color: var(--accent); }
+
+.home-meta { font-size: 13px; color: var(--text-muted); margin: 0 0 4px; }
+.home-rating { margin-bottom: 8px; }
+.home-rating strong { color: var(--text); }
+.meta-stars { color: var(--brand); letter-spacing: 2px; }
+.dark .meta-stars { color: var(--accent); }
+.meta-new { display: inline-block; background: var(--brand-soft); border: 1px solid var(--border-strong); color: var(--brand); border-radius: 999px; padding: 2px 12px; font-size: 12px; font-weight: 700; }
+.home-from { font-family: 'Cinzel', serif; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--brand); margin: 8px 0 0; }
+
+.cat-card { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-card); min-height: 240px; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; gap: 8px; background: #251E19; transition: transform .3s ease, box-shadow .3s ease; }
+.cat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-card-hover); }
+.cat-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cat-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,23,20,.78), rgba(28,23,20,.25) 55%, rgba(28,23,20,.05)); }
+.cat-card .trail-sign, .cat-card .cat-count, .cat-card .cat-desc { position: relative; z-index: 2; }
+.cat-count { font-family: 'Work Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #FBF8ED; }
+.cat-desc { font-size: 13px; color: rgba(251,248,237,.85); margin: 0; }
+
+.plan-card { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-card); }
+.plan-card .material-symbols-outlined { font-size: 30px; color: var(--brand); margin-bottom: 12px; }
+.dark .plan-card .material-symbols-outlined { color: var(--accent); }
+.plan-card h3 { font-family: 'Fraunces', serif; font-size: 18px; color: var(--brand); margin: 0 0 6px; }
+.plan-card p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 860px; margin: 0 auto; }
+.stat { display: flex; flex-direction: column; gap: 4px; padding: 18px 8px; border-top: 2px solid var(--border-strong); }
+.stat-num { font-family: 'Cinzel', serif; font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--brand); }
+.dark .stat-num { color: var(--accent); }
+.stat-label { font-size: 12.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; }
+@media (max-width: 640px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+
+.step-card { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; box-shadow: var(--shadow-card); position: relative; }
+.step-num { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--brand); color: #FBF8ED; font-family: 'Cinzel', serif; font-weight: 700; font-size: 20px; margin-bottom: 14px; }
+.dark .step-num { background: var(--accent); color: #1C1714; }
+.step-card h3 { font-family: 'Fraunces', serif; font-size: 18px; color: var(--brand); margin: 0 0 8px; }
+.step-card p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+.guide-preview { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; }
+.guide-preview img { width: 220px; height: 260px; object-fit: cover; border-radius: 16px; border: 1.5px solid var(--border-strong); }
+@media (max-width: 640px) { .guide-preview { grid-template-columns: 1fr; } .guide-preview img { width: 100%; height: 220px; } }
+
+.faq-item { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+.faq-item summary { cursor: pointer; padding: 16px 20px; font-weight: 600; font-size: 15px; color: var(--text); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 22px; color: var(--brand); flex: none; }
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { padding: 0 20px 18px; margin: 0; font-size: 14px; color: var(--text-muted); }
+
+.final-cta { background: linear-gradient(140deg, #7E1500, #4D0A00); color: #FBF8ED; border-radius: 24px; padding: clamp(36px, 6vw, 64px) clamp(24px, 5vw, 56px); text-align: center; box-shadow: var(--shadow-card-hover); }
+.final-cta h2 { color: #FBF8ED; }
+.final-ghost { display: inline-flex; align-items: center; padding: 14px 28px; border-radius: 8px; border: 1.5px solid #E9C262; color: #E9C262; font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.final-ghost:hover { background: rgba(233,194,98,.12); }
+.agenda-strip { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: center; margin: 28px 0 0; font-family: 'Cinzel', serif; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: #E9C262; opacity: .9; }
+
+.wa-float { position: fixed; right: 22px; bottom: 22px; z-index: 900; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: #25D366; color: #fff; font-size: 30px; box-shadow: 0 10px 28px rgba(0,0,0,.3); transition: transform .2s ease; }
+.wa-float:hover { transform: scale(1.08); }
+
+.review-summary { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; margin: 18px 0 0; font-size: 13px; color: var(--text-muted); }
+.review-summary-label { font-family: 'Cinzel', serif; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand); }
+.review-keywords { display: inline-flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.kw-pill { background: var(--brand-soft); border: 1px solid var(--border-strong); color: var(--brand); border-radius: 999px; padding: 4px 14px; font-size: 12.5px; font-weight: 600; }
+.dark .kw-pill { color: var(--accent); }

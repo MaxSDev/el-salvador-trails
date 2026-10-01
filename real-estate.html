@@ -37,9 +37,15 @@
   </script>
 
   <!-- Cambio de tema: se ejecuta en la cabecera para evitar parpadeo -->
-  <script src="theme.js"></script>
+  <script src="js/theme.js"></script>
 
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="El Salvador Trails — Bienes Raíces y negocios aliados: Art Haus y más socios locales." />
+  <meta property="og:title" content="El Salvador Trails — Bienes Raíces" />
+  <meta property="og:description" content="Descubre emprendimientos locales aliados de El Salvador Trails." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg" />
+
+  <link rel="stylesheet" href="css/styles.css">
 
   <style>
     /* Estilos específicos para la página de Bienes Raíces (placeholder) */
@@ -121,11 +127,12 @@
   </style>
 </head>
 <body class="font-body" data-i18n-page-title="page.realestate.title">
+  <a href="#main-content" class="skip-link" data-i18n="nav.skip">Saltar al contenido</a>
 
   <!-- Barra de navegación fija -->
-  <nav class="fixed-nav-light">
+  <nav class="fixed-nav-light" aria-label="Principal">
     <div class="brand">
-      <img src="assets/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
+      <img src="assets/icons/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
       <div>
         <span class="brand-word-title">El Salvador Trails</span>
         <span class="brand-subtext"></span>
@@ -136,13 +143,12 @@
       <li><a href="index.html" data-i18n="nav.home">Página Inicial</a></li>
       <li><a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a></li>
       <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
-      <li><a href="real-estate.html" class="active" data-i18n="nav.realestate">Bienes Raíces</a></li>
-      <li><a href="#" data-i18n="nav.payment">Pago en Línea</a></li>
+      <li><a href="real-estate.html" class="active" aria-current="page" data-i18n="nav.realestate">Bienes Raíces</a></li>
     </ul>
 
     <div class="nav-right-container">
-      <button class="help-tutorial-btn" data-i18n-aria="nav.help" data-i18n-title="nav.help">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="help-tutorial-btn" type="button" data-help-open data-i18n-aria="nav.help" data-i18n-title="nav.help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/>
           <polygon points="10 8 16 12 10 16 10 8"/>
         </svg>
@@ -154,73 +160,104 @@
         <span id="theme-toggle-icon" class="material-symbols-outlined">dark_mode</span>
       </button>
 
-      <div class="lang-switcher-pill">
-        <button class="active">ES</button>
-        <button class="">EN</button>
-        <button class="">PT</button>
+      <div class="lang-switcher-pill" role="group" aria-label="Idioma / Language">
+        <button type="button" class="active" data-lang="es" title="Español" aria-label="Español"><img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon"></button>
+        <button type="button" data-lang="en" title="English" aria-label="English"><img src="https://flagcdn.com/w40/us.png" alt="English" class="flag-icon"></button>
+        <button type="button" data-lang="pt" title="Português (Brasil)" aria-label="Português (Brasil)"><img src="https://flagcdn.com/w40/br.png" alt="Português" class="flag-icon"></button>
       </div>
+
+      <button class="nav-hamburger" type="button" data-menu-toggle aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" data-i18n="nav.home">Página Inicial</a>
+    <a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a>
+    <a href="about.html" data-i18n="nav.about">About Us</a>
+    <a href="real-estate.html" class="active" data-i18n="nav.realestate">Bienes Raíces</a>
+  </div>
 
-  <main class="relative pt-28">
+  <main class="relative pt-28" id="main-content">
     <!-- Patrón decorativo de fondo -->
     <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
       <div class="brand-pattern-base pattern-sun w-[800px] h-[800px] -top-64 -left-64"></div>
     </div>
 
-    <!-- Contenido placeholder: En construcción -->
-    <section class="relative w-full z-10 coming-soon-wrapper">
-      <div class="coming-soon-icon">
-        <span class="material-symbols-outlined">construction</span>
-      </div>
-
+    <!-- Título -->
+    <section class="relative w-full z-10 pt-12 text-center px-8 md:px-16">
       <h1 class="coming-soon-title" data-i18n="realestate.title">Bienes Raíces</h1>
-      <p class="coming-soon-subtitle" data-i18n="realestate.subtitle">Próximamente</p>
-      <p class="coming-soon-message" data-i18n="realestate.message">Esta sección está actualmente en construcción. Pronto podrá explorar las mejores propiedades disponibles en El Salvador.</p>
+      <p class="coming-soon-subtitle" style="color:var(--brand)" data-i18n="realestate.subtitle">Negocios y socios locales</p>
+      <p class="coming-soon-message mx-auto" data-i18n="realestate.message">Descubre emprendimientos locales aliados: hospedaje, gastronomía y experiencias. Empezamos con Art Haus y sumaremos más socios.</p>
+      <div class="ornate-divider mx-auto max-w-[400px]"></div>
+    </section>
 
-      <div class="under-construction-badge">
-        <span class="material-symbols-outlined" style="font-size: 16px;">engineering</span>
-        <span data-i18n="realestate.subtitle">Próximamente</span>
+    <!-- Grid multi-socio (Art Haus primero, escalable a N) -->
+    <section class="relative w-full z-10 py-8 px-8 md:px-12 max-w-[1360px] mx-auto">
+      <div id="partners-grid" class="coming-soon-wrapper" style="min-height:auto">
+        <div class="coming-soon-icon"><span class="material-symbols-outlined">hourglass_empty</span></div>
+        <p class="coming-soon-message">Cargando socios…</p>
       </div>
     </section>
 
     <!-- Divisor ornamental -->
     <div class="ornate-divider mx-16"></div>
 
-    <!-- Conecta con nosotros -->
-    <section class="social-connect w-full py-24 flex flex-col items-center relative z-10">
-      <div class="flex gap-12 items-center relative z-20">
-        <span class="social-connect-title" data-i18n="social.connect">Conecta con nosotros</span>
-        <div class="flex gap-8">
-          <a class="social-connect-icon" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a class="social-connect-icon" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a class="social-connect-icon" href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
+    <!-- Conecta con nosotros: banda ampliada (misma del home, 5 redes consistente) -->
+    <section class="social-band w-full py-16 flex flex-col items-center relative z-10">
+      <span class="social-connect-title mb-2" data-i18n="social.title">Síguenos y viaja con nosotros</span>
+      <p class="text-sm mb-2 text-muted px-6 text-center" data-i18n="social.subtitle">Volcanes al amanecer, cafetales, playas y la calidez de nuestra gente: síguenos y empieza a soñar con tu próxima aventura.</p>
+      <p class="text-sm font-bold mb-6 text-brand" data-i18n="social.handle">@elsalvadortrails</p>
+      <div class="flex gap-5 flex-wrap justify-center">
+        <a class="social-connect-icon" href="https://www.facebook.com/elsalvadortrails" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-connect-icon" href="https://www.instagram.com/elsalvadortrails" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-connect-icon" href="https://www.tiktok.com/@elsalvadortrails" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a class="social-connect-icon" href="https://www.youtube.com/@elsalvadortrails" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-connect-icon" href="https://wa.me/50370000000" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="footer-light flex flex-col items-center py-16 w-full relative z-10">
-    <img src="assets/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4">
+    <img src="assets/icons/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4" loading="lazy">
 
     <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
 
-    <div class="footer-links flex gap-10 mb-6">
-      <a href="#" data-i18n="footer.privacy">Pólitica de Privacidad</a>
-      <a href="#" data-i18n="footer.terms">Términos de Servicio</a>
-      <a href="#" data-i18n="footer.contact">Contacto</a>
+    <div class="footer-links flex gap-10 mb-6 flex-wrap justify-center px-6">
+      <a href="mailto:hola@elsalvadortrails.com" data-i18n="footer.contact">Contacto</a>
+      <a href="https://wa.me/50370000000" target="_blank" rel="noopener">WhatsApp</a>
     </div>
 
-    <div class="flex gap-6 mb-6">
-      <a href="#" class="footer-social text-xl" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#" class="footer-social text-xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <div class="flex gap-6 mb-6 flex-wrap justify-center">
+      <a href="https://www.facebook.com/elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.youtube.com/@elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://wa.me/50370000000" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
 
     <p class="copyright-text uppercase" data-i18n="footer.copyright">© 2026 El Salvador Trails.</p>
   </footer>
 
-  <script src="i18n.js"></script>
+  <!-- Modal tutorial -->
+  <div class="tutorial-overlay" data-help-modal role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <div class="tutorial-box">
+      <h2 id="help-title" class="font-display text-2xl font-bold text-brand" data-i18n="help.title">Cómo usar este sitio</h2>
+      <ol>
+        <li data-i18n="help.step1">1. Explora el catálogo y abre el tour que te interese.</li>
+        <li data-i18n="help.step2">2. Presiona el botón dorado para ver fotos, itinerario y detalles.</li>
+        <li data-i18n="help.step3">3. Indica adultos, niños y fecha, y cotiza por WhatsApp o correo.</li>
+      </ol>
+      <button type="button" class="btn-accent w-full py-3 mt-6 rounded-lg" data-help-close data-i18n="help.close">Entendido</button>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="data/media-manifest.js"></script>
+  <script src="js/media.js"></script>
+  <script src="data/real-estate-data.js"></script>
+  <script src="js/real-estate.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

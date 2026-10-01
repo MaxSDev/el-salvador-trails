@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Local editor and preview state
+.vscode/
+.impeccable/
+
+# Archived prototypes and duplicated source material
+archive/
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+

@@ -1,0 +1,31 @@
+{
+  "partners": [
+    {
+      "id": "art-haus",
+      "name": {
+        "es": "Art Haus",
+        "en": "Art Haus",
+        "pt": "Art Haus"
+      },
+      "tagline": {
+        "es": "Primer emprendimiento aliado — arte, hospedaje y experiencia local",
+        "en": "First allied venture — art, lodging and local experience",
+        "pt": "Primeiro empreendimento parceiro — arte, hospedagem e experiência local"
+      },
+      "description": {
+        "es": "Espacio aliado de El Salvador Trails. Mario compartirá el texto de visión en el grupo; mientras tanto este es el primer socio visible. Agrega fotos de Drive en images[] y enlace externo en url.",
+        "en": "Allied space of El Salvador Trails. First visible partner. Add Drive photos to images[] and external link in url.",
+        "pt": "Espaço parceiro da El Salvador Trails. Primeiro parceiro visível. Adicione fotos do Drive em images[] e link externo em url."
+      },
+      "location": {
+        "es": "El Salvador",
+        "en": "El Salvador",
+        "pt": "El Salvador"
+      },
+      "url": "https://www.instagram.com/elsalvadortrails",
+      "images": [
+        "assets/img/slide_2.jpg"
+      ]
+    }
+  ]
+}
