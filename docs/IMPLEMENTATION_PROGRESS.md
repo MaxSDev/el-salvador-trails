@@ -6,9 +6,9 @@ Actualizado: 2026-10-01
 
 - Etapa 1 — Imágenes y fundamentos: aprobada por el usuario el 2026-10-01.
 - Etapa activa: 2 — Sistema visual.
-- Estado: pausada antes de cambios para crear un punto de restauración en GitHub.
+- Estado: lista para iniciar; el punto de restauración en GitHub está confirmado.
 - El sitio visible usa AVIF/WebP responsive con fallback a los originales.
-- Repositorio Git: existente en la rama `gh-pages`, conectado a `MaxSDev/el-salvador-trails`.
+- Repositorio Git: existente en la rama `gh-pages`, conectado a `OscarDiaz1/el-salvador-trails`.
 
 ## Trabajo completado
 
@@ -86,10 +86,14 @@ Actualizado: 2026-10-01
 - Se añadieron `.gitignore` y `README.md`.
 - Se excluyen dependencias, estado local del editor y prototipos duplicados de `archive/`.
 - No se inició ninguna modificación de la Etapa 2 antes de crear este respaldo.
+- Se creó el repositorio privado `OscarDiaz1/el-salvador-trails`.
+- La rama predeterminada es `gh-pages`.
+- El checkpoint de la Etapa 1 quedó publicado como commit `e1721e4`.
+- El remoto anterior se conserva localmente como `legacy-origin`.
 
 ## Próximo paso exacto
 
-1. Autenticar GitHub CLI con la cuenta que tiene acceso a `MaxSDev/el-salvador-trails`.
-2. Ejecutar todas las pruebas de la Etapa 1.
-3. Crear y subir el checkpoint de la Etapa 1 a la rama `gh-pages`.
-4. Confirmar el respaldo remoto antes de reanudar la Etapa 2.
+1. Leer el diff actual y el sistema visual existente.
+2. Crear pruebas que definan los componentes compartidos de la Etapa 2.
+3. Implementar tokens, tipografía, navegación, botones, formularios, tarjetas y accesibilidad.
+4. Ejecutar QA visual y automatizado antes del checkpoint de aprobación de la Etapa 2.
