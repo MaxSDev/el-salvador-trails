@@ -6,8 +6,8 @@
   <title>El Salvador Trails</title>
 
   <!-- Font Imports -->
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=EB+Garamond:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,300..800;1,300..800&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=arrow_back,arrow_forward,arrow_outward,badge,chat,check_circle,chevron_left,chevron_right,close,construction,dark_mode,directions_bus,forum,group,handshake,info,landscape,light_mode,location_city,mail,map,menu,open_in_new,pause,photo_camera,pin_drop,play_arrow,play_circle,price_check,public,request_quote,restaurant,route,schedule,signpost,south,star,star_border,surfing,temple_buddhist,translate&amp;display=block" rel="stylesheet"/>
 
   <!-- Font Awesome Brands CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,8 +32,8 @@
               "surface-container-lowest": "#2A0500"
             },
             "fontFamily": {
-              "display": ["Adlery Pro", "serif"],
-              "body": ["Fira Sans", "sans-serif"],
+              "display": ["Fraunces", "serif"],
+              "body": ["Work Sans", "sans-serif"],
               "label": ["Cinzel", "serif"]
             }
           }
@@ -53,8 +53,9 @@
 
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/carrousel.css">
+  <link rel="stylesheet" href="css/home-cinematic.css">
 </head>
-<body class="font-body" data-i18n-page-title="page.index.title">
+<body class="font-body home-cinematic site-immersive has-photo-hero" data-i18n-page-title="page.index.title">
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <!-- Barra de navegación fija -->
@@ -72,6 +73,7 @@
       <li><a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a></li>
       <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
       <li><a href="real-estate.html" data-i18n="nav.realestate">Bienes Raíces</a></li>
+      <li><a href="payment.html" data-i18n="nav.payment">Pago en Línea</a></li>
     </ul>
 
     <div class="nav-right-container">
@@ -94,17 +96,50 @@
         <button type="button" data-lang="pt" title="Português (Brasil)" aria-label="Português (Brasil)"><img src="https://flagcdn.com/w40/br.png" alt="Português" class="flag-icon"></button>
       </div>
 
-      <button class="nav-hamburger" type="button" data-menu-toggle aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="nav-hamburger" type="button" data-menu-toggle data-i18n-aria="nav.menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
         <span class="material-symbols-outlined">menu</span>
       </button>
     </div>
   </nav>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html" class="active" data-i18n="nav.home">Página Inicial</a>
-    <a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a>
-    <a href="about.html" data-i18n="nav.about">About Us</a>
-    <a href="real-estate.html" data-i18n="nav.realestate">Bienes Raíces</a>
-  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" data-i18n-aria="nav.expanded" aria-label="Navegación del sitio">
+    <div class="menu-shell">
+      <div class="menu-intro">
+        <img src="assets/icons/logo.svg" class="menu-logo" alt="" aria-hidden="true">
+        <p class="menu-title" data-i18n="nav.menuTitle">Explora El Salvador</p>
+      </div>
+      <div class="menu-index">
+        <a href="index.html" class="active" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">01</span>
+          <span data-i18n="nav.home">Página Inicial</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="tours.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">02</span>
+          <span data-i18n="nav.tours">Catálogo de Tours</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="about.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">03</span>
+          <span data-i18n="nav.about">About Us</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="real-estate.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">04</span>
+          <span data-i18n="nav.realestate">Bienes Raíces</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="payment.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">05</span>
+          <span data-i18n="nav.payment">Pago en Línea</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+      </div>
+      <div class="menu-footer">
+        <span data-i18n="nav.menuFoot">Rutas locales y atención directa</span>
+        <span>@elsalvadortrails</span>
+      </div>
+    </div>
+  </nav>
 
   <main class="relative pt-28" id="main-content">
     <!-- Patrón decorativo de fondo -->
@@ -113,24 +148,33 @@
     </div>
 
     <!-- Hero: Carrusel de destinos -->
-    <section class="relative w-full z-10 py-4 px-8 md:px-16 flex justify-center">
+    <section class="home-shell home-hero-section relative w-full z-10 flex justify-center">
       <div class="dashboard-container w-full max-w-6xl">
-        <article class="destination-card p-12">
+        <article class="destination-card" id="destination-carousel" role="region" aria-roledescription="carrusel" data-i18n-aria="carousel.region" aria-label="Destinos destacados">
           <!-- Capas de fondo dinámicas (cross-fade) -->
           <div id="bg-layer-1" class="bg-layer active"></div>
           <div id="bg-layer-2" class="bg-layer"></div>
           <div class="bg-overlay"></div>
 
-          <header class="card-header mb-12">
-            <h1 class="font-bold mb-2" data-i18n="hero.title">Top destinos más buscados del país</h1>
-            <p class="text-sm md:text-base" data-i18n="hero.subtitle">Elige los mejores destinos nacionales para viajar junto a tu familia y amigos.</p>
+          <header class="card-header">
+            <h1 class="font-bold mb-2" data-i18n="hero.title">Cuatro formas de descubrir El Salvador</h1>
+            <p class="text-sm md:text-base" data-i18n="hero.subtitle">Playa, montaña, lago y ciudad: empieza por el paisaje que más te llama.</p>
 
-            <nav class="tabs-nav flex gap-3 mt-8 flex-wrap" data-i18n-aria="carousel.nav" aria-label="Navegación de destinos">
-              <button class="tab-btn active" data-carousel-tab="0" data-i18n="tab.elSunzal">Playa El Sunzal</button>
+            <div class="carousel-toolbar">
+            <nav class="tabs-nav flex gap-3 flex-wrap" data-i18n-aria="carousel.nav" aria-label="Navegación de destinos">
+              <button class="tab-btn active" data-carousel-tab="0" aria-current="true" data-i18n="tab.elSunzal">Playa El Sunzal</button>
               <button class="tab-btn" data-carousel-tab="1" data-i18n="tab.rutaFlores">Ruta de las Flores</button>
               <button class="tab-btn" data-carousel-tab="2" data-i18n="tab.lagoCoatepeque">Lago de Coatepeque</button>
               <button class="tab-btn" data-carousel-tab="3" data-i18n="tab.centroHistorico">Centro Histórico</button>
             </nav>
+            <div class="carousel-actions">
+              <p id="carousel-counter" class="carousel-counter" aria-live="polite" aria-atomic="true">01 / 04</p>
+              <button id="carousel-pause-btn" class="carousel-pause-btn" type="button" aria-pressed="false" data-i18n-aria="carousel.pause" aria-label="Pausar carrusel">
+                <span class="material-symbols-outlined" aria-hidden="true">pause</span>
+                <span data-carousel-pause-label data-i18n="carousel.pause">Pausar</span>
+              </button>
+            </div>
+            </div>
           </header>
 
           <section class="content-grid grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -148,8 +192,8 @@
             <div class="gallery-column">
               <div class="main-image-wrapper aspect-video rounded-xl overflow-hidden shadow-2xl">
                 <picture>
-                  <source type="image/avif" srcset="assets/optimized/img/slide_0-480.avif 480w, assets/optimized/img/slide_0-768.avif 768w, assets/optimized/img/slide_0-1200.avif 1200w, assets/optimized/img/slide_0-1920.avif 1920w" sizes="(max-width: 767px) 100vw, 50vw">
-                  <source type="image/webp" srcset="assets/optimized/img/slide_0-480.webp 480w, assets/optimized/img/slide_0-768.webp 768w, assets/optimized/img/slide_0-1200.webp 1200w, assets/optimized/img/slide_0-1920.webp 1920w" sizes="(max-width: 767px) 100vw, 50vw">
+                  <source type="image/avif" srcset="assets/optimized/img/slide_0-480.avif 480w, assets/optimized/img/slide_0-768.avif 768w, assets/optimized/img/slide_0-1200.avif 1200w, assets/optimized/img/slide_0-1920.avif 1920w" sizes="100vw">
+                  <source type="image/webp" srcset="assets/optimized/img/slide_0-480.webp 480w, assets/optimized/img/slide_0-768.webp 768w, assets/optimized/img/slide_0-1200.webp 1200w, assets/optimized/img/slide_0-1920.webp 1920w" sizes="100vw">
                   <img id="main-image" src="assets/img/slide_0.jpg" data-i18n-aria="carousel.mainImg" alt="Destinos El Salvador" width="4032" height="2268" class="w-full h-full object-cover" decoding="async" fetchpriority="high">
                 </picture>
               </div>
@@ -161,21 +205,22 @@
     </section>
 
     <!-- Barra de cotización (1 minuto, sin pagos en línea) -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Cotización rápida">
-      <form id="home-quote" class="quote-bar w-full max-w-6xl">
+    <section class="home-shell home-quote-transition relative w-full z-10 flex justify-center" aria-label="Cotización rápida">
+      <div class="quote-trust-wrap w-full max-w-6xl">
+      <form id="home-quote" class="quote-bar">
         <p class="quote-bar-title" data-i18n="home.quote.title">Cotiza tu sendero en 1 minuto</p>
         <div class="quote-bar-fields">
           <label class="quote-field">
             <span data-i18n="home.quote.destination">¿A dónde quieres ir?</span>
-            <select id="home-quote-dest"></select>
+            <select id="home-quote-dest" class="form-control"></select>
           </label>
           <label class="quote-field">
             <span data-i18n="home.quote.date">Fecha estimada</span>
-            <input type="date" id="home-quote-date" />
+            <input type="date" id="home-quote-date" class="form-control" />
           </label>
           <label class="quote-field">
             <span data-i18n="home.quote.group">Grupo</span>
-            <select id="home-quote-group">
+            <select id="home-quote-group" class="form-control">
               <option value="2 adultos" data-i18n="home.quote.groupOpt">2 adultos</option>
               <option value="2 adultos + niños">2 adultos + niños</option>
               <option value="Grupo 4-6">Grupo 4-6</option>
@@ -187,34 +232,64 @@
             <span data-i18n="home.quote.submit">Cotizar por WhatsApp</span>
           </button>
         </div>
-        <p class="quote-bar-note" data-i18n="home.quote.note">Sin pagos en línea: te responde Mario con precio según tu grupo.</p>
+        <p class="quote-bar-note" data-i18n="home.quote.note">Mario te responde con el precio de tu grupo. El depósito de garantía se habilitará en Pago en Línea.</p>
       </form>
+        <ul class="trust-strip" aria-label="Cómo se organiza tu experiencia">
+          <li><span class="material-symbols-outlined" aria-hidden="true">forum</span><span data-i18n="home.trust.direct">Atención directa</span></li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">route</span><span data-i18n="home.trust.flexible">Ruta adaptada a tu grupo</span></li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">translate</span><span data-i18n="home.trust.lang">Español · English · Português</span></li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">pin_drop</span><span data-i18n="home.trust.pickup">Recogida coordinada</span></li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Tira de confianza -->
-    <section class="relative w-full z-10 px-8 flex justify-center" aria-label="Confianza">
-      <ul class="trust-strip">
-        <li><span class="material-symbols-outlined" aria-hidden="true">star</span><span>★ <span data-i18n="home.trust.rating">5.0 en reseñas verificadas</span></span></li>
-        <li><span class="material-symbols-outlined" aria-hidden="true">hiking</span><span data-i18n="home.trust.exp">+20 años de turismo</span></li>
-        <li><span class="material-symbols-outlined" aria-hidden="true">verified</span><span data-i18n="home.trust.trip">#1 en TripAdvisor</span></li>
-        <li><span class="material-symbols-outlined" aria-hidden="true">translate</span><span data-i18n="home.trust.lang">ES · EN · PT</span></li>
-      </ul>
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <section class="home-shell home-feedback-chapter relative w-full z-10 flex justify-center" id="feedback" data-home-layout="mural" aria-labelledby="feedback-title">
+      <div class="testimonials-section w-full home-reveal">
+        <header class="faq-heading">
+          <h2 id="feedback-title" class="section-title" data-i18n="feedback.title">Historias que nos hacen seguir</h2>
+          <p class="section-copy" data-i18n="feedback.subtitle">Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de El Salvador Trails.</p>
+        </header>
+        <div id="testimonials-viewport" class="testimonials-viewport" aria-live="polite">
+          <div id="testimonials-track" class="testimonials-track"></div>
+        </div>
+        <div class="testimonials-controls">
+          <button type="button" id="testimonials-prev-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.prev" aria-label="Testimonio anterior">
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+          </button>
+          <div id="testimonials-dots" class="testimonials-dots"></div>
+          <button type="button" id="testimonials-next-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.next" aria-label="Siguiente testimonio">
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+          </button>
+        </div>
+        <button type="button" id="open-feedback-btn" class="btn-accent" data-i18n="testimonials.cta">¿Viajaste con nosotros? Comparte tu experiencia</button>
+      </div>
     </section>
 
-    <!-- Divisor ornamental -->
     <div class="ornate-divider mx-16 my-16"></div>
 
     <!-- Tours destacados -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Tours destacados">
-      <div class="w-full max-w-6xl">
-        <div class="text-center mb-8">
-          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.featured.eyebrow">Los más pedidos</p>
-          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.featured.title">Senderos que enamoran</h2>
-          <p class="text-muted max-w-[640px] mx-auto" data-i18n="home.featured.sub">Day Tours de un día y paquetes multi-día con recojo en hotel y guía certificado.</p>
+    <section class="home-shell home-tours-section relative w-full z-10 flex justify-center" data-ghost="El Salvador" aria-labelledby="home-featured-title">
+      <div class="home-tours-shell w-full">
+        <div class="tours-editorial-intro">
+          <div class="tours-editorial-portrait">
+            <picture>
+              <source type="image/avif" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.avif 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.avif 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.avif 1200w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1920.avif 1920w" sizes="(max-width: 760px) 76vw, 30vw">
+              <source type="image/webp" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.webp 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.webp 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.webp 1200w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1920.webp 1920w" sizes="(max-width: 760px) 76vw, 30vw">
+              <img src="assets/tours/city-tour-san-salvador/IMG_2503.jpg" alt="" aria-hidden="true" width="2268" height="4032" loading="lazy" decoding="async">
+            </picture>
+            <span class="tours-portrait-caption" data-i18n="home.featured.portraitCaption">San Salvador, de cerca</span>
+          </div>
+          <div class="tours-editorial-copy">
+            <p class="section-kicker" data-i18n="home.featured.eyebrow">Una selección para empezar</p>
+            <h2 id="home-featured-title" class="section-title" data-i18n="home.featured.title">Senderos para conocer el país</h2>
+            <p class="section-copy" data-i18n="home.featured.sub">Day Tours de un día y paquetes multi-día con recojo en hotel y guía certificado.</p>
+          </div>
         </div>
-        <div id="home-featured-day" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-        <div id="home-featured-pkg" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"></div>
-        <div class="text-center mt-8">
+        <div id="home-featured-day" class="home-tour-grid"></div>
+        <div id="home-featured-pkg" class="home-package-row"></div>
+        <div class="home-tours-cta">
           <a href="tours.html" class="btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-lg">
             <span data-i18n="home.featured.all">Ver catálogo completo</span>
             <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
@@ -223,17 +298,57 @@
       </div>
     </section>
 
+    <section class="home-shell home-video-chapter relative w-full z-10 flex justify-center" aria-labelledby="main-video-title">
+      <div class="video-feature video-feature--reference w-full max-w-6xl">
+        <div class="video-feature-copy">
+          <p class="section-kicker" data-i18n="home.video.eyebrow">El Salvador en movimiento</p>
+          <h2 id="main-video-title" class="section-title" data-i18n="home.video.title">Un país que se entiende caminándolo</h2>
+          <p class="section-copy" data-i18n="home.video.text">Una referencia audiovisual para sentir el Pacífico antes de iniciar el recorrido.</p>
+        </div>
+        <div class="reference-video reference-video--main video-placeholder--main" data-video-shell data-video-placeholder="main">
+          <div class="reference-video-frame" data-video-frame>
+            <picture class="reference-video-poster" aria-hidden="true">
+              <source type="image/avif" srcset="assets/optimized/img/slide_0-480.avif 480w, assets/optimized/img/slide_0-768.avif 768w, assets/optimized/img/slide_0-1200.avif 1200w, assets/optimized/img/slide_0-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 62vw">
+              <source type="image/webp" srcset="assets/optimized/img/slide_0-480.webp 480w, assets/optimized/img/slide_0-768.webp 768w, assets/optimized/img/slide_0-1200.webp 1200w, assets/optimized/img/slide_0-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 62vw">
+              <img src="assets/img/slide_0.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async">
+            </picture>
+            <span class="reference-video-scrim" aria-hidden="true"></span>
+            <span class="reference-video-badge" data-i18n="video.reference">Video de referencia</span>
+            <button class="reference-video-trigger reference-video-trigger--main" type="button" data-video-trigger="main" aria-expanded="false" data-i18n-aria="video.watch" aria-label="Ver video de referencia">
+              <span class="reference-video-play" aria-hidden="true"><span class="material-symbols-outlined">play_arrow</span></span>
+              <span class="reference-video-action" data-i18n="video.watch">Ver video de referencia</span>
+            </button>
+            <div class="reference-video-caption">
+              <h3>World Surf League en El Salvador 2024</h3>
+              <p><span data-i18n="video.by">Por</span> MITUR El Salvador</p>
+            </div>
+          </div>
+          <div class="reference-video-meta">
+            <p data-i18n="video.temporaryNote">Referencia temporal externa; no pertenece a El Salvador Trails.</p>
+            <p class="reference-video-fallback" data-video-fallback hidden data-i18n="video.unavailable">El video no está disponible; abre la fuente original.</p>
+            <a data-video-source-static href="https://www.youtube.com/watch?v=zwagQ8pF9hs" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="video.source">Abrir fuente en YouTube</span>
+              <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="ornate-divider mx-16 my-16"></div>
 
     <!-- Categorías por estilo -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Categorías">
+    <section class="home-shell home-categories-chapter relative w-full z-10 flex justify-center" data-home-layout="mosaic" data-photo-chapter="categories" aria-label="Categorías">
       <div class="w-full max-w-6xl">
-        <div class="text-center mb-8">
-          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.cats.eyebrow">Explora por estilo</p>
-          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.cats.title">Elige tu forma de viajar</h2>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <a href="tours.html" class="cat-card">
+        <header class="chapter-heading chapter-heading--split home-reveal">
+          <div>
+            <p class="section-kicker" data-i18n="home.cats.eyebrow">Explora por estilo</p>
+            <h2 class="section-title" data-i18n="home.cats.title">Elige tu forma de viajar</h2>
+          </div>
+          <p class="section-copy" data-i18n="home.cats.intro">Cuatro paisajes, cuatro ritmos para empezar a recorrer el país.</p>
+        </header>
+        <div class="category-mosaic home-reveal">
+          <a href="tours.html" class="cat-card cat-card--wide">
             <picture>
               <source type="image/avif" srcset="assets/optimized/img/slide_0-480.avif 480w, assets/optimized/img/slide_0-768.avif 768w, assets/optimized/img/slide_0-1200.avif 1200w, assets/optimized/img/slide_0-1920.avif 1920w" sizes="(max-width: 639px) 100vw, 50vw">
               <source type="image/webp" srcset="assets/optimized/img/slide_0-480.webp 480w, assets/optimized/img/slide_0-768.webp 768w, assets/optimized/img/slide_0-1200.webp 1200w, assets/optimized/img/slide_0-1920.webp 1920w" sizes="(max-width: 639px) 100vw, 50vw">
@@ -243,7 +358,7 @@
             <span class="cat-count">2 · <span data-i18n="home.cats.count">tours</span></span>
             <span class="cat-desc" data-i18n="home.cats.c1d">El Sunzal, El Tunco y la costa de La Libertad.</span>
           </a>
-          <a href="tours.html" class="cat-card">
+          <a href="tours.html" class="cat-card cat-card--compact">
             <picture>
               <source type="image/avif" srcset="assets/optimized/tours/volcan-santa-ana/IMG_9697-480.avif 480w, assets/optimized/tours/volcan-santa-ana/IMG_9697-768.avif 768w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1200.avif 1200w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1920.avif 1920w" sizes="(max-width: 639px) 100vw, 50vw">
               <source type="image/webp" srcset="assets/optimized/tours/volcan-santa-ana/IMG_9697-480.webp 480w, assets/optimized/tours/volcan-santa-ana/IMG_9697-768.webp 768w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1200.webp 1200w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1920.webp 1920w" sizes="(max-width: 639px) 100vw, 50vw">
@@ -253,7 +368,7 @@
             <span class="cat-count">1 · <span data-i18n="home.cats.count">tours</span></span>
             <span class="cat-desc" data-i18n="home.cats.c2d">Santa Ana, Coatepeque y Cerro Verde.</span>
           </a>
-          <a href="tours.html" class="cat-card">
+          <a href="tours.html" class="cat-card cat-card--compact">
             <picture>
               <source type="image/avif" srcset="assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-480.avif 480w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-768.avif 768w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1200.avif 1200w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1920.avif 1920w" sizes="(max-width: 639px) 100vw, 50vw">
               <source type="image/webp" srcset="assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-480.webp 480w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-768.webp 768w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1200.webp 1200w, assets/optimized/tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1920.webp 1920w" sizes="(max-width: 639px) 100vw, 50vw">
@@ -263,7 +378,7 @@
             <span class="cat-count">2 · <span data-i18n="home.cats.count">tours</span></span>
             <span class="cat-desc" data-i18n="home.cats.c3d">Joya de Cerén, Tazumal y Suchitoto.</span>
           </a>
-          <a href="tours.html" class="cat-card">
+          <a href="tours.html" class="cat-card cat-card--wide">
             <picture>
               <source type="image/avif" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.avif 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.avif 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.avif 1200w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1920.avif 1920w" sizes="(max-width: 639px) 100vw, 50vw">
               <source type="image/webp" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.webp 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.webp 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.webp 1200w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1920.webp 1920w" sizes="(max-width: 639px) 100vw, 50vw">
@@ -279,26 +394,66 @@
 
     <div class="ornate-divider mx-16 my-16"></div>
 
-    <!-- Senderos para ti (editorial) -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Inspiración">
+    <!-- Historias verticales: referencias temporales cargadas únicamente tras clic -->
+    <section class="home-shell home-stories-chapter relative w-full z-10 flex justify-center" data-home-layout="triptych" data-photo-chapter="stories" aria-labelledby="story-video-title">
       <div class="w-full max-w-6xl">
         <div class="text-center mb-8">
-          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.editorial.eyebrow">Senderos para ti</p>
-          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.editorial.title">Historias que se caminan</h2>
+          <p class="section-kicker" data-i18n="home.stories.eyebrow">Historias del sendero</p>
+          <h2 id="story-video-title" class="section-title" data-i18n="home.stories.title">Tres miradas de El Salvador</h2>
+          <p class="section-copy section-copy--center" data-i18n="home.stories.text">Tres referencias externas para recorrer paisajes distintos antes de elegir tu ruta.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <a href="tours.html" class="tour-card flex flex-col">
-            <div class="aspect-[16/10] w-full overflow-hidden"><picture><source type="image/avif" srcset="assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-480.avif 480w, assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-768.avif 768w, assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 33vw"><source type="image/webp" srcset="assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-480.webp 480w, assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-768.webp 768w, assets/optimized/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw"><img src="assets/tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async" class="w-full h-full object-cover"></picture></div>
-            <div class="p-8"><h3 class="font-display text-xl font-bold text-brand mb-2" data-i18n="home.editorial.e1t">Amanecer entre volcanes</h3><p class="text-sm text-muted" data-i18n="home.editorial.e1d">Sube el Ilamatepec y desayuna frente a la laguna turquesa del cráter.</p></div>
-          </a>
-          <a href="tours.html" class="tour-card flex flex-col">
-            <div class="aspect-[16/10] w-full overflow-hidden"><picture><source type="image/avif" srcset="assets/optimized/img/slide_1-480.avif 480w, assets/optimized/img/slide_1-768.avif 768w, assets/optimized/img/slide_1-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 33vw"><source type="image/webp" srcset="assets/optimized/img/slide_1-480.webp 480w, assets/optimized/img/slide_1-768.webp 768w, assets/optimized/img/slide_1-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw"><img src="assets/img/slide_1.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async" class="w-full h-full object-cover"></picture></div>
-            <div class="p-8"><h3 class="font-display text-xl font-bold text-brand mb-2" data-i18n="home.editorial.e2t">Café de altura</h3><p class="text-sm text-muted" data-i18n="home.editorial.e2d">Ruta de las Flores, fincas y cata con productores locales.</p></div>
-          </a>
-          <a href="tours.html" class="tour-card flex flex-col">
-            <div class="aspect-[16/10] w-full overflow-hidden"><picture><source type="image/avif" srcset="assets/optimized/img/slide_0-480.avif 480w, assets/optimized/img/slide_0-768.avif 768w, assets/optimized/img/slide_0-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 33vw"><source type="image/webp" srcset="assets/optimized/img/slide_0-480.webp 480w, assets/optimized/img/slide_0-768.webp 768w, assets/optimized/img/slide_0-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw"><img src="assets/img/slide_0.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async" class="w-full h-full object-cover"></picture></div>
-            <div class="p-8"><h3 class="font-display text-xl font-bold text-brand mb-2" data-i18n="home.editorial.e3t">Atardecer surf</h3><p class="text-sm text-muted" data-i18n="home.editorial.e3d">El Sunzal y El Tunco: olas, pupusas y Pacífico dorado.</p></div>
-          </a>
+        <div class="story-video-grid">
+          <article class="story-video-card">
+            <div class="video-placeholder video-placeholder--story reference-story-media" data-video-placeholder="story">
+              <picture aria-hidden="true">
+                <source type="image/avif" srcset="assets/optimized/tours/volcan-santa-ana/IMG_9697-480.avif 480w, assets/optimized/tours/volcan-santa-ana/IMG_9697-768.avif 768w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1200.avif 1200w" sizes="(max-width: 760px) 82vw, 22vw">
+                <source type="image/webp" srcset="assets/optimized/tours/volcan-santa-ana/IMG_9697-480.webp 480w, assets/optimized/tours/volcan-santa-ana/IMG_9697-768.webp 768w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1200.webp 1200w" sizes="(max-width: 760px) 82vw, 22vw">
+                <img src="assets/tours/volcan-santa-ana/IMG_9697.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async">
+              </picture>
+              <span class="reference-video-scrim" aria-hidden="true"></span>
+              <span class="reference-video-badge" data-i18n="video.reference">Video de referencia</span>
+              <button class="reference-video-trigger reference-video-trigger--story" type="button" data-video-trigger="volcano" aria-describedby="story-volcano-title" data-i18n-aria="video.watch" aria-label="Ver video de referencia">
+                <span class="reference-video-play" aria-hidden="true"><span class="material-symbols-outlined">play_arrow</span></span>
+                <span class="reference-video-action" data-i18n="video.watch">Ver video de referencia</span>
+              </button>
+              <span class="story-video-author"><span data-i18n="video.by">Por</span> Pato Viajes y Aventuras</span>
+            </div>
+            <h3 id="story-volcano-title" data-i18n="home.stories.volcano">Lago y volcán</h3>
+          </article>
+          <article class="story-video-card">
+            <div class="video-placeholder video-placeholder--story reference-story-media" data-video-placeholder="story">
+              <picture aria-hidden="true">
+                <source type="image/avif" srcset="assets/optimized/img/slide_1-480.avif 480w, assets/optimized/img/slide_1-768.avif 768w, assets/optimized/img/slide_1-1200.avif 1200w" sizes="(max-width: 760px) 82vw, 22vw">
+                <source type="image/webp" srcset="assets/optimized/img/slide_1-480.webp 480w, assets/optimized/img/slide_1-768.webp 768w, assets/optimized/img/slide_1-1200.webp 1200w" sizes="(max-width: 760px) 82vw, 22vw">
+                <img src="assets/img/slide_1.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async">
+              </picture>
+              <span class="reference-video-scrim" aria-hidden="true"></span>
+              <span class="reference-video-badge" data-i18n="video.reference">Video de referencia</span>
+              <button class="reference-video-trigger reference-video-trigger--story" type="button" data-video-trigger="flowers" aria-describedby="story-flowers-title" data-i18n-aria="video.watch" aria-label="Ver video de referencia">
+                <span class="reference-video-play" aria-hidden="true"><span class="material-symbols-outlined">play_arrow</span></span>
+                <span class="reference-video-action" data-i18n="video.watch">Ver video de referencia</span>
+              </button>
+              <span class="story-video-author"><span data-i18n="video.by">Por</span> Santi Foci</span>
+            </div>
+            <h3 id="story-flowers-title" data-i18n="home.stories.flowers">Ruta de las Flores</h3>
+          </article>
+          <article class="story-video-card">
+            <div class="video-placeholder video-placeholder--story reference-story-media" data-video-placeholder="story">
+              <picture aria-hidden="true">
+                <source type="image/avif" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.avif 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.avif 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.avif 1200w" sizes="(max-width: 760px) 82vw, 22vw">
+                <source type="image/webp" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.webp 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.webp 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.webp 1200w" sizes="(max-width: 760px) 82vw, 22vw">
+                <img src="assets/tours/city-tour-san-salvador/IMG_2503.jpg" alt="" width="2268" height="4032" loading="lazy" decoding="async">
+              </picture>
+              <span class="reference-video-scrim" aria-hidden="true"></span>
+              <span class="reference-video-badge" data-i18n="video.reference">Video de referencia</span>
+              <button class="reference-video-trigger reference-video-trigger--story" type="button" data-video-trigger="city" aria-describedby="story-city-title" data-i18n-aria="video.watch" aria-label="Ver video de referencia">
+                <span class="reference-video-play" aria-hidden="true"><span class="material-symbols-outlined">play_arrow</span></span>
+                <span class="reference-video-action" data-i18n="video.watch">Ver video de referencia</span>
+              </button>
+              <span class="story-video-author"><span data-i18n="video.by">Por</span> DelvisD</span>
+            </div>
+            <h3 id="story-city-title" data-i18n="home.stories.city">Centro Histórico desde el aire</h3>
+          </article>
         </div>
       </div>
     </section>
@@ -306,64 +461,69 @@
     <div class="ornate-divider mx-16 my-16"></div>
 
     <!-- Planifica tu viaje -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Planifica">
-      <div class="w-full max-w-6xl">
-        <div class="text-center mb-8">
-          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.plan.eyebrow">Planifica tu viaje</p>
-          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.plan.title">Todo resuelto antes de salir</h2>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="plan-card"><span class="material-symbols-outlined" aria-hidden="true">directions_bus</span><h3 data-i18n="home.plan.p1t">Transporte incluido</h3><p data-i18n="home.plan.p1d">Ida y vuelta cómoda desde tu hotel.</p></div>
-          <div class="plan-card"><span class="material-symbols-outlined" aria-hidden="true">restaurant</span><h3 data-i18n="home.plan.p2t">Comida típica</h3><p data-i18n="home.plan.p2d">Almuerzos locales y cata de café.</p></div>
-          <div class="plan-card"><span class="material-symbols-outlined" aria-hidden="true">badge</span><h3 data-i18n="home.plan.p3t">Guía certificado</h3><p data-i18n="home.plan.p3d">Mario te acompaña todo el recorrido.</p></div>
-          <div class="plan-card"><span class="material-symbols-outlined" aria-hidden="true">pin_drop</span><h3 data-i18n="home.plan.p4t">Recojo en hotel</h3><p data-i18n="home.plan.p4d">Punto de encuentro claro con foto.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="ornate-divider mx-16 my-16"></div>
-
-    <!-- Por qué + stats -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Por qué nosotros">
-      <div class="w-full max-w-6xl text-center">
-        <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.why.eyebrow">Por qué nosotros</p>
-        <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-8" data-i18n="home.why.title">Viaja con quien conoce el sendero</h2>
-        <div class="stats-row">
-          <div class="stat"><span class="stat-num" data-count="20" data-suffix="+">20+</span><span class="stat-label" data-i18n="home.stats.years">años de turismo</span></div>
-          <div class="stat"><span class="stat-num" data-count="6">6</span><span class="stat-label" data-i18n="home.stats.tours">tours insignia</span></div>
-          <div class="stat"><span class="stat-num" data-count="3">3</span><span class="stat-label" data-i18n="home.stats.langs">idiomas</span></div>
-          <div class="stat"><span class="stat-num" data-count="100" data-suffix="%">100%</span><span class="stat-label" data-i18n="home.stats.private">privado y seguro</span></div>
-        </div>
+    <section class="home-shell home-planning-chapter relative w-full z-10 flex justify-center" data-home-layout="index" aria-labelledby="planning-title">
+      <div class="planning-layout w-full max-w-6xl">
+        <header class="planning-heading home-reveal">
+          <p class="section-kicker" data-i18n="home.plan.eyebrow">Planifica tu viaje</p>
+          <h2 id="planning-title" class="section-title" data-i18n="home.plan.title">Todo resuelto antes de salir</h2>
+          <p class="section-copy" data-i18n="home.plan.intro">Coordinamos lo esencial para que tú puedas concentrarte en el camino.</p>
+        </header>
+        <ol class="planning-index">
+          <li class="planning-item">
+            <span class="planning-number" aria-hidden="true">01</span>
+            <span class="material-symbols-outlined planning-icon" aria-hidden="true">directions_bus</span>
+            <div><h3 data-i18n="home.plan.p1t">Transporte incluido</h3><p data-i18n="home.plan.p1d">Ida y vuelta cómoda desde tu hotel.</p></div>
+          </li>
+          <li class="planning-item">
+            <span class="planning-number" aria-hidden="true">02</span>
+            <span class="material-symbols-outlined planning-icon" aria-hidden="true">restaurant</span>
+            <div><h3 data-i18n="home.plan.p2t">Comida típica</h3><p data-i18n="home.plan.p2d">Almuerzos locales y cata de café.</p></div>
+          </li>
+          <li class="planning-item">
+            <span class="planning-number" aria-hidden="true">03</span>
+            <span class="material-symbols-outlined planning-icon" aria-hidden="true">badge</span>
+            <div><h3 data-i18n="home.plan.p3t">Guía certificado</h3><p data-i18n="home.plan.p3d">Mario te acompaña todo el recorrido.</p></div>
+          </li>
+          <li class="planning-item">
+            <span class="planning-number" aria-hidden="true">04</span>
+            <span class="material-symbols-outlined planning-icon" aria-hidden="true">pin_drop</span>
+            <div><h3 data-i18n="home.plan.p4t">Recojo en hotel</h3><p data-i18n="home.plan.p4d">Punto de encuentro claro con foto.</p></div>
+          </li>
+        </ol>
       </div>
     </section>
 
     <div class="ornate-divider mx-16 my-16"></div>
 
     <!-- Cómo funciona -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Cómo funciona">
+    <section class="home-shell home-steps-chapter relative w-full z-10 flex justify-center" data-home-layout="sequence" aria-labelledby="steps-title">
       <div class="w-full max-w-6xl">
-        <div class="text-center mb-8">
-          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.steps.eyebrow">Así de fácil</p>
-          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.steps.title">De la idea al sendero en 3 pasos</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="step-card"><span class="step-num" aria-hidden="true">1</span><h3 data-i18n="home.steps.s1t">1. Elige tu tour</h3><p data-i18n="home.steps.s1d">Abre el que te guste y mira fotos, ruta y detalles.</p></div>
-          <div class="step-card"><span class="step-num" aria-hidden="true">2</span><h3 data-i18n="home.steps.s2t">2. Indica tu grupo</h3><p data-i18n="home.steps.s2d">Adultos, niños y fecha estimada. Niños &lt;12 al 50%.</p></div>
-          <div class="step-card"><span class="step-num" aria-hidden="true">3</span><h3 data-i18n="home.steps.s3t">3. Cotiza y viaja</h3><p data-i18n="home.steps.s3d">Te responde Mario por WhatsApp o correo. Sin pagos raros.</p></div>
-        </div>
+        <header class="chapter-heading chapter-heading--steps home-reveal">
+          <div>
+          <p class="section-kicker" data-i18n="home.steps.eyebrow">Así funciona</p>
+          <h2 id="steps-title" class="section-title" data-i18n="home.steps.title">De la idea al sendero en tres pasos</h2>
+          </div>
+          <p class="section-copy" data-i18n="home.steps.intro">Un proceso directo, conversado contigo y sin pasos ocultos.</p>
+        </header>
+        <ol class="steps-path">
+          <li class="step-card home-reveal"><span class="step-num" aria-hidden="true">01</span><h3 data-i18n="home.steps.s1t">Elige tu recorrido</h3><p data-i18n="home.steps.s1d">Revisa fotos, duración y lo que vivirás en cada ruta.</p></li>
+          <li class="step-card home-reveal"><span class="step-num" aria-hidden="true">02</span><h3 data-i18n="home.steps.s2t">Cuéntanos tu plan</h3><p data-i18n="home.steps.s2d">Indica fecha aproximada, grupo e idioma de preferencia.</p></li>
+          <li class="step-card home-reveal"><span class="step-num" aria-hidden="true">03</span><h3 data-i18n="home.steps.s3t">Recibe tu cotización</h3><p data-i18n="home.steps.s3d">Mario confirma contigo itinerario, recogida y precio.</p></li>
+        </ol>
       </div>
     </section>
 
     <div class="ornate-divider mx-16 my-16"></div>
 
     <!-- Guía Mario preview -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Tu guía">
-      <div class="guide-preview w-full max-w-6xl">
-        <img src="assets/img/founder-mario.jpg" alt="Mario Domínguez, guía fundador" loading="lazy" data-media-placeholder onerror="this.style.display='none'" />
-        <div>
-          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.guide.eyebrow">Tu guía</p>
-          <h2 class="font-display text-[28px] md:text-[36px] font-bold text-brand mb-3" data-i18n="home.guide.title">Hola, soy Mario</h2>
-          <p class="text-muted mb-6" data-i18n="home.guide.text">20+ años creando rutas en El Salvador y Brasil. Te recojo, te cuento y te cuido como a un amigo.</p>
+    <section class="home-shell home-guide-chapter relative w-full z-10 flex justify-center" data-home-layout="split" aria-labelledby="guide-title">
+      <div class="guide-preview w-full max-w-6xl home-reveal">
+        <div class="guide-mark" aria-hidden="true"><span>M</span><small>El Salvador Trails</small></div>
+        <div class="guide-copy">
+          <p class="section-kicker" data-i18n="home.guide.eyebrow">Tu anfitrión en el camino</p>
+          <h2 id="guide-title" class="section-title section-title--small" data-i18n="home.guide.title">Hola, soy Mario</h2>
+          <blockquote class="guide-quote" data-i18n="home.guide.quote">“Mi trabajo es ayudarte a entender cada lugar, no solo llevarte hasta él.”</blockquote>
+          <p class="guide-text" data-i18n="home.guide.text">Diseño cada recorrido para que conozcas el país con contexto, calma y atención directa.</p>
           <a href="about.html" class="btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-lg"><span data-i18n="home.guide.cta">Conoce mi historia</span><span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span></a>
         </div>
       </div>
@@ -372,144 +532,51 @@
     <div class="ornate-divider mx-16 my-16"></div>
 
     <!-- FAQ -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Preguntas">
-      <div class="w-full max-w-3xl">
-        <div class="text-center mb-8">
-          <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-brand" data-i18n="home.faq.eyebrow">Dudas comunes</p>
-          <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="home.faq.title">Antes de cotizar</h2>
+    <section class="home-shell home-faq-chapter relative w-full z-10 flex justify-center" data-home-layout="list" aria-labelledby="faq-title">
+      <div class="faq-layout w-full max-w-6xl">
+        <header class="faq-heading home-reveal">
+          <p class="section-kicker" data-i18n="home.faq.eyebrow">Dudas comunes</p>
+          <h2 id="faq-title" class="section-title" data-i18n="home.faq.title">Antes de cotizar</h2>
+          <p class="section-copy" data-i18n="home.faq.intro">Lo esencial para decidir tu recorrido con claridad.</p>
+        </header>
+        <div class="faq-list">
+          <details class="faq-item home-reveal"><summary data-i18n="home.faq.q1">¿Cómo se organiza cada salida?</summary><p data-i18n="home.faq.a1">Antes del viaje confirmamos contigo el recorrido, horario, punto de recogida y recomendaciones.</p></details>
+          <details class="faq-item home-reveal"><summary data-i18n="home.faq.q2">¿Recogen en mi hotel?</summary><p data-i18n="home.faq.a2">Sí, en San Salvador y zonas acordadas. El punto exacto lleva foto en cada tour.</p></details>
+          <details class="faq-item home-reveal"><summary data-i18n="home.faq.q3">¿Cómo se define el precio?</summary><p data-i18n="home.faq.a3">La cotización se prepara según el recorrido, la fecha y la cantidad de viajeros.</p></details>
+          <details class="faq-item home-reveal"><summary data-i18n="home.faq.q4">¿Qué debo llevar al volcán?</summary><p data-i18n="home.faq.a4">Calzado con agarre, agua, bloqueador y chaqueta ligera. En cada tour encontrarás recomendaciones específicas.</p></details>
+          <details class="faq-item home-reveal"><summary data-i18n="home.faq.q5">¿En qué idioma es el tour?</summary><p data-i18n="home.faq.a5">Español, English y Português, según tu preferencia al cotizar.</p></details>
         </div>
-        <details class="faq-item"><summary data-i18n="home.faq.q1">¿Es seguro viajar con ustedes?</summary><p data-i18n="home.faq.a1">Sí: transporte privado, guía certificado, grupos pequeños y rutas probadas por 20+ años.</p></details>
-        <details class="faq-item"><summary data-i18n="home.faq.q2">¿Recogen en mi hotel?</summary><p data-i18n="home.faq.a2">Sí, en San Salvador y zonas acordadas. El punto exacto lleva foto en cada tour.</p></details>
-        <details class="faq-item"><summary data-i18n="home.faq.q3">¿Los niños pagan menos?</summary><p data-i18n="home.faq.a3">Menores de 12 años gozan de tarifa especial al 50%.</p></details>
-        <details class="faq-item"><summary data-i18n="home.faq.q4">¿Qué debo llevar al volcán?</summary><p data-i18n="home.faq.a4">Calzado con agarre, agua, bloqueador y chaqueta ligera. Dificultad moderada, ~3h entre subida y bajada.</p></details>
-        <details class="faq-item"><summary data-i18n="home.faq.q5">¿En qué idioma es el tour?</summary><p data-i18n="home.faq.a5">Español, English y Português, según tu preferencia al cotizar.</p></details>
       </div>
     </section>
 
     <div class="ornate-divider mx-16 my-16"></div>
 
     <!-- CTA final -->
-    <section class="relative w-full z-10 px-8 md:px-16 flex justify-center" aria-label="Reserva">
-      <div class="final-cta w-full max-w-6xl">
-        <h2 class="font-display text-[28px] md:text-[40px] font-bold mb-3" data-i18n="home.final.title">¿Listo para tu sendero?</h2>
-        <p class="mb-8 opacity-90" data-i18n="home.final.sub">Escríbenos hoy y mañana ya estás caminando El Salvador.</p>
-        <div class="flex gap-4 flex-wrap justify-center">
+    <section class="home-shell home-closing-chapter relative w-full z-10 flex justify-center" data-home-layout="photo" data-photo-chapter="closing" aria-labelledby="final-title">
+      <div class="final-cta w-full max-w-6xl home-reveal">
+        <picture class="final-cta-media" aria-hidden="true">
+          <source type="image/avif" srcset="assets/optimized/img/sendero-pano-480.avif 480w, assets/optimized/img/sendero-pano-768.avif 768w, assets/optimized/img/sendero-pano-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 90vw">
+          <source type="image/webp" srcset="assets/optimized/img/sendero-pano-480.webp 480w, assets/optimized/img/sendero-pano-768.webp 768w, assets/optimized/img/sendero-pano-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 90vw">
+          <img src="assets/img/sendero-pano.jpg" alt="" width="1500" height="844" loading="lazy" decoding="async">
+        </picture>
+        <div class="final-cta-content">
+          <p class="final-cta-kicker" data-i18n="home.final.eyebrow">El siguiente camino</p>
+          <h2 id="final-title" data-i18n="home.final.title">¿Listo para tu sendero?</h2>
+          <p data-i18n="home.final.sub">Cuéntanos qué te gustaría conocer y armamos una ruta para tu grupo.</p>
+          <div class="final-cta-actions">
           <a class="btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-lg" href="https://wa.me/50370000000?text=%C2%A1Hola%20Mario!%20Quiero%20cotizar%20un%20tour." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span data-i18n="home.final.quote">Cotizar por WhatsApp</span></a>
           <a class="final-ghost" href="tours.html"><span data-i18n="home.final.catalog">Ver catálogo</span></a>
+          </div>
         </div>
-        <p class="agenda-strip"><span data-i18n="home.agenda.t1">Cosecha de café · Nov–Feb</span><span aria-hidden="true">✶</span><span data-i18n="home.agenda.t2">Surf · May–Oct</span><span aria-hidden="true">✶</span><span data-i18n="home.agenda.t3">Pueblos vivos · todo el año</span></p>
       </div>
     </section>
 
-    <div class="ornate-divider mx-16 my-16"></div>
-
-    <!-- Sección Carrusel de Testimonios (Mural de Feedback destacado) -->
-    <section class="testimonials-section relative z-10 py-8">
-      <div class="w-full max-w-6xl mx-auto text-center mb-8">
-        <p class="font-label uppercase tracking-[0.25em] text-xs mb-3 text-accent" data-i18n="feedback.eyebrow">Lo que dicen nuestros viajeros</p>
-        <h2 class="font-display text-[32px] md:text-[44px] font-bold text-brand mb-3" data-i18n="feedback.title">Historias que nos hacen seguir</h2>
-        <p class="text-muted max-w-[640px] mx-auto" data-i18n="feedback.subtitle">Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de El Salvador Trails.</p>
-        <p class="review-summary"><span class="review-summary-label" data-i18n="home.summary.label">Viajeros destacan</span><span id="review-keywords" class="review-keywords"></span></p>
-      </div>
-
-      <!-- Viewport del Carrusel -->
-      <div class="testimonials-viewport" id="testimonials-viewport">
-        <div class="testimonials-track" id="testimonials-track">
-          <!-- Tarjetas renderizadas dinámicamente desde data/reviews.json -->
-        </div>
-      </div>
-
-      <!-- Controles: Anterior, Dots, Siguiente -->
-      <div class="testimonials-controls">
-        <button id="testimonials-prev-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.prev" aria-label="Testimonio anterior">
-          <span class="material-symbols-outlined">arrow_back</span>
-        </button>
-
-        <div class="testimonials-dots" id="testimonials-dots"></div>
-
-        <button id="testimonials-next-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.next" aria-label="Siguiente testimonio">
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
-      </div>
-
-      <!-- CTA para dejar feedback / testimonio -->
-      <div class="text-center mt-10">
-        <button id="open-feedback-btn" class="help-tutorial-btn inline-flex items-center gap-2 mx-auto px-6 py-3 text-sm font-semibold">
-          <span class="material-symbols-outlined text-base">rate_review</span>
-          <span data-i18n="testimonials.cta">¿Viajaste con nosotros? Comparte tu experiencia</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- Modal para Enviar Feedback (Oculto por defecto, modera Mario/Ellen) -->
-    <div id="feedback-modal" class="feedback-dialog-overlay" aria-hidden="true" role="dialog">
-      <div class="feedback-dialog-box">
-        <div class="flex items-center justify-between mb-4 border-b pb-3 border-[var(--border)]">
-          <h3 class="font-display text-xl font-bold text-[var(--brand)] dark:text-[var(--accent)]" data-i18n="feedback.modal.title">
-            Comparte tu experiencia
-          </h3>
-          <button id="close-feedback-btn" class="text-2xl text-[var(--text-muted)] hover:text-[var(--text)] transition-colors" data-i18n-aria="feedback.form.close" aria-label="Cerrar">&times;</button>
-        </div>
-
-        <p class="text-xs text-[var(--text-muted)] mb-5" data-i18n="feedback.modal.subtitle">
-          Tu reseña nos ayuda a seguir brindando viajes seguros y memorables.
-        </p>
-
-        <div id="feedback-form-success" class="hidden mb-4 p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-700 dark:text-green-300 text-sm">
-          <span data-i18n="feedback.form.success">¡Muchas gracias! Tu reseña ha sido enviada y será publicada tras la revisión de nuestro equipo.</span>
-        </div>
-
-        <form id="feedback-form" class="space-y-4">
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.name">Tu nombre</label>
-            <input type="text" required class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]" placeholder="Ej. Sarah Jenkins">
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.country">País de origen (opcional)</label>
-            <input type="text" class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]" placeholder="Ej. Canadá, Estados Unidos, etc.">
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.rating">Calificación</label>
-            <select class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]">
-              <option value="5">⭐⭐⭐⭐⭐ (5 / 5 - Excelente)</option>
-              <option value="4">⭐⭐⭐⭐ (4 / 5 - Muy buena)</option>
-              <option value="3">⭐⭐⭐ (3 / 5 - Buena)</option>
-              <option value="2">⭐⭐ (2 / 5 - Regular)</option>
-              <option value="1">⭐ (1 / 5 - Insatisfactoria)</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.comment">Tu reseña o testimonio</label>
-            <textarea rows="4" required class="w-full px-3 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]" placeholder="Cuéntanos cómo fue tu experiencia..."></textarea>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 text-[var(--text)]" data-i18n="feedback.form.photos">Adjuntar fotos (opcional, máx. 4 imágenes)</label>
-            <input type="file" accept="image/jpeg,image/png,image/webp" multiple class="w-full text-xs text-[var(--text-muted)] file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[var(--brand-soft)] file:text-[var(--brand)] dark:file:text-[var(--accent)] hover:file:opacity-80">
-          </div>
-
-          <p class="text-xs text-[var(--text-muted)] italic" data-i18n="feedback.form.note">
-            Nota: Toda reseña entra en estado pendiente y es moderada por nuestro equipo antes de publicarse.
-          </p>
-
-          <div class="pt-2">
-            <button type="submit" class="btn-accent w-full py-3" data-i18n="feedback.form.submit">
-              Enviar para revisión
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Divisor ornamental -->
     <div class="ornate-divider mx-16 my-16"></div>
 
     <!-- Conecta con nosotros: banda ampliada (5 redes consistente) -->
-    <section class="social-band w-full py-16 flex flex-col items-center">
-      <span class="social-connect-title mb-2" data-i18n="social.title">Síguenos y viaja con nosotros</span>
+    <section class="social-band w-full py-16 flex flex-col items-center home-reveal" data-home-layout="band" aria-labelledby="social-title">
+      <span class="social-band-kicker" data-i18n="social.eyebrow">El viaje continúa</span>
+      <h2 id="social-title" class="social-connect-title mb-2" data-i18n="social.title">Síguenos y viaja con nosotros</h2>
       <p class="text-sm mb-2 text-muted px-6 text-center" data-i18n="social.subtitle">Volcanes al amanecer, cafetales, playas y la calidez de nuestra gente: síguenos y empieza a soñar con tu próxima aventura.</p>
       <p class="text-sm font-bold mb-6 text-brand" data-i18n="social.handle">@elsalvadortrails</p>
       <div class="flex gap-5 flex-wrap justify-center">
@@ -523,14 +590,15 @@
   </main>
 
   <!-- Footer (tipografía oficial del brand: Adlery Pro bajo el ícono) -->
-  <footer class="footer-light flex flex-col items-center py-16 w-full">
+  <footer class="footer-light flex flex-col items-center py-16 w-full" data-home-layout="footer">
     <img src="assets/icons/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4" loading="lazy">
 
     <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
 
     <div class="footer-links flex gap-10 mb-6 flex-wrap justify-center px-6">
+      <a href="privacy.html" data-i18n="footer.privacy">Política de Privacidad</a>
+      <a href="terms.html" data-i18n="footer.terms">Términos de Servicio</a>
       <a href="mailto:hola@elsalvadortrails.com" data-i18n="footer.contact">Contacto</a>
-      <a href="https://wa.me/50370000000" target="_blank" rel="noopener">WhatsApp</a>
     </div>
 
     <div class="flex gap-6 mb-6 flex-wrap justify-center">
@@ -548,6 +616,66 @@
   <a class="wa-float" href="https://wa.me/50370000000?text=%C2%A1Hola%20Mario!%20Quiero%20cotizar%20un%20tour." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
 
   <!-- Modal tutorial -->
+  <div class="reference-video-modal" data-video-modal role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="reference-video-modal-title">
+    <div class="reference-video-dialog" role="document">
+      <button class="reference-video-close" type="button" data-video-close data-i18n-aria="video.close" aria-label="Cerrar video">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        <span data-i18n="video.close">Cerrar video</span>
+      </button>
+      <div class="reference-video-modal-frame" data-video-frame></div>
+      <div class="reference-video-modal-copy">
+        <p class="reference-video-modal-label" data-i18n="video.reference">Video de referencia</p>
+        <h2 id="reference-video-modal-title" data-video-modal-title>Video de referencia</h2>
+        <p><span data-i18n="video.by">Por</span> <strong data-video-modal-author></strong></p>
+        <p class="reference-video-fallback" data-video-fallback hidden data-i18n="video.unavailable">El video no está disponible; abre la fuente original.</p>
+        <a data-video-source href="#" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="video.source">Abrir fuente en YouTube</span>
+          <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="feedback-modal" class="feedback-dialog-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="feedback-modal-title">
+    <div class="feedback-dialog-box" role="document">
+      <button type="button" id="close-feedback-btn" class="feedback-dialog-close" data-i18n-aria="feedback.form.close" aria-label="Cerrar">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+      <h2 id="feedback-modal-title" class="font-display text-2xl font-bold text-brand" data-i18n="feedback.modal.title">Comparte tu experiencia</h2>
+      <p class="section-copy" data-i18n="feedback.modal.subtitle">Tu reseña nos ayuda a seguir brindando viajes seguros y memorables.</p>
+      <form id="feedback-form">
+        <label class="feedback-field">
+          <span data-i18n="feedback.form.name">Tu nombre</span>
+          <input class="form-control" type="text" name="name" required autocomplete="name">
+        </label>
+        <label class="feedback-field">
+          <span data-i18n="feedback.form.country">País de origen (opcional)</span>
+          <input class="form-control" type="text" name="country" autocomplete="country-name">
+        </label>
+        <label class="feedback-field">
+          <span data-i18n="feedback.form.rating">Calificación</span>
+          <select class="form-control" name="rating" required>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+          </select>
+        </label>
+        <label class="feedback-field">
+          <span data-i18n="feedback.form.comment">Tu reseña o testimonio</span>
+          <textarea class="form-control" name="comment" rows="4" required></textarea>
+        </label>
+        <label class="feedback-field">
+          <span data-i18n="feedback.form.photos">Adjuntar fotos (opcional, máx. 4 imágenes)</span>
+          <input type="file" name="photos" accept="image/*" multiple>
+        </label>
+        <p id="feedback-form-success" class="feedback-form-success hidden" data-i18n="feedback.form.success">¡Muchas gracias! Tu reseña ha sido enviada y será publicada tras la revisión de nuestro equipo.</p>
+        <button type="submit" class="btn-accent w-full py-3 mt-4 rounded-lg" data-i18n="feedback.form.submit">Enviar para revisión</button>
+      </form>
+    </div>
+  </div>
+
   <div class="tutorial-overlay" data-help-modal role="dialog" aria-modal="true" aria-labelledby="help-title">
     <div class="tutorial-box">
       <h2 id="help-title" class="font-display text-2xl font-bold text-brand" data-i18n="help.title">Cómo usar este sitio</h2>
@@ -564,10 +692,12 @@
   <script src="data/media-manifest.js"></script>
   <script src="js/media.js"></script>
   <script src="data/tours-data.js"></script>
-  <script src="data/reviews-data.js"></script>
   <script src="js/script.js"></script>
-  <script src="js/testimonials.js"></script>
   <script src="js/site.js"></script>
   <script src="js/home.js"></script>
+  <script src="data/reference-videos.js"></script>
+  <script src="js/video-player.js"></script>
+  <script src="data/reviews-data.js"></script>
+  <script src="js/testimonials.js"></script>
 </body>
 </html>

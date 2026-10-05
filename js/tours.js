@@ -527,15 +527,15 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                   <div>
                     <label class="block text-xs font-medium mb-1 text-muted" data-i18n="tour.pricing.adults">Adultos</label>
-                    <input type="number" id="quote-adults" min="1" max="50" value="2" class="w-full px-3 py-2 rounded-lg border text-sm" style="background:var(--surface-raised);border-color:var(--border);color:var(--text);">
+                    <input type="number" id="quote-adults" min="1" max="50" value="2" class="form-control w-full">
                   </div>
                   <div>
                     <label class="block text-xs font-medium mb-1 text-muted" data-i18n="tour.pricing.children">Niños (<12 años - 50%)</label>
-                    <input type="number" id="quote-children" min="0" max="50" value="0" class="w-full px-3 py-2 rounded-lg border text-sm" style="background:var(--surface-raised);border-color:var(--border);color:var(--text);">
+                    <input type="number" id="quote-children" min="0" max="50" value="0" class="form-control w-full">
                   </div>
                   <div>
                     <label class="block text-xs font-medium mb-1 text-muted" data-i18n="tour.pricing.date">Fecha estimada</label>
-                    <input type="date" id="quote-date" class="w-full px-3 py-2 rounded-lg border text-sm" style="background:var(--surface-raised);border-color:var(--border);color:var(--text);">
+                    <input type="date" id="quote-date" class="form-control w-full">
                   </div>
                 </div>
 

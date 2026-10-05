@@ -6,8 +6,8 @@
   <title>El Salvador Trails - Catálogo de Tours</title>
 
   <!-- Font Imports -->
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=EB+Garamond:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,300..800;1,300..800&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=arrow_back,arrow_forward,arrow_outward,badge,chat,check_circle,chevron_left,chevron_right,close,construction,dark_mode,directions_bus,forum,group,handshake,info,landscape,light_mode,location_city,mail,map,menu,open_in_new,pause,photo_camera,pin_drop,play_arrow,play_circle,price_check,public,request_quote,restaurant,route,schedule,signpost,south,star,star_border,surfing,temple_buddhist,translate&amp;display=block" rel="stylesheet"/>
 
   <!-- Font Awesome Brands CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -27,7 +27,7 @@
             },
             "fontFamily": {
               "display": ["Fraunces", "serif"],
-              "body": ["Fira Sans", "sans-serif"],
+              "body": ["Work Sans", "sans-serif"],
               "label": ["Cinzel", "serif"]
             }
           }
@@ -47,7 +47,7 @@
 
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="font-body" data-i18n-page-title="page.tours.title">
+<body class="font-body secondary-page site-immersive has-photo-hero tours-page" data-i18n-page-title="page.tours.title">
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <!-- Barra de navegación fija -->
@@ -65,6 +65,7 @@
       <li><a href="tours.html" class="active" aria-current="page" data-i18n="nav.tours">Catálogo de Tours</a></li>
       <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
       <li><a href="real-estate.html" data-i18n="nav.realestate">Bienes Raíces</a></li>
+      <li><a href="payment.html" data-i18n="nav.payment">Pago en Línea</a></li>
     </ul>
 
     <div class="nav-right-container">
@@ -92,37 +93,82 @@
       </button>
     </div>
   </nav>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html" data-i18n="nav.home">Página Inicial</a>
-    <a href="tours.html" class="active" data-i18n="nav.tours">Catálogo de Tours</a>
-    <a href="about.html" data-i18n="nav.about">About Us</a>
-    <a href="real-estate.html" data-i18n="nav.realestate">Bienes Raíces</a>
-  </div>
-
-  <main class="relative pt-28" id="main-content">
-    <!-- Patrones decorativos de fondo -->
-    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-      <div class="brand-pattern-base pattern-sun w-[800px] h-[800px] -top-64 -left-64"></div>
-      <div class="brand-pattern-base pattern-coffee w-96 h-96 top-[20%] right-10 rotate-12"></div>
-      <div class="brand-pattern-base pattern-crops w-80 h-80 bottom-[30%] left-20 -rotate-6"></div>
+  <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" data-i18n-aria="nav.expanded" aria-label="Navegación del sitio">
+    <div class="menu-shell">
+      <div class="menu-intro">
+        <img src="assets/icons/logo.svg" class="menu-logo" alt="" aria-hidden="true">
+        <p class="menu-title" data-i18n="nav.menuTitle">Explora El Salvador</p>
+      </div>
+      <div class="menu-index">
+        <a href="index.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">01</span>
+          <span data-i18n="nav.home">Página Inicial</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="tours.html" class="active" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">02</span>
+          <span data-i18n="nav.tours">Catálogo de Tours</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="about.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">03</span>
+          <span data-i18n="nav.about">About Us</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="real-estate.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">04</span>
+          <span data-i18n="nav.realestate">Bienes Raíces</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="payment.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">05</span>
+          <span data-i18n="nav.payment">Pago en Línea</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+      </div>
+      <div class="menu-footer">
+        <span data-i18n="nav.menuFoot">Rutas locales y atención directa</span>
+        <span>@elsalvadortrails</span>
+      </div>
     </div>
+  </nav>
 
-    <!-- Título de la página -->
-    <section class="relative w-full z-10 pt-12 text-center px-8 md:px-16">
-      <h1 class="font-display text-[44px] md:text-[56px] text-brand leading-none mb-2 font-bold tracking-tight" data-i18n="catalog.title">Catálogo de Tours</h1>
-      <div class="ornate-divider mx-auto max-w-[400px]"></div>
+  <main id="main-content">
+    <section class="secondary-photo-hero tours-photo-hero" aria-labelledby="catalog-title">
+      <picture class="secondary-hero-media">
+        <source type="image/avif" srcset="assets/optimized/tours/volcan-santa-ana/IMG_9697-768.avif 768w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1200.avif 1200w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1920.avif 1920w" sizes="100vw">
+        <source type="image/webp" srcset="assets/optimized/tours/volcan-santa-ana/IMG_9697-768.webp 768w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1200.webp 1200w, assets/optimized/tours/volcan-santa-ana/IMG_9697-1920.webp 1920w" sizes="100vw">
+        <img src="assets/tours/volcan-santa-ana/IMG_9697.jpg" width="4032" height="2268" alt="Paisaje volcánico de El Salvador" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="secondary-hero-scrim" aria-hidden="true"></div>
+      <div class="secondary-hero-content">
+        <p class="secondary-hero-index" aria-hidden="true">02 / TOURS</p>
+        <p class="secondary-hero-kicker" data-i18n="catalog.kicker">Experiencias guiadas</p>
+        <h1 id="catalog-title" data-i18n="catalog.title">Catálogo de Tours</h1>
+        <p class="secondary-hero-lead" data-i18n="catalog.intro">Rutas locales para conocer volcanes, pueblos, lagos y ciudades con tiempo para mirar de verdad.</p>
+        <a class="secondary-hero-link" href="#categories-wrap">
+          <span data-i18n="catalog.explore">Elige cómo viajar</span>
+          <span class="material-symbols-outlined" aria-hidden="true">south</span>
+        </a>
+      </div>
     </section>
 
     <!-- Catálogo de Tours (3 categorías) -->
-    <section id="categories-wrap" class="relative w-full z-10 py-8 px-8 md:px-12 max-w-[1360px] mx-auto">
-      <div id="categories-grid" class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <section id="categories-wrap" class="tour-catalogue-chapter">
+      <header class="tour-catalogue-heading">
+        <p class="section-kicker" data-i18n="catalog.kicker">Experiencias guiadas</p>
+        <h2 data-i18n="catalog.choose">Tres maneras de recorrer el país</h2>
+        <p data-i18n="catalog.chooseCopy">Empieza con una excursión de un día, combina varios destinos o construye una ruta a tu medida.</p>
+      </header>
+      <div id="categories-grid" class="tours-editorial-grid">
 
         <!-- Categoría 1: Day Tours -->
-        <article class="tour-card flex flex-col">
-          <div class="aspect-[16/10] w-full overflow-hidden">
+        <article class="tour-card tour-category-card tour-category-card--lead flex flex-col">
+          <div class="tour-category-media aspect-[16/10] w-full overflow-hidden">
             <picture><source type="image/avif" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.avif 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.avif 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 33vw"><source type="image/webp" srcset="assets/optimized/tours/city-tour-san-salvador/IMG_2503-480.webp 480w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-768.webp 768w, assets/optimized/tours/city-tour-san-salvador/IMG_2503-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw"><img src="assets/tours/city-tour-san-salvador/IMG_2503.jpg" alt="Day Tours" width="2268" height="4032" loading="eager" decoding="async" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"></picture>
           </div>
-          <div class="p-10 flex flex-col flex-grow">
+          <div class="tour-category-copy p-10 flex flex-col flex-grow">
+            <span class="tour-category-number" aria-hidden="true">01</span>
             <h2 class="font-display text-3xl font-bold mb-5" data-i18n="dayTours.heading">Day Tours</h2>
             <ul class="leading-relaxed mb-8 space-y-3 flex-grow">
               <li><span class="text-accent font-bold mt-1">✶</span> <span data-i18n="dayTours.item1">Excursiones guiadas de un día completo.</span></li>
@@ -137,11 +183,12 @@
         </article>
 
         <!-- Categoría 2: Tour Packages -->
-        <article class="tour-card flex flex-col">
-          <div class="aspect-[16/10] w-full overflow-hidden">
+        <article class="tour-card tour-category-card tour-category-card--side flex flex-col">
+          <div class="tour-category-media aspect-[16/10] w-full overflow-hidden">
             <picture><source type="image/avif" srcset="assets/optimized/img/slide_1-480.avif 480w, assets/optimized/img/slide_1-768.avif 768w, assets/optimized/img/slide_1-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 33vw"><source type="image/webp" srcset="assets/optimized/img/slide_1-480.webp 480w, assets/optimized/img/slide_1-768.webp 768w, assets/optimized/img/slide_1-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw"><img src="assets/img/slide_1.jpg" alt="Tour Packages" width="4032" height="2268" loading="eager" decoding="async" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"></picture>
           </div>
-          <div class="p-10 flex flex-col flex-grow">
+          <div class="tour-category-copy p-10 flex flex-col flex-grow">
+            <span class="tour-category-number" aria-hidden="true">02</span>
             <h2 class="font-display text-3xl font-bold mb-5" data-i18n="tourPackages.heading">Tour Packages</h2>
             <ul class="leading-relaxed mb-8 space-y-3 flex-grow">
               <li><span class="text-accent font-bold mt-1">✶</span> <span data-i18n="tourPackages.item1">Itinerarios completos de varios días.</span></li>
@@ -156,11 +203,12 @@
         </article>
 
         <!-- Categoría 3: Personalized Experience -->
-        <article class="tour-card flex flex-col">
-          <div class="aspect-[16/10] w-full overflow-hidden">
+        <article class="tour-card tour-category-card tour-category-card--wide flex flex-col">
+          <div class="tour-category-media aspect-[16/10] w-full overflow-hidden">
             <picture><source type="image/avif" srcset="assets/optimized/img/slide_3-480.avif 480w, assets/optimized/img/slide_3-768.avif 768w, assets/optimized/img/slide_3-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 33vw"><source type="image/webp" srcset="assets/optimized/img/slide_3-480.webp 480w, assets/optimized/img/slide_3-768.webp 768w, assets/optimized/img/slide_3-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw"><img src="assets/img/slide_3.jpg" alt="Personalized Experience" width="4160" height="1664" loading="eager" decoding="async" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"></picture>
           </div>
-          <div class="p-10 flex flex-col flex-grow">
+          <div class="tour-category-copy p-10 flex flex-col flex-grow">
+            <span class="tour-category-number" aria-hidden="true">03</span>
             <h2 class="font-display text-3xl font-bold mb-5" data-i18n="personalized.heading">Personalized Experience</h2>
             <ul class="leading-relaxed mb-8 space-y-3 flex-grow">
               <li><span class="text-accent font-bold mt-1">✶</span> <span data-i18n="personalized.item1">Rutas diseñadas a tu propio gusto y ritmo.</span></li>
@@ -206,8 +254,9 @@
     <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
 
     <div class="footer-links flex gap-10 mb-6 flex-wrap justify-center px-6">
+      <a href="privacy.html" data-i18n="footer.privacy">Política de Privacidad</a>
+      <a href="terms.html" data-i18n="footer.terms">Términos de Servicio</a>
       <a href="mailto:hola@elsalvadortrails.com" data-i18n="footer.contact">Contacto</a>
-      <a href="https://wa.me/50370000000" target="_blank" rel="noopener">WhatsApp</a>
     </div>
 
     <div class="flex gap-6 mb-6 flex-wrap justify-center">

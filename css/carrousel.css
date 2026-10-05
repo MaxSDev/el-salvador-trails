@@ -9,6 +9,7 @@
 /* ---- Contenedor ---- */
 .dashboard-container {
   width: 100%;
+  min-width: 0;
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem;
@@ -17,6 +18,9 @@
 /* ---- Tarjeta de destino ---- */
 .destination-card {
   position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   overflow: hidden;
   background: var(--carousel-card-bg);
   border: 1px solid var(--carousel-border);
@@ -79,8 +83,54 @@
 .tabs-nav {
   display: flex;
   gap: 10px;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
   flex-wrap: wrap;
+}
+
+.carousel-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 1.75rem;
+}
+
+.carousel-pause-btn {
+  min-width: 112px;
+  min-height: var(--touch-target);
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1px solid var(--tab-border);
+  border-radius: 999px;
+  background: var(--tab-bg);
+  color: var(--tab-text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.carousel-pause-btn:hover,
+.carousel-pause-btn[aria-pressed="true"] {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: #fbf8ed;
+}
+
+.dark .carousel-pause-btn:hover,
+.dark .carousel-pause-btn[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #1c1714;
+}
+
+.carousel-pause-btn .material-symbols-outlined {
+  font-size: 18px;
 }
 
 .tab-btn {
@@ -117,6 +167,12 @@
   align-items: start;
 }
 
+.content-grid > *,
+.text-column,
+.gallery-column {
+  min-width: 0;
+}
+
 /* ---- Columna izquierda ---- */
 .text-column {
   display: flex;
@@ -133,6 +189,7 @@
   text-transform: uppercase;
   color: var(--brand);
   transition: color 0.35s ease;
+  overflow-wrap: anywhere;
 }
 
 .slide-details {
@@ -216,6 +273,7 @@
   border-radius: 8px;
   overflow: hidden;
   aspect-ratio: 16 / 9;
+  min-height: 44px;
   position: relative;
   transition: border-color 0.3s, opacity 0.3s;
 }
@@ -279,3 +337,59 @@
     margin-bottom: 2rem;
   }
 }
+
+@media (max-width: 640px) {
+  .dashboard-container {
+    padding: 0;
+  }
+
+  .destination-card {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .carousel-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .carousel-toolbar .tabs-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .carousel-toolbar .tab-btn {
+    width: 100%;
+    min-height: 44px;
+    padding-inline: 10px;
+  }
+
+  .carousel-pause-btn {
+    width: 100%;
+  }
+
+  .content-grid {
+    gap: 26px;
+  }
+
+  .brand-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .slide-details {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-layer,
+  .main-image-wrapper img,
+  .slide-details,
+  .tab-btn,
+  .thumb-btn,
+  .carousel-pause-btn {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================

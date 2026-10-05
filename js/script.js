@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
       "slide2.title": "Puerta del Diablo",
       "slide2.desc": "Un majestuoso lago de origen volcánico ubicado en Santa Ana, catalogado como uno de los más hermosos del mundo. Sus aguas cristalinas cambian periódicamente a un asombroso color azul turquesa.",
       "slide3.title": "Centro Histórico",
-      "slide3.desc": "Un lugar ideal para recorrer la historia, la arquitectura y la vida cultural de San Salvador. Sus plazas, edificios emblemáticos y espacios renovados ofrecen una visita agradable para quienes desean conocer un poco más del corazón de la ciudad."
+      "slide3.desc": "Un lugar ideal para recorrer la historia, la arquitectura y la vida cultural de San Salvador. Sus plazas, edificios emblemáticos y espacios renovados ofrecen una visita agradable para quienes desean conocer un poco más del corazón de la ciudad.",
+      "carousel.pause": "Pausar",
+      "carousel.play": "Reanudar"
     };
     return fallback[key] || key;
   }
@@ -29,13 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0;
   const AUTOPLAY_TIME = 4000;
   let autoplayInterval;
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let userPaused = Boolean(reducedMotion);
+  let interactionPaused = false;
 
   const mainImage = document.getElementById('main-image');
   const slideTitle = document.getElementById('slide-title');
   const slideDesc = document.getElementById('slide-desc');
   const thumbnailsContainer = document.getElementById('thumbnails-container');
   const bgLayers = [document.getElementById('bg-layer-1'), document.getElementById('bg-layer-2')];
+  const pauseButton = document.getElementById('carousel-pause-btn');
+  const carouselCounter = document.getElementById('carousel-counter');
+  const carouselRegion = document.getElementById('destination-carousel');
   let activeBgLayer = 0;
+  let touchStartX = null;
+  let touchStartY = null;
 
   function responsivePicture(src, alt) {
     if (window.ESTMedia) {
@@ -70,6 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
       : src;
   }
 
+  function syncCarouselCounter() {
+    if (!carouselCounter) return;
+    const visible = String(currentIndex + 1).padStart(2, '0');
+    const total = String(slides.length).padStart(2, '0');
+    carouselCounter.textContent = visible + ' / ' + total;
+  }
+
   /** Re-render slide text for current index (no image swap, no fade) */
   function refreshSlideText() {
     if (!slideTitle || !slideDesc) return;
@@ -83,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderThumbnails = () => {
     thumbnailsContainer.innerHTML = slides.map((slide, index) => `
-      <button class="thumb-btn ${index === 0 ? 'active' : ''}" data-index="${index}">
+      <button class="thumb-btn ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="${slideText('carousel.thumb')} ${index + 1}" aria-current="${index === 0 ? 'true' : 'false'}">
         ${responsivePicture(slide.img, slideText('carousel.thumb') + ' ' + (index + 1))}
       </button>
     `).join('');
@@ -103,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const slide = slides[index];
     const prevIndex = currentIndex;
     currentIndex = index;
+    syncCarouselCounter();
 
     // 1. Update Main Image with Cross-fade
     mainImage.classList.add('fade-out');
@@ -131,22 +149,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const thumbs = thumbnailsContainer.querySelectorAll('.thumb-btn');
     if (thumbs[prevIndex]) thumbs[prevIndex].classList.remove('active');
     if (thumbs[currentIndex]) thumbs[currentIndex].classList.add('active');
+    if (thumbs[prevIndex]) thumbs[prevIndex].setAttribute('aria-current', 'false');
+    if (thumbs[currentIndex]) thumbs[currentIndex].setAttribute('aria-current', 'true');
     document.querySelectorAll('[data-carousel-tab]').forEach(function (tab) {
       var idx = parseInt(tab.getAttribute('data-carousel-tab'), 10);
       tab.classList.toggle('active', idx === currentIndex);
+      tab.setAttribute('aria-current', idx === currentIndex ? 'true' : 'false');
     });
   };
 
+  const stopAutoplay = () => {
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+  };
+
   const startAutoplay = () => {
+    stopAutoplay();
+    if (userPaused || interactionPaused || reducedMotion || document.hidden) return;
     autoplayInterval = setInterval(() => {
       updateSlide((currentIndex + 1) % slides.length);
     }, AUTOPLAY_TIME);
   };
 
   const resetAutoplay = () => {
-    clearInterval(autoplayInterval);
+    stopAutoplay();
     startAutoplay();
   };
+
+  function syncPauseButton() {
+    if (!pauseButton) return;
+    pauseButton.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+    var labelKey = userPaused ? 'carousel.play' : 'carousel.pause';
+    pauseButton.setAttribute('aria-label', slideText(labelKey));
+    var label = pauseButton.querySelector('[data-carousel-pause-label]');
+    var icon = pauseButton.querySelector('.material-symbols-outlined');
+    if (label) label.textContent = slideText(labelKey);
+    if (icon) icon.textContent = userPaused ? 'play_arrow' : 'pause';
+  }
 
   // Tabs superiores ahora sí cambian el slide (antes eran botones muertos)
   document.querySelectorAll('[data-carousel-tab]').forEach(function (tab) {
@@ -159,7 +200,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  if (pauseButton) {
+    pauseButton.addEventListener('click', function () {
+      userPaused = !userPaused;
+      syncPauseButton();
+      if (userPaused) stopAutoplay();
+      else startAutoplay();
+    });
+  }
+
+  if (carouselRegion) {
+    carouselRegion.addEventListener('mouseenter', function () {
+      interactionPaused = true;
+      stopAutoplay();
+    });
+    carouselRegion.addEventListener('mouseleave', function () {
+      interactionPaused = false;
+      startAutoplay();
+    });
+    carouselRegion.addEventListener('focusin', function () {
+      interactionPaused = true;
+      stopAutoplay();
+    });
+    carouselRegion.addEventListener('focusout', function (event) {
+      if (event.relatedTarget && carouselRegion.contains(event.relatedTarget)) return;
+      interactionPaused = false;
+      startAutoplay();
+    });
+    carouselRegion.addEventListener('touchstart', function (event) {
+      if (!event.touches || event.touches.length !== 1) return;
+      touchStartX = event.touches[0].clientX;
+      touchStartY = event.touches[0].clientY;
+    }, { passive: true });
+    carouselRegion.addEventListener('touchend', function (event) {
+      if (touchStartX === null || touchStartY === null || !event.changedTouches || !event.changedTouches[0]) return;
+      const deltaX = event.changedTouches[0].clientX - touchStartX;
+      const deltaY = event.changedTouches[0].clientY - touchStartY;
+      touchStartX = null;
+      touchStartY = null;
+      if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+      const direction = deltaX < 0 ? 1 : -1;
+      updateSlide((currentIndex + direction + slides.length) % slides.length);
+      resetAutoplay();
+    }, { passive: true });
+  }
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stopAutoplay();
+    else startAutoplay();
+  });
+
   renderThumbnails();
+  syncCarouselCounter();
+  syncPauseButton();
   startAutoplay();
 
   // ── Fix #5: re-render slide text immediately on language change ──
@@ -168,7 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.__estI18n.setLang = function (lang) {
       origSetLang.call(window.__estI18n, lang);
       // Immediately update visible slide text (no wait for autoplay)
-      setTimeout(refreshSlideText, 30);
+      setTimeout(function () {
+        refreshSlideText();
+        syncPauseButton();
+      }, 30);
     };
   }
 });

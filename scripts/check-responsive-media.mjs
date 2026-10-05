@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import process from 'node:process';
 
 const root = process.cwd();
-const pages = ['index.html', 'tours.html', 'about.html', 'real-estate.html'];
+const pages = ['index.html', 'tours.html', 'about.html', 'real-estate.html', 'payment.html', 'privacy.html', 'terms.html'];
 const manifest = JSON.parse(readFileSync(join(root, 'data', 'media-manifest.json'), 'utf8'));
 const errors = [];
 
