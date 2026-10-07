@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T21:01:46.584Z",
+  "generatedAt": "2026-10-07T01:49:49.690Z",
   "sourceRoot": "assets",
   "outputRoot": "assets/optimized",
   "widths": [
@@ -19,25 +19,25 @@
             "src": "carousel/IMG_9735-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 29606
+            "bytes": 21426
           },
           {
             "src": "carousel/IMG_9735-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 74253
+            "bytes": 53034
           },
           {
             "src": "carousel/IMG_9735-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 195821
+            "bytes": 134428
           },
           {
             "src": "carousel/IMG_9735-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 484249
+            "bytes": 334805
           }
         ],
         "webp": [
@@ -78,25 +78,25 @@
             "src": "carousel/dji_fly_20250824_111600_722_1756056173005_photo_optimized-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 28601
+            "bytes": 19380
           },
           {
             "src": "carousel/dji_fly_20250824_111600_722_1756056173005_photo_optimized-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 66106
+            "bytes": 46788
           },
           {
             "src": "carousel/dji_fly_20250824_111600_722_1756056173005_photo_optimized-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 161467
+            "bytes": 112988
           },
           {
             "src": "carousel/dji_fly_20250824_111600_722_1756056173005_photo_optimized-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 416549
+            "bytes": 292498
           }
         ],
         "webp": [
@@ -137,25 +137,25 @@
             "src": "carousel/dji_fly_20260322_104340_21_1774202765293_photo_optimized-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 27525
+            "bytes": 19633
           },
           {
             "src": "carousel/dji_fly_20260322_104340_21_1774202765293_photo_optimized-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 62294
+            "bytes": 45161
           },
           {
             "src": "carousel/dji_fly_20260322_104340_21_1774202765293_photo_optimized-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 153340
+            "bytes": 107012
           },
           {
             "src": "carousel/dji_fly_20260322_104340_21_1774202765293_photo_optimized-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 394270
+            "bytes": 272907
           }
         ],
         "webp": [
@@ -196,25 +196,25 @@
             "src": "carousel/dji_fly_20260404_105130_47_1775321782859_photo_optimized-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 34991
+            "bytes": 22093
           },
           {
             "src": "carousel/dji_fly_20260404_105130_47_1775321782859_photo_optimized-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 86364
+            "bytes": 54417
           },
           {
             "src": "carousel/dji_fly_20260404_105130_47_1775321782859_photo_optimized-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 220945
+            "bytes": 138228
           },
           {
             "src": "carousel/dji_fly_20260404_105130_47_1775321782859_photo_optimized-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 582134
+            "bytes": 377256
           }
         ],
         "webp": [
@@ -255,25 +255,25 @@
             "src": "carousel/dji_fly_20260422_125830_55_1776884918847_photo_optimized-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 22673
+            "bytes": 17559
           },
           {
             "src": "carousel/dji_fly_20260422_125830_55_1776884918847_photo_optimized-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 51494
+            "bytes": 41022
           },
           {
             "src": "carousel/dji_fly_20260422_125830_55_1776884918847_photo_optimized-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 132174
+            "bytes": 100524
           },
           {
             "src": "carousel/dji_fly_20260422_125830_55_1776884918847_photo_optimized-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 353484
+            "bytes": 262704
           }
         ],
         "webp": [
@@ -314,25 +314,25 @@
             "src": "carousel/dji_fly_20260422_130214_62_1776884811652_photo_optimized-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 23398
+            "bytes": 16875
           },
           {
             "src": "carousel/dji_fly_20260422_130214_62_1776884811652_photo_optimized-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 54346
+            "bytes": 40387
           },
           {
             "src": "carousel/dji_fly_20260422_130214_62_1776884811652_photo_optimized-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 139033
+            "bytes": 98218
           },
           {
             "src": "carousel/dji_fly_20260422_130214_62_1776884811652_photo_optimized-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 363510
+            "bytes": 253446
           }
         ],
         "webp": [
@@ -373,19 +373,19 @@
             "src": "img/sendero-city-480.avif",
             "width": 480,
             "height": 192,
-            "bytes": 18560
+            "bytes": 12455
           },
           {
             "src": "img/sendero-city-768.avif",
             "width": 768,
             "height": 307,
-            "bytes": 42926
+            "bytes": 29613
           },
           {
             "src": "img/sendero-city-1200.avif",
             "width": 1200,
             "height": 480,
-            "bytes": 88656
+            "bytes": 63726
           }
         ],
         "webp": [
@@ -420,19 +420,19 @@
             "src": "img/sendero-lake-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 23755
+            "bytes": 17193
           },
           {
             "src": "img/sendero-lake-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 61530
+            "bytes": 43545
           },
           {
             "src": "img/sendero-lake-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 142367
+            "bytes": 101804
           }
         ],
         "webp": [
@@ -458,28 +458,34 @@
       }
     },
     "img/sendero-pano.jpg": {
-      "width": 1500,
-      "height": 844,
-      "bytes": 254276,
+      "width": 4000,
+      "height": 2250,
+      "bytes": 3861917,
       "variants": {
         "avif": [
           {
             "src": "img/sendero-pano-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 17520
+            "bytes": 21402
           },
           {
             "src": "img/sendero-pano-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 45164
+            "bytes": 50146
           },
           {
             "src": "img/sendero-pano-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 107034
+            "bytes": 125663
+          },
+          {
+            "src": "img/sendero-pano-1920.avif",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 335904
           }
         ],
         "webp": [
@@ -487,19 +493,25 @@
             "src": "img/sendero-pano-480.webp",
             "width": 480,
             "height": 270,
-            "bytes": 20942
+            "bytes": 39230
           },
           {
             "src": "img/sendero-pano-768.webp",
             "width": 768,
             "height": 432,
-            "bytes": 54124
+            "bytes": 91866
           },
           {
             "src": "img/sendero-pano-1200.webp",
             "width": 1200,
             "height": 675,
-            "bytes": 129708
+            "bytes": 226652
+          },
+          {
+            "src": "img/sendero-pano-1920.webp",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 598786
           }
         ]
       }
@@ -514,19 +526,19 @@
             "src": "img/sendero-route-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 35266
+            "bytes": 22871
           },
           {
             "src": "img/sendero-route-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 85591
+            "bytes": 58401
           },
           {
             "src": "img/sendero-route-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 192276
+            "bytes": 133438
           }
         ],
         "webp": [
@@ -554,32 +566,32 @@
     "img/slide_0.jpg": {
       "width": 4032,
       "height": 2268,
-      "bytes": 3112560,
+      "bytes": 3453193,
       "variants": {
         "avif": [
           {
             "src": "img/slide_0-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 18190
+            "bytes": 18070
           },
           {
             "src": "img/slide_0-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 43255
+            "bytes": 45671
           },
           {
             "src": "img/slide_0-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 106831
+            "bytes": 116690
           },
           {
             "src": "img/slide_0-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 258910
+            "bytes": 290599
           }
         ],
         "webp": [
@@ -587,25 +599,25 @@
             "src": "img/slide_0-480.webp",
             "width": 480,
             "height": 270,
-            "bytes": 21526
+            "bytes": 29780
           },
           {
             "src": "img/slide_0-768.webp",
             "width": 768,
             "height": 432,
-            "bytes": 52782
+            "bytes": 76498
           },
           {
             "src": "img/slide_0-1200.webp",
             "width": 1200,
             "height": 675,
-            "bytes": 129852
+            "bytes": 194338
           },
           {
             "src": "img/slide_0-1920.webp",
             "width": 1920,
             "height": 1080,
-            "bytes": 320326
+            "bytes": 489302
           }
         ]
       }
@@ -613,32 +625,32 @@
     "img/slide_1.jpg": {
       "width": 4032,
       "height": 2268,
-      "bytes": 3595639,
+      "bytes": 4145079,
       "variants": {
         "avif": [
           {
             "src": "img/slide_1-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 36512
+            "bytes": 22404
           },
           {
             "src": "img/slide_1-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 83541
+            "bytes": 50989
           },
           {
             "src": "img/slide_1-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 197876
+            "bytes": 115996
           },
           {
             "src": "img/slide_1-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 447308
+            "bytes": 265224
           }
         ],
         "webp": [
@@ -646,58 +658,58 @@
             "src": "img/slide_1-480.webp",
             "width": 480,
             "height": 270,
-            "bytes": 38444
+            "bytes": 35446
           },
           {
             "src": "img/slide_1-768.webp",
             "width": 768,
             "height": 432,
-            "bytes": 91888
+            "bytes": 81352
           },
           {
             "src": "img/slide_1-1200.webp",
             "width": 1200,
             "height": 675,
-            "bytes": 216556
+            "bytes": 184784
           },
           {
             "src": "img/slide_1-1920.webp",
             "width": 1920,
             "height": 1080,
-            "bytes": 516548
+            "bytes": 434782
           }
         ]
       }
     },
     "img/slide_2.jpg": {
-      "width": 4000,
-      "height": 2250,
-      "bytes": 3487742,
+      "width": 4032,
+      "height": 2268,
+      "bytes": 4392748,
       "variants": {
         "avif": [
           {
             "src": "img/slide_2-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 23398
+            "bytes": 23308
           },
           {
             "src": "img/slide_2-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 54346
+            "bytes": 56074
           },
           {
             "src": "img/slide_2-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 139033
+            "bytes": 137270
           },
           {
             "src": "img/slide_2-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 363510
+            "bytes": 322550
           }
         ],
         "webp": [
@@ -705,84 +717,84 @@
             "src": "img/slide_2-480.webp",
             "width": 480,
             "height": 270,
-            "bytes": 28458
+            "bytes": 37272
           },
           {
             "src": "img/slide_2-768.webp",
             "width": 768,
             "height": 432,
-            "bytes": 67420
+            "bytes": 90360
           },
           {
             "src": "img/slide_2-1200.webp",
             "width": 1200,
             "height": 675,
-            "bytes": 165320
+            "bytes": 218436
           },
           {
             "src": "img/slide_2-1920.webp",
             "width": 1920,
             "height": 1080,
-            "bytes": 437224
+            "bytes": 518428
           }
         ]
       }
     },
     "img/slide_3.jpg": {
-      "width": 4160,
-      "height": 1664,
-      "bytes": 1038382,
+      "width": 4032,
+      "height": 2268,
+      "bytes": 4277146,
       "variants": {
         "avif": [
           {
             "src": "img/slide_3-480.avif",
             "width": 480,
-            "height": 192,
-            "bytes": 18544
+            "height": 270,
+            "bytes": 22090
           },
           {
             "src": "img/slide_3-768.avif",
             "width": 768,
-            "height": 307,
-            "bytes": 41187
+            "height": 432,
+            "bytes": 52012
           },
           {
             "src": "img/slide_3-1200.avif",
             "width": 1200,
-            "height": 480,
-            "bytes": 91315
+            "height": 675,
+            "bytes": 126500
           },
           {
             "src": "img/slide_3-1920.avif",
             "width": 1920,
-            "height": 768,
-            "bytes": 203234
+            "height": 1080,
+            "bytes": 300541
           }
         ],
         "webp": [
           {
             "src": "img/slide_3-480.webp",
             "width": 480,
-            "height": 192,
-            "bytes": 19150
+            "height": 270,
+            "bytes": 35984
           },
           {
             "src": "img/slide_3-768.webp",
             "width": 768,
-            "height": 307,
-            "bytes": 44886
+            "height": 432,
+            "bytes": 87544
           },
           {
             "src": "img/slide_3-1200.webp",
             "width": 1200,
-            "height": 480,
-            "bytes": 102414
+            "height": 675,
+            "bytes": 211446
           },
           {
             "src": "img/slide_3-1920.webp",
             "width": 1920,
-            "height": 768,
-            "bytes": 239502
+            "height": 1080,
+            "bytes": 505072
           }
         ]
       }
@@ -797,25 +809,25 @@
             "src": "tours/cihuatan-suchitoto/IMG_2589-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 31261
+            "bytes": 21103
           },
           {
             "src": "tours/cihuatan-suchitoto/IMG_2589-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 81312
+            "bytes": 54268
           },
           {
             "src": "tours/cihuatan-suchitoto/IMG_2589-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 216883
+            "bytes": 142511
           },
           {
             "src": "tours/cihuatan-suchitoto/IMG_2589-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 553437
+            "bytes": 369006
           }
         ],
         "webp": [
@@ -856,25 +868,25 @@
             "src": "tours/cihuatan-suchitoto/IMG_2625-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 36329
+            "bytes": 23919
           },
           {
             "src": "tours/cihuatan-suchitoto/IMG_2625-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 93334
+            "bytes": 60471
           },
           {
             "src": "tours/cihuatan-suchitoto/IMG_2625-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 245795
+            "bytes": 159031
           },
           {
             "src": "tours/cihuatan-suchitoto/IMG_2625-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 622840
+            "bytes": 410034
           }
         ],
         "webp": [
@@ -915,25 +927,25 @@
             "src": "tours/cihuatan-suchitoto/cf2aa4a5-dd9a-43bb-8b2e-794f6045b4c0-480.avif",
             "width": 480,
             "height": 407,
-            "bytes": 58687
+            "bytes": 36272
           },
           {
             "src": "tours/cihuatan-suchitoto/cf2aa4a5-dd9a-43bb-8b2e-794f6045b4c0-768.avif",
             "width": 768,
             "height": 651,
-            "bytes": 154186
+            "bytes": 96303
           },
           {
             "src": "tours/cihuatan-suchitoto/cf2aa4a5-dd9a-43bb-8b2e-794f6045b4c0-1200.avif",
             "width": 1200,
             "height": 1018,
-            "bytes": 340940
+            "bytes": 216508
           },
           {
             "src": "tours/cihuatan-suchitoto/cf2aa4a5-dd9a-43bb-8b2e-794f6045b4c0-1920.avif",
             "width": 1920,
             "height": 1628,
-            "bytes": 606382
+            "bytes": 435818
           }
         ],
         "webp": [
@@ -974,25 +986,25 @@
             "src": "tours/cihuatan-suchitoto/dji_fly_20260118_150630_931_1768771110287_photo_optimized-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 24028
+            "bytes": 16071
           },
           {
             "src": "tours/cihuatan-suchitoto/dji_fly_20260118_150630_931_1768771110287_photo_optimized-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 53410
+            "bytes": 36565
           },
           {
             "src": "tours/cihuatan-suchitoto/dji_fly_20260118_150630_931_1768771110287_photo_optimized-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 128489
+            "bytes": 86348
           },
           {
             "src": "tours/cihuatan-suchitoto/dji_fly_20260118_150630_931_1768771110287_photo_optimized-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 326617
+            "bytes": 221798
           }
         ],
         "webp": [
@@ -1033,25 +1045,25 @@
             "src": "tours/cihuatan-suchitoto/dji_fly_20260118_150816_934_1768770990514_photo_optimized-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 33011
+            "bytes": 21905
           },
           {
             "src": "tours/cihuatan-suchitoto/dji_fly_20260118_150816_934_1768770990514_photo_optimized-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 73778
+            "bytes": 50976
           },
           {
             "src": "tours/cihuatan-suchitoto/dji_fly_20260118_150816_934_1768770990514_photo_optimized-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 180169
+            "bytes": 121901
           },
           {
             "src": "tours/cihuatan-suchitoto/dji_fly_20260118_150816_934_1768770990514_photo_optimized-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 461555
+            "bytes": 313926
           }
         ],
         "webp": [
@@ -1092,25 +1104,25 @@
             "src": "tours/city-tour-san-salvador/IMG_2503-480.avif",
             "width": 480,
             "height": 853,
-            "bytes": 65767
+            "bytes": 46695
           },
           {
             "src": "tours/city-tour-san-salvador/IMG_2503-768.avif",
             "width": 768,
             "height": 1365,
-            "bytes": 152649
+            "bytes": 108831
           },
           {
             "src": "tours/city-tour-san-salvador/IMG_2503-1200.avif",
             "width": 1200,
             "height": 2133,
-            "bytes": 312662
+            "bytes": 230380
           },
           {
             "src": "tours/city-tour-san-salvador/IMG_2503-1920.avif",
             "width": 1920,
             "height": 3413,
-            "bytes": 611518
+            "bytes": 482242
           }
         ],
         "webp": [
@@ -1151,25 +1163,25 @@
             "src": "tours/city-tour-san-salvador/IMG_2504-480.avif",
             "width": 480,
             "height": 853,
-            "bytes": 55911
+            "bytes": 40890
           },
           {
             "src": "tours/city-tour-san-salvador/IMG_2504-768.avif",
             "width": 768,
             "height": 1365,
-            "bytes": 138387
+            "bytes": 99276
           },
           {
             "src": "tours/city-tour-san-salvador/IMG_2504-1200.avif",
             "width": 1200,
             "height": 2133,
-            "bytes": 285878
+            "bytes": 214884
           },
           {
             "src": "tours/city-tour-san-salvador/IMG_2504-1920.avif",
             "width": 1920,
             "height": 3413,
-            "bytes": 534660
+            "bytes": 433540
           }
         ],
         "webp": [
@@ -1210,25 +1222,25 @@
             "src": "tours/city-tour-san-salvador/IMG_2507-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 19269
+            "bytes": 14864
           },
           {
             "src": "tours/city-tour-san-salvador/IMG_2507-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 42982
+            "bytes": 33102
           },
           {
             "src": "tours/city-tour-san-salvador/IMG_2507-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 100777
+            "bytes": 76097
           },
           {
             "src": "tours/city-tour-san-salvador/IMG_2507-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 225494
+            "bytes": 178057
           }
         ],
         "webp": [
@@ -1259,6 +1271,124 @@
         ]
       }
     },
+    "tours/city-tour-san-salvador/IMG_3544.JPG": {
+      "width": 4032,
+      "height": 2268,
+      "bytes": 3786853,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3544-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 18037
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3544-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 40280
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3544-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 91433
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3544-1920.avif",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 217871
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3544-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 29612
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3544-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 65872
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3544-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 149656
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3544-1920.webp",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 357184
+          }
+        ]
+      }
+    },
+    "tours/city-tour-san-salvador/IMG_3557.JPG": {
+      "width": 4032,
+      "height": 2268,
+      "bytes": 4277146,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3557-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 22090
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3557-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 52012
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3557-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 126500
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3557-1920.avif",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 300541
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3557-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 35984
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3557-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 87544
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3557-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 211446
+          },
+          {
+            "src": "tours/city-tour-san-salvador/IMG_3557-1920.webp",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 505072
+          }
+        ]
+      }
+    },
     "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-45.jpg": {
       "width": 1280,
       "height": 720,
@@ -1269,19 +1399,19 @@
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-45-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 37462
+            "bytes": 23891
           },
           {
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-45-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 91494
+            "bytes": 60683
           },
           {
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-45-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 204948
+            "bytes": 135979
           }
         ],
         "webp": [
@@ -1316,19 +1446,19 @@
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-46 (1)-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 17075
+            "bytes": 13078
           },
           {
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-46 (1)-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 36375
+            "bytes": 29128
           },
           {
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-46 (1)-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 72760
+            "bytes": 60268
           }
         ],
         "webp": [
@@ -1363,19 +1493,19 @@
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-46-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 17352
+            "bytes": 13310
           },
           {
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-46-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 33474
+            "bytes": 27869
           },
           {
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-11-23-46-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 60006
+            "bytes": 52755
           }
         ],
         "webp": [
@@ -1410,13 +1540,13 @@
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-15-44-35 (1)-480.avif",
             "width": 480,
             "height": 639,
-            "bytes": 36234
+            "bytes": 29335
           },
           {
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-15-44-35 (1)-768.avif",
             "width": 768,
             "height": 1022,
-            "bytes": 68232
+            "bytes": 59719
           }
         ],
         "webp": [
@@ -1445,13 +1575,13 @@
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-15-44-35-480.avif",
             "width": 480,
             "height": 530,
-            "bytes": 45804
+            "bytes": 32752
           },
           {
             "src": "tours/city-tour-san-salvador/PHOTO-2026-09-06-15-44-35-768.avif",
             "width": 768,
             "height": 847,
-            "bytes": 79645
+            "bytes": 62280
           }
         ],
         "webp": [
@@ -1470,6 +1600,65 @@
         ]
       }
     },
+    "tours/ruta-maya/IMG_3514.JPG": {
+      "width": 4032,
+      "height": 2268,
+      "bytes": 4328634,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/ruta-maya/IMG_3514-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 21952
+          },
+          {
+            "src": "tours/ruta-maya/IMG_3514-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 53784
+          },
+          {
+            "src": "tours/ruta-maya/IMG_3514-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 135463
+          },
+          {
+            "src": "tours/ruta-maya/IMG_3514-1920.avif",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 343842
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/ruta-maya/IMG_3514-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 37532
+          },
+          {
+            "src": "tours/ruta-maya/IMG_3514-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 93050
+          },
+          {
+            "src": "tours/ruta-maya/IMG_3514-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 233010
+          },
+          {
+            "src": "tours/ruta-maya/IMG_3514-1920.webp",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 590376
+          }
+        ]
+      }
+    },
     "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (1).jpg": {
       "width": 4032,
       "height": 2268,
@@ -1480,25 +1669,25 @@
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (1)-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 37664
+            "bytes": 24182
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (1)-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 92882
+            "bytes": 61697
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (1)-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 231438
+            "bytes": 155718
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (1)-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 547939
+            "bytes": 377486
           }
         ],
         "webp": [
@@ -1539,25 +1728,25 @@
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (2)-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 25925
+            "bytes": 18845
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (2)-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 58866
+            "bytes": 44112
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (2)-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 146052
+            "bytes": 107128
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (2)-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 377557
+            "bytes": 278507
           }
         ],
         "webp": [
@@ -1598,25 +1787,25 @@
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (3)-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 27862
+            "bytes": 19283
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (3)-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 64153
+            "bytes": 45464
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (3)-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 160590
+            "bytes": 111271
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28 (3)-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 378048
+            "bytes": 269270
           }
         ],
         "webp": [
@@ -1657,25 +1846,25 @@
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 28718
+            "bytes": 19439
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 66103
+            "bytes": 46657
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 161697
+            "bytes": 112943
           },
           {
             "src": "tours/ruta-maya/PHOTO-2026-09-06-11-28-28-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 417573
+            "bytes": 292165
           }
         ],
         "webp": [
@@ -1716,25 +1905,25 @@
             "src": "tours/volcan-santa-ana/IMG_9697-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 21274
+            "bytes": 15905
           },
           {
             "src": "tours/volcan-santa-ana/IMG_9697-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 50788
+            "bytes": 37920
           },
           {
             "src": "tours/volcan-santa-ana/IMG_9697-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 130813
+            "bytes": 95158
           },
           {
             "src": "tours/volcan-santa-ana/IMG_9697-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 320090
+            "bytes": 234516
           }
         ],
         "webp": [
@@ -1765,6 +1954,65 @@
         ]
       }
     },
+    "tours/volcan-santa-ana/IMG_9735.JPG": {
+      "width": 4032,
+      "height": 2268,
+      "bytes": 4382864,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/volcan-santa-ana/IMG_9735-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 21426
+          },
+          {
+            "src": "tours/volcan-santa-ana/IMG_9735-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 53034
+          },
+          {
+            "src": "tours/volcan-santa-ana/IMG_9735-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 134428
+          },
+          {
+            "src": "tours/volcan-santa-ana/IMG_9735-1920.avif",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 334805
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/volcan-santa-ana/IMG_9735-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 35104
+          },
+          {
+            "src": "tours/volcan-santa-ana/IMG_9735-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 89300
+          },
+          {
+            "src": "tours/volcan-santa-ana/IMG_9735-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 228960
+          },
+          {
+            "src": "tours/volcan-santa-ana/IMG_9735-1920.webp",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 581192
+          }
+        ]
+      }
+    },
     "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28 (1).jpg": {
       "width": 4032,
       "height": 2268,
@@ -1775,25 +2023,25 @@
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28 (1)-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 29797
+            "bytes": 21416
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28 (1)-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 74465
+            "bytes": 53011
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28 (1)-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 196008
+            "bytes": 134734
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28 (1)-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 486868
+            "bytes": 335707
           }
         ],
         "webp": [
@@ -1834,25 +2082,25 @@
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28 (2)-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 23665
+            "bytes": 15821
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28 (2)-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 56355
+            "bytes": 37479
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28 (2)-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 142998
+            "bytes": 93541
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28 (2)-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 390678
+            "bytes": 253696
           }
         ],
         "webp": [
@@ -1893,25 +2141,25 @@
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 20260
+            "bytes": 14706
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 49297
+            "bytes": 35521
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 125698
+            "bytes": 89666
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-28-28-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 292858
+            "bytes": 215148
           }
         ],
         "webp": [
@@ -1952,25 +2200,25 @@
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-480.avif",
             "width": 480,
             "height": 270,
-            "bytes": 36017
+            "bytes": 23145
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-768.avif",
             "width": 768,
             "height": 432,
-            "bytes": 84811
+            "bytes": 55355
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-1200.avif",
             "width": 1200,
             "height": 675,
-            "bytes": 204737
+            "bytes": 136572
           },
           {
             "src": "tours/volcan-santa-ana/PHOTO-2026-09-06-11-43-50-1920.avif",
             "width": 1920,
             "height": 1080,
-            "bytes": 460800
+            "bytes": 320745
           }
         ],
         "webp": [
@@ -1997,6 +2245,57 @@
             "width": 1920,
             "height": 1080,
             "bytes": 516300
+          }
+        ]
+      }
+    },
+    "img/about-hero.jpg": {
+      "width": 4032,
+      "height": 2268,
+      "bytes": 3969623,
+      "variants": {
+        "avif": [
+          {
+            "src": "img/about-hero-480.avif",
+            "width": 480,
+            "height": 270
+          },
+          {
+            "src": "img/about-hero-768.avif",
+            "width": 768,
+            "height": 432
+          },
+          {
+            "src": "img/about-hero-1200.avif",
+            "width": 1200,
+            "height": 675
+          },
+          {
+            "src": "img/about-hero-1920.avif",
+            "width": 1920,
+            "height": 1080
+          }
+        ],
+        "webp": [
+          {
+            "src": "img/about-hero-480.webp",
+            "width": 480,
+            "height": 270
+          },
+          {
+            "src": "img/about-hero-768.webp",
+            "width": 768,
+            "height": 432
+          },
+          {
+            "src": "img/about-hero-1200.webp",
+            "width": 1200,
+            "height": 675
+          },
+          {
+            "src": "img/about-hero-1920.webp",
+            "width": 1920,
+            "height": 1080
           }
         ]
       }

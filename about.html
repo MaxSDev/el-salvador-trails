@@ -184,7 +184,7 @@
 
     .container { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
     .section { position: relative; padding-block: clamp(56px, 8vw, 112px); }
-    main { padding-top: var(--nav-h); }
+    main { padding-top: 0; }
 
     /* ── tipografía ──────────────────────────────────────────────────── */
     .display { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; color: var(--brand); margin: 0; }
@@ -244,7 +244,20 @@
     .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 32px; }
 
     /* ── sendero: una sola línea continua que serpentea ──────────────── */
-    .trail-section { overflow: hidden; }
+    .trail-section {
+      position: relative;
+      overflow: visible;
+      background: var(--bg);
+    }
+    .trail-section > .heritage-field::after { content: none; }
+    .trail-section .heritage-item {
+      mix-blend-mode: multiply;
+      opacity: 0.04;
+    }
+    .dark .trail-section .heritage-item {
+      mix-blend-mode: normal;
+      opacity: 0.035;
+    }
     .trail-head { max-width: 640px; margin: 0 auto clamp(18px, 3vw, 30px); text-align: center; }
     .trail-head .eyebrow { color: var(--brand); }
     .trail-intro { color: var(--text-muted); font-size: 17px; margin: 0; }
@@ -309,9 +322,9 @@
        Las filas van a ras (sin padding vertical) para que los tramos se suelden. */
     .stop--weave {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) clamp(140px, 12vw, 200px) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) clamp(152px, 13vw, 208px) minmax(0, 1fr);
       align-items: stretch;
-      column-gap: clamp(24px, 4vw, 56px);
+      column-gap: clamp(48px, 6.6vw, 92px);
       min-height: clamp(320px, 32vw, 460px);
     }
     .stop-copy { max-width: 46ch; align-self: center; padding-block: clamp(30px, 5vw, 60px); }
@@ -324,7 +337,7 @@
 
     /* la ruta: cada fila aporta un tramo que entra y sale por el centro exacto,
        así los tramos contiguos forman una línea sin cortes ni solapes. */
-    .stop-rail { position: relative; align-self: stretch; }
+    .stop-rail { position: relative; align-self: stretch; overflow: visible; }
     .stop-curve { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
     .stop-curve path { fill: none; vector-effect: non-scaling-stroke; }
     .curve-glow { stroke: var(--trail-glow); stroke-width: 15; stroke-linecap: round; stroke-linejoin: round; filter: blur(5px); }
@@ -332,19 +345,104 @@
     .curve-dash { stroke: var(--accent-strong); stroke-width: 1.7; stroke-linecap: round; stroke-dasharray: 1 9; animation: trail-flow 1.6s linear infinite; }
     @keyframes trail-flow { to { stroke-dashoffset: -10; } }
 
-    /* mojón numerado sobre el vértice de la curva */
+    /* Poste anclado al trazado: el círculo es el origen; el palo y la flecha salen de él. */
+    .stop-beacon {
+      --sign-node: 48px;
+      --sign-board: #fffaf3;
+      --sign-pole: 38px;
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+    .is-left .stop-beacon { left: 15%; }
+    .is-right .stop-beacon { left: 85%; }
+    .trail-pole {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 4px;
+      height: calc(var(--sign-node) * 0.5 + var(--sign-pole));
+      transform: translateX(-50%);
+      background: var(--brand);
+      border-radius: 999px 999px 0 0;
+      z-index: 1;
+    }
+    .trail-pole::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 7px;
+      height: 8px;
+      border-radius: 1px;
+      background: inherit;
+      transform: translateX(-50%);
+    }
     .stop-marker {
-      width: clamp(50px, 4.6vw, 58px); aspect-ratio: 1; border-radius: 50%;
-      display: grid; place-items: center; position: relative;
+      width: clamp(72px, 7.4vw, 90px); aspect-ratio: 1; border-radius: 50%;
+      display: grid; place-items: center; position: relative; z-index: 2;
       background: var(--bg); color: var(--brand);
       border: 1.5px solid var(--border-strong);
-      font-family: var(--font-label); font-size: 15px; font-weight: 600; letter-spacing: 0.06em;
       box-shadow: 0 0 0 7px var(--trail-node-halo), 0 10px 24px rgba(126, 21, 0, 0.1);
     }
-    .stop-marker::before { content: ''; position: absolute; inset: 5px; border-radius: 50%; border: 1.5px solid var(--border-strong); }
-    .stop-rail .stop-marker { position: absolute; top: 50%; transform: translate(-50%, -50%); z-index: 2; }
-    .is-right .stop-rail .stop-marker { left: 85%; }
-    .is-left .stop-rail .stop-marker { left: 15%; }
+    .stop-beacon .stop-marker {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: var(--sign-node);
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 4px var(--trail-node-halo), 0 6px 14px rgba(126, 21, 0, 0.08);
+    }
+    .stop-marker::before { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 1.5px solid var(--border-strong); }
+    .stop-beacon .stop-marker::before { inset: 4px; }
+    .trail-finger {
+      position: absolute;
+      bottom: calc(var(--sign-node) * 0.5 + var(--sign-pole) - 12px);
+      display: grid;
+      place-items: center;
+      min-width: 6.5rem;
+      height: 2rem;
+      z-index: 2;
+    }
+    .is-left .trail-finger { right: -2px; left: auto; }
+    .is-right .trail-finger { left: -2px; }
+    .trail-finger svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      display: block;
+    }
+    .trail-finger path {
+      fill: var(--sign-board);
+      stroke: var(--brand);
+      stroke-width: 1.75;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+    .trail-finger-label {
+      position: relative;
+      z-index: 1;
+      max-width: 100%;
+      color: var(--brand);
+      font-family: var(--font-label);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.15;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .is-left .trail-finger-label { padding: 0 0.45rem 0 0.85rem; }
+    .is-right .trail-finger-label { padding: 0 0.85rem 0 0.45rem; }
+    .dark .stop-beacon { --sign-board: #2a211c; }
+    .dark .trail-finger path { stroke: var(--accent); }
+    .dark .trail-finger-label { color: var(--accent); }
+    .dark .trail-pole { background: var(--accent); }
 
     /* fotografías a ratio natural, sin recorte ni marco de tarjeta */
     .stop-figure { margin: 0; align-self: center; padding-block: clamp(30px, 5vw, 60px); }
@@ -396,10 +494,10 @@
     .trust-item span { font-size: 14.5px; color: var(--text-muted); }
     .trust-item--key span { color: var(--brand); font-weight: 600; }
 
-    .summit-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: clamp(26px, 4vw, 36px); }
+    .summit-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: clamp(26px, 4vw, 36px); margin-bottom: clamp(3.25rem, 7vw, 5.5rem); }
 
     /* ── divisor ornamental ──────────────────────────────────────────── */
-    .ornate-divider { height: 1px; background: var(--ornate-divider); position: relative; margin: 56px 0; transition: background 0.35s ease; }
+    .ornate-divider { height: 1px; background: var(--ornate-divider); position: relative; margin: clamp(1.75rem, 4vw, 2.75rem) 0 0; transition: background 0.35s ease; }
     .ornate-divider::before {
       content: '\2726'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
       color: var(--accent); font-size: 14px; background: var(--ornate-glyph-bg); padding: 0 16px;
@@ -432,6 +530,8 @@
       .h-foliage-tr { width: 250px; }
       .h-foliage-bl { width: 220px; }
       .stop--weave { grid-template-columns: minmax(0, 1fr) clamp(110px, 16vw, 170px) minmax(0, 1fr); }
+      .stop-beacon .trail-finger,
+      .stop-beacon .trail-pole { display: none; }
     }
     @media (max-width: 760px) {
       .h-foliage-tr, .h-foliage-bl, .h-plant { display: none; }
@@ -442,7 +542,7 @@
         grid-template-columns: 46px minmax(0, 1fr);
         column-gap: 16px; min-height: 0;
       }
-      .stop-rail { grid-column: 1; grid-row: 1 / span 2; align-self: stretch; }
+      .stop-rail { grid-column: 1; grid-row: 1 / span 2; align-self: stretch; overflow: hidden; }
       .stop-rail::before {
         content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
         transform: translateX(-50%); background: var(--trail-line-strong);
@@ -453,7 +553,15 @@
       .origin-grid { grid-template-columns: 1fr; gap: 28px; }
       .origin-portrait { max-width: 340px; margin-inline: auto; }
       .trail-join { height: 64px; }
-      .stop--weave .stop-rail .stop-marker { left: 50%; top: 22px; }
+      .stop--weave .stop-rail .stop-beacon {
+        --sign-node: 32px;
+        left: 50%;
+        top: 28px;
+        width: 0;
+        height: 0;
+      }
+      .stop-beacon .trail-finger,
+      .stop-beacon .trail-pole { display: none; }
       .stop-copy, .stop-figure { grid-column: 2; }
       .stop-copy { align-self: start; padding-block: 22px; max-width: none; }
       .stop-figure { padding-block: 22px; }
@@ -568,9 +676,9 @@
     <!-- Hero: la entrada del sendero -->
     <section class="hero secondary-photo-hero about-photo-hero" data-od-id="hero">
       <picture class="secondary-hero-media">
-        <source type="image/avif" srcset="assets/optimized/img/sendero-pano-480.avif 480w, assets/optimized/img/sendero-pano-768.avif 768w, assets/optimized/img/sendero-pano-1200.avif 1200w" sizes="100vw">
-        <source type="image/webp" srcset="assets/optimized/img/sendero-pano-480.webp 480w, assets/optimized/img/sendero-pano-768.webp 768w, assets/optimized/img/sendero-pano-1200.webp 1200w" sizes="100vw">
-        <img src="assets/img/sendero-pano.jpg" width="1500" height="844" alt="Paisaje montañoso de El Salvador" fetchpriority="high" decoding="async">
+        <source type="image/avif" srcset="assets/optimized/img/about-hero-480.avif 480w, assets/optimized/img/about-hero-768.avif 768w, assets/optimized/img/about-hero-1200.avif 1200w, assets/optimized/img/about-hero-1920.avif 1920w" sizes="100vw">
+        <source type="image/webp" srcset="assets/optimized/img/about-hero-480.webp 480w, assets/optimized/img/about-hero-768.webp 768w, assets/optimized/img/about-hero-1200.webp 1200w, assets/optimized/img/about-hero-1920.webp 1920w" sizes="100vw">
+        <img src="assets/img/about-hero.jpg" width="4032" height="2268" alt="Volcán Izalco entre la vegetación de El Salvador" fetchpriority="high" decoding="async">
       </picture>
       <div class="secondary-hero-scrim" aria-hidden="true"></div>
       <div class="heritage-field" aria-hidden="true">
@@ -645,10 +753,16 @@
             </figure>
             <div class="stop-rail" aria-hidden="true">
               <svg class="stop-curve" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path class="curve-glow" d="M50 0 C50 20 15 26 15 50 C15 74 50 80 50 100"/><path class="curve-base" d="M50 0 C50 20 15 26 15 50 C15 74 50 80 50 100"/><path class="curve-dash" d="M50 0 C50 20 15 26 15 50 C15 74 50 80 50 100"/></svg>
-              <span class="stop-marker"><span class="num">01</span></span>
+              <span class="stop-beacon">
+                <span class="trail-finger trail-finger--left">
+                  <svg viewBox="0 0 160 40" preserveAspectRatio="none" aria-hidden="true"><path d="M157 3 H28 L3 20 L28 37 H157 Z"/></svg>
+                  <span class="trail-finger-label" data-i18n="about.sign.lago">Coatepeque</span>
+                </span>
+                <span class="trail-pole"></span>
+                <span class="stop-marker"></span>
+              </span>
             </div>
             <div class="stop-copy">
-              <p class="stop-label"><span data-i18n="about.trail.stop">Parada</span> <span class="num">01</span> · <span data-i18n="about.trail.vision.label">El mirador</span></p>
               <h2 class="display" data-i18n="about.values.vision.title">Nuestra Visión</h2>
               <p class="stop-note" data-i18n="about.values.vision.desc">Ser la operadora turística más comprometida con la creación de experiencias auténticas en El Salvador y Centroamérica, transformando cada viaje en un recuerdo único, significativo e inolvidable.</p>
             </div>
@@ -657,13 +771,19 @@
           <!-- Parada 02 — misión (el cruce de caminos): la ruta se abre a la derecha -->
           <li class="stop stop--weave is-right reveal" data-od-id="stop-mission">
             <div class="stop-copy">
-              <p class="stop-label"><span data-i18n="about.trail.stop">Parada</span> <span class="num">02</span> · <span data-i18n="about.trail.mission.label">El cruce de caminos</span></p>
               <h2 class="display" data-i18n="about.values.mission.title">Nuestra Misión</h2>
               <p class="stop-note" data-i18n="about.values.mission.desc">Brindar servicios turísticos con los más altos estándares de calidad, profesionalismo y calidez humana, superando las expectativas de nuestros visitantes.</p>
             </div>
             <div class="stop-rail" aria-hidden="true">
               <svg class="stop-curve" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path class="curve-glow" d="M50 0 C50 20 85 26 85 50 C85 74 50 80 50 100"/><path class="curve-base" d="M50 0 C50 20 85 26 85 50 C85 74 50 80 50 100"/><path class="curve-dash" d="M50 0 C50 20 85 26 85 50 C85 74 50 80 50 100"/></svg>
-              <span class="stop-marker"><span class="num">02</span></span>
+              <span class="stop-beacon">
+                <span class="trail-finger trail-finger--right">
+                  <svg viewBox="0 0 160 40" preserveAspectRatio="none" aria-hidden="true"><path d="M3 3 H132 L157 20 L132 37 H3 Z"/></svg>
+                  <span class="trail-finger-label" data-i18n="about.sign.ruta">Ruta de las Flores</span>
+                </span>
+                <span class="trail-pole"></span>
+                <span class="stop-marker"></span>
+              </span>
             </div>
             <figure class="stop-figure">
                   <picture><source type="image/avif" srcset="assets/optimized/img/sendero-route-480.avif 480w, assets/optimized/img/sendero-route-768.avif 768w, assets/optimized/img/sendero-route-1200.avif 1200w" sizes="(max-width: 767px) 100vw, 50vw"><source type="image/webp" srcset="assets/optimized/img/sendero-route-480.webp 480w, assets/optimized/img/sendero-route-768.webp 768w, assets/optimized/img/sendero-route-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 50vw"><img src="assets/img/sendero-route.jpg" width="1500" height="844" alt="Camino entre cafetales y pueblos de montaña en la Ruta de las Flores." loading="lazy" decoding="async"></picture>
@@ -679,10 +799,16 @@
             </figure>
             <div class="stop-rail" aria-hidden="true">
               <svg class="stop-curve" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path class="curve-glow" d="M50 0 C50 20 15 26 15 50 C15 74 50 80 50 100"/><path class="curve-base" d="M50 0 C50 20 15 26 15 50 C15 74 50 80 50 100"/><path class="curve-dash" d="M50 0 C50 20 15 26 15 50 C15 74 50 80 50 100"/></svg>
-              <span class="stop-marker"><span class="num">03</span></span>
+              <span class="stop-beacon">
+                <span class="trail-finger trail-finger--left">
+                  <svg viewBox="0 0 160 40" preserveAspectRatio="none" aria-hidden="true"><path d="M157 3 H28 L3 20 L28 37 H157 Z"/></svg>
+                  <span class="trail-finger-label" data-i18n="about.sign.centro">Centro Histórico</span>
+                </span>
+                <span class="trail-pole"></span>
+                <span class="stop-marker"></span>
+              </span>
             </div>
             <div class="stop-copy">
-              <p class="stop-label"><span data-i18n="about.trail.stop">Parada</span> <span class="num">03</span> · <span data-i18n="about.trail.commitment.label">El refugio</span></p>
               <h2 class="display" data-i18n="about.values.commitment.title">Nuestro Compromiso</h2>
               <p class="stop-note" data-i18n="about.values.commitment.desc">Ofrecer un servicio basado en la puntualidad, la seguridad, el respeto y la atención personalizada, garantizando experiencias memorables para cada viajero que confía en nosotros.</p>
             </div>
@@ -724,9 +850,8 @@
           </li>
         </ol>
       </div>
+      <div class="container"><div class="ornate-divider" role="presentation"></div></div>
     </section>
-
-    <div class="container"><div class="ornate-divider" role="presentation"></div></div>
 
     <!-- Conecta con nosotros: banda ampliada (misma del home, 5 redes consistente) -->
     <section class="social-band w-full py-16 flex flex-col items-center relative z-10" data-od-id="social">
@@ -822,6 +947,9 @@
           "about.photo.lago": "Lago de Coatepeque, Santa Ana.",
           "about.photo.ruta": "Ruta de las Flores.",
           "about.photo.centro": "Centro Histórico, San Salvador.",
+          "about.sign.lago": "Coatepeque",
+          "about.sign.ruta": "Ruta de las Flores",
+          "about.sign.centro": "Centro Histórico",
           "about.founder.name": "Mario Domínguez",
           "about.founder.role": "Fundador y Guía de Turismo de El Salvador Trails",
           "about.founder.p1": "Nací en San Salvador, El Salvador, un país que desde temprana edad despertó en mí una profunda admiración por su historia, cultura y riqueza natural. Mi trayectoria profesional en el turismo ha estado marcada por una pasión constante por compartir experiencias auténticas con viajeros de todo el mundo.",
@@ -898,6 +1026,9 @@
           "about.photo.lago": "Coatepeque Lake, Santa Ana.",
           "about.photo.ruta": "Flower Route.",
           "about.photo.centro": "Historic Center, San Salvador.",
+          "about.sign.lago": "Coatepeque",
+          "about.sign.ruta": "Ruta de las Flores",
+          "about.sign.centro": "Historic Center",
           "about.founder.name": "Mario Domínguez",
           "about.founder.role": "Founder & Tour Guide of El Salvador Trails",
           "about.founder.p1": "I was born in San Salvador, El Salvador, a country that from an early age inspired in me a deep admiration for its history, culture, and natural beauty. My professional career in tourism has been marked by a constant passion for sharing authentic experiences with travelers worldwide.",
@@ -974,6 +1105,9 @@
           "about.photo.lago": "Lago de Coatepeque, Santa Ana.",
           "about.photo.ruta": "Rota das Flores.",
           "about.photo.centro": "Centro Histórico, San Salvador.",
+          "about.sign.lago": "Coatepeque",
+          "about.sign.ruta": "Rota das Flores",
+          "about.sign.centro": "Centro Histórico",
           "about.founder.name": "Mario Domínguez",
           "about.founder.role": "Fundador e Guia de Turismo de El Salvador Trails",
           "about.founder.p1": "Nasci em San Salvador, El Salvador, um país que desde jovem despertou em mim uma profunda admiração pela sua história, cultura e riqueza natural. Minha trajetória profissional no turismo sempre foi marcada pela paixão de compartilhar experiências autênticas com viajantes do mundo todo.",
