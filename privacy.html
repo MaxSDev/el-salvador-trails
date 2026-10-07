@@ -46,6 +46,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg" />
 
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/reviews.css">
 
   <style>
     /* Estilos específicos para la página de Bienes Raíces (placeholder) */
@@ -239,6 +240,15 @@
       </div>
     </section>
 
+    <section id="review-privacy" class="review-privacy-information" aria-labelledby="review-privacy-title">
+      <h2 id="review-privacy-title" data-i18n="reviews.privacy.title">Información sobre tus reseñas</h2>
+      <p data-i18n="reviews.privacy.data">Guardamos el nombre que elijas, país opcional, calificación, comentario, tour opcional, idioma, fotos y fecha de tu consentimiento. No necesitas una cuenta para comentar. Evita incluir teléfonos, correos, documentos o datos de otras personas.</p>
+      <p data-i18n="reviews.privacy.public">Al aprobarse una reseña, su nombre, país, calificación, comentario y fotos pueden mostrarse públicamente. Las reseñas pendientes, rechazadas u ocultas solo están disponibles para el equipo autorizado. Comparte fotos únicamente si tienes permiso de las personas que aparecen.</p>
+      <p data-i18n="reviews.privacy.services">El servicio utiliza Supabase para guardar reseñas y fotos, Cloudflare Turnstile para prevenir spam y OpenAI para analizar el nombre, país y comentario cuando se evalúa su publicación automática. Las fotos requieren revisión del equipo. No se enviarán tus fotos a OpenAI en esta fase.</p>
+      <p data-i18n="reviews.privacy.control">Para limitar envíos, el sistema utiliza temporalmente un identificador calculado a partir de la dirección IP. El navegador recuerda el idioma elegido; el panel administrativo guarda su sesión en la pestaña. Las reseñas no tienen borrado automático: para solicitar su retirada, contacta al equipo por los canales publicados en la página e identifica la reseña.</p>
+      <p class="review-notice" data-i18n="reviews.privacy.local">Durante las pruebas locales, los datos permanecen en esta PC y los servicios externos no están conectados. Los dueños deben confirmar los contactos y completar la política general antes de recibir reseñas reales.</p>
+    </section>
+
     <!-- Conecta con nosotros: banda ampliada (misma del home, 5 redes consistente) -->
     <section class="social-band w-full py-16 flex flex-col items-center relative z-10">
       <span class="social-connect-title mb-2" data-i18n="social.title">Síguenos y viaja con nosotros</span>
@@ -291,6 +301,7 @@
   </div>
 
   <script src="js/i18n.js"></script>
+  <script src="js/reviews-i18n.js"></script>
   <script src="data/media-manifest.js"></script>
   <script src="js/media.js"></script>
   <script src="js/site.js"></script>

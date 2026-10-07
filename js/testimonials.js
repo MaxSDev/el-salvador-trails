@@ -1,7 +1,7 @@
 /* ==========================================================================
    El Salvador Trails — Carrusel de Testimonios & Feedback Modal
-   - Consume data/reviews.json (Single Source of Truth)
-   - Filtro estricto: status === 'approved' && featured === true
+   - Consume únicamente reseñas públicas aprobadas por el servidor
+   - Los estados privados se filtran en el servidor
    - Fallback a monograma/iniciales si no hay foto de autor
    - Pausa en hover / focus / touch
    - Respeta prefers-reduced-motion
@@ -13,6 +13,10 @@
 
   var reviewsData = [];
   var currentIndex = 0;
+  var page = 0;
+  var moreButton;
+  var pageLoading = false;
+  function t(key) { return window.__estI18n ? window.__estI18n.t(key) : key; }
   var autoplayTimer = null;
   var AUTOPLAY_INTERVAL = 6000;
   var trackEl = null;
@@ -79,7 +83,7 @@
       (function (idx) {
         var dot = document.createElement('button');
         dot.className = 'testimonial-dot' + (idx === currentIndex ? ' active' : '');
-        dot.setAttribute('aria-label', `Ir al testimonio ${idx + 1}`);
+        dot.setAttribute('aria-label', t('testimonials.goTo') + ' ' + (idx + 1));
         dot.addEventListener('click', function () {
           currentIndex = idx;
           updateTrackPosition();
@@ -134,64 +138,19 @@
 
   function renderTestimonials(list) {
     if (!trackEl) return;
-    trackEl.innerHTML = '';
-
-    if (!list || list.length === 0) {
-      trackEl.innerHTML = '<p class="text-center w-full py-8 text-[var(--text-muted)]">No hay testimonios disponibles en este momento.</p>';
-      return;
+    trackEl.replaceChildren();
+    if (!list.length) {
+      var empty = document.createElement('p');
+      empty.className = 'text-center w-full py-8';
+      empty.textContent = t('testimonials.empty');
+      trackEl.appendChild(empty);
     }
-
     list.forEach(function (review) {
       var slide = document.createElement('div');
       slide.className = 'testimonial-slide';
-
-      var initials = getInitials(review.author ? review.author.name : 'EST');
-      var avatarHtml = '';
-      if (review.author && review.author.avatarUrl) {
-        avatarHtml = `<img src="${review.author.avatarUrl}" alt="${review.author.name}" class="w-11 h-11 rounded-full object-cover border-2 border-[var(--accent)] flex-shrink-0" onerror="this.outerHTML='<div class=\\'testimonial-avatar-fallback\\'>${initials}</div>';">`;
-      } else {
-        avatarHtml = `<div class="testimonial-avatar-fallback">${initials}</div>`;
-      }
-
-      var photoBadge = '';
-      if (review.photos && review.photos.length > 0) {
-        photoBadge = `
-          <div class="testimonial-photo-badge" title="${review.photos[0].caption || 'Foto del viaje'}">
-            <span class="material-symbols-outlined text-sm">photo_camera</span>
-            <span>${review.photos.length} foto${review.photos.length > 1 ? 's' : ''}</span>
-          </div>
-        `;
-      }
-
-      slide.innerHTML = `
-        <article class="testimonial-card">
-          <span class="testimonial-quote-icon">“</span>
-          
-          <div class="testimonial-stars" aria-label="${review.rating} de 5 estrellas">
-            ${renderStars(review.rating)}
-          </div>
-
-          <p class="testimonial-comment">"${review.comment}"</p>
-
-          <div>
-            ${photoBadge}
-            <div class="testimonial-author-meta">
-              ${avatarHtml}
-              <div>
-                <h4 class="testimonial-author-name">${review.author ? review.author.name : 'Viajero Anónimo'}</h4>
-                <div class="testimonial-author-country">
-                  <span class="material-symbols-outlined text-xs">public</span>
-                  <span>${review.author && review.author.country ? review.author.country : 'Viajero internacional'}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-      `;
-
+      slide.appendChild(window.ESTReviewView.card(review, t));
       trackEl.appendChild(slide);
     });
-
     renderDots();
     updateTrackPosition();
   }
@@ -263,102 +222,186 @@
     var openBtn = document.getElementById('open-feedback-btn');
     var closeBtn = document.getElementById('close-feedback-btn');
     var form = document.getElementById('feedback-form');
-    var successMsg = document.getElementById('feedback-form-success');
+    var ratingStars = form && form.querySelector('.rating-stars');
+    var success = document.getElementById('feedback-form-success');
+    var error = document.getElementById('feedback-form-error');
+    var submit = form && form.querySelector('button[type="submit"]');
+    var token = '';
+    var widget = null;
+    function paintRating(value) {
+      if (!ratingStars) return;
+      var rating = Number(value) || 0;
+      ratingStars.querySelectorAll('.rating-star-input').forEach(function (input) {
+        input.classList.toggle('is-filled', Number(input.value) <= rating);
+      });
+    }
+    if (ratingStars) {
+      ratingStars.addEventListener('change', function (event) {
+        if (event.target.matches('.rating-star-input')) paintRating(event.target.value);
+      });
+      ratingStars.addEventListener('pointerover', function (event) {
+        var input = event.target.closest('.rating-star-input');
+        if (input) paintRating(input.value);
+      });
+      ratingStars.addEventListener('pointerleave', function () {
+        paintRating(ratingStars.querySelector(':checked')?.value);
+      });
+    }
+    var busy = false;
+    var submissionId = crypto.randomUUID();
+    var priorFocus;
+    var config = window.ESTReviewsConfig || {};
+    var local = config.localPreview && ['127.0.0.1', 'localhost'].includes(location.hostname);
+    var resultStatus = '';
+    if (!modal || !form) return;
 
-    if (!modal) return;
-
+    function showError(code) {
+      var key = 'feedback.error.' + code;
+      var text = t(key);
+      error.textContent = text === key ? t('feedback.error.unavailable') : text;
+      error.hidden = false;
+      error.focus();
+    }
+    function renderTours() {
+      var select = document.getElementById('feedback-tour');
+      var value = select.value;
+      select.replaceChildren();
+      var first = document.createElement('option'); first.value = ''; first.textContent = t('feedback.form.noTour');
+      select.appendChild(first);
+      ((window.__TOURS_DATA || {}).tours || []).forEach(function (tour) {
+        var option = document.createElement('option'); option.value = tour.slug || tour.id;
+        option.textContent = tour.title[(window.__estI18n || {}).getLang ? window.__estI18n.getLang() : 'es'] || tour.title.es;
+        select.appendChild(option);
+      });
+      select.value = value;
+    }
+    function resetCaptcha() {
+      token = local ? 'local-test' : '';
+      if (widget != null && window.turnstile) window.turnstile.reset(widget);
+    }
+    function initializeCaptcha() {
+      if (local) { token = 'local-test'; document.getElementById('feedback-local-notice').hidden = false; return; }
+      if (!window.ESTReviews.configured() || !config.turnstileSiteKey) { submit.disabled = true; showError('configuration'); return; }
+      if (widget != null) return;
+      function render() {
+        widget = window.turnstile.render('#feedback-captcha', {
+          sitekey: config.turnstileSiteKey, action: 'review',
+          callback: function (value) { token = value; },
+          'expired-callback': function () { token = ''; },
+          'error-callback': function () { token = ''; showError('captcha'); }
+        });
+      }
+      if (window.turnstile) { render(); return; }
+      var existing = document.getElementById('review-turnstile-script');
+      if (existing) return;
+      var script = document.createElement('script'); script.id = 'review-turnstile-script';
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async = true; script.onload = render;
+      script.onerror = function () { script.remove(); showError('captcha'); };
+      document.head.appendChild(script);
+    }
     function openModal() {
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
+      priorFocus = document.activeElement;
+      success.classList.add('hidden'); resultStatus = '';
+      modal.classList.add('active'); modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      if (form) form.reset();
-      if (successMsg) successMsg.classList.add('hidden');
+      if (!resultStatus) error.hidden = true;
+      initializeCaptcha(); renderTours();
+      form.elements.name.focus();
     }
-
     function closeModal() {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
+      modal.classList.remove('active'); modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (priorFocus) priorFocus.focus();
     }
-
-    if (openBtn) openBtn.addEventListener('click', openModal);
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal) closeModal();
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    modal.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') { closeModal(); return; }
+      if (event.key !== 'Tab') return;
+      var nodes = Array.from(modal.querySelectorAll('button:not([disabled]), input:not([disabled]):not([tabindex="-1"]), select, textarea, a[href], iframe')).filter(function (node) { return node.getClientRects().length; });
+      var first = nodes[0], last = nodes[nodes.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     });
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      if (busy || !form.reportValidity()) return;
+      error.hidden = true;
+      var files = Array.from(form.elements.photos.files);
+      if (files.length > 4) { showError('photo-count'); return; }
+      if (files.some(function (file) { return file.size > 5 * 1024 * 1024 || !file.size; })) { showError('photo-size'); return; }
+      if (files.some(function (file) { return !['image/jpeg', 'image/png', 'image/webp'].includes(file.type); })) { showError('photo-format'); return; }
+      if (!token) { showError('captcha'); return; }
+      var data = new FormData(form);
+      // Omit the browser's empty file placeholder; Deno parses it as a text field.
+      data.delete('photos');
+      files.forEach(function (file) { data.append('photos', file, file.name); });
+      data.set('consent', form.elements.consent.checked ? 'true' : 'false');
+      data.set('lang', window.__estI18n.getLang());
+      data.set('submissionId', submissionId);
+      data.set('turnstileToken', token);
+      busy = true; submit.disabled = true; submit.textContent = t('feedback.form.sending');
+      success.classList.add('hidden'); resultStatus = '';
+      try {
+        var result = await window.ESTReviews.submit(data);
+        resultStatus = result.status;
+        success.textContent = t('feedback.form.' + result.status);
+        success.classList.remove('hidden');
+        form.reset(); paintRating(0); submissionId = crypto.randomUUID();
         closeModal();
+        if (result.status === 'published') await loadReviews(true);
+      } catch (failure) {
+        showError(failure.code || 'unavailable');
+        // A changed form needs a fresh ID; a network retry keeps the original ID.
+        if (failure.code === 'submission-conflict') submissionId = crypto.randomUUID();
+      } finally {
+        busy = false; submit.disabled = !window.ESTReviews.configured();
+        submit.textContent = t('feedback.form.submit'); resetCaptcha();
       }
     });
-
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        var submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Enviando...';
-        }
-
-        // Simulación de envío con creación en estado PENDIENTE
-        setTimeout(function () {
-          if (successMsg) successMsg.classList.remove('hidden');
-          form.reset();
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Enviar para revisión';
-          }
-          setTimeout(closeModal, 3000);
-        }, 800);
-      });
-    }
-  }
-
-  function applyData(data) {
-    // FILTRO DE VISIBILIDAD INVIOLABLE:
-    // Solo mostramos reseñas que estén APROBADAS y marcadas como DESTACADAS para el home
-    var list = (data && data.reviews) ? data.reviews : [];
-    reviewsData = list.filter(function (r) {
-      return r.moderation && r.moderation.status === 'approved' && r.moderation.featured === true;
+    document.addEventListener('est:language-changed', function () {
+      renderTours();
+      if (resultStatus) success.textContent = t('feedback.form.' + resultStatus);
+      if (!busy) submit.textContent = t('feedback.form.submit');
     });
-
-    renderTestimonials(reviewsData);
-    startAutoplay();
   }
 
-  function loadReviews() {
-    // Fallback embebido para file:// (doble clic sin servidor)
-    if (window.__REVIEWS_DATA && window.__REVIEWS_DATA.reviews) {
-      applyData(window.__REVIEWS_DATA);
-      // Intentar refrescar desde json si hay servidor
-      try {
-        fetch('data/reviews.json')
-          .then(function (res) { if (res.ok) return res.json(); })
-          .then(function (data) { if (data) applyData(data); })
-          .catch(function () {});
-      } catch (_) {}
-      return;
+  async function loadReviews(reset) {
+    if (pageLoading) return;
+    if (!window.ESTReviews.configured()) {
+      reviewsData = []; renderTestimonials(reviewsData); return;
     }
-    fetch('data/reviews.json')
-      .then(function (res) {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then(applyData)
-      .catch(function (err) {
-        console.warn('No se pudo cargar reviews.json:', err);
-      });
+    pageLoading = true; if (moreButton) moreButton.disabled = true;
+    try {
+      var nextPage = reset ? 0 : page;
+      var data = await window.ESTReviews.list(nextPage);
+      var priorLength = reviewsData.length;
+      reviewsData = reset ? data.reviews : reviewsData.concat(data.reviews);
+      if (reset) currentIndex = 0;
+      else if (nextPage > 0) currentIndex = Math.min(priorLength, Math.max(0, reviewsData.length - getCardsPerView()));
+      page = nextPage + 1;
+      renderTestimonials(reviewsData);
+      moreButton.hidden = !data.hasMore; moreButton.textContent = t('testimonials.more');
+      startAutoplay();
+    } catch (_) {
+      if (!reviewsData.length) {
+        trackEl.replaceChildren();
+        var message = document.createElement('p'); message.textContent = t('testimonials.unavailable');
+        trackEl.appendChild(message);
+      }
+      moreButton.hidden = false; moreButton.textContent = t('testimonials.retry');
+    } finally { pageLoading = false; if (moreButton) moreButton.disabled = false; }
   }
-
   document.addEventListener('DOMContentLoaded', function () {
     trackEl = document.getElementById('testimonials-track');
     dotsContainerEl = document.getElementById('testimonials-dots');
-    initCarouselEvents();
-    initFeedbackModal();
-    loadReviews();
+    moreButton = document.createElement('button'); moreButton.type = 'button'; moreButton.className = 'reviews-load-more'; moreButton.hidden = true;
+    document.getElementById('testimonials-viewport').parentNode.appendChild(moreButton);
+    moreButton.addEventListener('click', function () { loadReviews(false); });
+    initCarouselEvents(); initFeedbackModal(); loadReviews(true);
+    document.addEventListener('est:language-changed', function () { renderTestimonials(reviewsData); moreButton.textContent = t('testimonials.more'); });
   });
 })();

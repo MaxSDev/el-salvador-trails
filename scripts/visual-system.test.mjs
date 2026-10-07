@@ -86,7 +86,8 @@ test('los campos editables usan el componente de formulario compartido', async (
 
   for (const [index, source] of sources.entries()) {
     const controls = source.match(/<(?:input|select|textarea)\b[^>]*>/g) || [];
-    const editableControls = controls.filter(control => !/type="file"/.test(control));
+    // Star ratings have their own accessible radio control instead of a text-field surface.
+    const editableControls = controls.filter(control => !/type="file"/.test(control) && !(/type="radio"/.test(control) && /class="[^"]*\brating-star-input\b/.test(control)));
     assert.ok(editableControls.length > 0, ['index.html', 'js/tours.js'][index]);
     for (const control of editableControls) {
       assert.match(control, /class="[^"]*\bform-control\b/, control);
@@ -167,6 +168,8 @@ test('la Home conserva el mural de Feedback con envío moderado', async () => {
   const quoteIndex = html.indexOf('id="home-quote"');
   const feedbackIndex = html.indexOf('id="feedback"');
   const toursIndex = html.indexOf('id="home-featured-day"');
+  const categoriesIndex = html.indexOf('home-categories-chapter');
+  const storiesIndex = html.indexOf('home-stories-chapter');
 
   assert.match(html, /id="feedback"/);
   assert.match(html, /id="testimonials-track"/);
@@ -174,7 +177,8 @@ test('la Home conserva el mural de Feedback con envío moderado', async () => {
   assert.match(html, /id="feedback-modal"/);
   assert.match(html, /<script src="js\/testimonials\.js"><\/script>/);
   assert.ok(quoteIndex > -1 && feedbackIndex > quoteIndex, 'el mural debe ir después del cotizador');
-  assert.ok(feedbackIndex < toursIndex, 'el mural debe ir antes de los tours destacados');
+  assert.ok(toursIndex > quoteIndex && categoriesIndex > toursIndex, 'los tours y categorías deben preceder a las reseñas');
+  assert.ok(feedbackIndex > categoriesIndex && feedbackIndex < storiesIndex, 'el mural debe ir después de las categorías y antes de las historias');
   const navLinks = html.match(/<ul class="nav-links-list">[\s\S]*?<\/ul>/);
   assert.ok(navLinks);
   assert.doesNotMatch(navLinks[0], /feedback/i);

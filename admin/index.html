@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><title>Reseñas — El Salvador Trails</title>
+  <link rel="stylesheet" href="reviews-admin.css">
+</head>
+<body>
+  <header class="admin-header"><a href="../index.html"><img src="../assets/icons/logo.svg" alt="El Salvador Trails" width="160" height="54"></a><a href="../index.html#feedback">Ver la página</a></header>
+  <main class="admin-shell">
+    <h1>Administrar reseñas</h1>
+    <p class="intro">Revisa las experiencias de los viajeros y decide cuáles publicar.</p>
+    <p id="local-notice" class="notice" hidden>Prueba local. Los cambios se guardan solo en esta PC. Acceso: pruebas@local.invalid / resenas-local.</p>
+    <p id="admin-message" class="message" role="status" aria-live="polite" hidden></p>
+    <section id="login-section" aria-labelledby="login-title">
+      <h2 id="login-title">Entrar al panel</h2>
+      <form id="login-form" class="login-form">
+        <label>Correo<input name="email" type="email" autocomplete="username" required></label>
+        <label>Contraseña<input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="primary" type="submit">Entrar</button>
+        <button type="button" id="reset-password">Recuperar contraseña</button>
+      </form>
+      <p class="support">El acceso está reservado al equipo autorizado de El Salvador Trails.</p>
+    </section>
+    <section id="password-section" hidden>
+      <h2>Define tu contraseña</h2>
+      <form id="password-form" class="login-form"><label>Nueva contraseña<input name="password" type="password" autocomplete="new-password" minlength="12" required></label><button class="primary" type="submit">Guardar contraseña</button></form>
+    </section>
+    <section id="review-section" hidden aria-labelledby="queue-title">
+      <div class="session-row"><p id="account-email"></p><button type="button" id="logout">Salir</button></div>
+      <div class="manual-setting"><label><input id="manual-mode" type="checkbox"> Revisar todas las reseñas antes de publicarlas</label><p>Si está desactivado, se publican automáticamente las reseñas de texto que pasan los controles. Las fotos siempre requieren revisión.</p></div>
+      <div class="queue-toolbar"><h2 id="queue-title">Reseñas</h2><label>Mostrar<select id="status-filter"><option value="pending">Pendientes</option><option value="approved">Publicadas</option><option value="rejected">Rechazadas</option><option value="hidden">Ocultas</option></select></label><button type="button" id="reload">Actualizar lista</button></div>
+      <div id="review-list" aria-busy="false"></div>
+      <nav class="pagination" aria-label="Páginas de reseñas"><button id="previous-page" type="button">Anterior</button><span id="page-label"></span><button id="next-page" type="button">Siguiente</button></nav>
+    </section>
+  </main>
+  <script src="../js/reviews-config.js"></script><script src="../js/reviews-api.js"></script>
+  <script type="module" src="reviews-admin.js"></script>
+</body>
+</html>
