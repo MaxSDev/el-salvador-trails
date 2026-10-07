@@ -10,7 +10,7 @@
   --home-night: #1c1714;
   --home-gold: #e9c262;
   --home-content-max: 90rem;
-  --home-section-space: clamp(5rem, 11vw, 11rem);
+  --home-section-space: clamp(3.25rem, 6vw, 5.5rem);
   --home-reading-width: 65ch;
 }
 
@@ -524,9 +524,9 @@
 
 .home-cinematic .home-tours-section {
   position: relative;
-  margin-top: clamp(4.5rem, 9vw, 8.5rem);
-  padding-top: clamp(3.5rem, 7vw, 7rem);
-  padding-bottom: clamp(5rem, 9vw, 9rem);
+  margin-top: 0;
+  padding-top: clamp(2.5rem, 4.5vw, 4.25rem);
+  padding-bottom: clamp(2.5rem, 4.5vw, 4.25rem);
   overflow: hidden;
 }
 
@@ -828,9 +828,9 @@
   }
 
   .home-cinematic .home-tours-section {
-    margin-top: 3.5rem;
-    padding-top: 3.25rem;
-    padding-bottom: 5rem;
+    margin-top: 0;
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
   }
 
   .home-cinematic .home-tours-section::before {
@@ -883,8 +883,8 @@
 
 /* Fase 5: referencias audiovisuales con posters locales y carga bajo clic. */
 .home-cinematic .home-video-chapter {
-  margin-top: clamp(4.5rem, 9vw, 9rem);
-  padding-block: clamp(2rem, 4vw, 4rem);
+  margin-top: 0;
+  padding-block: clamp(2.25rem, 4vw, 3.5rem);
 }
 
 .home-cinematic .video-feature--reference {
@@ -1324,8 +1324,8 @@
 
 @media (max-width: 760px) {
   .home-cinematic .home-video-chapter {
-    margin-top: 3.5rem;
-    padding-block: 1.5rem 3rem;
+    margin-top: 0;
+    padding-block: 2.25rem 2.75rem;
   }
 
   .home-cinematic .video-feature--reference {
@@ -2107,7 +2107,7 @@
   .home-cinematic .home-steps-chapter,
   .home-cinematic .home-guide-chapter,
   .home-cinematic .home-faq-chapter {
-    padding: clamp(4.5rem, 18vw, 7rem) 1rem;
+    padding: clamp(2.75rem, 10vw, 4.25rem) 1rem;
   }
 
   .home-cinematic .chapter-heading {
@@ -2248,8 +2248,24 @@
 }
 
 .home-cinematic .testimonials-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: none;
   padding: 0;
+}
+
+.home-cinematic .home-feedback-chapter .faq-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.home-cinematic .home-feedback-chapter .faq-heading .section-title,
+.home-cinematic .home-feedback-chapter .faq-heading .section-copy {
+  margin-inline: auto;
 }
 
 .home-cinematic .testimonials-section .btn-accent {
@@ -2257,7 +2273,11 @@
 }
 
 .home-cinematic #open-feedback-btn {
+  display: inline-flex;
+  margin-inline: auto;
   min-height: 44px;
+  width: fit-content;
+  max-width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1607,11 +1607,15 @@ textarea.form-control {
 .site-immersive.is-menu-open nav.fixed-nav-light,
 .dark .site-immersive.is-menu-open nav.fixed-nav-light {
   z-index: 90;
-  background: transparent;
+  background: #580f00;
   border-color: transparent;
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+
+.dark .site-immersive.is-menu-open nav.fixed-nav-light {
+  background: #1c1714;
 }
 
 .site-immersive.is-menu-open nav.fixed-nav-light::after {
@@ -1908,7 +1912,7 @@ textarea.form-control {
   font-size: 1.1rem;
 }
 
-/* Catálogo: tres siluetas, no una cuadrícula de tarjetas idénticas. */
+/* Catálogo: tres categorías equivalentes (Day Tours, Packages, Personalized). */
 .tour-catalogue-chapter {
   width: min(100%, 92rem);
   margin-inline: auto;
@@ -1916,72 +1920,69 @@ textarea.form-control {
 }
 
 .tour-catalogue-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
-  gap: clamp(1.5rem, 5vw, 5rem);
-  align-items: end;
-  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  text-align: center;
 }
 
 .tour-catalogue-heading .section-kicker {
-  align-self: start;
+  align-self: center;
 }
 
 .tour-catalogue-heading h2 {
-  grid-column: 2;
   margin: 0;
   color: var(--brand);
-  font-size: clamp(2.7rem, 5vw, 5.5rem);
+  font-size: clamp(2.4rem, 4.5vw, 4.5rem);
   font-weight: 500;
-  line-height: 0.92;
+  line-height: 0.96;
   letter-spacing: -0.05em;
+  text-wrap: balance;
 }
 
 .tour-catalogue-heading > p:last-child {
-  grid-column: 2;
-  max-width: 48ch;
+  max-width: 46ch;
   margin: 0;
   color: var(--text-muted);
 }
 
 .tours-editorial-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 2rem);
+  align-items: stretch;
 }
 
 .tour-category-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
   border-radius: 4px;
 }
 
-.tour-category-card--lead {
-  grid-column: span 7;
-}
-
-.tour-category-card--side {
-  grid-column: span 5;
-  margin-top: clamp(4rem, 10vw, 9rem);
+.tour-category-card--lead,
+.tour-category-card--side,
+.tour-category-card--wide {
+  grid-column: auto;
+  margin-top: 0;
 }
 
 .tour-category-card--wide {
-  grid-column: 2 / 12;
-  display: grid !important;
-  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
-  margin-top: clamp(1rem, 3vw, 3rem);
+  display: flex !important;
+  grid-template-columns: none;
 }
 
-.tour-category-card .tour-category-media {
-  min-height: clamp(21rem, 38vw, 38rem);
-  aspect-ratio: auto;
-}
-
-.tour-category-card--side .tour-category-media {
-  min-height: clamp(20rem, 32vw, 32rem);
-}
-
+.tour-category-card .tour-category-media,
+.tour-category-card--side .tour-category-media,
 .tour-category-card--wide .tour-category-media {
-  min-height: 30rem;
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
 }
 
 .tour-category-card .tour-category-media img {
@@ -1994,10 +1995,22 @@ textarea.form-control {
 
 .tour-category-copy {
   position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.tour-category-copy ul {
+  flex: 1 1 auto;
+}
+
+.tour-category-copy .btn-accent {
+  margin-top: auto;
+  white-space: nowrap;
 }
 
 .tour-category-card--wide .tour-category-copy {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .tour-category-number {
@@ -2022,29 +2035,88 @@ textarea.form-control {
   filter: brightness(0) invert(1);
 }
 
-.about-page .hero.secondary-photo-hero .hero-inner {
-  max-width: 92rem;
+.about-page .hero.secondary-photo-hero .hero-inner,
+.about-page .secondary-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 68rem);
   margin-inline: auto;
+  text-align: center;
 }
 
 .about-page .hero.secondary-photo-hero h1 {
-  max-width: 13ch;
+  max-width: 16em;
+  margin-inline: auto;
+  color: #fff8ec;
+  text-align: center;
+  text-wrap: pretty;
+  font-size: clamp(2.05rem, 3.6vw, 3.45rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.about-page .hero.secondary-photo-hero .lead {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.about-page.site-immersive.is-menu-open nav.fixed-nav-light,
+.about-page.site-immersive.is-menu-open nav.fixed-nav-light.is-scrolled,
+.dark .about-page.site-immersive.is-menu-open nav.fixed-nav-light {
+  background: #580f00;
+  border-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.about-page.site-immersive.is-menu-open nav.fixed-nav-light::before {
+  content: none;
 }
 
 .about-page .hero-cta {
-  justify-content: flex-start;
+  justify-content: center;
+  width: 100%;
 }
 
 .about-page .hero-cta .btn {
-  border-color: rgba(255, 248, 236, 0.62);
+  border-color: rgba(255, 248, 236, 0.72);
 }
 
-.about-page .origin {
-  padding-top: var(--section-space);
+.about-page .hero-cta .btn-ghost {
+  background: rgba(28, 23, 20, 0.28);
+  border-color: rgba(255, 248, 236, 0.88);
+  color: #fff8ec;
+  backdrop-filter: blur(6px);
+}
+
+.about-page .hero-cta .btn-ghost:hover,
+.about-page .hero-cta .btn-ghost:focus-visible {
+  background: rgba(233, 194, 98, 0.18);
+  border-color: var(--accent);
+  color: #fff8ec;
+}
+
+.dark .about-page .hero-cta .btn-ghost {
+  background: rgba(28, 23, 20, 0.45);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.dark .about-page .hero-cta .btn-ghost:hover,
+.dark .about-page .hero-cta .btn-ghost:focus-visible {
+  background: rgba(233, 194, 98, 0.16);
+  color: #fff8ec;
+}
+
+.about-page .social-band {
+  background: var(--bg);
+  border: 0;
 }
 
 .about-page .trail-section {
-  padding-bottom: var(--section-space);
+  padding-bottom: clamp(2rem, 4vw, 3.25rem);
 }
 
 /* Bienes Raíces: promesa editorial deliberada, sin fichas ficticias. */
@@ -2193,16 +2265,16 @@ textarea.form-control {
   }
 
   .tour-catalogue-heading {
-    grid-template-columns: 1fr;
+    align-items: center;
   }
 
   .tour-catalogue-heading h2,
   .tour-catalogue-heading > p:last-child {
-    grid-column: 1;
+    grid-column: auto;
   }
 
-  .tour-category-card--wide {
-    grid-column: 1 / -1;
+  .tours-editorial-grid {
+    grid-template-columns: 1fr;
   }
 
   .coming-soon-layout {
@@ -2289,23 +2361,14 @@ textarea.form-control {
   }
 
   .tours-editorial-grid {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .tour-category-card--side,
-  .tour-category-card--wide {
-    margin-top: 0;
-  }
-
-  .tour-category-card--wide {
-    display: flex !important;
+    grid-template-columns: 1fr;
   }
 
   .tour-category-card .tour-category-media,
   .tour-category-card--side .tour-category-media,
   .tour-category-card--wide .tour-category-media {
-    min-height: 19rem;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
   }
 
   .tour-category-card .tour-category-copy {

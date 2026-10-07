@@ -44,7 +44,7 @@
       "help.step2":           "2. Presiona el botón dorado para ver fotos, itinerario y detalles.",
       "help.step3":           "3. Indica adultos, niños y fecha, y cotiza por WhatsApp o correo.",
       "help.close":           "Entendido",
-      "personalized.contact": "Pedir experiencia personalizada",
+      "personalized.contact": "Llenar formulario",
       "personalized.note":    "Cuéntanos tu idea y diseñamos tu ruta a medida.",
 
       // ---- Home expandido ----
@@ -370,7 +370,7 @@
       "help.step2":           "2. Tap the gold button to see photos, itinerary and details.",
       "help.step3":           "3. Enter adults, children and date, then quote via WhatsApp or email.",
       "help.close":           "Got it",
-      "personalized.contact": "Request a personalized experience",
+      "personalized.contact": "Fill in the form",
       "personalized.note":    "Tell us your idea and we design your custom route.",
       "home.quote.title":       "Quote your trail in 1 minute",
       "home.quote.destination":"Where do you want to go?",
@@ -684,7 +684,7 @@
       "help.step2":           "2. Toque no botão dourado para ver fotos, roteiro e detalhes.",
       "help.step3":           "3. Informe adultos, crianças e data, e cote pelo WhatsApp ou e-mail.",
       "help.close":           "Entendi",
-      "personalized.contact": "Solicitar experiência personalizada",
+      "personalized.contact": "Preencher formulário",
       "personalized.note":    "Conte sua ideia e desenhamos seu roteiro sob medida.",
       "home.quote.title":       "Cote sua trilha em 1 minuto",
       "home.quote.destination":"Para onde quer ir?",
