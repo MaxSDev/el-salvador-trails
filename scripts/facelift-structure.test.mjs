@@ -7,10 +7,10 @@ const read = path => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 const HOME_SECTION_MARKERS = [
   'id="destination-carousel"',
   'id="home-quote"',
-  'id="feedback"',
   'id="home-featured-day"',
   'data-video-placeholder="main"',
   'aria-label="Categorías"',
+  'id="feedback"',
   'data-video-placeholder="story"',
   'id="planning-title"',
   'id="steps-title"',

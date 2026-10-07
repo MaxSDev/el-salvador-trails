@@ -54,6 +54,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/carrousel.css">
   <link rel="stylesheet" href="css/home-cinematic.css">
+  <link rel="stylesheet" href="css/reviews.css">
 </head>
 <body class="font-body home-cinematic site-immersive has-photo-hero" data-i18n-page-title="page.index.title">
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
@@ -245,30 +246,6 @@
 
     <div class="ornate-divider mx-16 my-16"></div>
 
-    <section class="home-shell home-feedback-chapter relative w-full z-10 flex justify-center" id="feedback" data-home-layout="mural" aria-labelledby="feedback-title">
-      <div class="testimonials-section w-full home-reveal">
-        <header class="faq-heading">
-          <h2 id="feedback-title" class="section-title" data-i18n="feedback.title">Historias que nos hacen seguir</h2>
-          <p class="section-copy" data-i18n="feedback.subtitle">Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de El Salvador Trails.</p>
-        </header>
-        <div id="testimonials-viewport" class="testimonials-viewport" aria-live="polite">
-          <div id="testimonials-track" class="testimonials-track"></div>
-        </div>
-        <div class="testimonials-controls">
-          <button type="button" id="testimonials-prev-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.prev" aria-label="Testimonio anterior">
-            <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
-          </button>
-          <div id="testimonials-dots" class="testimonials-dots"></div>
-          <button type="button" id="testimonials-next-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.next" aria-label="Siguiente testimonio">
-            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
-          </button>
-        </div>
-        <button type="button" id="open-feedback-btn" class="btn-accent" data-i18n="testimonials.cta">¿Viajaste con nosotros? Comparte tu experiencia</button>
-      </div>
-    </section>
-
-    <div class="ornate-divider mx-16 my-16"></div>
-
     <!-- Tours destacados -->
     <section class="home-shell home-tours-section relative w-full z-10 flex justify-center" data-ghost="El Salvador" aria-labelledby="home-featured-title">
       <div class="home-tours-shell w-full">
@@ -389,6 +366,31 @@
             <span class="cat-desc" data-i18n="home.cats.c4d">Ruta de las Flores y Centro Histórico.</span>
           </a>
         </div>
+      </div>
+    </section>
+
+    <div class="ornate-divider mx-16 my-16"></div>
+
+    <section class="home-shell home-feedback-chapter relative w-full z-10 flex justify-center" id="feedback" data-home-layout="mural" aria-labelledby="feedback-title">
+      <div class="testimonials-section w-full home-reveal">
+        <header class="faq-heading">
+          <h2 id="feedback-title" class="section-title" data-i18n="feedback.title">Historias que nos hacen seguir</h2>
+          <p class="section-copy" data-i18n="feedback.subtitle">Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de El Salvador Trails.</p>
+        </header>
+        <div id="testimonials-viewport" class="testimonials-viewport" aria-live="polite">
+          <div id="testimonials-track" class="testimonials-track"></div>
+        </div>
+        <div class="testimonials-controls">
+          <button type="button" id="testimonials-prev-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.prev" aria-label="Testimonio anterior">
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+          </button>
+          <div id="testimonials-dots" class="testimonials-dots"></div>
+          <button type="button" id="testimonials-next-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.next" aria-label="Siguiente testimonio">
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+          </button>
+        </div>
+        <button type="button" id="open-feedback-btn" class="btn-accent" data-i18n="testimonials.cta">¿Viajaste con nosotros? Comparte tu experiencia</button>
+        <p id="feedback-form-success" class="feedback-form-success hidden" role="status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -644,33 +646,43 @@
       <h2 id="feedback-modal-title" class="font-display text-2xl font-bold text-brand" data-i18n="feedback.modal.title">Comparte tu experiencia</h2>
       <p class="section-copy" data-i18n="feedback.modal.subtitle">Tu reseña nos ayuda a seguir brindando viajes seguros y memorables.</p>
       <form id="feedback-form">
+        <p id="feedback-form-error" class="review-error" role="alert" tabindex="-1" hidden></p>
         <label class="feedback-field">
           <span data-i18n="feedback.form.name">Tu nombre</span>
-          <input class="form-control" type="text" name="name" required autocomplete="name">
+          <input class="form-control" type="text" name="name" minlength="2" maxlength="80" required autocomplete="name">
         </label>
         <label class="feedback-field">
           <span data-i18n="feedback.form.country">País de origen (opcional)</span>
-          <input class="form-control" type="text" name="country" autocomplete="country-name">
+          <input class="form-control" type="text" name="country" maxlength="80" autocomplete="country-name">
         </label>
-        <label class="feedback-field">
-          <span data-i18n="feedback.form.rating">Calificación</span>
-          <select class="form-control" name="rating" required>
-            <option value="5">5</option>
-            <option value="4">4</option>
-            <option value="3">3</option>
-            <option value="2">2</option>
-            <option value="1">1</option>
-          </select>
-        </label>
+        <fieldset class="feedback-field rating-field">
+          <legend data-i18n="feedback.form.rating">Calificación</legend>
+          <div class="rating-stars">
+            <label class="rating-star-option"><input class="rating-star-input" type="radio" name="rating" id="rating-1" value="1" required data-i18n-aria="feedback.form.rating1" aria-label="1 estrella"><span class="rating-star-symbol" aria-hidden="true"></span></label>
+            <label class="rating-star-option"><input class="rating-star-input" type="radio" name="rating" id="rating-2" value="2" required data-i18n-aria="feedback.form.rating2" aria-label="2 estrellas"><span class="rating-star-symbol" aria-hidden="true"></span></label>
+            <label class="rating-star-option"><input class="rating-star-input" type="radio" name="rating" id="rating-3" value="3" required data-i18n-aria="feedback.form.rating3" aria-label="3 estrellas"><span class="rating-star-symbol" aria-hidden="true"></span></label>
+            <label class="rating-star-option"><input class="rating-star-input" type="radio" name="rating" id="rating-4" value="4" required data-i18n-aria="feedback.form.rating4" aria-label="4 estrellas"><span class="rating-star-symbol" aria-hidden="true"></span></label>
+            <label class="rating-star-option"><input class="rating-star-input" type="radio" name="rating" id="rating-5" value="5" required data-i18n-aria="feedback.form.rating5" aria-label="5 estrellas"><span class="rating-star-symbol" aria-hidden="true"></span></label>
+          </div>
+        </fieldset>
         <label class="feedback-field">
           <span data-i18n="feedback.form.comment">Tu reseña o testimonio</span>
-          <textarea class="form-control" name="comment" rows="4" required></textarea>
+          <textarea class="form-control" name="comment" rows="4" minlength="20" maxlength="2000" required></textarea>
         </label>
         <label class="feedback-field">
           <span data-i18n="feedback.form.photos">Adjuntar fotos (opcional, máx. 4 imágenes)</span>
-          <input type="file" name="photos" accept="image/*" multiple>
+          <input type="file" name="photos" accept="image/jpeg,image/png,image/webp" multiple>
+          <small data-i18n="feedback.form.photoHint">JPEG, PNG o WebP. Máximo 5 MB por imagen.</small>
         </label>
-        <p id="feedback-form-success" class="feedback-form-success hidden" data-i18n="feedback.form.success">¡Muchas gracias! Tu reseña ha sido enviada y será publicada tras la revisión de nuestro equipo.</p>
+        <label class="feedback-field">
+          <span data-i18n="feedback.form.tour">Tour realizado (opcional)</span>
+          <select class="form-control" name="tourSlug" id="feedback-tour"><option value="" data-i18n="feedback.form.noTour">Experiencia general</option></select>
+        </label>
+        <div class="review-honeypot" aria-hidden="true"><label>Website<input class="form-control" type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="review-consent"><input class="form-control" type="checkbox" name="consent" required><span data-i18n="feedback.form.consent">Acepto publicar mi nombre, país, calificación, reseña y fotos. Tengo permiso para compartir estas imágenes.</span></label>
+        <a class="review-privacy-link" href="privacy.html#review-privacy" target="_blank" rel="noopener" data-i18n="feedback.form.privacy">Información de privacidad</a>
+        <p id="feedback-local-notice" class="review-notice" hidden data-i18n="feedback.form.local">Prueba local: esta reseña se guardará solo en esta PC y quedará en revisión.</p>
+        <div id="feedback-captcha"></div>
         <button type="submit" class="btn-accent w-full py-3 mt-4 rounded-lg" data-i18n="feedback.form.submit">Enviar para revisión</button>
       </form>
     </div>
@@ -689,6 +701,7 @@
   </div>
 
   <script src="js/i18n.js"></script>
+  <script src="js/reviews-i18n.js"></script>
   <script src="data/media-manifest.js"></script>
   <script src="js/media.js"></script>
   <script src="data/tours-data.js"></script>
@@ -697,7 +710,9 @@
   <script src="js/home.js"></script>
   <script src="data/reference-videos.js"></script>
   <script src="js/video-player.js"></script>
-  <script src="data/reviews-data.js"></script>
+  <script src="js/reviews-config.js"></script>
+  <script src="js/reviews-api.js"></script>
+  <script src="js/reviews-view.js"></script>
   <script src="js/testimonials.js"></script>
 </body>
 </html>

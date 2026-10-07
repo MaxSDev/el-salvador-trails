@@ -15,3 +15,12 @@ archive/
 .DS_Store
 Thumbs.db
 
+# Review service secrets, private local test data and generated browser bundle
+.env
+.env.*
+!.env.example
+.local/
+dist/
+admin/supabase-client.js
+supabase/.temp/
+

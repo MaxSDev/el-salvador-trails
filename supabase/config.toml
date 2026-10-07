@@ -1,0 +1,13 @@
+project_id = "el-salvador-trails"
+
+[db.migrations]
+schema_paths = ["./schemas/*.sql"]
+
+[auth]
+enable_signup = false
+enable_anonymous_sign_ins = false
+site_url = "http://127.0.0.1:8001/admin/"
+additional_redirect_urls = ["http://127.0.0.1:8001/admin/", "http://localhost:8001/admin/"]
+
+[functions.reviews-api]
+verify_jwt = false

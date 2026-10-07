@@ -4,10 +4,21 @@
   "private": true,
   "scripts": {
     "test": "node --test",
+    "test:reviews": "node --test scripts/reviews-*.test.mjs",
+    "test:reviews:browser": "node scripts/reviews-e2e.mjs",
+    "dev": "node scripts/reviews-dev.mjs",
+    "build": "node scripts/build-site.mjs",
+    "preview": "node scripts/serve-site.mjs",
     "media:check": "node scripts/check-responsive-media.mjs",
     "images:optimize": "node scripts/optimize-images.mjs"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "esbuild": "0.28.2",
+    "playwright": "1.62.1",
     "sharp": "^0.35.5"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.117.3"
   }
 }

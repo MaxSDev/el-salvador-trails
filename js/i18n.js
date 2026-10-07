@@ -323,6 +323,11 @@
       "feedback.form.name":   "Tu nombre",
       "feedback.form.country":"País de origen (opcional)",
       "feedback.form.rating": "Calificación",
+      "feedback.form.rating1": "1 estrella",
+      "feedback.form.rating2": "2 estrellas",
+      "feedback.form.rating3": "3 estrellas",
+      "feedback.form.rating4": "4 estrellas",
+      "feedback.form.rating5": "5 estrellas",
       "feedback.form.comment":"Tu reseña o testimonio",
       "feedback.form.photos": "Adjuntar fotos (opcional, máx. 4 imágenes)",
       "feedback.form.submit": "Enviar para revisión",
@@ -637,6 +642,11 @@
       "feedback.form.name":   "Your name",
       "feedback.form.country":"Country of origin (optional)",
       "feedback.form.rating": "Rating",
+      "feedback.form.rating1": "1 star",
+      "feedback.form.rating2": "2 stars",
+      "feedback.form.rating3": "3 stars",
+      "feedback.form.rating4": "4 stars",
+      "feedback.form.rating5": "5 stars",
       "feedback.form.comment":"Your review or story",
       "feedback.form.photos": "Attach photos (optional, up to 4 images)",
       "feedback.form.submit": "Submit for review",
@@ -951,6 +961,11 @@
       "feedback.form.name":   "Seu nome",
       "feedback.form.country":"País de origem (opcional)",
       "feedback.form.rating": "Avaliação",
+      "feedback.form.rating1": "1 estrela",
+      "feedback.form.rating2": "2 estrelas",
+      "feedback.form.rating3": "3 estrelas",
+      "feedback.form.rating4": "4 estrelas",
+      "feedback.form.rating5": "5 estrelas",
       "feedback.form.comment":"Seu depoimento ou comentário",
       "feedback.form.photos": "Anexar fotos (opcional, máx. 4 imagens)",
       "feedback.form.submit": "Enviar para moderação",
@@ -1043,6 +1058,7 @@
     currentLang = lang;
     saveLang(lang);
     applyTranslations();
+    document.dispatchEvent(new CustomEvent('est:language-changed', { detail: { lang: lang } }));
   }
 
   /* ── Exposición global ── */
