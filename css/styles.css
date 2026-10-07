@@ -2029,12 +2029,6 @@ textarea.form-control {
   padding: 0;
 }
 
-.about-page .hero.secondary-photo-hero .heritage-field {
-  z-index: -1;
-  opacity: 0.35;
-  filter: brightness(0) invert(1);
-}
-
 .about-page .hero.secondary-photo-hero .hero-inner,
 .about-page .secondary-hero-content {
   display: flex;

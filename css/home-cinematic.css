@@ -1982,15 +1982,13 @@
   position: relative;
   margin: 0;
   padding: clamp(5rem, 9vw, 8rem) clamp(1.25rem, 5vw, 5rem);
-  background:
-    radial-gradient(circle at 50% 0%, rgba(233, 194, 98, 0.12), transparent 28rem),
-    var(--home-night);
-  color: #fff8ec;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .home-cinematic .social-band-kicker {
   margin-bottom: 1rem;
-  color: var(--home-gold);
+  color: var(--brand);
   font-family: var(--font-label);
   font-size: 0.64rem;
   font-weight: 650;
@@ -2001,7 +1999,7 @@
 .home-cinematic .social-connect-title {
   max-width: 15ch;
   margin-inline: auto;
-  color: #fff8ec;
+  color: var(--brand);
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 5vw, 5rem);
   font-weight: 520;
@@ -2012,44 +2010,44 @@
 
 .home-cinematic .social-band .text-muted {
   max-width: 58ch;
-  color: rgba(255, 248, 236, 0.68);
+  color: var(--text-muted);
   line-height: 1.65;
 }
 
 .home-cinematic .social-band .text-brand {
-  color: var(--home-gold);
+  color: var(--brand);
 }
 
 .home-cinematic .social-band .social-connect-icon {
-  border-color: rgba(255, 248, 236, 0.34);
+  border-color: var(--border-strong);
   background: transparent;
-  color: #fff8ec;
+  color: var(--brand);
   box-shadow: none;
 }
 
 .home-cinematic .social-band .social-connect-icon:hover,
 .home-cinematic .social-band .social-connect-icon:focus-visible {
-  border-color: var(--home-gold);
-  background: var(--home-gold);
-  color: var(--home-night);
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--bg);
   transform: none;
 }
 
 .home-cinematic footer.footer-light {
   margin: 0;
   padding: clamp(3rem, 6vw, 5rem) 1.25rem;
-  border-top: 1px solid rgba(255, 248, 236, 0.12);
-  background: var(--home-night);
-  color: rgba(255, 248, 236, 0.72);
+  border-top: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
 }
 
 .home-cinematic footer.footer-light .footer-wordmark,
 .home-cinematic footer.footer-light a {
-  color: #fff8ec;
+  color: var(--brand);
 }
 
 .home-cinematic footer.footer-light .copyright-text {
-  color: rgba(255, 248, 236, 0.52);
+  color: var(--text-muted);
 }
 
 /* Un solo gesto de entrada, ligado al recorrido y limitado a opacidad/posición. */
