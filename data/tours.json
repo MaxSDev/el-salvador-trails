@@ -307,6 +307,424 @@
       }
     },
     {
+      "id": "laguna-alegria-volcan-tecapa",
+      "slug": "laguna-alegria-volcan-tecapa",
+      "category": "day",
+      "title": {
+        "es": "La Laguna de Alegría – Volcán Tecapa",
+        "en": "Alegría Lagoon – Tecapa Volcano",
+        "pt": "Lagoa de Alegría – Vulcão Tecapa"
+      },
+      "shortDescription": {
+        "es": "Descubra una de las joyas naturales más encantadoras del oriente de El Salvador: la Laguna de Alegría, ubicada en el corazón del Volcán Tecapa y conocida como el “Cráter de Esmeralda” por el intenso color verde de sus aguas, un paisaje que sorprende y cautiva a todo viajero.",
+        "en": "Discover one of the most enchanting natural treasures in eastern El Salvador: Alegría Lagoon, located in the heart of Tecapa Volcano and known as the “Emerald Crater” for the intense green of its waters, a landscape that surprises and captivates every traveler.",
+        "pt": "Descubra uma das joias naturais mais encantadoras do leste de El Salvador: a Lagoa de Alegría, localizada no coração do Vulcão Tecapa e conhecida como a “Cratera de Esmeralda” pela intensa cor verde de suas águas, uma paisagem que surpreende e encanta cada viajante."
+      },
+      "fullDescription": {
+        "es": "El Cráter de Esmeralda\n\nDescubra una de las joyas naturales más encantadoras del oriente de El Salvador: la Laguna de Alegría, ubicada en el corazón del Volcán Tecapa y conocida como el “Cráter de Esmeralda” por el intenso color verde de sus aguas, un paisaje que sorprende y cautiva a todo viajero.\n\nEn este tour de día completo recorreremos la pintoresca carretera Panamericana, disfrutando de espectaculares paisajes y del encanto de las montañas del oriente salvadoreño.\n\nUna experiencia perfecta para respirar aire puro, conectar con la naturaleza, descubrir los sabores de la gastronomía local y disfrutar de la tranquilidad de un destino lleno de belleza y magia.\n\n¡Déjese sorprender por la naturaleza y descubra la Esmeralda del Volcán Tecapa!",
+        "en": "The Emerald Crater\n\nDiscover one of the most enchanting natural treasures in eastern El Salvador: Alegría Lagoon, located in the heart of Tecapa Volcano and known as the “Emerald Crater” for the intense green of its waters, a landscape that surprises and captivates every traveler.\n\nOn this full-day tour, we will travel along the picturesque Pan-American Highway, enjoying spectacular scenery and the charm of the mountains of eastern El Salvador.\n\nA perfect experience to breathe fresh air, connect with nature, discover the flavors of local cuisine and enjoy the tranquility of a destination full of beauty and magic.\n\nLet nature surprise you and discover the Emerald of Tecapa Volcano!",
+        "pt": "A Cratera de Esmeralda\n\nDescubra uma das joias naturais mais encantadoras do leste de El Salvador: a Lagoa de Alegría, localizada no coração do Vulcão Tecapa e conhecida como a “Cratera de Esmeralda” pela intensa cor verde de suas águas, uma paisagem que surpreende e encanta cada viajante.\n\nNeste passeio de dia inteiro, percorreremos a pitoresca Rodovia Pan-Americana, desfrutando de paisagens espetaculares e do encanto das montanhas do leste salvadorenho.\n\nUma experiência perfeita para respirar ar puro, conectar-se com a natureza, descobrir os sabores da gastronomia local e aproveitar a tranquilidade de um destino cheio de beleza e magia.\n\nDeixe-se surpreender pela natureza e descubra a Esmeralda do Vulcão Tecapa!"
+      },
+      "highlights": {
+        "es": [
+          "Laguna de Alegría en el Volcán Tecapa",
+          "Paisajes de la carretera Panamericana",
+          "Naturaleza y gastronomía local"
+        ],
+        "en": [
+          "Alegría Lagoon in Tecapa Volcano",
+          "Scenery along the Pan-American Highway",
+          "Nature and local cuisine"
+        ],
+        "pt": [
+          "Lagoa de Alegría no Vulcão Tecapa",
+          "Paisagens da Rodovia Pan-Americana",
+          "Natureza e gastronomia local"
+        ]
+      },
+      "images": [
+        "assets/tours/day-updates/laguna-alegria/2.jpg",
+        "assets/tours/day-updates/laguna-alegria/3.jpg",
+        "assets/tours/day-updates/laguna-alegria/5.jpg"
+      ],
+      "imageDescriptions": {
+        "es": [
+          "Laguna de Alegría",
+          "Otra vista de la Laguna de Alegría",
+          "Montañas del oriente salvadoreño"
+        ],
+        "en": [
+          "Alegría Lagoon",
+          "Another view of Alegría Lagoon",
+          "Mountains of eastern El Salvador"
+        ],
+        "pt": [
+          "Lagoa de Alegría",
+          "Outra vista da Lagoa de Alegría",
+          "Montanhas do leste salvadorenho"
+        ]
+      },
+      "galleryLabel": {
+        "es": "Laguna de Alegría · Tecapa",
+        "en": "Alegría Lagoon · Tecapa",
+        "pt": "Lagoa de Alegría · Tecapa"
+      },
+      "duration": {
+        "es": "Día completo",
+        "en": "Full day",
+        "pt": "Dia inteiro"
+      },
+      "groupSize": null,
+      "pickup": null,
+      "rating": null,
+      "ratingCount": 0,
+      "badge": null,
+      "meetingPoint": null,
+      "contentSource": {
+        "document": "day-tours-texto-fuente.md",
+        "client": "Mario Domínguez",
+        "receivedDate": "2026-10-11",
+        "sourceNumber": 5,
+        "translations": "assisted-en-pt"
+      }
+    },
+    {
+      "id": "la-libertad-paraiso-del-surf",
+      "slug": "la-libertad-paraiso-del-surf",
+      "category": "day",
+      "title": {
+        "es": "La Libertad – Paraíso del Surf",
+        "en": "La Libertad – Surf Paradise",
+        "pt": "La Libertad – Paraíso do Surf"
+      },
+      "shortDescription": {
+        "es": "¡Vive la energía del Pacífico salvadoreño en La Libertad, uno de los destinos de surf más emblemáticos de El Salvador!",
+        "en": "Feel the energy of the Salvadoran Pacific in La Libertad, one of El Salvador’s most iconic surfing destinations!",
+        "pt": "Viva a energia do Pacífico salvadorenho em La Libertad, um dos destinos de surf mais emblemáticos de El Salvador!"
+      },
+      "fullDescription": {
+        "es": "¡Vive la energía del Pacífico salvadoreño en La Libertad, uno de los destinos de surf más emblemáticos de El Salvador!\n\nDescubre sus espectaculares playas de arena negra, formadas por la riqueza volcánica del país, y disfruta de un día inolvidable en Playa El Tunco, famosa por sus olas, su ambiente relajado y sus impresionantes atardeceres.\n\nEl tour incluye transporte de ida y regreso y un Day Pass en hotel-restaurante, con acceso a sus instalaciones y almuerzo incluido. Y si quieres llevar la aventura un paso más allá, puedes agregar una clase de surf de una hora y experimentar la emoción de deslizarte sobre las olas del Pacífico.\n\nSol, mar, surf y gastronomía se combinan en una experiencia perfecta para disfrutar de la costa salvadoreña.\n\n¡Ven a descubrir por qué La Libertad es un verdadero paraíso del surf!",
+        "en": "Feel the energy of the Salvadoran Pacific in La Libertad, one of El Salvador’s most iconic surfing destinations!\n\nDiscover its spectacular black-sand beaches, formed by the country’s volcanic heritage, and enjoy an unforgettable day at El Tunco Beach, famous for its waves, relaxed atmosphere and stunning sunsets.\n\nThe tour includes round-trip transportation and a Day Pass at a hotel-restaurant, with access to its facilities and lunch included. And if you want to take the adventure one step further, you can add a one-hour surfing lesson and experience the thrill of riding the Pacific waves.\n\nSun, sea, surfing and cuisine come together in a perfect experience for enjoying the Salvadoran coast.\n\nCome and discover why La Libertad is a true surfing paradise!",
+        "pt": "Viva a energia do Pacífico salvadorenho em La Libertad, um dos destinos de surf mais emblemáticos de El Salvador!\n\nDescubra suas espetaculares praias de areia preta, formadas pela riqueza vulcânica do país, e desfrute de um dia inesquecível na Praia El Tunco, famosa por suas ondas, seu ambiente descontraído e seus impressionantes pores do sol.\n\nO passeio inclui transporte de ida e volta e um Day Pass em hotel-restaurante, com acesso às instalações e almoço incluído. E, se quiser ir um pouco além na aventura, você pode acrescentar uma aula de surf de uma hora e experimentar a emoção de deslizar sobre as ondas do Pacífico.\n\nSol, mar, surf e gastronomia se combinam em uma experiência perfeita para aproveitar a costa salvadorenha.\n\nVenha descobrir por que La Libertad é um verdadeiro paraíso do surf!"
+      },
+      "highlights": {
+        "es": [
+          "Playa El Tunco y la costa de La Libertad",
+          "Day Pass con acceso a instalaciones y almuerzo",
+          "Clase de surf de una hora disponible como extra"
+        ],
+        "en": [
+          "El Tunco Beach and the La Libertad coast",
+          "Day Pass with facility access and lunch",
+          "One-hour surfing lesson available as an extra"
+        ],
+        "pt": [
+          "Praia El Tunco e a costa de La Libertad",
+          "Day Pass com acesso às instalações e almoço",
+          "Aula de surf de uma hora disponível como extra"
+        ]
+      },
+      "images": [
+        "assets/tours/day-updates/la-libertad/18.jpg",
+        "assets/tours/day-updates/la-libertad/17.jpg",
+        "assets/tours/day-updates/la-libertad/10.jpg"
+      ],
+      "imageDescriptions": {
+        "es": [
+          "Atardecer en Playa El Tunco",
+          "Espacios de la costa de La Libertad",
+          "Acantilados de la costa de La Libertad"
+        ],
+        "en": [
+          "Sunset at El Tunco Beach",
+          "Spaces along the La Libertad coast",
+          "Cliffs on the La Libertad coast"
+        ],
+        "pt": [
+          "Pôr do sol na Praia El Tunco",
+          "Espaços da costa de La Libertad",
+          "Falésias da costa de La Libertad"
+        ]
+      },
+      "galleryLabel": {
+        "es": "La Libertad · El Tunco",
+        "en": "La Libertad · El Tunco",
+        "pt": "La Libertad · El Tunco"
+      },
+      "duration": null,
+      "groupSize": null,
+      "pickup": null,
+      "rating": null,
+      "ratingCount": 0,
+      "badge": null,
+      "meetingPoint": null,
+      "contentSource": {
+        "document": "day-tours-texto-fuente.md",
+        "client": "Mario Domínguez",
+        "receivedDate": "2026-10-11",
+        "sourceNumber": 6,
+        "translations": "assisted-en-pt"
+      },
+      "included": {
+        "es": [
+          "Transporte de ida y regreso",
+          "Day Pass en hotel-restaurante con acceso a instalaciones",
+          "Almuerzo"
+        ],
+        "en": [
+          "Round-trip transportation",
+          "Day Pass at a hotel-restaurant with facility access",
+          "Lunch"
+        ],
+        "pt": [
+          "Transporte de ida e volta",
+          "Day Pass em hotel-restaurante com acesso às instalações",
+          "Almoço"
+        ]
+      },
+      "optionalExtras": [
+        {
+          "id": "surf-lesson-1h",
+          "label": {
+            "es": "Clase de surf de una hora",
+            "en": "One-hour surfing lesson",
+            "pt": "Aula de surf de uma hora"
+          }
+        }
+      ]
+    },
+    {
+      "id": "boqueron-fumarolas-volcan-san-salvador",
+      "slug": "boqueron-fumarolas-volcan-san-salvador",
+      "category": "day",
+      "title": {
+        "es": "Boquerón y Fumarolas – Volcán de San Salvador",
+        "en": "Boquerón and Fumaroles – San Salvador Volcano",
+        "pt": "Boquerón e Fumarolas – Vulcão de San Salvador"
+      },
+      "shortDescription": {
+        "es": "Descubra el imponente Volcán de San Salvador, un verdadero coloso que se eleva sobre la capital y ofrece una extraordinaria experiencia de naturaleza a pocos minutos del área metropolitana.",
+        "en": "Discover the imposing San Salvador Volcano, a true giant rising above the capital and offering an extraordinary nature experience just minutes from the metropolitan area.",
+        "pt": "Descubra o imponente Vulcão de San Salvador, um verdadeiro colosso que se eleva sobre a capital e oferece uma extraordinária experiência de natureza a poucos minutos da área metropolitana."
+      },
+      "fullDescription": {
+        "es": "Naturaleza, café y volcanismo en las alturas de San Salvador\n\nDescubra el imponente Volcán de San Salvador, un verdadero coloso que se eleva sobre la capital y ofrece una extraordinaria experiencia de naturaleza a pocos minutos del área metropolitana.\n\nNuestra aventura comienza en una tradicional finca de café, donde realizaremos una caminata de aproximadamente 45 minutos entre cultivos y paisajes de montaña para descubrir las fumarolas volcánicas, respiraderos naturales por donde se liberan vapor y gases provenientes de la actividad geotérmica del subsuelo.\n\nContinuaremos hacia el Parque Natural El Boquerón, un hermoso jardín de montaña situado a más de 1,800 metros de altitud, donde podremos contemplar el impresionante cráter del volcán y conocer el Boqueroncito, formación asociada a la erupción de 1917.\n\nPara cerrar esta experiencia entre naturaleza y volcanes, disfrutaremos de unas deliciosas pupusas acompañadas del ambiente fresco de las alturas del volcán.\n\n¡Respire aire puro, descubra la fuerza de la tierra y disfrute de los sabores de El Salvador desde las alturas!",
+        "en": "Nature, coffee and volcanism in the heights of San Salvador\n\nDiscover the imposing San Salvador Volcano, a true giant rising above the capital and offering an extraordinary nature experience just minutes from the metropolitan area.\n\nOur adventure begins at a traditional coffee farm, where we will take an approximately 45-minute walk through crops and mountain scenery to discover volcanic fumaroles, natural vents that release steam and gases from geothermal activity underground.\n\nWe will continue to El Boquerón Natural Park, a beautiful mountain garden situated at an altitude of over 1,800 meters, where we can contemplate the volcano’s impressive crater and discover Boqueroncito, a formation associated with the 1917 eruption.\n\nTo round off this experience among nature and volcanoes, we will enjoy delicious pupusas in the cool atmosphere of the volcano’s heights.\n\nBreathe fresh air, discover the power of the earth and enjoy the flavors of El Salvador from above!",
+        "pt": "Natureza, café e vulcanismo nas alturas de San Salvador\n\nDescubra o imponente Vulcão de San Salvador, um verdadeiro colosso que se eleva sobre a capital e oferece uma extraordinária experiência de natureza a poucos minutos da área metropolitana.\n\nNossa aventura começa em uma tradicional fazenda de café, onde faremos uma caminhada de aproximadamente 45 minutos entre cultivos e paisagens de montanha para descobrir as fumarolas vulcânicas, respiradouros naturais que liberam vapor e gases provenientes da atividade geotérmica do subsolo.\n\nContinuaremos até o Parque Natural El Boquerón, um belo jardim de montanha situado a mais de 1.800 metros de altitude, onde poderemos contemplar a impressionante cratera do vulcão e conhecer o Boqueroncito, formação associada à erupção de 1917.\n\nPara encerrar esta experiência entre natureza e vulcões, desfrutaremos de deliciosas pupusas no ambiente fresco das alturas do vulcão.\n\nRespire ar puro, descubra a força da terra e desfrute dos sabores de El Salvador nas alturas!"
+      },
+      "highlights": {
+        "es": [
+          "Caminata de unos 45 minutos en finca de café y fumarolas",
+          "Parque Natural El Boquerón y Boqueroncito",
+          "Pupusas en las alturas del volcán"
+        ],
+        "en": [
+          "Approximately 45-minute coffee-farm and fumarole walk",
+          "El Boquerón Natural Park and Boqueroncito",
+          "Pupusas in the volcano’s heights"
+        ],
+        "pt": [
+          "Caminhada de cerca de 45 minutos em fazenda de café e fumarolas",
+          "Parque Natural El Boquerón e Boqueroncito",
+          "Pupusas nas alturas do vulcão"
+        ]
+      },
+      "images": [
+        "assets/tours/day-updates/boqueron-fumarolas/22.jpg",
+        "assets/tours/day-updates/boqueron-fumarolas/26.jpg",
+        "assets/tours/day-updates/boqueron-fumarolas/28.jpg"
+      ],
+      "imageDescriptions": {
+        "es": [
+          "Cráter de El Boquerón",
+          "Vista del cráter de El Boquerón",
+          "Senderos del Parque Natural El Boquerón"
+        ],
+        "en": [
+          "El Boquerón crater",
+          "View of El Boquerón crater",
+          "Trails in El Boquerón Natural Park"
+        ],
+        "pt": [
+          "Cratera de El Boquerón",
+          "Vista da cratera de El Boquerón",
+          "Trilhas do Parque Natural El Boquerón"
+        ]
+      },
+      "galleryLabel": {
+        "es": "Boquerón y Fumarolas",
+        "en": "Boquerón and Fumaroles",
+        "pt": "Boquerón e Fumarolas"
+      },
+      "duration": null,
+      "groupSize": null,
+      "pickup": null,
+      "rating": null,
+      "ratingCount": 0,
+      "badge": null,
+      "meetingPoint": null,
+      "contentSource": {
+        "document": "day-tours-texto-fuente.md",
+        "client": "Mario Domínguez",
+        "receivedDate": "2026-10-11",
+        "sourceNumber": 7,
+        "translations": "assisted-en-pt"
+      }
+    },
+    {
+      "id": "ciudad-puerta-del-diablo",
+      "slug": "ciudad-puerta-del-diablo",
+      "category": "day",
+      "title": {
+        "es": "Tour de Ciudad y Puerta del Diablo",
+        "en": "City Tour and Puerta del Diablo",
+        "pt": "Passeio pela Cidade e Puerta del Diablo"
+      },
+      "shortDescription": {
+        "es": "Descubra el corazón de El Salvador a través de una experiencia que combina historia, cultura, naturaleza y gastronomía.",
+        "en": "Discover the heart of El Salvador through an experience combining history, culture, nature and cuisine.",
+        "pt": "Descubra o coração de El Salvador em uma experiência que combina história, cultura, natureza e gastronomia."
+      },
+      "fullDescription": {
+        "es": "Historia, cultura, paisajes y sabor salvadoreño\n\nDescubra el corazón de El Salvador a través de una experiencia que combina historia, cultura, naturaleza y gastronomía.\n\nIniciaremos nuestro recorrido por el Centro Histórico de San Salvador, explorando sus principales plazas, monumentos, iglesias y edificios históricos. Un fascinante viaje entre el pasado y el presente que nos permitirá conocer parte de la historia, identidad y evolución de la capital salvadoreña.\n\nLuego nos dirigiremos hacia la Puerta del Diablo, una impresionante formación rocosa esculpida por procesos geológicos a través del tiempo, desde donde disfrutaremos de espectaculares vistas panorámicas de los paisajes que rodean San Salvador.\n\nFinalizaremos la experiencia en Los Planes de Renderos, un tradicional destino gastronómico de las montañas capitalinas, donde tendremos la oportunidad de degustar uno de los grandes símbolos de la cocina salvadoreña: las deliciosas pupusas.\n\n¡Una experiencia que conecta la historia de San Salvador con la majestuosidad de sus paisajes y el auténtico sabor de El Salvador!",
+        "en": "History, culture, landscapes and Salvadoran flavor\n\nDiscover the heart of El Salvador through an experience combining history, culture, nature and cuisine.\n\nWe will begin our journey through San Salvador’s Historic Center, exploring its main squares, monuments, churches and historic buildings. A fascinating journey between past and present that will introduce us to the history, identity and evolution of the Salvadoran capital.\n\nWe will then head to Puerta del Diablo, an impressive rock formation sculpted by geological processes over time, where we will enjoy spectacular panoramic views of the landscapes surrounding San Salvador.\n\nWe will finish the experience in Los Planes de Renderos, a traditional culinary destination in the capital’s mountains, where we will have the opportunity to taste one of the great symbols of Salvadoran cuisine: delicious pupusas.\n\nAn experience connecting San Salvador’s history with its majestic landscapes and the authentic flavors of El Salvador!",
+        "pt": "História, cultura, paisagens e sabor salvadorenho\n\nDescubra o coração de El Salvador em uma experiência que combina história, cultura, natureza e gastronomia.\n\nIniciaremos nosso percurso pelo Centro Histórico de San Salvador, explorando suas principais praças, monumentos, igrejas e edifícios históricos. Uma fascinante viagem entre o passado e o presente que nos permitirá conhecer parte da história, identidade e evolução da capital salvadorenha.\n\nDepois seguiremos para a Puerta del Diablo, uma impressionante formação rochosa esculpida por processos geológicos ao longo do tempo, de onde desfrutaremos de vistas panorâmicas espetaculares das paisagens que cercam San Salvador.\n\nFinalizaremos a experiência em Los Planes de Renderos, um tradicional destino gastronômico nas montanhas da capital, onde teremos a oportunidade de degustar um dos grandes símbolos da culinária salvadorenha: as deliciosas pupusas.\n\nUma experiência que conecta a história de San Salvador à majestade de suas paisagens e ao autêntico sabor de El Salvador!"
+      },
+      "highlights": {
+        "es": [
+          "Centro Histórico de San Salvador",
+          "Vistas panorámicas en Puerta del Diablo",
+          "Pupusas en Los Planes de Renderos"
+        ],
+        "en": [
+          "San Salvador Historic Center",
+          "Panoramic views at Puerta del Diablo",
+          "Pupusas in Los Planes de Renderos"
+        ],
+        "pt": [
+          "Centro Histórico de San Salvador",
+          "Vistas panorâmicas na Puerta del Diablo",
+          "Pupusas em Los Planes de Renderos"
+        ]
+      },
+      "images": [
+        "assets/tours/day-updates/puerta-del-diablo/42.jpg",
+        "assets/tours/day-updates/puerta-del-diablo/40.jpg",
+        "assets/tours/day-updates/puerta-del-diablo/36.jpg"
+      ],
+      "imageDescriptions": {
+        "es": [
+          "Puerta del Diablo",
+          "Paisajes desde Puerta del Diablo",
+          "Vista de San Salvador desde las montañas"
+        ],
+        "en": [
+          "Puerta del Diablo",
+          "Landscapes from Puerta del Diablo",
+          "View of San Salvador from the mountains"
+        ],
+        "pt": [
+          "Puerta del Diablo",
+          "Paisagens da Puerta del Diablo",
+          "Vista de San Salvador das montanhas"
+        ]
+      },
+      "galleryLabel": {
+        "es": "Ciudad y Puerta del Diablo",
+        "en": "City and Puerta del Diablo",
+        "pt": "Cidade e Puerta del Diablo"
+      },
+      "duration": null,
+      "groupSize": null,
+      "pickup": null,
+      "rating": null,
+      "ratingCount": 0,
+      "badge": null,
+      "meetingPoint": null,
+      "contentSource": {
+        "document": "day-tours-texto-fuente.md",
+        "client": "Mario Domínguez",
+        "receivedDate": "2026-10-11",
+        "sourceNumber": 8,
+        "translations": "assisted-en-pt"
+      }
+    },
+    {
+      "id": "ciudad-lago-ilopango",
+      "slug": "ciudad-lago-ilopango",
+      "category": "day",
+      "title": {
+        "es": "Tour de Ciudad y Lago de Ilopango",
+        "en": "City Tour and Lake Ilopango",
+        "pt": "Passeio pela Cidade e Lago de Ilopango"
+      },
+      "shortDescription": {
+        "es": "Descubra el corazón de El Salvador en una experiencia que combina historia, cultura, naturaleza y gastronomía.",
+        "en": "Discover the heart of El Salvador in an experience combining history, culture, nature and cuisine.",
+        "pt": "Descubra o coração de El Salvador em uma experiência que combina história, cultura, natureza e gastronomia."
+      },
+      "fullDescription": {
+        "es": "Historia, cultura, naturaleza y paisajes\n\nDescubra el corazón de El Salvador en una experiencia que combina historia, cultura, naturaleza y gastronomía.\n\nIniciaremos nuestro recorrido por el Centro Histórico de San Salvador, explorando sus principales plazas, monumentos, iglesias y edificios históricos. Un fascinante encuentro entre el pasado y el presente que nos permitirá conocer la historia, identidad y evolución de la capital salvadoreña.\n\nPosteriormente, nos dirigiremos hacia la carretera que rodea la cima del Lago de Ilopango, un impresionante escenario natural formado en el cráter de un antiguo complejo volcánico. Recorreremos la carretera que bordea las alturas del lago hasta llegar a un acogedor café, donde disfrutaremos de un delicioso almuerzo acompañado de una espectacular vista panorámica del lago y sus paisajes.\n\nUna experiencia ideal para quienes desean descubrir la esencia histórica de San Salvador y la belleza natural de uno de sus paisajes más emblemáticos.\n\n¡Historia, cultura, naturaleza y sabor en una sola experiencia salvadoreña!",
+        "en": "History, culture, nature and landscapes\n\nDiscover the heart of El Salvador in an experience combining history, culture, nature and cuisine.\n\nWe will begin our journey through San Salvador’s Historic Center, exploring its main squares, monuments, churches and historic buildings. A fascinating encounter between past and present that will help us discover the history, identity and evolution of the Salvadoran capital.\n\nWe will then head to the road around the rim of Lake Ilopango, an impressive natural setting formed in the crater of an ancient volcanic complex. We will follow the road along the heights of the lake until we reach a welcoming café, where we will enjoy a delicious lunch accompanied by a spectacular panoramic view of the lake and its landscapes.\n\nAn ideal experience for those who wish to discover the historic essence of San Salvador and the natural beauty of one of its most iconic landscapes.\n\nHistory, culture, nature and flavor in a single Salvadoran experience!",
+        "pt": "História, cultura, natureza e paisagens\n\nDescubra o coração de El Salvador em uma experiência que combina história, cultura, natureza e gastronomia.\n\nIniciaremos nosso percurso pelo Centro Histórico de San Salvador, explorando suas principais praças, monumentos, igrejas e edifícios históricos. Um fascinante encontro entre o passado e o presente que nos permitirá conhecer a história, identidade e evolução da capital salvadorenha.\n\nDepois seguiremos para a estrada que contorna o topo do Lago de Ilopango, um impressionante cenário natural formado na cratera de um antigo complexo vulcânico. Percorreremos a estrada pelas alturas do lago até chegar a um acolhedor café, onde desfrutaremos de um delicioso almoço acompanhado de uma vista panorâmica espetacular do lago e de suas paisagens.\n\nUma experiência ideal para quem deseja descobrir a essência histórica de San Salvador e a beleza natural de uma de suas paisagens mais emblemáticas.\n\nHistória, cultura, natureza e sabor em uma única experiência salvadorenha!"
+      },
+      "highlights": {
+        "es": [
+          "Centro Histórico de San Salvador",
+          "Recorrido por las alturas del Lago de Ilopango",
+          "Almuerzo en un café con vista panorámica"
+        ],
+        "en": [
+          "San Salvador Historic Center",
+          "Journey along the heights of Lake Ilopango",
+          "Lunch at a café with a panoramic view"
+        ],
+        "pt": [
+          "Centro Histórico de San Salvador",
+          "Percurso pelas alturas do Lago de Ilopango",
+          "Almoço em um café com vista panorâmica"
+        ]
+      },
+      "images": [
+        "assets/tours/city-tour-san-salvador/IMG_3557.JPG"
+      ],
+      "imageDescriptions": {
+        "es": [
+          "Centro Histórico de San Salvador"
+        ],
+        "en": [
+          "San Salvador Historic Center"
+        ],
+        "pt": [
+          "Centro Histórico de San Salvador"
+        ]
+      },
+      "galleryLabel": {
+        "es": "Ciudad y Lago de Ilopango",
+        "en": "City and Lake Ilopango",
+        "pt": "Cidade e Lago de Ilopango"
+      },
+      "duration": null,
+      "groupSize": null,
+      "pickup": null,
+      "rating": null,
+      "ratingCount": 0,
+      "badge": null,
+      "meetingPoint": null,
+      "contentSource": {
+        "document": "day-tours-texto-fuente.md",
+        "client": "Mario Domínguez",
+        "receivedDate": "2026-10-11",
+        "sourceNumber": 9,
+        "translations": "assisted-en-pt"
+      },
+      "mediaNote": {
+        "es": "Las fotografías muestran el Centro Histórico, que forma parte de este recorrido. Las fotos del Lago de Ilopango están pendientes.",
+        "en": "The photographs show the Historic Center, which is part of this tour. Photos of Lake Ilopango are pending.",
+        "pt": "As fotografias mostram o Centro Histórico, que faz parte deste passeio. As fotos do Lago de Ilopango estão pendentes."
+      }
+    },
+    {
       "id": "la-joya-del-pacifico",
       "slug": "la-joya-del-pacifico",
       "category": "package",

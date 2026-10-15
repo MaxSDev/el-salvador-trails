@@ -1,0 +1,79 @@
+.personalized-main {
+  --form-gutter: clamp(1.25rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: [full-start] minmax(var(--form-gutter), 1fr) [content-start] min(100% - 2 * var(--form-gutter), 56rem) [content-end] minmax(var(--form-gutter), 1fr) [full-end];
+  padding-block: clamp(8rem, 12vw, 11rem) 5rem;
+}
+.personalized-main > * { grid-column: content; min-inline-size: 0; }
+.personalized-main [hidden], .personalized-honeypot { display: none; }
+.personalized-intro { display: grid; gap: 1.3rem; margin-block-end: 2.5rem; }
+.personalized-intro h1 { margin: 0; font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 500; line-height: 1.07; letter-spacing: -.035em; color: var(--brand); text-wrap: balance; }
+.personalized-intro > p { max-inline-size: 65ch; line-height: 1.7; margin: 0; }
+.personalized-back { color: var(--brand); text-decoration: underline; text-underline-offset: .3em; min-block-size: 44px; display: inline-flex; align-items: center; justify-self: start; }
+.personalized-section { padding-block: clamp(2rem, 4vw, 3rem); border-block-start: 1px solid var(--border-strong); }
+.personalized-section h2, .personalized-success h2 { margin-block: 0 1.75rem; color: var(--brand); font-family: var(--font-display); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 500; line-height: 1.2; }
+.personalized-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); align-items: start; gap: 1.5rem; }
+.personalized-field { display: grid; align-content: start; gap: .65rem; color: var(--text); font-weight: 500; margin-block-end: 1.5rem; }
+.personalized-field .form-control {
+  inline-size: 100%;
+  min-block-size: 48px;
+  padding-block: .75rem;
+  padding-inline: .9rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface-raised);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: max(16px, 1rem);
+}
+.personalized-field textarea { resize: vertical; min-block-size: 6rem; }
+.personalized-choice { padding: 0; border: 0; margin-block: 0 2rem; min-inline-size: 0; }
+.personalized-choice legend { padding: 0; margin-block-end: .8rem; font-weight: 600; color: var(--text); }
+.personalized-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: .65rem; }
+.personalized-options label { display: flex; align-items: center; gap: .6rem; min-block-size: 48px; padding-block: .7rem; padding-inline: .8rem; border: 1px solid var(--border-strong); border-radius: 6px; cursor: pointer; font-size: .95rem; line-height: 1.4; background: var(--bg); }
+.personalized-options label:has(input:checked) { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); }
+.personalized-main input:is([type=radio],[type=checkbox]) { flex: none; inline-size: 1.1rem; block-size: 1.1rem; color: var(--brand); accent-color: var(--brand); }
+.personalized-note { font-size: .95rem; line-height: 1.65; color: var(--text-muted); margin-block: .5rem 1rem; }
+.personalized-optional { font-weight: 400; font-size: .9rem; }
+.personalized-secondary { min-block-size: 44px; padding-block: .5rem; padding-inline: .8rem; border: 1px solid var(--border-strong); border-radius: 6px; color: var(--brand); background: var(--bg); font-weight: 600; }
+.personalized-secondary:disabled { opacity: .6; cursor: default; }
+.personalized-country-row { display: flex; flex-wrap: wrap; gap: .65rem; align-items: end; }
+.personalized-country-row .personalized-field { flex: 1 1 18rem; margin-block-end: .5rem; }
+.personalized-country-row > button { align-self: end; margin-block-end: .5rem; }
+.personalized-consent { display: flex; gap: .75rem; align-items: start; line-height: 1.6; margin-block: 1.25rem; }
+.personalized-consent input { margin-block-start: .3rem; }
+.personalized-submit { display: inline-flex; justify-content: center; min-block-size: 52px; padding-block: 1rem; padding-inline: 1.5rem; border-radius: 6px; margin-block-start: 1.25rem; }
+.personalized-submit:disabled { opacity: .65; cursor: progress; }
+.personalized-error { color: var(--brand); font-weight: 600; line-height: 1.6; }
+.personalized-success { border-block-start: 1px solid var(--border-strong); padding-block: 2.5rem; }
+.personalized-success p { max-inline-size: 65ch; line-height: 1.7; margin-block: 1.25rem; }
+.personalized-main :is(input,textarea,select,button,a):focus-visible { outline: 2px solid var(--brand); outline-offset: 4px; }
+.personalized-main .form-control:focus { box-shadow: none; border-color: var(--brand); }
+.personalized-main :is(button,a,label:has(input)):active { opacity: .8; }
+@media (hover: hover) and (pointer: fine) {
+  .personalized-options label:hover, .personalized-secondary:hover { border-color: var(--brand); background: var(--brand-soft); }
+  .personalized-back:hover { color: var(--brand-hover); }
+}
+
+.personalized-draft { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; align-items: center; margin-block-end: 1.5rem; }
+.personalized-draft p { flex: 1 1 24rem; margin: 0; }
+.nationality-field { min-inline-size: 0; }
+.nationality-shell { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 48px; }
+.personalized-field .nationality-query { border-start-end-radius: 0; border-end-end-radius: 0; }
+.nationality-toggle { display: grid; place-items: center; min-block-size: 48px; background: var(--surface-raised); color: var(--brand); border: 1px solid var(--border-strong); border-inline-start: 0; border-radius: 0 6px 6px 0; }
+.nationality-toggle svg { inline-size: 1.3rem; block-size: 1.3rem; }
+.nationality-list { position: absolute; inset-block-start: calc(100% + .35rem); inset-inline: 0; z-index: 25; max-block-size: min(18rem, 45svh); overflow-y: auto; overscroll-behavior: contain; list-style: none; margin: 0; padding: .35rem; background: var(--surface-raised); color: var(--text); border: 1px solid var(--border-strong); border-radius: 6px; box-shadow: var(--shadow-card); }
+.nationality-list [role=option] { min-block-size: 44px; display: flex; align-items: center; padding-block: .6rem; padding-inline: .75rem; cursor: pointer; border-radius: 4px; line-height: 1.4; }
+.nationality-list [aria-selected=true] { color: var(--brand); background: var(--brand-soft); outline: 2px solid var(--brand); outline-offset: -2px; }
+.nationality-empty { padding: .75rem; font-weight: 400; line-height: 1.5; }
+.nationality-live { position: absolute; inline-size: 1px; block-size: 1px; overflow: clip; clip-path: inset(50%); white-space: nowrap; }
+.personalized-validation-summary { padding: 1.25rem; border: 1px solid var(--brand); border-radius: 6px; margin-block-end: 1.5rem; color: var(--text); }
+.personalized-validation-summary h2 { font-family: var(--font-display); color: var(--brand); font-size: 1.6rem; margin-block: 0 .75rem; }
+.personalized-validation-summary p { margin-block: .5rem 1rem; line-height: 1.6; }
+.personalized-validation-summary ul { margin: 0; padding-inline-start: 1.25rem; display: grid; gap: .6rem; }
+.personalized-validation-summary a { color: var(--brand); text-decoration: underline; text-underline-offset: .2em; }
+.personalized-field-error { color: var(--brand); font-size: .95rem; font-weight: 600; line-height: 1.5; margin-block: .5rem 0; }
+.personalized-field .form-control[aria-invalid=true], .personalized-options label:has([aria-invalid=true]) { border-color: var(--brand); }
+.personalized-main :is(input,textarea,fieldset) { scroll-margin-block: 8rem 2rem; }
+@media (hover: hover) and (pointer: fine) { .nationality-list [role=option]:hover { background: var(--brand-soft); color: var(--brand); } }
+.nationality-list [role=option]:active { opacity: .75; }

@@ -1,7 +1,7 @@
 /* ==========================================================================
    El Salvador Tours — Catálogo Data-Driven
    
-   - Lee js/tours.json (fuente de verdad)
+   - Lee data/tours.json (fuente de verdad)
    - Renderiza vista de categorías → lista de tours → modal detalle
    - Conecta con i18n para traducciones dinámicas
    - Arquitectura dashboard-ready: datos → UI pura
@@ -15,6 +15,7 @@
   let currentCategory = null; // 'day' | 'package'
   let currentTourId = null;
   let modalOpen = false;
+  const quoteDrafts = new Map();
 
   function mediaPicture(src, alt, options) {
     options = Object.assign({ alt: alt }, options || {});
@@ -260,6 +261,7 @@
     const title = tour.title[lang] || tour.title.es || '';
     const shortDesc = tour.shortDescription[lang] || tour.shortDescription.es || '';
     const image = tour.images[0] || 'assets/img/slide_0.jpg';
+    const imageAlt = tour.imageDescriptions ? (tour.imageDescriptions[lang] || tour.imageDescriptions.es || [])[0] : title;
     
     // Tomar los primeros 2 highlights para la tarjeta
     const highlightsRaw = tour.highlights[lang];
@@ -269,7 +271,7 @@
     return `
       <article class="tour-card flex flex-col cursor-pointer" data-tour-id="${tour.id}" tabindex="0" role="button" aria-label="${title}">
         <div class="aspect-[16/10] w-full overflow-hidden">
-          ${mediaPicture(image, title, {
+          ${mediaPicture(image, imageAlt || title, {
             className: 'w-full h-full object-cover transition-transform duration-700 hover:scale-105',
             sizes: '(max-width: 767px) 100vw, 50vw',
             loading: 'lazy'
@@ -309,12 +311,13 @@
     const title = tour.title[lang] || tour.title.es || '';
     const label = (tour.galleryLabel && (tour.galleryLabel[lang] || tour.galleryLabel.es)) || title;
     const image = tour.images[0] || 'assets/img/slide_0.jpg';
+    const imageAlt = tour.imageDescriptions ? (tour.imageDescriptions[lang] || tour.imageDescriptions.es || [])[0] : title;
     const delay = (index * 90) + 'ms';
     const ctaText = t('tour.viewTour') !== 'tour.viewTour' ? t('tour.viewTour') : 'Presiona aquí para ver el tour';
 
     return `
       <article class="dest-tile dest-tile-${index + 1}" data-tour-id="${tour.id}" tabindex="0" role="button" aria-label="${title} — ${ctaText}" style="--d:${delay}">
-        ${mediaPicture(image, title, {
+        ${mediaPicture(image, imageAlt || title, {
           className: 'dest-tile-img',
           sizes: '(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw',
           loading: 'lazy'
@@ -370,6 +373,10 @@
     const fullDesc = tour.fullDescription[lang] || tour.fullDescription.es || '';
     const images = tour.images || [];
     const isPackage = tour.category === 'package';
+    const imageLabels = tour.imageDescriptions ? (tour.imageDescriptions[lang] || tour.imageDescriptions.es || []) : [];
+    const quickFacts = window.ESTTourOptions.quickFacts(tour, lang);
+    const optionalExtras = tour.optionalExtras || [];
+    const isNewSource = Boolean(tour.contentSource);
 
     // Array helpers — empty-array fallback to ES
     const includedRaw = tour.included ? tour.included[lang] : null;
@@ -394,7 +401,7 @@
             ${images.length > 0 ? `
               <div class="mb-8">
                 <div class="relative rounded-xl overflow-hidden aspect-video">
-                  ${mediaPicture(images[0], title, {
+                  ${mediaPicture(images[0], imageLabels[0] || title, {
                     id: 'modal-main-image',
                     className: 'w-full h-full object-cover',
                     sizes: '(max-width: 900px) 100vw, 820px',
@@ -417,6 +424,8 @@
               </div>
             ` : ''}
             
+            ${tour.mediaNote ? `<p class="tour-media-note">${tour.mediaNote[lang] || tour.mediaNote.es}</p>` : ''}
+
             <!-- Descripción completa -->
             <div class="prose prose-lg max-w-none mb-8" style="color:var(--text);">
               ${formatDescription(fullDesc)}
@@ -437,8 +446,8 @@
               </div>
             ` : ''}
             
-            <!-- Incluido (solo para packages) -->
-            ${isPackage && includedItems ? `
+            <!-- Inclusiones únicamente cuando están confirmadas en los datos -->
+            ${includedItems && includedItems.length ? `
               <div class="mb-8">
                 <h3 class="font-display text-xl font-bold mb-4 text-brand" data-i18n="tour.included">Incluido</h3>
                 <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -467,13 +476,8 @@
               </ul>
             </div>
 
-            <!-- Ficha rápida: duración, grupo, recojo, rating -->
-            <div class="mb-8 p-4 rounded-xl border grid grid-cols-2 md:grid-cols-4 gap-4" style="background:var(--brand-soft);border-color:var(--border);">
-              <div class="flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-accent">schedule</span><span>${tour.duration ? (tour.duration[lang] || tour.duration.es || '') : ''}</span></div>
-              <div class="flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-accent">group</span><span>${tour.groupSize ? (tour.groupSize[lang] || tour.groupSize.es || '') : ''}</span></div>
-              <div class="flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-accent">pin_drop</span><span>${tour.pickup ? (tour.pickup[lang] || tour.pickup.es || '') : ''}</span></div>
-              <div class="flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-accent">star</span><span><strong>${(tour.rating || 5).toFixed(1)}</strong>${tour.ratingCount ? ' (' + tour.ratingCount + ')' : ''}</span></div>
-            </div>
+            <!-- Mostrar solo datos confirmados; sin valoración predeterminada. -->
+            ${quickFacts.length ? `<div class="tour-quick-facts">${quickFacts.map(fact => `<div><span class="material-symbols-outlined text-accent" aria-hidden="true">${fact.icon}</span><span>${fact.text}</span></div>`).join('')}</div>` : ''}
 
             <!-- Punto de encuentro con foto -->
             ${tour.meetingPoint ? `
@@ -515,7 +519,7 @@
                 <span class="material-symbols-outlined text-3xl text-accent">request_quote</span>
                 <div>
                   <h3 class="font-display text-xl md:text-2xl font-bold text-brand" data-i18n="tour.pricing.heading">Precios y condiciones: contáctenos</h3>
-                  <p class="text-sm mt-2 leading-relaxed text-muted" data-i18n="tour.pricing.notice">
+                  <p class="text-sm mt-2 leading-relaxed text-muted" data-i18n="${isNewSource ? 'tour.pricing.unconfirmed' : 'tour.pricing.notice'}">
                     Nuestras tarifas se adaptan al tamaño y necesidades específicas de su grupo (los niños menores de 12 años gozan de tarifa especial al 50%). Permítanos diseñar su cotización personalizada.
                   </p>
                 </div>
@@ -530,7 +534,7 @@
                     <input type="number" id="quote-adults" min="1" max="50" value="2" class="form-control w-full">
                   </div>
                   <div>
-                    <label class="block text-xs font-medium mb-1 text-muted" data-i18n="tour.pricing.children">Niños (<12 años - 50%)</label>
+                    <label class="block text-xs font-medium mb-1 text-muted" data-i18n="${isNewSource ? 'tour.pricing.childrenPlain' : 'tour.pricing.children'}">Niños (<12 años - 50%)</label>
                     <input type="number" id="quote-children" min="0" max="50" value="0" class="form-control w-full">
                   </div>
                   <div>
@@ -538,6 +542,8 @@
                     <input type="date" id="quote-date" class="form-control w-full">
                   </div>
                 </div>
+
+                ${optionalExtras.length ? `<fieldset class="tour-extra-options"><legend data-i18n="tour.optionalExtras">${t('tour.optionalExtras')}</legend>${optionalExtras.map(extra => `<label><input type="checkbox" name="quote-extra" value="${extra.id}"><span>${extra.label[lang] || extra.label.es}</span></label>`).join('')}<p data-i18n="tour.optionalExtras.note">${t('tour.optionalExtras.note')}</p></fieldset>` : ''}
 
                 <!-- Botones de acción directa con mensaje pre-armado -->
                 <div class="flex flex-col sm:flex-row gap-4">
@@ -561,7 +567,7 @@
     
     // Configurar galería de imágenes
     if (images.length > 1) {
-      setupImageGallery(images);
+      setupImageGallery(images, imageLabels, title);
     }
     
     // Aplicar traducciones
@@ -575,7 +581,7 @@
   }
 
   /* ── Galería de imágenes ── */
-  function setupImageGallery(images) {
+  function setupImageGallery(images, labels, title) {
     let currentImageIndex = 0;
     const mainImage = document.getElementById('modal-main-image');
     const dots = tourDetailContainer.querySelectorAll('[data-gallery-dot]');
@@ -584,6 +590,7 @@
       currentImageIndex = index;
       if (mainImage) {
         updateResponsiveImage(mainImage, images[index]);
+        mainImage.alt = labels[index] || title;
       }
       dots.forEach((dot, i) => {
         dot.classList.toggle('bg-white', i === index);
@@ -615,6 +622,21 @@
     const adultsInput = document.getElementById('quote-adults');
     const childrenInput = document.getElementById('quote-children');
     const dateInput = document.getElementById('quote-date');
+    const extraInputs = Array.from(tourDetailContainer.querySelectorAll('[name="quote-extra"]'));
+    const saved = quoteDrafts.get(tour.id);
+    if (saved) {
+      adultsInput.value = saved.adults;
+      childrenInput.value = saved.children;
+      dateInput.value = saved.date;
+      extraInputs.forEach(input => { input.checked = saved.extras.includes(input.value); });
+    }
+    function remember() {
+      quoteDrafts.set(tour.id, { adults: adultsInput.value, children: childrenInput.value, date: dateInput.value, extras: extraInputs.filter(input => input.checked).map(input => input.value) });
+    }
+    [adultsInput, childrenInput, dateInput, ...extraInputs].forEach(input => {
+      input.addEventListener('input', remember);
+      input.addEventListener('change', remember);
+    });
 
     function getQuoteData() {
       const adults = adultsInput ? parseInt(adultsInput.value, 10) || 1 : 1;
@@ -622,7 +644,7 @@
       const dateVal = dateInput && dateInput.value ? dateInput.value : 'Por definir';
       const lang = window.__estI18n ? window.__estI18n.getLang() : 'es';
       const langName = lang === 'pt' ? 'Português' : (lang === 'en' ? 'English' : 'Español');
-      return { adults, children, date: dateVal, langName };
+      return { adults, children, date: dateVal, langName, extras: window.ESTTourOptions.extraLine(tour, extraInputs.filter(input => input.checked).map(input => input.value), lang) };
     }
 
     if (whatsappBtn) {
@@ -630,9 +652,9 @@
         const q = getQuoteData();
         const text = `¡Hola Mario! Me gustaría cotizar el tour: ${tourTitle}.\n` +
                      `• Adultos: ${q.adults}\n` +
-                     `• Niños (<12 años - 50%): ${q.children}\n` +
+                     `• Niños (${tour.contentSource ? '<12 años' : '<12 años - 50%'}): ${q.children}\n` +
                      `• Fecha estimada: ${q.date}\n` +
-                     `• Idioma de preferencia: ${q.langName}`;
+                     `• Idioma de preferencia: ${q.langName}${q.extras}`;
         const url = `https://wa.me/50370000000?text=${encodeURIComponent(text)}`;
         window.open(url, '_blank');
       });
@@ -648,7 +670,7 @@
                      `• Adultos: ${q.adults}\n` +
                      `• Niños (<12 años): ${q.children}\n` +
                      `• Fecha estimada de viaje: ${q.date}\n` +
-                     `• Idioma de preferencia: ${q.langName}\n\n` +
+                     `• Idioma de preferencia: ${q.langName}${q.extras}\n\n` +
                      `Quedo a la espera de sus comentarios.\n\nSaludos cordiales,`;
         window.location.href = `mailto:info@elsalvadortrails.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       });

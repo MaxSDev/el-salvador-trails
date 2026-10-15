@@ -1,0 +1,30 @@
+/* Keep the woven route on desktop. Mobile reads as photo → heading → text. */
+@media (width <= 760px) {
+  .about-page .trail-section .trail { padding: 0; margin-block: 2rem 0; }
+  .about-page .trail-section .stop.stop--weave {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    min-block-size: 0;
+    padding-block: 2.25rem;
+    border-block-start: 1px solid var(--border-strong);
+  }
+  .about-page .trail-section :is(.stop-rail,.trail-join,.summit-rail) { display: none; }
+  .about-page .trail-section .stop--weave :is(.stop-figure,.stop-copy) {
+    grid-column: 1;
+    grid-row: auto;
+    min-inline-size: 0;
+    max-inline-size: none;
+    padding: 0;
+    margin: 0;
+    text-align: start;
+  }
+  .about-page .trail-section .stop--weave .stop-figure { grid-row: 1; }
+  .about-page .trail-section .stop--weave .stop-copy { grid-row: 2; }
+  .about-page .trail-section .stop-figure img { inline-size: 100%; block-size: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 12px; }
+  .about-page .trail-section .stop-copy h2 { font-size: clamp(1.75rem, 6vw, 2.25rem); line-height: 1.2; margin-block: 0 1rem; }
+  .about-page .trail-section .stop-copy p { font-size: 1rem; line-height: 1.7; letter-spacing: normal; margin: 0; }
+  .about-page .trail-section .stop-figure figcaption { margin-block-start: .7rem; font-size: .75rem; line-height: 1.5; letter-spacing: .06em; }
+  .about-page .trail-section .trail-intro { max-inline-size: 40ch; font-size: 1rem; line-height: 1.65; letter-spacing: normal; }
+  .about-page .trail-section .summit-copy { padding-block-start: 2rem; }
+}

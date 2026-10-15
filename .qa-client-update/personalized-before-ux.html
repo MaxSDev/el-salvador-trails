@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Experiencia personalizada — El Salvador Trails</title>
+
+  <!-- Font Imports -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,300..800;1,300..800&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=arrow_back,arrow_forward,arrow_outward,badge,chat,check_circle,chevron_left,chevron_right,close,construction,dark_mode,directions_bus,forum,group,handshake,info,landscape,light_mode,location_city,mail,map,menu,open_in_new,pause,photo_camera,pin_drop,play_arrow,play_circle,price_check,public,request_quote,restaurant,route,schedule,signpost,south,star,star_border,surfing,temple_buddhist,translate&amp;display=block" rel="stylesheet"/>
+
+  <!-- Font Awesome Brands CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    try {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary": "#e9c262",
+              "background": "#fbf8ed",
+              "surface": "#580F00",
+              "on-background": "#3A2416"
+            },
+            "fontFamily": {
+              "display": ["Fraunces", "serif"],
+              "body": ["Work Sans", "sans-serif"],
+              "label": ["Cinzel", "serif"]
+            }
+          }
+        }
+      }
+    } catch (_e) {}
+  </script>
+
+  <!-- Cambio de tema: se ejecuta en la cabecera para evitar parpadeo -->
+  <script src="js/theme.js"></script>
+
+  <meta name="description" content="El Salvador Trails — Catálogo de Tours: Day Tours, Tour Packages y experiencias personalizadas con guías certificados." />
+  <meta property="og:title" content="El Salvador Trails — Catálogo de Tours" />
+  <meta property="og:description" content="Day Tours y paquetes multi-día: volcanes, lagos, Ruta Maya y más." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg" />
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/personalized.css">
+</head>
+<body class="font-body secondary-page site-immersive page-solid-header personalized-page" data-i18n-page-title="personalized.title">
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
+  <!-- Barra de navegación fija -->
+  <nav class="fixed-nav-light" aria-label="Principal">
+    <div class="brand">
+      <img src="assets/icons/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
+      <div>
+        <span class="brand-word-title">El Salvador Trails</span>
+        <span class="brand-subtext"></span>
+      </div>
+    </div>
+
+    <ul class="nav-links-list">
+      <li><a href="index.html" data-i18n="nav.home">Página Inicial</a></li>
+      <li><a href="tours.html" class="active" aria-current="page" data-i18n="nav.tours">Catálogo de Tours</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+      <li><a href="real-estate.html" data-i18n="nav.realestate">Bienes Raíces</a></li>
+      <li><a href="payment.html" data-i18n="nav.payment">Pago en Línea</a></li>
+    </ul>
+
+    <div class="nav-right-container">
+      <button class="help-tutorial-btn" type="button" data-help-open data-i18n-aria="nav.help" data-i18n-title="nav.help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8"/>
+        </svg>
+        <span data-i18n="nav.help">Cómo usar este sitio</span>
+      </button>
+
+      <!-- Botón de cambio de modo (sol/luna) -->
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">
+        <span id="theme-toggle-icon" class="material-symbols-outlined">dark_mode</span>
+      </button>
+
+      <div class="lang-switcher-pill" role="group" aria-label="Idioma / Language">
+        <button type="button" class="active" data-lang="es" title="Español" aria-label="Español"><img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon"></button>
+        <button type="button" data-lang="en" title="English" aria-label="English"><img src="https://flagcdn.com/w40/us.png" alt="English" class="flag-icon"></button>
+        <button type="button" data-lang="pt" title="Português (Brasil)" aria-label="Português (Brasil)"><img src="https://flagcdn.com/w40/br.png" alt="Português" class="flag-icon"></button>
+      </div>
+
+      <button class="nav-hamburger" type="button" data-menu-toggle aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
+  <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" data-i18n-aria="nav.expanded" aria-label="Navegación del sitio">
+    <div class="menu-shell">
+      <div class="menu-intro">
+        <img src="assets/icons/logo.svg" class="menu-logo" alt="" aria-hidden="true">
+        <p class="menu-title" data-i18n="nav.menuTitle">Explora El Salvador</p>
+      </div>
+      <div class="menu-index">
+        <a href="index.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">01</span>
+          <span data-i18n="nav.home">Página Inicial</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="tours.html" class="active" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">02</span>
+          <span data-i18n="nav.tours">Catálogo de Tours</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="about.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">03</span>
+          <span data-i18n="nav.about">About Us</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="real-estate.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">04</span>
+          <span data-i18n="nav.realestate">Bienes Raíces</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="payment.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">05</span>
+          <span data-i18n="nav.payment">Pago en Línea</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+      </div>
+      <div class="menu-footer">
+        <span data-i18n="nav.menuFoot">Rutas locales y atención directa</span>
+        <span>@elsalvadortrails</span>
+      </div>
+    </div>
+  </nav>
+
+
+<main id="main-content" class="personalized-main">
+ <header class="personalized-intro"><a class="personalized-back" href="tours.html"><span data-i18n="personalized.back">Volver al catálogo</span></a><h1><span data-i18n="personalized.title">Diseñemos tu próximo sendero</span></h1><p><span data-i18n="personalized.intro">Ayúdanos a crear la experiencia perfecta para ti. Completa este cuestionario y prepararemos una propuesta según tus intereses, necesidades y estilo de viaje.</span></p><p class="personalized-note"><span data-i18n="personalized.required">Los campos marcados con * son obligatorios.</span></p></header>
+ <noscript>Activa JavaScript para enviar el formulario. / Enable JavaScript to submit. / Ative o JavaScript para enviar.</noscript>
+ <form id="personalized-form">
+  <section class="personalized-section" aria-labelledby="contact-heading"><h2 id="contact-heading"><span data-i18n="personalized.contact">Cómo podemos contactarte</span></h2><div class="personalized-fields">
+   <label class="personalized-field" for="full_name"><span><span data-i18n="personalized.full_name">Nombre completo</span> *</span><input class="form-control" id="full_name" name="full_name" type="text" required autocomplete="name" maxlength="100" minlength="2"></label><label class="personalized-field" for="email"><span><span data-i18n="personalized.email">Correo electrónico</span> *</span><input class="form-control" id="email" name="email" type="email" required autocomplete="email" maxlength="254"></label><label class="personalized-field" for="whatsapp"><span><span data-i18n="personalized.whatsapp">Número de WhatsApp</span> *</span><input class="form-control" id="whatsapp" name="whatsapp" type="tel" required autocomplete="tel" maxlength="30" pattern="[+0-9][0-9 ()-]{5,29}" aria-describedby="phone-hint"></label>
+  </div><p class="personalized-note" id="phone-hint"><span data-i18n="personalized.phoneHint">Incluye el código de país, por ejemplo +503.</span></p></section>
+  <section class="personalized-section" aria-labelledby="group-heading"><h2 id="group-heading"><span data-i18n="personalized.group">Quiénes viajan contigo</span></h2>
+   <fieldset class="personalized-choice"><legend><span data-i18n="personalized.group_size">¿Cuántas personas integran el grupo?</span> *</legend><div class="personalized-options"><label><input type="radio" name="group_size" value="one" required><span data-i18n="personalized.group_size.one">1 persona</span></label><label><input type="radio" name="group_size" value="two" ><span data-i18n="personalized.group_size.two">2 personas</span></label><label><input type="radio" name="group_size" value="3_5" ><span data-i18n="personalized.group_size.3_5">3–5 personas</span></label><label><input type="radio" name="group_size" value="6_10" ><span data-i18n="personalized.group_size.6_10">6–10 personas</span></label><label><input type="radio" name="group_size" value="over_10" ><span data-i18n="personalized.group_size.over_10">Más de 10 personas</span></label></div></fieldset>
+   <fieldset class="personalized-choice"><legend><span data-i18n="personalized.nationalities">Nacionalidades del grupo</span> *</legend><div id="nationalities-fields"><label class="personalized-field"><span><span data-i18n="personalized.country">Nacionalidad</span> *</span><select class="form-control" name="nationalities" required><option value="" data-i18n="personalized.select">Selecciona una opción</option><option value="SV">El Salvador</option><option value="BR">Brasil</option><option value="ES">España</option><option value="US">Estados Unidos</option><option value="CA">Canadá</option><option value="GB">Reino Unido</option><option value="DE">Alemania</option><option value="FR">Francia</option><option value="PT">Portugal</option><option value="MX">México</option><option value="GT">Guatemala</option><option value="HN">Honduras</option><option value="CR">Costa Rica</option><option value="AR">Argentina</option><option value="CL">Chile</option><option value="CO">Colombia</option><option value="PE">Perú</option><option value="OTHER">Otra</option></select></label></div><button type="button" id="add-nationality" class="personalized-secondary"><span data-i18n="personalized.addCountry">Añadir otra nacionalidad</span></button></fieldset>
+   <label class="personalized-field" id="other-nationalities-field" hidden><span data-i18n="personalized.other_nationalities">Especifica las otras nacionalidades</span><input class="form-control" name="other_nationalities" maxlength="120" disabled></label>
+   <fieldset class="personalized-choice"><legend><span data-i18n="personalized.age_range">Rango de edad del grupo</span> *</legend><div class="personalized-options"><label><input type="radio" name="age_range" value="under_18" required><span data-i18n="personalized.age_range.under_18">Menores de 18 años</span></label><label><input type="radio" name="age_range" value="18_30" ><span data-i18n="personalized.age_range.18_30">18–30 años</span></label><label><input type="radio" name="age_range" value="31_45" ><span data-i18n="personalized.age_range.31_45">31–45 años</span></label><label><input type="radio" name="age_range" value="46_60" ><span data-i18n="personalized.age_range.46_60">46–60 años</span></label><label><input type="radio" name="age_range" value="over_60" ><span data-i18n="personalized.age_range.over_60">Mayores de 60 años</span></label><label><input type="radio" name="age_range" value="mixed" ><span data-i18n="personalized.age_range.mixed">Edades mixtas</span></label></div></fieldset>
+   <fieldset class="personalized-choice"><legend><span data-i18n="personalized.needs_support">¿Hay alguna necesidad de accesibilidad que debamos considerar?</span> <span class="personalized-optional" data-i18n="personalized.optional">Opcional</span></legend><div class="personalized-options"><label><input type="radio" name="needs_support" value="no" checked><span data-i18n="personalized.no">No</span></label><label><input type="radio" name="needs_support" value="yes"><span data-i18n="personalized.yes">Sí</span></label></div><p class="personalized-note"><span data-i18n="personalized.needsHint">Este campo es opcional. Describe solo los apoyos para el viaje; evita diagnósticos o información médica.</span></p></fieldset>
+   <label class="personalized-field" id="accessibility-field" hidden><span data-i18n="personalized.accessibility_notes">¿Qué apoyos necesitarían?</span><textarea class="form-control" name="accessibility_notes" rows="3" maxlength="600" disabled></textarea></label>
+  </section>
+  <section class="personalized-section" aria-labelledby="trip-heading"><h2 id="trip-heading"><span data-i18n="personalized.trip">Cómo imaginas tu viaje</span></h2>
+   <fieldset class="personalized-choice"><legend><span data-i18n="personalized.interests">¿Qué experiencias les interesan?</span> *</legend><p class="personalized-note"><span data-i18n="personalized.multi">Puedes seleccionar varias opciones.</span></p><div class="personalized-options"><label><input type="checkbox" name="interests" value="adventure"><span data-i18n="personalized.interests.adventure">Aventura</span></label><label><input type="checkbox" name="interests" value="archaeology_history"><span data-i18n="personalized.interests.archaeology_history">Arqueología e historia</span></label><label><input type="checkbox" name="interests" value="nature"><span data-i18n="personalized.interests.nature">Naturaleza y ecoturismo</span></label><label><input type="checkbox" name="interests" value="beach_relaxation"><span data-i18n="personalized.interests.beach_relaxation">Playa y relajación</span></label><label><input type="checkbox" name="interests" value="gastronomy"><span data-i18n="personalized.interests.gastronomy">Gastronomía</span></label><label><input type="checkbox" name="interests" value="surf"><span data-i18n="personalized.interests.surf">Surf</span></label><label><input type="checkbox" name="interests" value="extreme_sports"><span data-i18n="personalized.interests.extreme_sports">Deportes extremos</span></label><label><input type="checkbox" name="interests" value="culture"><span data-i18n="personalized.interests.culture">Cultura y tradiciones</span></label><label><input type="checkbox" name="interests" value="birdwatching"><span data-i18n="personalized.interests.birdwatching">Observación de aves</span></label><label><input type="checkbox" name="interests" value="photography"><span data-i18n="personalized.interests.photography">Fotografía</span></label><label><input type="checkbox" name="interests" value="other"><span data-i18n="personalized.interests.other">Otra</span></label></div></fieldset>
+   <label class="personalized-field" id="other-interest-field" hidden><span data-i18n="personalized.other_interest">¿Qué otra experiencia les interesa?</span><input class="form-control" name="other_interest" maxlength="200" disabled></label>
+   <fieldset class="personalized-choice"><legend><span data-i18n="personalized.stay_length">¿Cuántos días planean permanecer en El Salvador?</span> *</legend><div class="personalized-options"><label><input type="radio" name="stay_length" value="one_day" required><span data-i18n="personalized.stay_length.one_day">1 día</span></label><label><input type="radio" name="stay_length" value="2_3_days" ><span data-i18n="personalized.stay_length.2_3_days">2–3 días</span></label><label><input type="radio" name="stay_length" value="4_5_days" ><span data-i18n="personalized.stay_length.4_5_days">4–5 días</span></label><label><input type="radio" name="stay_length" value="6_7_days" ><span data-i18n="personalized.stay_length.6_7_days">6–7 días</span></label><label><input type="radio" name="stay_length" value="over_week" ><span data-i18n="personalized.stay_length.over_week">Más de una semana</span></label></div></fieldset><fieldset class="personalized-choice"><legend><span data-i18n="personalized.budget">Presupuesto aproximado por persona</span> *</legend><div class="personalized-options"><label><input type="radio" name="budget" value="under_100" required><span data-i18n="personalized.budget.under_100">Menos de US$100</span></label><label><input type="radio" name="budget" value="100_300" ><span data-i18n="personalized.budget.100_300">US$100–300</span></label><label><input type="radio" name="budget" value="300_600" ><span data-i18n="personalized.budget.300_600">US$300–600</span></label><label><input type="radio" name="budget" value="over_600" ><span data-i18n="personalized.budget.over_600">Más de US$600</span></label></div></fieldset><p class="personalized-note"><span data-i18n="personalized.budgetHint">En dólares estadounidenses. Nos orienta para preparar tu propuesta; no es un precio ni un compromiso de compra.</span></p><fieldset class="personalized-choice"><legend><span data-i18n="personalized.accommodation">¿Qué alojamiento prefieren?</span> *</legend><div class="personalized-options"><label><input type="radio" name="accommodation" value="economy" required><span data-i18n="personalized.accommodation.economy">Económico</span></label><label><input type="radio" name="accommodation" value="boutique" ><span data-i18n="personalized.accommodation.boutique">Boutique</span></label><label><input type="radio" name="accommodation" value="hotel_4_5" ><span data-i18n="personalized.accommodation.hotel_4_5">Hotel de 4–5 estrellas</span></label><label><input type="radio" name="accommodation" value="beach_resort" ><span data-i18n="personalized.accommodation.beach_resort">Resort de playa</span></label><label><input type="radio" name="accommodation" value="no_preference" ><span data-i18n="personalized.accommodation.no_preference">Sin preferencia</span></label></div></fieldset>
+   <label class="personalized-field"><span><span data-i18n="personalized.wishes">¿Qué lugar o experiencia desean incluir?</span> <small><span data-i18n="personalized.optional">Opcional</span></small></span><textarea class="form-control" name="wishes" rows="4" maxlength="1000"></textarea></label>
+  </section>
+  <section class="personalized-section personalized-send"><p class="personalized-note"><span data-i18n="personalized.privacy">La solicitud y tus datos de contacto serán privados. Las estadísticas del equipo usarán categorías del grupo y del viaje, sin mostrar tu nombre, correo, WhatsApp ni necesidades especiales.</span></p><label class="personalized-consent"><input type="checkbox" name="adult" required><span data-i18n="personalized.adult">Soy mayor de 18 años y puedo representar a este grupo.</span></label><label class="personalized-consent"><input type="checkbox" name="consent" required><span data-i18n="personalized.consent">Autorizo al equipo de El Salvador Trails a utilizar estos datos para preparar y dar seguimiento a mi solicitud.</span></label><label class="personalized-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label><div id="personalized-captcha"></div><p id="personalized-error" class="personalized-error" role="alert" hidden></p><button class="btn-accent personalized-submit" type="submit"><span data-i18n="personalized.submit">Solicitar mi propuesta</span></button></section>
+ </form>
+ <section id="personalized-success" class="personalized-success" hidden tabindex="-1" aria-labelledby="success-heading"><h2 id="success-heading"><span data-i18n="personalized.success">Recibimos tu solicitud</span></h2><p><span data-i18n="personalized.successText">Gracias. El equipo preparará una propuesta personalizada y te contactará con la información que compartiste.</span></p><p><span data-i18n="personalized.reference">Referencia de tu solicitud</span>: <strong id="personalized-reference"></strong></p><p id="personalized-local" hidden><span data-i18n="personalized.local">Prueba local: la solicitud se guardó solo en esta PC. No se ha enviado ningún correo.</span></p><a href="personalized.html" class="personalized-back"><span data-i18n="personalized.new">Crear otra solicitud</span></a></section>
+</main>
+
+  <!-- Footer (tipografía oficial del brand: Adlery Pro bajo el ícono) -->
+  <footer class="footer-light flex flex-col items-center py-16 w-full relative z-10">
+    <img src="assets/icons/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4" loading="lazy">
+
+    <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
+
+    <div class="footer-links flex gap-10 mb-6 flex-wrap justify-center px-6">
+      <a href="privacy.html" data-i18n="footer.privacy">Política de Privacidad</a>
+      <a href="terms.html" data-i18n="footer.terms">Términos de Servicio</a>
+      <a href="mailto:hola@elsalvadortrails.com" data-i18n="footer.contact">Contacto</a>
+    </div>
+
+    <div class="flex gap-6 mb-6 flex-wrap justify-center">
+      <a href="https://www.facebook.com/elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.youtube.com/@elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://wa.me/50370000000" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <p class="copyright-text uppercase" data-i18n="footer.copyright">© 2026 El Salvador Trails.</p>
+  </footer>
+
+  <!-- Contenedor para modal de detalle -->
+  <div id="tour-detail-container" style="display: none;"></div>
+
+  <!-- Modal tutorial -->
+  <div class="tutorial-overlay" data-help-modal role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <div class="tutorial-box">
+      <h2 id="help-title" class="font-display text-2xl font-bold text-brand" data-i18n="help.title">Cómo usar este sitio</h2>
+      <ol>
+        <li data-i18n="help.step1">1. Explora el catálogo y abre el tour que te interese.</li>
+        <li data-i18n="help.step2">2. Presiona el botón dorado para ver fotos, itinerario y detalles.</li>
+        <li data-i18n="help.step3">3. Indica adultos, niños y fecha, y cotiza por WhatsApp o correo.</li>
+      </ol>
+      <button type="button" class="btn-accent w-full py-3 mt-6 rounded-lg" data-help-close data-i18n="help.close">Entendido</button>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/personalized-i18n.js"></script>
+  <script src="data/media-manifest.js"></script>
+  <script src="js/media.js"></script>
+
+
+  <script src="js/site.js"></script>
+<script src="js/reviews-config.js"></script>
+  <script src="js/personalized.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>El Salvador Trails — Bienes Raíces</title>
+
+  <!-- Font Imports -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,300..800;1,300..800&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=arrow_back,arrow_forward,arrow_outward,badge,chat,check_circle,chevron_left,chevron_right,close,construction,dark_mode,directions_bus,forum,group,handshake,info,landscape,light_mode,location_city,mail,map,menu,open_in_new,pause,photo_camera,pin_drop,play_arrow,play_circle,price_check,public,request_quote,restaurant,route,schedule,arrow_downward,signpost,south,star,star_border,surfing,temple_buddhist,translate&amp;display=block" rel="stylesheet"/>
+
+  <!-- Font Awesome Brands CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    try {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary": "#e9c262",
+              "background": "#fbf8ed",
+              "surface": "#580F00",
+              "on-background": "#3A2416"
+            },
+            "fontFamily": {
+              "display": ["Fraunces", "serif"],
+              "body": ["Work Sans", "sans-serif"],
+              "label": ["Cinzel", "serif"]
+            }
+          }
+        }
+      }
+    } catch (_e) {}
+  </script>
+
+  <!-- Cambio de tema: se ejecuta en la cabecera para evitar parpadeo -->
+  <script src="js/theme.js"></script>
+
+  <meta name="description" content="El Salvador Trails — Bienes Raíces y negocios aliados: Art Haus y más socios locales." />
+  <meta property="og:title" content="El Salvador Trails — Bienes Raíces" />
+  <meta property="og:description" content="Descubre emprendimientos locales aliados de El Salvador Trails." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg" />
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/real-estate.css">
+
+
+</head>
+<body class="font-body secondary-page site-immersive page-solid-header real-estate-page" data-i18n-page-title="page.realestate.title">
+  <a href="#main-content" class="skip-link" data-i18n="nav.skip">Saltar al contenido</a>
+
+  <!-- Barra de navegación fija -->
+  <nav class="fixed-nav-light" aria-label="Principal">
+    <div class="brand">
+      <img src="assets/icons/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
+      <div>
+        <span class="brand-word-title">El Salvador Trails</span>
+        <span class="brand-subtext"></span>
+      </div>
+    </div>
+
+    <ul class="nav-links-list">
+      <li><a href="index.html" data-i18n="nav.home">Página Inicial</a></li>
+      <li><a href="tours.html" data-i18n="nav.tours">Catálogo de Tours</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+      <li><a href="real-estate.html" class="active" aria-current="page" data-i18n="nav.realestate">Bienes Raíces</a></li>
+      <li><a href="payment.html" data-i18n="nav.payment">Pago en Línea</a></li>
+    </ul>
+
+    <div class="nav-right-container">
+      <button class="help-tutorial-btn" type="button" data-help-open data-i18n-aria="nav.help" data-i18n-title="nav.help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10 8 16 12 10 16 10 8"/>
+        </svg>
+        <span data-i18n="nav.help">Cómo usar este sitio</span>
+      </button>
+
+      <!-- Botón de cambio de modo (sol/luna) -->
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">
+        <span id="theme-toggle-icon" class="material-symbols-outlined">dark_mode</span>
+      </button>
+
+      <div class="lang-switcher-pill" role="group" aria-label="Idioma / Language">
+        <button type="button" class="active" data-lang="es" title="Español" aria-label="Español"><img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon"></button>
+        <button type="button" data-lang="en" title="English" aria-label="English"><img src="https://flagcdn.com/w40/us.png" alt="English" class="flag-icon"></button>
+        <button type="button" data-lang="pt" title="Português (Brasil)" aria-label="Português (Brasil)"><img src="https://flagcdn.com/w40/br.png" alt="Português" class="flag-icon"></button>
+      </div>
+
+      <button class="nav-hamburger" type="button" data-menu-toggle aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
+  <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" data-i18n-aria="nav.expanded" aria-label="Navegación del sitio">
+    <div class="menu-shell">
+      <div class="menu-intro">
+        <img src="assets/icons/logo.svg" class="menu-logo" alt="" aria-hidden="true">
+        <p class="menu-title" data-i18n="nav.menuTitle">Explora El Salvador</p>
+      </div>
+      <div class="menu-index">
+        <a href="index.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">01</span>
+          <span data-i18n="nav.home">Página Inicial</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="tours.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">02</span>
+          <span data-i18n="nav.tours">Catálogo de Tours</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="about.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">03</span>
+          <span data-i18n="nav.about">About Us</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="real-estate.html" class="active" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">04</span>
+          <span data-i18n="nav.realestate">Bienes Raíces</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+        <a href="payment.html" data-menu-link>
+          <span class="menu-link-number" aria-hidden="true">05</span>
+          <span data-i18n="nav.payment">Pago en Línea</span>
+          <span class="material-symbols-outlined menu-link-arrow" aria-hidden="true">arrow_outward</span>
+        </a>
+      </div>
+      <div class="menu-footer">
+        <span data-i18n="nav.menuFoot">Rutas locales y atención directa</span>
+        <span>@elsalvadortrails</span>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <section class="estate-section estate-hero" aria-labelledby="real-estate-title">
+      <div class="estate-hero-copy">
+        <h1 id="real-estate-title" data-i18n="realestate.hero">Descubre, disfruta e invierte en El Salvador</h1>
+        <p class="estate-lead" data-i18n="realestate.intro">El Salvador Trails es un portal turístico creado para ayudarte a descubrir y disfrutar lo mejor de El Salvador, ofreciéndote experiencias auténticas de turismo, aventura, naturaleza, cultura, gastronomía e historia.</p>
+        <a class="estate-link" href="#art-haus"><span data-i18n="realestate.explore">Conoce Art Haus</span><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></a>
+      </div>
+      <figure class="estate-hero-photo"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_2707-480.avif 480w, assets/optimized/real-estate/art-haus/img_2707-768.avif 768w, assets/optimized/real-estate/art-haus/img_2707-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_2707-1600.avif 1600w" sizes="(max-width: 800px) 90vw, 40vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_2707-480.webp 480w, assets/optimized/real-estate/art-haus/img_2707-768.webp 768w, assets/optimized/real-estate/art-haus/img_2707-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_2707-1600.webp 1600w" sizes="(max-width: 800px) 90vw, 40vw"><img src="assets/real-estate/art-haus/img_2707.jpg" width="1600" height="2844" alt="Exterior de Art Haus" data-i18n-aria="realestate.photo.exterior" fetchpriority="high" decoding="async"></picture><figcaption>Art Haus · San Salvador</figcaption></figure>
+    </section>
+    <section class="estate-section estate-introduction" aria-labelledby="estate-intro-title">
+      <h2 id="estate-intro-title" data-i18n="realestate.beyond">Más caminos para vivir El Salvador</h2>
+      <div class="estate-introduction-copy">
+        <p data-i18n="realestate.partners">Además de nuestras propuestas turísticas, contamos con socios estratégicos en servicios de alojamiento, Airbnb y bienes raíces, para acompañarte en cada etapa de tu visita o proyecto en el país. Nuestro objetivo es facilitarte opciones confiables para hospedarte, conocer nuevos destinos y explorar oportunidades de inversión inmobiliaria.</p>
+        <p data-i18n="realestate.country">El Salvador atraviesa una etapa de importante crecimiento turístico y desarrollo económico, convirtiéndose en un destino cada vez más atractivo tanto para viajeros como para quienes buscan nuevas oportunidades de inversión.</p>
+      </div>
+    </section>
+    <section class="estate-section estate-feature" id="art-haus" aria-labelledby="art-haus-title">
+      <figure class="estate-feature-photo"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1899-480.avif 480w, assets/optimized/real-estate/art-haus/img_1899-768.avif 768w, assets/optimized/real-estate/art-haus/img_1899-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1899-1600.avif 1600w" sizes="(max-width: 800px) 90vw, 52vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1899-480.webp 480w, assets/optimized/real-estate/art-haus/img_1899-768.webp 768w, assets/optimized/real-estate/art-haus/img_1899-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1899-1600.webp 1600w" sizes="(max-width: 800px) 90vw, 52vw"><img src="assets/real-estate/art-haus/img_1899.jpg" width="1600" height="900" alt="Interior del alojamiento" data-i18n-aria="realestate.photo.studio" loading="lazy" decoding="async"></picture></figure>
+      <div class="estate-feature-copy">
+        <h2 id="art-haus-title">Art Haus</h2>
+        <p class="estate-property-type" data-i18n="realestate.stay">Alojamiento en San Benito</p>
+        <p data-i18n="realestate.propertyIntro">Un punto de partida para tu visita a San Salvador. Conoce el alojamiento y sus espacios en esta selección de fotografías.</p>
+        <address>Avenida Las Magnolias #114,<br>Colonia San Benito, San Salvador</address>
+        <a class="estate-button" href="mailto:hola@elsalvadortrails.com?subject=Consulta%20sobre%20Art%20Haus"><span data-i18n="realestate.ask">Consultar sobre Art Haus</span><span class="material-symbols-outlined" aria-hidden="true">arrow_outward</span></a>
+        <p class="estate-contact-note" data-i18n="realestate.note">Escríbenos para conocer las opciones disponibles para tu visita.</p>
+      </div>
+    </section>
+    <section class="estate-section estate-gallery" aria-labelledby="estate-gallery-title">
+      <header class="estate-gallery-heading"><h2 id="estate-gallery-title" data-i18n="realestate.gallery">Una mirada a Art Haus</h2><p data-i18n="realestate.galleryIntro">El alojamiento, las vistas y los espacios del edificio.</p></header>
+      <div class="estate-photo-grid"><figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1899-480.avif 480w, assets/optimized/real-estate/art-haus/img_1899-768.avif 768w, assets/optimized/real-estate/art-haus/img_1899-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1899-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1899-480.webp 480w, assets/optimized/real-estate/art-haus/img_1899-768.webp 768w, assets/optimized/real-estate/art-haus/img_1899-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1899-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1899.jpg" width="1600" height="900" alt="Interior del alojamiento" data-i18n-aria="realestate.photo.studio" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.studio">Interior del alojamiento</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1922-480.avif 480w, assets/optimized/real-estate/art-haus/img_1922-768.avif 768w, assets/optimized/real-estate/art-haus/img_1922-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1922-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1922-480.webp 480w, assets/optimized/real-estate/art-haus/img_1922-768.webp 768w, assets/optimized/real-estate/art-haus/img_1922-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1922-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1922.jpg" width="1600" height="900" alt="Vista de la ciudad" data-i18n-aria="realestate.photo.view" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.view">Vista de la ciudad</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1948-480.avif 480w, assets/optimized/real-estate/art-haus/img_1948-768.avif 768w, assets/optimized/real-estate/art-haus/img_1948-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1948-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1948-480.webp 480w, assets/optimized/real-estate/art-haus/img_1948-768.webp 768w, assets/optimized/real-estate/art-haus/img_1948-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1948-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1948.jpg" width="1600" height="900" alt="Terraza" data-i18n-aria="realestate.photo.terrace" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.terrace">Terraza</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1893-480.avif 480w, assets/optimized/real-estate/art-haus/img_1893-768.avif 768w, assets/optimized/real-estate/art-haus/img_1893-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1893-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1893-480.webp 480w, assets/optimized/real-estate/art-haus/img_1893-768.webp 768w, assets/optimized/real-estate/art-haus/img_1893-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1893-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1893.jpg" width="1600" height="900" alt="Otra vista del alojamiento" data-i18n-aria="realestate.photo.room" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.room">Otra vista del alojamiento</figcaption></figure></div>
+      <details class="estate-more-photos"><summary><span data-i18n="realestate.morePhotos">Ver todas las fotos</span><span class="estate-photo-count">16</span></summary><div class="estate-photo-grid"><figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_2707-480.avif 480w, assets/optimized/real-estate/art-haus/img_2707-768.avif 768w, assets/optimized/real-estate/art-haus/img_2707-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_2707-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_2707-480.webp 480w, assets/optimized/real-estate/art-haus/img_2707-768.webp 768w, assets/optimized/real-estate/art-haus/img_2707-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_2707-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_2707.jpg" width="1600" height="2844" alt="Exterior de Art Haus" data-i18n-aria="realestate.photo.exterior" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.exterior">Exterior de Art Haus</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1898-480.avif 480w, assets/optimized/real-estate/art-haus/img_1898-768.avif 768w, assets/optimized/real-estate/art-haus/img_1898-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1898-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1898-480.webp 480w, assets/optimized/real-estate/art-haus/img_1898-768.webp 768w, assets/optimized/real-estate/art-haus/img_1898-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1898-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1898.jpg" width="1600" height="900" alt="Interior y cocina" data-i18n-aria="realestate.photo.kitchen" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.kitchen">Interior y cocina</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1902-480.avif 480w, assets/optimized/real-estate/art-haus/img_1902-768.avif 768w, assets/optimized/real-estate/art-haus/img_1902-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1902-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1902-480.webp 480w, assets/optimized/real-estate/art-haus/img_1902-768.webp 768w, assets/optimized/real-estate/art-haus/img_1902-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1902-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1902.jpg" width="1600" height="900" alt="Detalles del interior" data-i18n-aria="realestate.photo.interior" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.interior">Detalles del interior</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1924-480.avif 480w, assets/optimized/real-estate/art-haus/img_1924-768.avif 768w, assets/optimized/real-estate/art-haus/img_1924-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1924-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1924-480.webp 480w, assets/optimized/real-estate/art-haus/img_1924-768.webp 768w, assets/optimized/real-estate/art-haus/img_1924-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1924-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1924.jpg" width="1600" height="900" alt="Vista de la ciudad" data-i18n-aria="realestate.photo.view" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.view">Vista de la ciudad</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1933-480.avif 480w, assets/optimized/real-estate/art-haus/img_1933-768.avif 768w, assets/optimized/real-estate/art-haus/img_1933-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1933-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1933-480.webp 480w, assets/optimized/real-estate/art-haus/img_1933-768.webp 768w, assets/optimized/real-estate/art-haus/img_1933-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1933-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1933.jpg" width="1600" height="900" alt="Espacios compartidos" data-i18n-aria="realestate.photo.common" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.common">Espacios compartidos</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1934-480.avif 480w, assets/optimized/real-estate/art-haus/img_1934-768.avif 768w, assets/optimized/real-estate/art-haus/img_1934-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1934-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1934-480.webp 480w, assets/optimized/real-estate/art-haus/img_1934-768.webp 768w, assets/optimized/real-estate/art-haus/img_1934-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1934-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1934.jpg" width="1600" height="900" alt="Área de juegos" data-i18n-aria="realestate.photo.play" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.play">Área de juegos</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1937-480.avif 480w, assets/optimized/real-estate/art-haus/img_1937-768.avif 768w, assets/optimized/real-estate/art-haus/img_1937-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1937-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1937-480.webp 480w, assets/optimized/real-estate/art-haus/img_1937-768.webp 768w, assets/optimized/real-estate/art-haus/img_1937-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1937-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1937.jpg" width="1600" height="900" alt="Sala común" data-i18n-aria="realestate.photo.lounge" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.lounge">Sala común</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1939-480.avif 480w, assets/optimized/real-estate/art-haus/img_1939-768.avif 768w, assets/optimized/real-estate/art-haus/img_1939-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1939-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1939-480.webp 480w, assets/optimized/real-estate/art-haus/img_1939-768.webp 768w, assets/optimized/real-estate/art-haus/img_1939-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1939-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1939.jpg" width="1600" height="900" alt="Sala común" data-i18n-aria="realestate.photo.lounge" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.lounge">Sala común</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1940-480.avif 480w, assets/optimized/real-estate/art-haus/img_1940-768.avif 768w, assets/optimized/real-estate/art-haus/img_1940-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1940-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1940-480.webp 480w, assets/optimized/real-estate/art-haus/img_1940-768.webp 768w, assets/optimized/real-estate/art-haus/img_1940-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1940-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1940.jpg" width="1600" height="900" alt="Espacio de reunión" data-i18n-aria="realestate.photo.table" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.table">Espacio de reunión</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1945-480.avif 480w, assets/optimized/real-estate/art-haus/img_1945-768.avif 768w, assets/optimized/real-estate/art-haus/img_1945-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1945-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1945-480.webp 480w, assets/optimized/real-estate/art-haus/img_1945-768.webp 768w, assets/optimized/real-estate/art-haus/img_1945-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1945-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1945.jpg" width="1600" height="900" alt="Terraza" data-i18n-aria="realestate.photo.terrace" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.terrace">Terraza</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_1947-480.avif 480w, assets/optimized/real-estate/art-haus/img_1947-768.avif 768w, assets/optimized/real-estate/art-haus/img_1947-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_1947-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_1947-480.webp 480w, assets/optimized/real-estate/art-haus/img_1947-768.webp 768w, assets/optimized/real-estate/art-haus/img_1947-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_1947-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_1947.jpg" width="1600" height="900" alt="Espacios compartidos" data-i18n-aria="realestate.photo.common" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.common">Espacios compartidos</figcaption></figure>
+<figure class="estate-gallery-item"><picture><source type="image/avif" srcset="assets/optimized/real-estate/art-haus/img_2708-480.avif 480w, assets/optimized/real-estate/art-haus/img_2708-768.avif 768w, assets/optimized/real-estate/art-haus/img_2708-1200.avif 1200w, assets/optimized/real-estate/art-haus/img_2708-1600.avif 1600w" sizes="(max-width: 640px) 90vw, 42vw"><source type="image/webp" srcset="assets/optimized/real-estate/art-haus/img_2708-480.webp 480w, assets/optimized/real-estate/art-haus/img_2708-768.webp 768w, assets/optimized/real-estate/art-haus/img_2708-1200.webp 1200w, assets/optimized/real-estate/art-haus/img_2708-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 42vw"><img src="assets/real-estate/art-haus/img_2708.jpg" width="1600" height="900" alt="Exterior de Art Haus" data-i18n-aria="realestate.photo.exterior" loading="lazy" decoding="async"></picture><figcaption data-i18n="realestate.photo.exterior">Exterior de Art Haus</figcaption></figure></div></details>
+    </section>
+    <section class="estate-section estate-outlook" aria-labelledby="estate-outlook-title">
+      <h2 id="estate-outlook-title" data-i18n="realestate.outlook">Experiencias y nuevas oportunidades</h2>
+      <p data-i18n="realestate.closing">Con El Salvador Trails, no solo vienes a conocer un país: vienes a vivirlo, descubrir sus senderos y encontrar nuevas oportunidades.</p>
+      <p class="estate-signature" data-i18n="realestate.signature">El Salvador Trails – Trazando nuevos senderos hacia experiencias y oportunidades.</p>
+      <a class="estate-link" href="mailto:hola@elsalvadortrails.com?subject=Consulta%20sobre%20alojamiento%20y%20bienes%20ra%C3%ADces"><span data-i18n="realestate.talk">Conversemos sobre tu proyecto</span><span class="material-symbols-outlined" aria-hidden="true">arrow_outward</span></a>
+    </section>
+
+
+    <!-- Conecta con nosotros: banda ampliada (misma del home, 5 redes consistente) -->
+    <section class="social-band w-full py-16 flex flex-col items-center relative z-10">
+      <span class="social-connect-title mb-2" data-i18n="social.title">Síguenos y viaja con nosotros</span>
+      <p class="text-sm mb-2 text-muted px-6 text-center" data-i18n="social.subtitle">Volcanes al amanecer, cafetales, playas y la calidez de nuestra gente: síguenos y empieza a soñar con tu próxima aventura.</p>
+      <p class="text-sm font-bold mb-6 text-brand" data-i18n="social.handle">@elsalvadortrails</p>
+      <div class="flex gap-5 flex-wrap justify-center">
+        <a class="social-connect-icon" href="https://www.facebook.com/elsalvadortrails" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-connect-icon" href="https://www.instagram.com/elsalvadortrails" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-connect-icon" href="https://www.tiktok.com/@elsalvadortrails" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a class="social-connect-icon" href="https://www.youtube.com/@elsalvadortrails" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-connect-icon" href="https://wa.me/50370000000" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-light flex flex-col items-center py-16 w-full relative z-10">
+    <img src="assets/icons/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4" loading="lazy">
+
+    <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
+
+    <div class="footer-links flex gap-10 mb-6 flex-wrap justify-center px-6">
+      <a href="privacy.html" data-i18n="footer.privacy">Política de Privacidad</a>
+      <a href="terms.html" data-i18n="footer.terms">Términos de Servicio</a>
+      <a href="mailto:hola@elsalvadortrails.com" data-i18n="footer.contact">Contacto</a>
+    </div>
+
+    <div class="flex gap-6 mb-6 flex-wrap justify-center">
+      <a href="https://www.facebook.com/elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.youtube.com/@elsalvadortrails" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://wa.me/50370000000" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <p class="copyright-text uppercase" data-i18n="footer.copyright">© 2026 El Salvador Trails.</p>
+  </footer>
+
+  <!-- Modal tutorial -->
+  <div class="tutorial-overlay" data-help-modal role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <div class="tutorial-box">
+      <h2 id="help-title" class="font-display text-2xl font-bold text-brand" data-i18n="help.title">Cómo usar este sitio</h2>
+      <ol>
+        <li data-i18n="help.step1">1. Explora el catálogo y abre el tour que te interese.</li>
+        <li data-i18n="help.step2">2. Presiona el botón dorado para ver fotos, itinerario y detalles.</li>
+        <li data-i18n="help.step3">3. Indica adultos, niños y fecha, y cotiza por WhatsApp o correo.</li>
+      </ol>
+      <button type="button" class="btn-accent w-full py-3 mt-6 rounded-lg" data-help-close data-i18n="help.close">Entendido</button>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/real-estate-i18n.js"></script>
+  <script src="data/media-manifest.js"></script>
+  <script src="js/media.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

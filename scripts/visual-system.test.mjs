@@ -86,8 +86,8 @@ test('los campos editables usan el componente de formulario compartido', async (
 
   for (const [index, source] of sources.entries()) {
     const controls = source.match(/<(?:input|select|textarea)\b[^>]*>/g) || [];
-    // Star ratings have their own accessible radio control instead of a text-field surface.
-    const editableControls = controls.filter(control => !/type="file"/.test(control) && !(/type="radio"/.test(control) && /class="[^"]*\brating-star-input\b/.test(control)));
+    // Choice controls have their own accessible surface rather than a text-field component.
+    const editableControls = controls.filter(control => !/type="(?:file|radio|checkbox)"/.test(control));
     assert.ok(editableControls.length > 0, ['index.html', 'js/tours.js'][index]);
     for (const control of editableControls) {
       assert.match(control, /class="[^"]*\bform-control\b/, control);
@@ -115,10 +115,10 @@ test('solo las páginas con hero fotográfico usan navegación superpuesta', asy
   const documents = await Promise.all(pages.map(read));
   const named = Object.fromEntries(pages.map((name, index) => [name, documents[index]]));
 
-  for (const name of ['index.html', 'tours.html', 'about.html']) {
+  for (const name of ['index.html', 'tours.html', 'about.html', 'real-estate.html']) {
     assert.match(named[name], /<body[^>]*class="[^"]*\bhas-photo-hero\b/, name);
   }
-  for (const name of ['real-estate.html', 'payment.html', 'privacy.html', 'terms.html']) {
+  for (const name of ['payment.html', 'privacy.html', 'terms.html']) {
     assert.doesNotMatch(named[name], /\bhas-photo-hero\b/, name);
     assert.match(named[name], /<body[^>]*class="[^"]*\bpage-solid-header\b/, name);
   }
@@ -146,11 +146,13 @@ test('About conserva el sendero narrativo dentro de una entrada fotográfica', a
   assert.match(html, /<ol class="trail">/);
 });
 
-test('Bienes Raíces permanece como una promesa editorial sin publicar socios provisionales', async () => {
+test('Bienes Raíces presenta Art Haus con dirección confirmada y consulta sin precios inventados', async () => {
   const html = await read('real-estate.html');
 
-  assert.match(html, /class="editorial-coming-soon"/);
-  assert.match(html, /data-i18n="realestate\.empty">Próximamente</);
+  assert.match(html, /id="art-haus"/);
+  assert.match(html, /Avenida Las Magnolias #114/);
+  assert.match(html, /mailto:hola@elsalvadortrails\.com\?subject=Consulta%20sobre%20Art%20Haus/);
+  assert.doesNotMatch(html, /\$\d|\d+ habitaciones|\d+ huéspedes/);
   assert.doesNotMatch(html, /id="partners-grid"/);
   assert.doesNotMatch(html, /data\/real-estate-data\.js|js\/real-estate\.js/);
 });
@@ -168,8 +170,7 @@ test('la Home conserva el mural de Feedback con envío moderado', async () => {
   const quoteIndex = html.indexOf('id="home-quote"');
   const feedbackIndex = html.indexOf('id="feedback"');
   const toursIndex = html.indexOf('id="home-featured-day"');
-  const categoriesIndex = html.indexOf('home-categories-chapter');
-  const storiesIndex = html.indexOf('home-stories-chapter');
+  const introIndex = html.indexOf('class="tours-editorial-intro"');
 
   assert.match(html, /id="feedback"/);
   assert.match(html, /id="testimonials-track"/);
@@ -177,8 +178,7 @@ test('la Home conserva el mural de Feedback con envío moderado', async () => {
   assert.match(html, /id="feedback-modal"/);
   assert.match(html, /<script src="js\/testimonials\.js"><\/script>/);
   assert.ok(quoteIndex > -1 && feedbackIndex > quoteIndex, 'el mural debe ir después del cotizador');
-  assert.ok(toursIndex > quoteIndex && categoriesIndex > toursIndex, 'los tours y categorías deben preceder a las reseñas');
-  assert.ok(feedbackIndex > categoriesIndex && feedbackIndex < storiesIndex, 'el mural debe ir después de las categorías y antes de las historias');
+  assert.ok(feedbackIndex > introIndex && feedbackIndex < toursIndex, 'el mural debe ir debajo de la introducción editorial y antes de los tours');
   const navLinks = html.match(/<ul class="nav-links-list">[\s\S]*?<\/ul>/);
   assert.ok(navLinks);
   assert.doesNotMatch(navLinks[0], /feedback/i);

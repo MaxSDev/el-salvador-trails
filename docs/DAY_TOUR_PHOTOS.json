@@ -1,0 +1,58 @@
+{
+  "laguna-alegria": [
+    {
+      "src": "assets/tours/day-updates/laguna-alegria/2.jpg",
+      "source": "El Salvador Trails Recursos/Algeria-Volcán Tecapa/dji_fly_20260215_155020_973_1771193171107_photo_optimized.JPG"
+    },
+    {
+      "src": "assets/tours/day-updates/laguna-alegria/3.jpg",
+      "source": "El Salvador Trails Recursos/Algeria-Volcán Tecapa/dji_fly_20260215_155126_976_1771193090075_photo_optimized.JPG"
+    },
+    {
+      "src": "assets/tours/day-updates/laguna-alegria/5.jpg",
+      "source": "El Salvador Trails Recursos/Algeria-Volcán Tecapa/IMG_1101.jpg"
+    }
+  ],
+  "la-libertad": [
+    {
+      "src": "assets/tours/day-updates/la-libertad/18.jpg",
+      "source": "El Salvador Trails Recursos/Costa La Libertad/PHOTO-2026-09-06-11-23-45.jpg"
+    },
+    {
+      "src": "assets/tours/day-updates/la-libertad/17.jpg",
+      "source": "El Salvador Trails Recursos/Costa La Libertad/IMG_9646.jpg"
+    },
+    {
+      "src": "assets/tours/day-updates/la-libertad/10.jpg",
+      "source": "El Salvador Trails Recursos/Costa La Libertad/dji_fly_20260404_105044_45_1775321796958_photo_optimized.JPG"
+    }
+  ],
+  "boqueron-fumarolas": [
+    {
+      "src": "assets/tours/day-updates/boqueron-fumarolas/22.jpg",
+      "source": "El Salvador Trails Recursos/Boquerón/dji_fly_20260503_121000_76_1777832481217_photo_optimized.jpg"
+    },
+    {
+      "src": "assets/tours/day-updates/boqueron-fumarolas/26.jpg",
+      "source": "El Salvador Trails Recursos/Boquerón/IMG_0224.JPG"
+    },
+    {
+      "src": "assets/tours/day-updates/boqueron-fumarolas/28.jpg",
+      "source": "El Salvador Trails Recursos/Boquerón/IMG_0287.JPG"
+    }
+  ],
+  "puerta-del-diablo": [
+    {
+      "src": "assets/tours/day-updates/puerta-del-diablo/42.jpg",
+      "source": "El Salvador Trails Recursos/Puerta del Dialbo-Los Planes/IMG_5873.jpg"
+    },
+    {
+      "src": "assets/tours/day-updates/puerta-del-diablo/40.jpg",
+      "source": "El Salvador Trails Recursos/Puerta del Dialbo-Los Planes/IMG_5868.jpg"
+    },
+    {
+      "src": "assets/tours/day-updates/puerta-del-diablo/36.jpg",
+      "source": "El Salvador Trails Recursos/Puerta del Dialbo-Los Planes/IMG_0857.JPG"
+    }
+  ]
+}
