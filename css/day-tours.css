@@ -1,0 +1,37 @@
+/* Extend the incumbent mosaic to nine destinations without collapsing new rows. */
+.tours-page .dest-gallery {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, max(18rem, calc((100% - 6px) / 3))), 1fr));
+  grid-template-rows: none;
+  grid-auto-rows: minmax(17.5rem, auto);
+}
+.tours-page .dest-tile { aspect-ratio: auto; }
+@media (width >= 1024px) {
+  .tours-page .dest-tile-9 { grid-column: 2 / 4; }
+}
+.tour-quick-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: 1rem;
+  margin-block-end: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--brand-soft);
+}
+.tour-quick-facts > div { display: flex; align-items: center; gap: .5rem; font-size: .875rem; }
+.tour-media-note { margin-block: .75rem 0; color: var(--text-muted); font-size: .875rem; line-height: 1.6; }
+.tour-extra-options { margin-block: 0 1.5rem; }
+.tour-extra-options legend { margin-block-end: .65rem; font-weight: 600; color: var(--brand); }
+.tour-extra-options label {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  min-block-size: 48px;
+  padding-block: .5rem;
+  cursor: pointer;
+}
+.tour-extra-options input { color: var(--brand); accent-color: var(--brand); inline-size: 1.2rem; block-size: 1.2rem; }
+.tour-extra-options p { color: var(--text-muted); font-size: .875rem; line-height: 1.6; }
+.tour-extra-options input:focus-visible { outline: 2px solid var(--brand); outline-offset: 4px; }
+.tour-extra-options label:active { opacity: .75; }
+@media (hover: hover) and (pointer: fine) { .tour-extra-options label:hover { color: var(--brand); } }

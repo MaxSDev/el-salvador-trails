@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T01:49:49.690Z",
+  "generatedAt": "2026-10-13T04:49:45.090Z",
   "sourceRoot": "assets",
   "outputRoot": "assets/optimized",
   "widths": [
@@ -2296,6 +2296,1740 @@
             "src": "img/about-hero-1920.webp",
             "width": 1920,
             "height": 1080
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1893.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 148294,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1893-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 9153
+          },
+          {
+            "src": "real-estate/art-haus/img_1893-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 19926
+          },
+          {
+            "src": "real-estate/art-haus/img_1893-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 41685
+          },
+          {
+            "src": "real-estate/art-haus/img_1893-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 69215
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1893-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 14234
+          },
+          {
+            "src": "real-estate/art-haus/img_1893-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 31566
+          },
+          {
+            "src": "real-estate/art-haus/img_1893-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 66874
+          },
+          {
+            "src": "real-estate/art-haus/img_1893-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 102326
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1898.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 145182,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1898-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 9773
+          },
+          {
+            "src": "real-estate/art-haus/img_1898-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 20569
+          },
+          {
+            "src": "real-estate/art-haus/img_1898-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 42238
+          },
+          {
+            "src": "real-estate/art-haus/img_1898-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 71921
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1898-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 15474
+          },
+          {
+            "src": "real-estate/art-haus/img_1898-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 31430
+          },
+          {
+            "src": "real-estate/art-haus/img_1898-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 63678
+          },
+          {
+            "src": "real-estate/art-haus/img_1898-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 101722
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1899.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 139907,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1899-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 9239
+          },
+          {
+            "src": "real-estate/art-haus/img_1899-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 19493
+          },
+          {
+            "src": "real-estate/art-haus/img_1899-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 39755
+          },
+          {
+            "src": "real-estate/art-haus/img_1899-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 69199
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1899-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 14026
+          },
+          {
+            "src": "real-estate/art-haus/img_1899-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 28744
+          },
+          {
+            "src": "real-estate/art-haus/img_1899-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 60830
+          },
+          {
+            "src": "real-estate/art-haus/img_1899-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 98176
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1902.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 177452,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1902-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 11579
+          },
+          {
+            "src": "real-estate/art-haus/img_1902-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 25551
+          },
+          {
+            "src": "real-estate/art-haus/img_1902-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 52877
+          },
+          {
+            "src": "real-estate/art-haus/img_1902-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 83771
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1902-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 21228
+          },
+          {
+            "src": "real-estate/art-haus/img_1902-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 45092
+          },
+          {
+            "src": "real-estate/art-haus/img_1902-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 88118
+          },
+          {
+            "src": "real-estate/art-haus/img_1902-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 131884
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1922.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 308736,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1922-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 18770
+          },
+          {
+            "src": "real-estate/art-haus/img_1922-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 45529
+          },
+          {
+            "src": "real-estate/art-haus/img_1922-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 104162
+          },
+          {
+            "src": "real-estate/art-haus/img_1922-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 170183
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1922-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 31982
+          },
+          {
+            "src": "real-estate/art-haus/img_1922-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 78988
+          },
+          {
+            "src": "real-estate/art-haus/img_1922-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 175168
+          },
+          {
+            "src": "real-estate/art-haus/img_1922-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 276112
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1924.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 257596,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1924-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 14779
+          },
+          {
+            "src": "real-estate/art-haus/img_1924-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 35751
+          },
+          {
+            "src": "real-estate/art-haus/img_1924-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 81345
+          },
+          {
+            "src": "real-estate/art-haus/img_1924-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 137090
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1924-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 24998
+          },
+          {
+            "src": "real-estate/art-haus/img_1924-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 60622
+          },
+          {
+            "src": "real-estate/art-haus/img_1924-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 137690
+          },
+          {
+            "src": "real-estate/art-haus/img_1924-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 215136
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1933.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 206156,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1933-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 13338
+          },
+          {
+            "src": "real-estate/art-haus/img_1933-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 30863
+          },
+          {
+            "src": "real-estate/art-haus/img_1933-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 67031
+          },
+          {
+            "src": "real-estate/art-haus/img_1933-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 112406
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1933-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 20726
+          },
+          {
+            "src": "real-estate/art-haus/img_1933-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 48750
+          },
+          {
+            "src": "real-estate/art-haus/img_1933-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 104790
+          },
+          {
+            "src": "real-estate/art-haus/img_1933-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 161128
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1934.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 224686,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1934-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 15323
+          },
+          {
+            "src": "real-estate/art-haus/img_1934-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 30664
+          },
+          {
+            "src": "real-estate/art-haus/img_1934-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 59869
+          },
+          {
+            "src": "real-estate/art-haus/img_1934-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 96762
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1934-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 26872
+          },
+          {
+            "src": "real-estate/art-haus/img_1934-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 55840
+          },
+          {
+            "src": "real-estate/art-haus/img_1934-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 107376
+          },
+          {
+            "src": "real-estate/art-haus/img_1934-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 162032
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1937.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 256590,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1937-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 15180
+          },
+          {
+            "src": "real-estate/art-haus/img_1937-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 38871
+          },
+          {
+            "src": "real-estate/art-haus/img_1937-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 90455
+          },
+          {
+            "src": "real-estate/art-haus/img_1937-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 155766
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1937-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 24290
+          },
+          {
+            "src": "real-estate/art-haus/img_1937-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 63484
+          },
+          {
+            "src": "real-estate/art-haus/img_1937-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 147604
+          },
+          {
+            "src": "real-estate/art-haus/img_1937-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 228286
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1939.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 167286,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1939-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 10897
+          },
+          {
+            "src": "real-estate/art-haus/img_1939-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 24552
+          },
+          {
+            "src": "real-estate/art-haus/img_1939-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 51979
+          },
+          {
+            "src": "real-estate/art-haus/img_1939-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 83084
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1939-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 17014
+          },
+          {
+            "src": "real-estate/art-haus/img_1939-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 39908
+          },
+          {
+            "src": "real-estate/art-haus/img_1939-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 83076
+          },
+          {
+            "src": "real-estate/art-haus/img_1939-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 123156
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1940.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 186652,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1940-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 12142
+          },
+          {
+            "src": "real-estate/art-haus/img_1940-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 27664
+          },
+          {
+            "src": "real-estate/art-haus/img_1940-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 58508
+          },
+          {
+            "src": "real-estate/art-haus/img_1940-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 95654
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1940-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 18514
+          },
+          {
+            "src": "real-estate/art-haus/img_1940-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 43374
+          },
+          {
+            "src": "real-estate/art-haus/img_1940-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 90458
+          },
+          {
+            "src": "real-estate/art-haus/img_1940-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 136102
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1945.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 251018,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1945-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 14957
+          },
+          {
+            "src": "real-estate/art-haus/img_1945-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 36556
+          },
+          {
+            "src": "real-estate/art-haus/img_1945-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 83390
+          },
+          {
+            "src": "real-estate/art-haus/img_1945-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 139617
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1945-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 24046
+          },
+          {
+            "src": "real-estate/art-haus/img_1945-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 61116
+          },
+          {
+            "src": "real-estate/art-haus/img_1945-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 140588
+          },
+          {
+            "src": "real-estate/art-haus/img_1945-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 216738
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1947.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 145583,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1947-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 9986
+          },
+          {
+            "src": "real-estate/art-haus/img_1947-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 21053
+          },
+          {
+            "src": "real-estate/art-haus/img_1947-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 42048
+          },
+          {
+            "src": "real-estate/art-haus/img_1947-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 67159
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1947-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 14714
+          },
+          {
+            "src": "real-estate/art-haus/img_1947-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 31910
+          },
+          {
+            "src": "real-estate/art-haus/img_1947-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 64500
+          },
+          {
+            "src": "real-estate/art-haus/img_1947-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 95748
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_1948.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 196571,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_1948-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 12606
+          },
+          {
+            "src": "real-estate/art-haus/img_1948-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 29697
+          },
+          {
+            "src": "real-estate/art-haus/img_1948-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 66629
+          },
+          {
+            "src": "real-estate/art-haus/img_1948-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 114127
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_1948-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 18320
+          },
+          {
+            "src": "real-estate/art-haus/img_1948-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 43536
+          },
+          {
+            "src": "real-estate/art-haus/img_1948-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 97032
+          },
+          {
+            "src": "real-estate/art-haus/img_1948-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 153152
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_2707.jpg": {
+      "width": 1600,
+      "height": 2844,
+      "bytes": 528455,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_2707-480.avif",
+            "width": 480,
+            "height": 853,
+            "bytes": 32481
+          },
+          {
+            "src": "real-estate/art-haus/img_2707-768.avif",
+            "width": 768,
+            "height": 1365,
+            "bytes": 72804
+          },
+          {
+            "src": "real-estate/art-haus/img_2707-1200.avif",
+            "width": 1200,
+            "height": 2133,
+            "bytes": 142728
+          },
+          {
+            "src": "real-estate/art-haus/img_2707-1600.avif",
+            "width": 1600,
+            "height": 2844,
+            "bytes": 223161
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_2707-480.webp",
+            "width": 480,
+            "height": 853,
+            "bytes": 57794
+          },
+          {
+            "src": "real-estate/art-haus/img_2707-768.webp",
+            "width": 768,
+            "height": 1365,
+            "bytes": 129648
+          },
+          {
+            "src": "real-estate/art-haus/img_2707-1200.webp",
+            "width": 1200,
+            "height": 2133,
+            "bytes": 255066
+          },
+          {
+            "src": "real-estate/art-haus/img_2707-1600.webp",
+            "width": 1600,
+            "height": 2844,
+            "bytes": 382148
+          }
+        ]
+      }
+    },
+    "real-estate/art-haus/img_2708.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 216384,
+      "variants": {
+        "avif": [
+          {
+            "src": "real-estate/art-haus/img_2708-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 11553
+          },
+          {
+            "src": "real-estate/art-haus/img_2708-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 27685
+          },
+          {
+            "src": "real-estate/art-haus/img_2708-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 62541
+          },
+          {
+            "src": "real-estate/art-haus/img_2708-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 104091
+          }
+        ],
+        "webp": [
+          {
+            "src": "real-estate/art-haus/img_2708-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 19642
+          },
+          {
+            "src": "real-estate/art-haus/img_2708-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 49610
+          },
+          {
+            "src": "real-estate/art-haus/img_2708-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 113602
+          },
+          {
+            "src": "real-estate/art-haus/img_2708-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 177960
+          }
+        ]
+      }
+    },
+    "tours/day-updates/boqueron-fumarolas/22.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 450240,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/22-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 18768
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/22-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 47187
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/22-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 114970
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/22-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 223129
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/22-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 32424
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/22-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 81584
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/22-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 195250
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/22-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 349630
+          }
+        ]
+      }
+    },
+    "tours/day-updates/boqueron-fumarolas/26.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 353742,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/26-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 16316
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/26-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 40496
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/26-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 92437
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/26-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 160645
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/26-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 26440
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/26-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 66222
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/26-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 153320
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/26-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 253202
+          }
+        ]
+      }
+    },
+    "tours/day-updates/boqueron-fumarolas/28.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 596301,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/28-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 28326
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/28-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 72203
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/28-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 165957
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/28-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 282410
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/28-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 49564
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/28-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 123744
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/28-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 285374
+          },
+          {
+            "src": "tours/day-updates/boqueron-fumarolas/28-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 485352
+          }
+        ]
+      }
+    },
+    "tours/day-updates/la-libertad/10.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 481155,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/la-libertad/10-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 19329
+          },
+          {
+            "src": "tours/day-updates/la-libertad/10-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 48705
+          },
+          {
+            "src": "tours/day-updates/la-libertad/10-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 117244
+          },
+          {
+            "src": "tours/day-updates/la-libertad/10-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 222181
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/la-libertad/10-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 34286
+          },
+          {
+            "src": "tours/day-updates/la-libertad/10-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 87282
+          },
+          {
+            "src": "tours/day-updates/la-libertad/10-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 213198
+          },
+          {
+            "src": "tours/day-updates/la-libertad/10-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 378456
+          }
+        ]
+      }
+    },
+    "tours/day-updates/la-libertad/17.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 361660,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/la-libertad/17-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 16649
+          },
+          {
+            "src": "tours/day-updates/la-libertad/17-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 39431
+          },
+          {
+            "src": "tours/day-updates/la-libertad/17-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 90407
+          },
+          {
+            "src": "tours/day-updates/la-libertad/17-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 158980
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/la-libertad/17-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 26562
+          },
+          {
+            "src": "tours/day-updates/la-libertad/17-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 63526
+          },
+          {
+            "src": "tours/day-updates/la-libertad/17-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 147818
+          },
+          {
+            "src": "tours/day-updates/la-libertad/17-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 253616
+          }
+        ]
+      }
+    },
+    "tours/day-updates/la-libertad/18.jpg": {
+      "width": 1280,
+      "height": 720,
+      "bytes": 111318,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/la-libertad/18-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 9893
+          },
+          {
+            "src": "tours/day-updates/la-libertad/18-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 22733
+          },
+          {
+            "src": "tours/day-updates/la-libertad/18-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 46527
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/la-libertad/18-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 14866
+          },
+          {
+            "src": "tours/day-updates/la-libertad/18-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 33744
+          },
+          {
+            "src": "tours/day-updates/la-libertad/18-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 69550
+          }
+        ]
+      }
+    },
+    "tours/day-updates/laguna-alegria/2.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 370898,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/laguna-alegria/2-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 14099
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/2-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 35017
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/2-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 82247
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/2-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 156304
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/laguna-alegria/2-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 23870
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/2-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 59626
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/2-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 141750
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/2-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 255676
+          }
+        ]
+      }
+    },
+    "tours/day-updates/laguna-alegria/3.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 254932,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/laguna-alegria/3-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 10141
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/3-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 23500
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/3-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 53918
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/3-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 102221
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/laguna-alegria/3-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 14994
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/3-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 34340
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/3-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 80304
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/3-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 146684
+          }
+        ]
+      }
+    },
+    "tours/day-updates/laguna-alegria/5.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 462891,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/laguna-alegria/5-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 19875
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/5-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 50999
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/5-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 124987
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/5-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 224910
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/laguna-alegria/5-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 31760
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/5-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 82998
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/5-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 202932
+          },
+          {
+            "src": "tours/day-updates/laguna-alegria/5-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 359564
+          }
+        ]
+      }
+    },
+    "tours/day-updates/puerta-del-diablo/36.jpg": {
+      "width": 1600,
+      "height": 1200,
+      "bytes": 250193,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/puerta-del-diablo/36-480.avif",
+            "width": 480,
+            "height": 360,
+            "bytes": 14089
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/36-768.avif",
+            "width": 768,
+            "height": 576,
+            "bytes": 31905
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/36-1200.avif",
+            "width": 1200,
+            "height": 900,
+            "bytes": 63640
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/36-1600.avif",
+            "width": 1600,
+            "height": 1200,
+            "bytes": 102339
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/puerta-del-diablo/36-480.webp",
+            "width": 480,
+            "height": 360,
+            "bytes": 19104
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/36-768.webp",
+            "width": 768,
+            "height": 576,
+            "bytes": 43594
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/36-1200.webp",
+            "width": 1200,
+            "height": 900,
+            "bytes": 89974
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/36-1600.webp",
+            "width": 1600,
+            "height": 1200,
+            "bytes": 141908
+          }
+        ]
+      }
+    },
+    "tours/day-updates/puerta-del-diablo/40.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 397324,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/puerta-del-diablo/40-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 17544
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/40-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 44405
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/40-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 103144
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/40-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 177630
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/puerta-del-diablo/40-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 28548
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/40-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 72624
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/40-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 171370
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/40-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 290552
+          }
+        ]
+      }
+    },
+    "tours/day-updates/puerta-del-diablo/42.jpg": {
+      "width": 1600,
+      "height": 900,
+      "bytes": 369556,
+      "variants": {
+        "avif": [
+          {
+            "src": "tours/day-updates/puerta-del-diablo/42-480.avif",
+            "width": 480,
+            "height": 270,
+            "bytes": 15740
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/42-768.avif",
+            "width": 768,
+            "height": 432,
+            "bytes": 38150
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/42-1200.avif",
+            "width": 1200,
+            "height": 675,
+            "bytes": 88213
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/42-1600.avif",
+            "width": 1600,
+            "height": 900,
+            "bytes": 155343
+          }
+        ],
+        "webp": [
+          {
+            "src": "tours/day-updates/puerta-del-diablo/42-480.webp",
+            "width": 480,
+            "height": 270,
+            "bytes": 26188
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/42-768.webp",
+            "width": 768,
+            "height": 432,
+            "bytes": 64558
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/42-1200.webp",
+            "width": 1200,
+            "height": 675,
+            "bytes": 151060
+          },
+          {
+            "src": "tours/day-updates/puerta-del-diablo/42-1600.webp",
+            "width": 1600,
+            "height": 900,
+            "bytes": 260944
+          }
+        ]
+      }
+    },
+    "guide/mario-tazumal-home.jpg": {
+      "width": 1200,
+      "height": 2133,
+      "bytes": 554187,
+      "variants": {
+        "avif": [
+          {
+            "src": "guide/mario-tazumal-home-480.avif",
+            "width": 480,
+            "height": 853,
+            "bytes": 36312
+          },
+          {
+            "src": "guide/mario-tazumal-home-768.avif",
+            "width": 768,
+            "height": 1365,
+            "bytes": 88445
+          },
+          {
+            "src": "guide/mario-tazumal-home-1200.avif",
+            "width": 1200,
+            "height": 2133,
+            "bytes": 207816
+          }
+        ],
+        "webp": [
+          {
+            "src": "guide/mario-tazumal-home-480.webp",
+            "width": 480,
+            "height": 853,
+            "bytes": 56048
+          },
+          {
+            "src": "guide/mario-tazumal-home-768.webp",
+            "width": 768,
+            "height": 1365,
+            "bytes": 139202
+          },
+          {
+            "src": "guide/mario-tazumal-home-1200.webp",
+            "width": 1200,
+            "height": 2133,
+            "bytes": 323470
+          }
+        ]
+      }
+    },
+    "guide/mario-tazumal-about.jpg": {
+      "width": 1200,
+      "height": 2133,
+      "bytes": 559952,
+      "variants": {
+        "avif": [
+          {
+            "src": "guide/mario-tazumal-about-480.avif",
+            "width": 480,
+            "height": 853,
+            "bytes": 36191
+          },
+          {
+            "src": "guide/mario-tazumal-about-768.avif",
+            "width": 768,
+            "height": 1365,
+            "bytes": 88740
+          },
+          {
+            "src": "guide/mario-tazumal-about-1200.avif",
+            "width": 1200,
+            "height": 2133,
+            "bytes": 211005
+          }
+        ],
+        "webp": [
+          {
+            "src": "guide/mario-tazumal-about-480.webp",
+            "width": 480,
+            "height": 853,
+            "bytes": 54996
+          },
+          {
+            "src": "guide/mario-tazumal-about-768.webp",
+            "width": 768,
+            "height": 1365,
+            "bytes": 136986
+          },
+          {
+            "src": "guide/mario-tazumal-about-1200.webp",
+            "width": 1200,
+            "height": 2133,
+            "bytes": 315922
           }
         ]
       }

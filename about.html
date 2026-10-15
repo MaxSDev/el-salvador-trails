@@ -271,22 +271,14 @@
     .origin-portrait { margin: 0 auto; max-width: 360px; width: 100%; }
     .origin-portrait-frame {
       position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius-lg);
-      border: 1.5px solid var(--border-strong); overflow: hidden;
+      border: 1.5px solid var(--border-strong); overflow: clip;
       background:
         radial-gradient(120% 90% at 30% 20%, var(--brand-soft), transparent 60%),
         linear-gradient(160deg, var(--surface), var(--bg));
       box-shadow: var(--shadow-card-hover);
       display: grid; place-items: center;
     }
-    .origin-portrait-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .origin-portrait-ph {
-      display: grid; place-items: center; gap: 14px; text-align: center; padding: 24px;
-    }
-    .origin-portrait-ph .monogram { width: 96px; height: 96px; font-size: 34px; }
-    .origin-portrait-ph span:last-child {
-      font-family: var(--font-label); font-size: 10.5px; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint);
-    }
+    .origin-portrait-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 65%; }
     .origin-portrait figcaption {
       margin-top: 14px; text-align: center;
       font-family: var(--font-label); font-size: 10.5px; font-weight: 600;
@@ -586,6 +578,7 @@
       .js .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
+  <link rel="stylesheet" href="css/about-mobile.css" />
 </head>
 <body class="secondary-page site-immersive has-photo-hero about-page" data-i18n-page-title="page.about.title">
 
@@ -698,11 +691,11 @@
       <div class="container origin-grid z-2 reveal">
         <figure class="origin-portrait">
           <div class="origin-portrait-frame">
-            <!-- Retrato pendiente: se conserva el monograma hasta disponer de una foto aprobada. -->
-            <div class="origin-portrait-ph" aria-hidden="true">
-              <span class="monogram" aria-hidden="true">MD</span>
-              <span data-i18n="about.portrait.pending">Retrato por venir</span>
-            </div>
+            <picture>
+              <source type="image/avif" srcset="assets/optimized/guide/mario-tazumal-about-480.avif 480w, assets/optimized/guide/mario-tazumal-about-768.avif 768w, assets/optimized/guide/mario-tazumal-about-1200.avif 1200w" sizes="(max-width: 760px) 85vw, 360px">
+              <source type="image/webp" srcset="assets/optimized/guide/mario-tazumal-about-480.webp 480w, assets/optimized/guide/mario-tazumal-about-768.webp 768w, assets/optimized/guide/mario-tazumal-about-1200.webp 1200w" sizes="(max-width: 760px) 85vw, 360px">
+              <img src="assets/guide/mario-tazumal-about.jpg" width="1200" height="2133" alt="Retrato de Mario Domínguez en Tazumal" data-i18n-aria="about.portrait.photo" loading="lazy" decoding="async">
+            </picture>
           </div>
           <figcaption>
             <span class="portrait-name" data-i18n="about.founder.name">Mario Domínguez</span>
@@ -952,7 +945,7 @@
           "about.founder.p3": "Desde 1999 me he desempeñado profesionalmente en el sector turístico tanto en El Salvador como en Brasil. Entre 2001 y 2016 fundé y dirigí una operadora turística en El Salvador, logrando posicionarla entre las mejores del país y alcanzando el reconocimiento de los viajeros en Tripadvisor, donde fue calificada como la número uno en su categoría. Estos años de trabajo me permitieron acumular una valiosa experiencia en la creación de recorridos, atención al cliente y desarrollo de productos turísticos de alta calidad.",
           "about.founder.p4": "En 2024 regresé a mi país natal para iniciar una nueva etapa con la fundación de El Salvador Trails (Senderos de El Salvador), un proyecto que nace con la misma pasión y entusiasmo que inspiraron mi primera empresa turística el 1 de julio de 2001. Hoy, con una visión renovada, busco crear nuevas rutas, experiencias y aventuras que permitan a cada visitante descubrir la extraordinaria historia, cultura, gastronomía y naturaleza de El Salvador y Centroamérica.",
           "about.founder.welcome": "Bienvenidos a El Salvador Trails, donde cada sendero cuenta una historia y cada experiencia se convierte en una aventura inolvidable.",
-          "about.portrait.pending": "Retrato por venir",
+          "about.portrait.photo": "Retrato de Mario Domínguez en Tazumal",
           "about.values.vision.title": "Nuestra Visión",
           "about.values.vision.desc": "Ser la operadora turística más comprometida con la creación de experiencias auténticas en El Salvador y Centroamérica, transformando cada viaje en un recuerdo único, significativo e inolvidable.",
           "about.values.mission.title": "Nuestra Misión",
@@ -1031,7 +1024,7 @@
           "about.founder.p3": "Since 1999, I have worked professionally in the tourism sector in both El Salvador and Brazil. Between 2001 and 2016, I founded and managed a tour operator in El Salvador, positioning it among the best in the country and achieving the recognition of travelers on TripAdvisor, where it was ranked number one in its category. These years allowed me to accumulate valuable experience in designing tours, customer care, and high-quality tourism products.",
           "about.founder.p4": "In 2024, I returned to my homeland to start a new chapter with the founding of El Salvador Trails, a project born with the same passion and enthusiasm that inspired my first tourism company on July 1, 2001. Today, with a renewed vision, I seek to create new routes, experiences, and adventures that allow every visitor to discover the extraordinary history, culture, gastronomy, and nature of El Salvador and Central America.",
           "about.founder.welcome": "Welcome to El Salvador Trails, where every trail tells a story and every experience becomes an unforgettable adventure.",
-          "about.portrait.pending": "Portrait coming soon",
+          "about.portrait.photo": "Portrait of Mario Domínguez at Tazumal",
           "about.values.vision.title": "Our Vision",
           "about.values.vision.desc": "To be the tour operator most committed to creating authentic experiences in El Salvador and Central America, turning every trip into a unique, meaningful, and unforgettable memory.",
           "about.values.mission.title": "Our Mission",
@@ -1110,7 +1103,7 @@
           "about.founder.p3": "Desde 1999 atuo profissionalmente no setor turístico tanto em El Salvador quanto no Brasil. Entre 2001 e 2016 fundei e liderei uma operadora de turismo em El Salvador, posicionando-a entre as melhores do país e alcançando o reconhecimento de viajantes no TripAdvisor, onde foi avaliada como número um em sua categoria. Esses anos proporcionaram valiosa experiência na criação de roteiros, atendimento ao cliente e desenvolvimento de produtos de alta qualidade.",
           "about.founder.p4": "Em 2024 retornei à minha terra natal para iniciar uma nova etapa com a fundação da El Salvador Trails, projeto nascido com a mesma paixão e entusiasmo que inspiraram minha primeira empresa turística em 1º de julho de 2001. Hoje, com uma visão renovada, busco criar novas rotas, experiências e aventuras para descobrir a extraordinária história, cultura, gastronomia e natureza de El Salvador e América Central.",
           "about.founder.welcome": "Sejam bem-vindos a El Salvador Trails, onde cada trilha conta uma história e cada experiência se transforma em uma aventura inesquecível.",
-          "about.portrait.pending": "Retrato em breve",
+          "about.portrait.photo": "Retrato de Mario Domínguez em Tazumal",
           "about.values.vision.title": "Nossa Visão",
           "about.values.vision.desc": "Ser a operadora turística mais comprometida com a criação de experiências autênticas em El Salvador e América Central, transformando cada viagem em uma memória única, significativa e inesquecível.",
           "about.values.mission.title": "Nossa Missão",

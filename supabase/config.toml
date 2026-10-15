@@ -11,3 +11,6 @@ additional_redirect_urls = ["http://127.0.0.1:8001/admin/", "http://localhost:80
 
 [functions.reviews-api]
 verify_jwt = false
+
+[functions.personalized-api]
+verify_jwt = false

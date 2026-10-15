@@ -264,6 +264,28 @@
             <p class="section-copy" data-i18n="home.featured.sub">Day Tours de un día y paquetes multi-día con recojo en hotel y guía certificado.</p>
           </div>
         </div>
+        <section class="home-feedback-chapter relative w-full z-10 flex justify-center" id="feedback" data-home-layout="mural" aria-labelledby="feedback-title">
+          <div class="testimonials-section w-full home-reveal">
+            <header class="faq-heading">
+              <h2 id="feedback-title" class="section-title" data-i18n="feedback.title">Historias que nos hacen seguir</h2>
+              <p class="section-copy" data-i18n="feedback.subtitle">Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de El Salvador Trails.</p>
+            </header>
+            <div id="testimonials-viewport" class="testimonials-viewport" aria-live="polite">
+              <div id="testimonials-track" class="testimonials-track"></div>
+            </div>
+            <div class="testimonials-controls">
+              <button type="button" id="testimonials-prev-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.prev" aria-label="Testimonio anterior">
+                <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+              </button>
+              <div id="testimonials-dots" class="testimonials-dots"></div>
+              <button type="button" id="testimonials-next-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.next" aria-label="Siguiente testimonio">
+                <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+              </button>
+            </div>
+            <button type="button" id="open-feedback-btn" class="btn-accent" data-i18n="testimonials.cta">¿Viajaste con nosotros? Comparte tu experiencia</button>
+            <p id="feedback-form-success" class="feedback-form-success hidden" role="status" aria-live="polite"></p>
+          </div>
+        </section>
         <div id="home-featured-day" class="home-tour-grid"></div>
         <div id="home-featured-pkg" class="home-package-row"></div>
         <div class="home-tours-cta">
@@ -366,31 +388,6 @@
             <span class="cat-desc" data-i18n="home.cats.c4d">Ruta de las Flores y Centro Histórico.</span>
           </a>
         </div>
-      </div>
-    </section>
-
-    <div class="ornate-divider mx-16 my-16"></div>
-
-    <section class="home-shell home-feedback-chapter relative w-full z-10 flex justify-center" id="feedback" data-home-layout="mural" aria-labelledby="feedback-title">
-      <div class="testimonials-section w-full home-reveal">
-        <header class="faq-heading">
-          <h2 id="feedback-title" class="section-title" data-i18n="feedback.title">Historias que nos hacen seguir</h2>
-          <p class="section-copy" data-i18n="feedback.subtitle">Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de El Salvador Trails.</p>
-        </header>
-        <div id="testimonials-viewport" class="testimonials-viewport" aria-live="polite">
-          <div id="testimonials-track" class="testimonials-track"></div>
-        </div>
-        <div class="testimonials-controls">
-          <button type="button" id="testimonials-prev-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.prev" aria-label="Testimonio anterior">
-            <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
-          </button>
-          <div id="testimonials-dots" class="testimonials-dots"></div>
-          <button type="button" id="testimonials-next-btn" class="testimonials-nav-btn" data-i18n-aria="testimonials.next" aria-label="Siguiente testimonio">
-            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
-          </button>
-        </div>
-        <button type="button" id="open-feedback-btn" class="btn-accent" data-i18n="testimonials.cta">¿Viajaste con nosotros? Comparte tu experiencia</button>
-        <p id="feedback-form-success" class="feedback-form-success hidden" role="status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -520,7 +517,17 @@
     <!-- Guía Mario preview -->
     <section class="home-shell home-guide-chapter relative w-full z-10 flex justify-center" data-home-layout="split" aria-labelledby="guide-title">
       <div class="guide-preview w-full max-w-6xl home-reveal">
-        <div class="guide-mark" aria-hidden="true"><span>M</span><small>El Salvador Trails</small></div>
+        <figure class="guide-landscape">
+          <picture>
+            <source type="image/avif" srcset="assets/optimized/guide/mario-tazumal-home-480.avif 480w, assets/optimized/guide/mario-tazumal-home-768.avif 768w, assets/optimized/guide/mario-tazumal-home-1200.avif 1200w" sizes="(max-width: 760px) 85vw, 36vw">
+            <source type="image/webp" srcset="assets/optimized/guide/mario-tazumal-home-480.webp 480w, assets/optimized/guide/mario-tazumal-home-768.webp 768w, assets/optimized/guide/mario-tazumal-home-1200.webp 1200w" sizes="(max-width: 760px) 85vw, 36vw">
+            <img src="assets/guide/mario-tazumal-home.jpg" width="1200" height="2133" alt="Mario Domínguez frente a las ruinas de Tazumal" data-i18n-aria="home.guide.photo" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>
+            <div><span class="guide-signature">Mario Domínguez</span><span class="guide-signature-brand">El Salvador Trails</span></div>
+            <img class="guide-brand-seal" src="assets/icons/logo.svg" alt="" aria-hidden="true" loading="lazy">
+          </figcaption>
+        </figure>
         <div class="guide-copy">
           <p class="section-kicker" data-i18n="home.guide.eyebrow">Tu anfitrión en el camino</p>
           <h2 id="guide-title" class="section-title section-title--small" data-i18n="home.guide.title">Hola, soy Mario</h2>

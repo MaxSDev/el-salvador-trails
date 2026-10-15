@@ -1,0 +1,133 @@
+/* Art Haus extends the site's paper, wine and Fraunces visual system. */
+.real-estate-page {
+  --estate-gutter: clamp(1.25rem, 5vw, 5rem);
+  --estate-space: clamp(3rem, 7vw, 6rem);
+}
+
+.real-estate-page main { padding-block-start: 0; }
+
+.estate-section {
+  display: grid;
+  grid-template-columns: [full-start] minmax(var(--estate-gutter), 1fr) [content-start] min(100% - 2 * var(--estate-gutter), 80rem) [content-end] minmax(var(--estate-gutter), 1fr) [full-end];
+  padding-block: var(--estate-space);
+  color: var(--text);
+  scroll-margin-block-start: 110px;
+}
+.estate-section > * { grid-column: content; min-inline-size: 0; }
+.estate-section h1, .estate-section h2 {
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  margin: 0;
+}
+.estate-section h1 { font-size: clamp(2.65rem, 4.6vw, 4.8rem); }
+.estate-section h2 { font-size: clamp(2rem, 3.3vw, 3.5rem); }
+.estate-section p { line-height: 1.75; max-inline-size: 68ch; margin-block: 0; }
+.estate-section figure { margin: 0; }
+.estate-section picture, .estate-section img { display: block; inline-size: 100%; }
+.estate-section picture { block-size: auto; }
+.estate-section img { block-size: 100%; object-fit: cover; }
+
+/* Share the photographic hero and scroll-aware navigation with Tours/About. */
+.estate-photo-hero .secondary-hero-media img { object-position: center 60%; }
+.estate-photo-hero h1 {
+  max-inline-size: 20ch;
+  font-size: clamp(2.65rem, 5.5vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+.estate-hero-caption {
+  margin-block: 1rem 0;
+  color: color-mix(in oklch, currentColor, transparent 20%);
+  font-size: .8rem;
+}
+
+.estate-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  justify-self: start;
+  min-block-size: 44px;
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .4em;
+  text-decoration-color: var(--border-strong);
+}
+.estate-introduction { background: var(--surface); row-gap: 2rem; }
+.estate-introduction h2 { max-inline-size: 22ch; }
+.estate-introduction-copy {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+.estate-introduction-copy p { color: var(--text-muted); }
+.estate-feature { row-gap: 2rem; }
+.estate-feature-photo picture { aspect-ratio: 16 / 10; overflow: clip; border-radius: 4px; }
+.estate-feature-copy {
+  display: grid;
+  gap: 1rem;
+  margin-block-start: 2rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: clamp(2rem, 7vw, 7rem);
+  align-items: start;
+}
+.estate-feature-copy > * { grid-column: 1; }
+.estate-feature-copy h2 { font-size: clamp(3rem, 6vw, 5.5rem); }
+.estate-feature-copy address { grid-column: 2; grid-row: 1 / span 2; font-style: normal; font-size: 1.05rem; line-height: 1.7; padding-block-start: .6rem; }
+.estate-feature-copy .estate-button { grid-column: 2; grid-row: 3; }
+.estate-feature-copy .estate-contact-note { grid-column: 2; grid-row: 4; font-size: .9rem; color: var(--text-muted); }
+.estate-property-type { color: var(--brand); font-weight: 600; }
+.estate-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  justify-self: start;
+  min-block-size: 48px;
+  padding-block: .9rem;
+  padding-inline: 1.25rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.estate-gallery { padding-block-start: 0; row-gap: 2rem; }
+.estate-gallery-heading { display: grid; gap: .9rem; }
+.estate-gallery-heading p { color: var(--text-muted); }
+.estate-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+.estate-photo-grid > figure { min-inline-size: 0; }
+.estate-gallery-item picture { aspect-ratio: 4 / 3; overflow: clip; border-radius: 4px; }
+.estate-gallery-item figcaption { padding-block-start: .75rem; color: var(--text-muted); font-size: .9rem; }
+.estate-more-photos { border-block-start: 1px solid var(--border-strong); }
+.estate-more-photos summary {
+  cursor: pointer;
+  min-block-size: 56px;
+  padding-block: 1.25rem;
+  color: var(--brand);
+  font-weight: 600;
+}
+.estate-photo-count { margin-inline-start: .75rem; color: var(--text-muted); font-weight: 400; }
+.estate-more-photos[open] > .estate-photo-grid { padding-block-start: .5rem; }
+.estate-outlook { background: var(--surface); row-gap: 1.75rem; }
+.estate-outlook h2 { max-inline-size: 23ch; }
+.estate-signature { color: var(--brand); font-family: var(--font-display); font-size: 1.3rem; }
+.estate-section :is(a, summary):focus-visible { outline: 2px solid var(--brand); outline-offset: 5px; }
+.estate-section :is(a, summary):active { opacity: .75; }
+@media (hover: hover) and (pointer: fine) {
+  .estate-link:hover { text-decoration-color: var(--brand); }
+  .estate-button:hover { background: color-mix(in oklch, var(--accent), var(--text) 12%); }
+  .estate-more-photos summary:hover { background: var(--brand-soft); }
+}
+@media (width < 800px) {
+  .estate-feature-copy { grid-template-columns: 1fr; }
+  .estate-feature-copy > *, .estate-feature-copy address, .estate-feature-copy .estate-button, .estate-feature-copy .estate-contact-note { grid-column: 1; grid-row: auto; }
+}

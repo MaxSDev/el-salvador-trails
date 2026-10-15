@@ -7,6 +7,8 @@ import { pathToFileURL } from 'node:url';
 import { createReviewHandler, sha256 } from '../supabase/functions/_shared/review-handler.mjs';
 import { localReviewStore, LOCAL_ADMIN_ID } from './reviews-local-store.mjs';
 import { projectRoot, browserBundle } from './build-site.mjs';
+import { createPersonalizedHandler } from '../supabase/functions/_shared/personalized-handler.mjs';
+import { localPersonalizedStore } from './personalized-local-store.mjs';
 
 export async function startLocalReviewPreview({ port = 8000, directory = join(projectRoot, '.local/reviews') } = {}) {
   const secret = randomBytes(32); const token = randomBytes(32).toString('hex');
@@ -14,6 +16,12 @@ export async function startLocalReviewPreview({ port = 8000, directory = join(pr
   const filesRoot = join(directory, 'photos'); await mkdir(filesRoot, { recursive: true });
   let base;
   const allowedOrigins = [];
+  const personalizedHandler=createPersonalizedHandler({
+    store:await localPersonalizedStore(join(directory,'personalized')),
+    auth:{user:async value=>value===token?{id:LOCAL_ADMIN_ID}:null},
+    hashIP:ip=>sha256('personalized-local:'+ip),
+    verifyTurnstile:async value=>value==='local-test'
+  },{allowedOrigins,localPreview:true});
   const signature = text => createHmac('sha256', secret).update(text).digest('hex');
   function photoPath(name) {
     if (!/^[0-9a-f-]{36}\/[0-9a-f-]{36}\.(?:png|jpg|webp)$/.test(name)) throw new Error('Invalid photo path');
@@ -43,6 +51,10 @@ export async function startLocalReviewPreview({ port = 8000, directory = join(pr
       if (url.pathname.startsWith('/reviews-api/')) {
         const request = new Request(url, { method: incoming.method, headers: incoming.headers, ...(incoming.method !== 'GET' ? { body: Readable.toWeb(incoming), duplex: 'half' } : {}) });
         const response = await handler(request); outgoing.writeHead(response.status, Object.fromEntries(response.headers)); outgoing.end(Buffer.from(await response.arrayBuffer())); return;
+      }
+      if (url.pathname.startsWith('/personalized-api/')) {
+        const request=new Request(url,{method:incoming.method,headers:incoming.headers,...(incoming.method!=='GET'?{body:Readable.toWeb(incoming),duplex:'half'}:{})});
+        const response=await personalizedHandler(request);outgoing.writeHead(response.status,Object.fromEntries(response.headers));outgoing.end(Buffer.from(await response.arrayBuffer()));return;
       }
       if (url.pathname.startsWith('/auth/v1/')) {
         if (incoming.method === 'POST' && !origin) { outgoing.writeHead(403).end(); return; }
