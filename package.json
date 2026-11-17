@@ -1,12 +1,15 @@
 {
   "name": "el-salvador-trails-static-site",
-  "description": "Sitio estático optimizado de El Salvador Trails",
+  "description": "Sitio estático optimizado de Zenith Trails",
   "private": true,
   "scripts": {
     "test": "node --test",
     "test:reviews": "node --test scripts/reviews-*.test.mjs",
     "test:reviews:browser": "node scripts/reviews-e2e.mjs",
+    "test:content": "node --test scripts/content-*.test.mjs",
+    "test:content:browser": "node scripts/content-e2e.mjs",
     "dev": "node scripts/reviews-dev.mjs",
+    "dev:content": "node scripts/content-dev.mjs",
     "build": "node scripts/build-site.mjs",
     "preview": "node scripts/serve-site.mjs",
     "media:check": "node scripts/check-responsive-media.mjs",

@@ -9,12 +9,19 @@ import { localReviewStore, LOCAL_ADMIN_ID } from './reviews-local-store.mjs';
 import { projectRoot, browserBundle } from './build-site.mjs';
 import { createPersonalizedHandler } from '../supabase/functions/_shared/personalized-handler.mjs';
 import { localPersonalizedStore } from './personalized-local-store.mjs';
+import { createContentHandler } from '../supabase/functions/_shared/content-handler.mjs';
+import { localContentStore } from './content-local-store.mjs';
 
 export async function startLocalReviewPreview({ port = 8000, directory = join(projectRoot, '.local/reviews') } = {}) {
   const secret = randomBytes(32); const token = randomBytes(32).toString('hex');
   const store = await localReviewStore(directory); const sdk = await browserBundle();
   const filesRoot = join(directory, 'photos'); await mkdir(filesRoot, { recursive: true });
   let base;
+  const partners = JSON.parse(await readFile(join(projectRoot, 'data/real-estate.json'), 'utf8')).partners;
+  const contentStore = await localContentStore(join(directory, 'content'), JSON.parse(await readFile(join(projectRoot, 'data/tours.json'), 'utf8')).tours, LOCAL_ADMIN_ID, partners);
+  const mediaRoot = join(directory, 'content-images'); await mkdir(mediaRoot, { recursive: true });
+  function mediaPath(name) { if (!/^[0-9a-f-]{36}\.(?:jpg|png|webp)$/.test(name)) throw new Error('Invalid media path'); return join(mediaRoot, name); }
+  let contentHandler;
   const allowedOrigins = [];
   const personalizedHandler=createPersonalizedHandler({
     store:await localPersonalizedStore(join(directory,'personalized')),
@@ -48,9 +55,14 @@ export async function startLocalReviewPreview({ port = 8000, directory = join(pr
       const url = new URL(incoming.url, base); const origin = incoming.headers.origin;
       if (origin && ![base, base.replace('127.0.0.1', 'localhost')].includes(origin)) { outgoing.writeHead(403).end(); return; }
       if (incoming.method === 'OPTIONS') { outgoing.writeHead(204, { 'Access-Control-Allow-Origin': origin || base, 'Access-Control-Allow-Headers': 'apikey,authorization,content-type,x-client-info,x-supabase-api-version', 'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS' }).end(); return; }
-      if (url.pathname.startsWith('/reviews-api/')) {
+      if (url.pathname.startsWith('/reviews-api/') || url.pathname.startsWith('/content-api/')) {
         const request = new Request(url, { method: incoming.method, headers: incoming.headers, ...(incoming.method !== 'GET' ? { body: Readable.toWeb(incoming), duplex: 'half' } : {}) });
-        const response = await handler(request); outgoing.writeHead(response.status, Object.fromEntries(response.headers)); outgoing.end(Buffer.from(await response.arrayBuffer())); return;
+        const response = await (url.pathname.startsWith('/content-api/') ? contentHandler : handler)(request); outgoing.writeHead(response.status, Object.fromEntries(response.headers)); outgoing.end(Buffer.from(await response.arrayBuffer())); return;
+      }
+      if (url.pathname.startsWith('/storage/v1/object/public/site-media/')) {
+        if (incoming.method !== 'GET') { outgoing.writeHead(405).end(); return; }
+        const name = url.pathname.split('/').at(-1); const content = await readFile(mediaPath(name));
+        outgoing.writeHead(200, { 'Content-Type': mime[extname(name)], 'Cache-Control': 'public,max-age=3600', 'X-Content-Type-Options': 'nosniff' }); outgoing.end(content); return;
       }
       if (url.pathname.startsWith('/personalized-api/')) {
         const request=new Request(url,{method:incoming.method,headers:incoming.headers,...(incoming.method!=='GET'?{body:Readable.toWeb(incoming),duplex:'half'}:{})});
@@ -60,7 +72,7 @@ export async function startLocalReviewPreview({ port = 8000, directory = join(pr
         if (incoming.method === 'POST' && !origin) { outgoing.writeHead(403).end(); return; }
         let body = ''; for await (const chunk of incoming) { body += chunk; if (body.length > 8192) throw new Error('Body too large'); }
         const input = body ? JSON.parse(body) : {}; const auth = incoming.headers.authorization;
-        const send = (data, status = 200) => { outgoing.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); outgoing.end(JSON.stringify(data)); };
+        const send = (data, status = 200) => { outgoing.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...(origin ? {'Access-Control-Allow-Origin':origin,Vary:'Origin'} : {}) }); outgoing.end(JSON.stringify(data)); };
         if (url.pathname.endsWith('/token')) {
           const correct = input.email === user.email && input.password === 'resenas-local';
           if (!correct && !(url.searchParams.get('grant_type') === 'refresh_token' && input.refresh_token === token)) { send({ msg: 'Invalid login credentials', error_code: 'invalid_credentials' }, 400); return; }
@@ -81,7 +93,7 @@ export async function startLocalReviewPreview({ port = 8000, directory = join(pr
       if (incoming.method !== 'GET' && incoming.method !== 'HEAD') { outgoing.writeHead(405).end(); return; }
       if (url.pathname === '/js/reviews-config.js') {
         outgoing.writeHead(200, { 'Content-Type': 'text/javascript', 'Cache-Control': 'no-store' });
-        outgoing.end('window.ESTReviewsConfig = Object.freeze(' + JSON.stringify({ apiBaseUrl: base + '/reviews-api', supabaseUrl: base, publishableKey: 'sb_publishable_local_preview_only', localPreview: true, turnstileSiteKey: '' }) + ');'); return;
+        outgoing.end('window.ESTReviewsConfig = Object.freeze(' + JSON.stringify({ apiBaseUrl: base + '/reviews-api', contentApiBaseUrl: base + '/content-api', supabaseUrl: base, publishableKey: 'sb_publishable_local_preview_only', localPreview: true, turnstileSiteKey: '' }) + ');'); return;
       }
       if (url.pathname === '/admin/supabase-client.js') { outgoing.writeHead(200, { 'Content-Type': 'text/javascript' }); outgoing.end(sdk); return; }
       let name = decodeURIComponent(url.pathname).slice(1); if (!name || name === 'admin/') name += 'index.html';
@@ -95,6 +107,11 @@ export async function startLocalReviewPreview({ port = 8000, directory = join(pr
   await new Promise((resolve, reject) => { server.once('error', reject); server.listen(port, '127.0.0.1', resolve); });
   base = `http://127.0.0.1:${server.address().port}`;
   allowedOrigins.push(base, base.replace('127.0.0.1', 'localhost'));
+  contentHandler = createContentHandler({ store: contentStore, auth: { user: async value => value === token ? { id: LOCAL_ADMIN_ID } : null }, storage: {
+    upload: (name, bytes) => writeFile(mediaPath(name), bytes),
+    remove: async paths => { const { unlink } = await import('node:fs/promises'); for (const name of paths) await unlink(mediaPath(name)); },
+    publicUrl: name => base + '/storage/v1/object/public/site-media/' + name
+  } }, { allowedOrigins, mediaOrigin: base });
   return { server, url: base };
 }
 if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) {

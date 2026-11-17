@@ -14,3 +14,6 @@ verify_jwt = false
 
 [functions.personalized-api]
 verify_jwt = false
+
+[functions.content-api]
+verify_jwt = false

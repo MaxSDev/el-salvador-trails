@@ -1,5 +1,5 @@
 /* ==========================================================================
-   El Salvador Trails — Sistema de diseño unificado
+   Zenith Trails — Sistema de diseño unificado
    Modo claro (por defecto) / Modo oscuro (clase .dark en <html>)
 
    Tipografía oficial del brand: Adlery Pro (wordmark del footer bajo el ícono)
@@ -582,13 +582,6 @@ nav.fixed-nav-light::after {
   color: var(--bg);
   opacity: 1;
 }
-.lang-switcher-pill button .flag-icon {
-  width: 20px;
-  height: 14px;
-  object-fit: cover;
-  border-radius: 2px;
-  display: block;
-}
 .lang-switcher-pill button {
   display: flex;
   align-items: center;
@@ -1097,6 +1090,7 @@ textarea.form-control {
   .dest-gallery {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 280px 280px;
+    grid-auto-rows: 280px; /* Nuevos tours mantienen una fila visible. */
   }
   .dest-tile {
     aspect-ratio: auto;
@@ -1320,25 +1314,6 @@ textarea.form-control {
   display: flex;
   align-items: center;
   gap: 4px;
-}
-
-.testimonial-photo-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 0.75rem;
-  padding: 0.25rem 0.625rem;
-  border-radius: 9999px;
-  background: var(--brand-soft);
-  border: 1px solid var(--border);
-  font-size: 0.75rem;
-  color: var(--brand);
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.dark .testimonial-photo-badge {
-  color: var(--accent);
 }
 
 .testimonials-controls {
@@ -2694,47 +2669,6 @@ textarea.form-control {
   border-radius: var(--radius-card);
 }
 
-.video-placeholder-line {
-  position: absolute;
-  inset: 14px;
-  z-index: -1;
-  border: 1px solid currentColor;
-  border-radius: calc(var(--radius-feature) - 8px);
-  opacity: 0.22;
-}
-
-.video-placeholder--story .video-placeholder-line {
-  inset: 9px;
-  border-radius: calc(var(--radius-card) - 6px);
-}
-
-.video-placeholder-label {
-  max-width: 14ch;
-  padding: 10px 14px;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  background: var(--surface-raised);
-  font-family: var(--font-label);
-  font-size: clamp(11px, 1.2vw, 13px);
-  font-weight: 700;
-  line-height: 1.35;
-  text-align: center;
-}
-
-.dark .video-placeholder-label {
-  background: var(--surface);
-}
-
-.video-placeholder-format {
-  position: absolute;
-  right: 20px;
-  bottom: 17px;
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  opacity: 0.7;
-}
-
 .story-video-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2912,18 +2846,6 @@ textarea.form-control {
 
   .story-video-grid {
     gap: 8px;
-  }
-
-  .video-placeholder--story .video-placeholder-label {
-    max-width: 10ch;
-    padding: 7px 8px;
-    font-size: 10px;
-  }
-
-  .video-placeholder--story .video-placeholder-format {
-    right: 10px;
-    bottom: 10px;
-    font-size: 9px;
   }
 
   .story-video-card h3 {

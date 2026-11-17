@@ -80,6 +80,33 @@ test('photos are retained privately and failed writes clean up uploaded files', 
   assert.equal(failed.removed.length, 1);
 });
 
+test('approved review photos are signed only for the authorized moderation panel', async () => {
+  const signedPaths = [];
+  const photoPath = 'review/photo.png';
+  const f = fixture({
+    storage: { signedUrl: async path => {
+      signedPaths.push(path);
+      return 'https://example.supabase.co/private/' + path;
+    } }
+  });
+  f.records.set(id, { id, status: 'approved', body: 'Una gran experiencia.', photos: [{ position: 0, storage_path: photoPath }] });
+
+  const publicResponse = await f.handler(new Request(origin + '/reviews-api/public'));
+  assert.equal(publicResponse.status, 200);
+  const { reviews } = await publicResponse.json();
+  assert.equal(reviews[0].comment, 'Una gran experiencia.');
+  assert.deepEqual(reviews[0].photos, []);
+  assert.deepEqual(signedPaths, []);
+
+  const adminResponse = await f.handler(new Request(origin + '/reviews-api/admin?status=approved', {
+    headers: { Authorization: 'Bearer owner-token' }
+  }));
+  assert.equal(adminResponse.status, 200);
+  const adminData = await adminResponse.json();
+  assert.deepEqual(adminData.reviews[0].photos, [{ url: 'https://example.supabase.co/private/' + photoPath }]);
+  assert.deepEqual(signedPaths, [photoPath]);
+});
+
 test('admin requests require a verified session and current membership; conflicts are reported', async () => {
   const f = fixture();
   assert.equal((await f.handler(new Request(origin + '/reviews-api/admin'))).status, 401);

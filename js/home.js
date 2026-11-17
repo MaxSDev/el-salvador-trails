@@ -1,4 +1,4 @@
-/* El Salvador Trails — Home: tours destacados y cotización rápida.
+/* Zenith Trails — Home: tours destacados y cotización rápida.
    Reusa data/tours-data.js y mantiene la presentación libre de cifras demo. */
 (function () {
   'use strict';
@@ -6,6 +6,7 @@
   function lang() { return window.__estI18n ? window.__estI18n.getLang() : 'es'; }
   function t(k) { return window.__estI18n ? window.__estI18n.t(k) : k; }
   function pick(o) { var l = lang(); return (o && (o[l] || o.es)) || ''; }
+  function escape(value) { return String(value || '').replace(/[&<>"']/g, function(c) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
 
   function tours() {
     if (window.__TOURS_DATA && window.__TOURS_DATA.tours) return window.__TOURS_DATA.tours;
@@ -26,7 +27,7 @@
             : '(max-width: 767px) 100vw, 38vw',
           loading: 'lazy'
         })
-      : '<img src="' + img + '" alt="' + title + '" loading="lazy" class="tour-card-image">';
+      : '<img src="' + escape(img) + '" alt="' + escape(title) + '" loading="lazy" class="tour-card-image">';
     var dur = pick(tour.duration);
     var grp = pick(tour.groupSize);
     return (
@@ -35,10 +36,10 @@
           imageMarkup +
         '</div>' +
         '<div class="tour-card-content">' +
-          '<p class="tour-card-duration">' + dur + '</p>' +
-          '<h3>' + title + '</h3>' +
-          '<p class="home-meta">' + grp + ' · ' + pick(tour.pickup) + '</p>' +
-          '<p class="home-from">' + t('home.featured.quote') + '</p>' +
+          '<p class="tour-card-duration">' + escape(dur) + '</p>' +
+          '<h3>' + escape(title) + '</h3>' +
+          '<p class="home-meta">' + escape(grp) + ' · ' + escape(pick(tour.pickup)) + '</p>' +
+          '<p class="home-from">' + escape(window.ESTContent && window.ESTContent.price(tour) || t('home.featured.quote')) + '</p>' +
           '<a href="tours.html" class="btn-accent tour-card-link"><span>' + t('tour.viewTour') + '</span><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>' +
         '</div>' +
       '</article>'
@@ -52,6 +53,7 @@
     var all = tours();
     if (!all.length) {
       if (day) day.innerHTML = '<p class="text-muted text-center w-full"><a href="tours.html" class="text-brand font-semibold">Ver catálogo →</a></p>';
+      if (pkg) pkg.innerHTML = '';
       return;
     }
     var days = all.filter(function (x) { return x.category === 'day'; }).slice(0, 3);
@@ -73,7 +75,7 @@
     var all = tours();
     if (sel) {
       sel.innerHTML = all.map(function (x) {
-        return '<option value="' + pick(x.title) + '">' + pick(x.title) + '</option>';
+        return '<option value="' + escape(pick(x.title)) + '">' + escape(pick(x.title)) + '</option>';
       }).join('');
     }
     form.addEventListener('submit', function (e) {
@@ -83,15 +85,15 @@
       var g = grp ? grp.value : '2 adultos';
       var l = lang() === 'pt' ? 'Português' : (lang() === 'en' ? 'English' : 'Español');
       var msg = '¡Hola Mario! Quiero cotizar: ' + dest + '\n• Fecha estimada: ' + d + '\n• Grupo: ' + g + '\n• Idioma: ' + l;
-      window.open('https://wa.me/50370000000?text=' + encodeURIComponent(msg), '_blank');
+      window.open('https://wa.me/' + (window.ESTContent && window.ESTContent.contacts.whatsapp || '50370000000') + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     });
   }
 
   function rerender() { renderFeatured(); }
 
   document.addEventListener('DOMContentLoaded', function () {
-    renderFeatured();
-    initQuote();
+    function ready() { renderFeatured(); initQuote(); }
+    if (window.ESTContentReady) window.ESTContentReady.then(ready); else ready();
     // Re-render al cambiar idioma
     if (window.__estI18n) {
       var orig = window.__estI18n.setLang;

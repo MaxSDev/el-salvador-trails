@@ -1,6 +1,6 @@
-# El Salvador Trails
+# Zenith Trails
 
-Sitio web estático de El Salvador Trails, con catálogo de experiencias, contenido bilingüe y recursos responsive en AVIF y WebP.
+Sitio web estático de Zenith Trails, con catálogo de experiencias, contenido bilingüe y recursos responsive en AVIF y WebP.
 
 ## Desarrollo local
 

@@ -1,5 +1,6 @@
 (function () { 'use strict'; var dictionaries={
   "es": {
+    "personalized.pageTitle": "Experiencia personalizada — Zenith Trails",
     "personalized.title": "Diseñemos tu próximo sendero",
     "personalized.intro": "Ayúdanos a crear la experiencia perfecta para ti. Completa este cuestionario y prepararemos una propuesta según tus intereses, necesidades y estilo de viaje.",
     "personalized.back": "Volver al catálogo",
@@ -34,7 +35,7 @@
     "personalized.wishes": "¿Qué lugar o experiencia desean incluir?",
     "personalized.optional": "Opcional",
     "personalized.adult": "Soy mayor de 18 años y puedo representar a este grupo.",
-    "personalized.consent": "Autorizo al equipo de El Salvador Trails a utilizar estos datos para preparar y dar seguimiento a mi solicitud.",
+    "personalized.consent": "Autorizo al equipo de Zenith Trails a utilizar estos datos para preparar y dar seguimiento a mi solicitud.",
     "personalized.privacy": "La solicitud y tus datos de contacto serán privados. Las estadísticas del equipo usarán categorías del grupo y del viaje, sin mostrar tu nombre, correo, WhatsApp ni necesidades especiales.",
     "personalized.submit": "Solicitar mi propuesta",
     "personalized.sending": "Enviando solicitud…",
@@ -86,6 +87,7 @@
     "personalized.accommodation.no_preference": "Sin preferencia"
   },
   "en": {
+    "personalized.pageTitle": "Personalized experience — Zenith Trails",
     "personalized.title": "Let’s design your next trail",
     "personalized.intro": "Help us create the right experience for you. Complete this questionnaire and we’ll prepare a proposal based on your interests, needs and travel style.",
     "personalized.back": "Back to the catalog",
@@ -120,7 +122,7 @@
     "personalized.wishes": "Any place or experience you would like to include?",
     "personalized.optional": "Optional",
     "personalized.adult": "I am over 18 and can represent this group.",
-    "personalized.consent": "I authorize El Salvador Trails to use these details to prepare and follow up on my request.",
+    "personalized.consent": "I authorize Zenith Trails to use these details to prepare and follow up on my request.",
     "personalized.privacy": "Your request and contact details will be private. Team statistics will use group and trip categories without showing your name, email, WhatsApp or accessibility needs.",
     "personalized.submit": "Request my proposal",
     "personalized.sending": "Sending request…",
@@ -172,6 +174,7 @@
     "personalized.accommodation.no_preference": "No preference"
   },
   "pt": {
+    "personalized.pageTitle": "Experiência personalizada — Zenith Trails",
     "personalized.title": "Vamos desenhar seu próximo caminho",
     "personalized.intro": "Ajude-nos a criar a experiência ideal para você. Preencha este questionário e prepararemos uma proposta de acordo com seus interesses, necessidades e estilo de viagem.",
     "personalized.back": "Voltar ao catálogo",
@@ -206,7 +209,7 @@
     "personalized.wishes": "Há algum lugar ou experiência que desejam incluir?",
     "personalized.optional": "Opcional",
     "personalized.adult": "Sou maior de 18 anos e posso representar este grupo.",
-    "personalized.consent": "Autorizo a equipe de El Salvador Trails a usar estes dados para preparar e acompanhar minha solicitação.",
+    "personalized.consent": "Autorizo a equipe de Zenith Trails a usar estes dados para preparar e acompanhar minha solicitação.",
     "personalized.privacy": "Sua solicitação e seus dados de contato serão privados. As estatísticas da equipe usarão categorias do grupo e da viagem, sem mostrar seu nome, e-mail, WhatsApp ou necessidades especiais.",
     "personalized.submit": "Solicitar minha proposta",
     "personalized.sending": "Enviando solicitação…",

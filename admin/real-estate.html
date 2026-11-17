@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Administrar Bienes Raíces — Zenith Trails</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/brand-placeholder.svg">
+  <link rel="stylesheet" href="reviews-admin.css">
+  <link rel="stylesheet" href="admin-shell.css">
+  <link rel="stylesheet" href="content-admin.css">
+</head>
+<body data-content-kind="partner">
+  <header class="admin-header"><a class="admin-brand" href="index.html" aria-label="Zenith Trails, inicio del panel"><img src="../assets/icons/brand-placeholder.svg" alt="" aria-hidden="true" width="52" height="52"><span>Zenith Trails</span></a><nav aria-label="Panel de administración"><a href="index.html">Inicio</a><a href="content.html">Tours</a><a href="real-estate.html" aria-current="page">Bienes Raíces</a><a href="reviews.html">Reseñas</a><a href="site.html">Información del sitio</a><a href="../index.html" target="_blank" rel="noopener">Ver la página ↗</a></nav></header>
+  <main class="admin-shell content-shell" id="main-content">
+    <a class="back-link" href="index.html">← Inicio del panel</a>
+    <div class="page-heading"><p class="eyebrow">Zenith Trails · Administración</p><h1>Administrar Bienes Raíces</h1><p class="intro">Actualiza Art Haus, los alojamientos y los negocios aliados que aparecen en la página.</p></div>
+    <p id="local-notice" class="notice" hidden>Entorno de prueba local. Estos cambios quedan solo en esta computadora. Acceso de prueba: pruebas@local.invalid / resenas-local.</p>
+    <p id="content-message" class="message" role="status" aria-live="polite" hidden></p>
+    <section id="login-section" class="admin-card" aria-labelledby="login-title">
+      <h2 id="login-title">Entrar al panel</h2>
+      <form id="login-form" class="login-form"><label>Correo<input name="email" type="email" autocomplete="username" required></label><label>Contraseña<input name="password" type="password" autocomplete="current-password" required></label><button class="primary" type="submit">Entrar</button></form>
+      <a href="index.html?recovery=1">Recuperar contraseña</a>
+    </section>
+    <section id="content-section" hidden>
+      <div class="session-row"><p id="account-email"></p><button type="button" id="logout">Cerrar sesión</button></div>
+      <div class="content-layout">
+        <aside class="content-sidebar admin-card" aria-label="Alojamientos y aliados">
+          <div class="content-nav"><button id="new-tour" type="button" class="primary">Añadir alojamiento o aliado</button><button id="reload-content" type="button">Actualizar lista</button></div>
+          <h2>Alojamientos y aliados</h2>
+          <div id="list-filters" class="list-filters">
+            <label>Buscar por nombre<input id="content-search" type="search" placeholder="Ejemplo: Art Haus"></label>
+            <label>Estado<select id="filter-status"><option value="all">Todos los estados</option><option value="draft">Borradores</option><option value="published">Publicados</option><option value="pending">Con cambios pendientes</option><option value="hidden">Ocultos</option></select></label>
+            <label>Tipo<select id="filter-category"><option value="all">Todas las opciones</option><option value="lodging">Alojamiento</option><option value="partner">Negocio aliado</option></select></label>
+          </div>
+          <p id="list-count" class="support" aria-live="polite"></p><div id="tour-list"></div>
+        </aside>
+        <section class="editor-panel admin-card" aria-labelledby="editor-title">
+          <div id="editor-empty" class="editor-empty"><p class="eyebrow">Tu contenido, paso a paso</p><h2>Elige qué quieres actualizar</h2><p>Selecciona “Editar” en la lista o utiliza “Añadir alojamiento o aliado”. Te acompañaremos hasta la vista previa.</p><ol><li>Completa los datos básicos.</li><li>Elige y ordena las fotos.</li><li>Añade los detalles.</li><li>Revisa y publica.</li></ol></div>
+          <form id="content-form" hidden novalidate>
+            <fieldset id="editor-fields">
+              <legend id="editor-title">Editar</legend>
+              <p id="document-state" class="document-state" aria-live="polite"></p>
+              <nav id="editor-steps" class="editor-steps" aria-label="Pasos de edición"></nav>
+              <div class="language-row"><label class="language-choice">Idioma del contenido<select id="editor-language"><option value="es">Español</option><option value="en">English (opcional)</option><option value="pt">Português (opcional)</option></select></label><p class="support">Las traducciones son opcionales. Si un texto en inglés o portugués está vacío, se mostrará en español.</p></div>
+              <div id="editor-body"></div>
+              <div class="editor-actions"><button id="previous-step" type="button">Anterior</button><button type="submit" data-action="save">Guardar borrador</button><button id="next-step" type="button" class="primary">Siguiente</button><button id="publish-content" type="submit" data-action="publish" class="primary" hidden>Publicar</button></div>
+              <div class="secondary-actions"><button type="button" id="hide-tour" class="danger" hidden>Ocultar</button><button type="button" id="delete-content" class="danger" aria-describedby="delete-help" hidden>Borrar</button><p id="delete-help" class="support" hidden>Ocultar permite volver a publicar. Borrar elimina este contenido definitivamente.</p></div>
+            </fieldset>
+          </form>
+        </section>
+      </div>
+    </section>
+    <dialog id="media-dialog" aria-labelledby="media-title"><div class="dialog-heading"><h2 id="media-title">Elegir imagen</h2><button id="close-media" type="button">Cerrar</button></div><p>Elige una imagen pública de la biblioteca. Puedes cambiar la portada y el orden después.</p><div id="media-list" class="media-library"></div></dialog>
+  </main>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/real-estate-i18n.js"></script>
+  <script src="../data/tours-data.js"></script>
+  <script src="../js/reviews-config.js"></script>
+  <script src="../js/content-client.js"></script>
+  <script type="module" src="content-admin.js"></script>
+</body>
+</html>

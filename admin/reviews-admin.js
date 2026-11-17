@@ -1,9 +1,8 @@
-import { createClient } from './supabase-client.js';
+import { getAdminClient, isLocalPreview, recoveryRequested, redirectToAdminLogin, initializeAdminNavigation } from './admin-session.js';
 
 const $ = id => document.getElementById(id);
 const config = window.ESTReviewsConfig || {};
-let client, session, page = 0, loading = false, hasMore = false, manualOnly = false;
-let passwordFlow = ['invite', 'recovery'].includes(new URLSearchParams(location.hash.slice(1)).get('type'));
+let client, session, page = 0, loading = false, hasMore = false;
 const reasons = { profanity: 'Palabras que requieren revisión', link: 'Incluye un enlace', 'personal-contact': 'Incluye datos de contacto', language: 'Idioma que requiere revisión', photos: 'Fotos pendientes de revisión', 'manual-mode': 'Revisión manual activada', 'harmful-content': 'El filtro detectó posible contenido dañino', 'moderation-unavailable': 'El filtro no pudo completar el análisis' };
 function message(text, error = false) { $('admin-message').textContent = text; $('admin-message').dataset.error = String(error); $('admin-message').hidden = false; }
 function failure(error) {
@@ -12,7 +11,7 @@ function failure(error) {
   if (error.code === 'stale-review') return message('Otra persona ya cambió esta reseña. Actualiza la lista antes de decidir.', true);
   message('No se pudo completar la operación. Tus cambios no se han confirmado; vuelve a intentarlo.', true);
 }
-function showLogin() { $('login-section').hidden = false; $('review-section').hidden = true; $('password-section').hidden = true; $('review-list').replaceChildren(); }
+function showLogin() { $('login-section').hidden = false; $('review-section').hidden = true; $('review-list').replaceChildren(); }
 async function request(path, options = {}) {
   const result = await client.auth.getSession();
   session = result.data.session;
@@ -22,6 +21,7 @@ async function request(path, options = {}) {
 function element(tag, text, className) { const node = document.createElement(tag); if (text != null) node.textContent = text; if (className) node.className = className; return node; }
 function renderReview(review) {
   const article = element('article', null, 'admin-review'); article.dataset.id = review.id;
+  article.append(element('span', ({ pending: 'Pendiente de revisión', approved: 'Publicada', rejected: 'Rechazada', hidden: 'Oculta' })[review.status], 'review-status'));
   article.append(element('h3', review.author.name));
   const date = new Date(review.createdAt).toLocaleDateString('es-SV');
   article.append(element('p', `${review.rating} / 5 · ${review.author.country || 'País no indicado'} · ${date}`, 'review-meta'));
@@ -43,6 +43,9 @@ function renderReview(review) {
     }); article.append(photos);
   }
   const actions = element('div', null, 'review-actions');
+  const more = element('details', null, 'review-more');
+  more.append(element('summary', 'Más opciones'));
+  const secondary = element('div', null, 'secondary-actions'); more.append(secondary);
   for (const [status, label] of [['approved', 'Publicar'], ['rejected', 'Rechazar'], ['hidden', 'Ocultar']]) {
     if (review.status === status || (review.status === 'pending' && status === 'hidden')) continue;
     const button = element('button', label, status === 'approved' ? 'primary' : ''); button.type = 'button';
@@ -53,7 +56,7 @@ function renderReview(review) {
         await request('/admin', { method: 'PATCH', body: JSON.stringify({ id: review.id, status, version: review.version }) });
         message('Reseña ' + ({ approved: 'publicada.', rejected: 'rechazada.', hidden: 'ocultada.' }[status])); page = 0; await load();
       } catch (error) { failure(error); actions.querySelectorAll('button').forEach(item => item.disabled = false); }
-    }); actions.append(button);
+    }); (status === 'hidden' ? secondary : actions).append(button);
   }
   const deleteButton = element('button', 'Borrar', 'danger'); deleteButton.type = 'button';
   deleteButton.addEventListener('click', async () => {
@@ -66,7 +69,7 @@ function renderReview(review) {
       page = 0; await load(); $('reload').focus();
     } catch (error) { failure(error); actions.querySelectorAll('button').forEach(item => item.disabled = false); }
   });
-  actions.append(deleteButton);
+  secondary.append(deleteButton); actions.append(more);
   article.append(actions); return article;
 }
 async function load() {
@@ -76,68 +79,50 @@ async function load() {
   try {
     const data = await request(`/admin?status=${$('status-filter').value}&page=${page}`);
     if (!Array.isArray(data.reviews)) throw new Error('Invalid response');
-    $('login-section').hidden = true; $('password-section').hidden = true; $('review-section').hidden = false;
+    $('login-section').hidden = true; $('review-section').hidden = false;
     $('account-email').textContent = session.user.email;
-    manualOnly = data.settings.manual_only; $('manual-mode').checked = manualOnly;
+    const manualOnly = data.settings?.manual_only === true;
+    $('manual-status').textContent = manualOnly ? 'Revisión manual activada' : 'La revisión manual aún no está activada';
+    $('manual-description').textContent = manualOnly ? 'Las reseñas nuevas esperan tu aprobación antes de aparecer en la página. Lee la experiencia completa antes de decidir.' : 'La configuración actual permite publicar algunos textos automáticamente. Pide al equipo que active la revisión manual acordada.';
+    $('manual-status').parentElement.dataset.warning = String(!manualOnly);
+    $('queue-title').textContent = ({ pending: 'Pendientes de revisión', approved: 'Reseñas publicadas', rejected: 'Reseñas rechazadas', hidden: 'Reseñas ocultas' })[$('status-filter').value];
+    $('queue-summary').textContent = $('status-filter').value === 'pending' ? 'Publica o rechaza cada reseña después de leerla. Una observación negativa también puede aportar confianza.' : 'Puedes volver a publicar una reseña o revisar sus otras opciones.';
     if (data.photosPending) message('Algunas fotos de reseñas borradas siguen pendientes de eliminación. Pulsa Actualizar para volver a intentarlo.', true);
     $('review-list').replaceChildren();
-    if (!data.reviews.length) $('review-list').append(element('p', 'No hay reseñas en esta categoría.'));
+    if (!data.reviews.length) $('review-list').append(element('p', $('status-filter').value === 'pending' ? 'No hay reseñas pendientes. Las nuevas experiencias aparecerán aquí para que las revises.' : 'No hay reseñas en esta categoría.', 'empty-reviews'));
     else data.reviews.forEach(review => $('review-list').append(renderReview(review)));
     hasMore = data.hasMore; $('page-label').textContent = 'Página ' + (page + 1);
   } catch (error) { failure(error); }
   finally { loading = false; $('review-list').setAttribute('aria-busy', 'false'); $('reload').disabled = false; $('previous-page').disabled = page === 0; $('next-page').disabled = !hasMore; }
 }
 async function initialize() {
+  if (recoveryRequested()) { redirectToAdminLogin(); return; }
+  client = getAdminClient();
   if (!config.supabaseUrl || !config.publishableKey || !window.ESTReviews.configured()) {
-    $('login-form').querySelectorAll('button').forEach(button => button.disabled = true);
     message('El panel todavía no está conectado. Pide al equipo de desarrollo que complete la configuración.', true); return;
   }
-  client = createClient(config.supabaseUrl, config.publishableKey, { auth: { storage: sessionStorage, storageKey: 'est-review-admin', autoRefreshToken: true, persistSession: true, detectSessionInUrl: true } });
-  if (config.localPreview && ['127.0.0.1', 'localhost'].includes(location.hostname)) $('local-notice').hidden = false;
+  if (isLocalPreview()) $('local-notice').hidden = false;
   client.auth.onAuthStateChange((event) => {
-    if (event === 'PASSWORD_RECOVERY') { passwordFlow = true; $('password-section').hidden = false; $('login-section').hidden = true; $('review-section').hidden = true; }
+    if (event === 'PASSWORD_RECOVERY') redirectToAdminLogin();
     if (event === 'SIGNED_OUT') showLogin();
   });
   const result = await client.auth.getSession(); session = result.data.session;
   if (session) {
-    if (passwordFlow) { $('password-section').hidden = false; $('login-section').hidden = true; }
-    else await load();
-  }
+    initializeAdminNavigation(client).catch(() => {});
+    await load();
+  } else showLogin();
 }
-$('login-form').addEventListener('submit', async event => {
-  event.preventDefault(); if (!client) return;
-  const button = event.target.querySelector('button[type=submit]'); button.disabled = true;
+$('logout').addEventListener('click', async () => {
+  const button = $('logout'); button.disabled = true;
   try {
-    const { data, error } = await client.auth.signInWithPassword({ email: event.target.elements.email.value, password: event.target.elements.password.value });
-    if (error) { message('No pudimos iniciar sesión. Revisa el correo y la contraseña.', true); return; }
-    session = data.session; event.target.elements.password.value = ''; $('admin-message').hidden = true; page = 0; await load();
-  } catch { message('No se pudo conectar. Vuelve a intentarlo.', true); }
-  finally { button.disabled = false; }
-});
-$('logout').addEventListener('click', async () => { await client.auth.signOut({ scope: 'local' }); session = null; showLogin(); });
-$('reset-password').addEventListener('click', async () => {
-  const input = $('login-form').elements.email;
-  if (!input.reportValidity()) return;
-  const { error } = await client.auth.resetPasswordForEmail(input.value, { redirectTo: location.origin + location.pathname });
-  message(error ? 'No se pudo solicitar el enlace. Vuelve a intentarlo.' : 'Si esa cuenta existe, recibirá un enlace para cambiar la contraseña.', !!error);
-});
-$('password-form').addEventListener('submit', async event => {
-  event.preventDefault(); const button = event.target.querySelector('button'); button.disabled = true;
-  try {
-    const { error } = await client.auth.updateUser({ password: event.target.elements.password.value });
+    const { error } = await client.auth.signOut({ scope: 'local' });
     if (error) throw error;
-    passwordFlow = false; event.target.reset(); message('Contraseña guardada.'); await load();
-  } catch { message('No se pudo guardar la contraseña. Vuelve a intentarlo.', true); }
+    session = null; location.assign('index.html');
+  } catch { message('No se pudo cerrar la sesión. Vuelve a intentarlo.', true); }
   finally { button.disabled = false; }
 });
 $('status-filter').addEventListener('change', () => { page = 0; load(); });
 $('reload').addEventListener('click', () => load());
 $('previous-page').addEventListener('click', () => { if (page > 0) { page--; load(); } });
 $('next-page').addEventListener('click', () => { if (hasMore) { page++; load(); } });
-$('manual-mode').addEventListener('change', async event => {
-  const input = event.target; const value = input.checked; input.disabled = true;
-  try { await request('/settings', { method: 'PATCH', body: JSON.stringify({ manualOnly: value }) }); manualOnly = value; message(value ? 'Todas las reseñas pasarán por revisión manual.' : 'Se activó la publicación automática de texto que pasa los controles.'); }
-  catch (error) { input.checked = manualOnly; failure(error); }
-  finally { input.disabled = false; }
-});
 initialize().catch(() => message('No se pudo cargar la sesión. Vuelve a abrir el panel.', true));

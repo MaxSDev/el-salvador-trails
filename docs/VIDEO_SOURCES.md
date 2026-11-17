@@ -1,5 +1,11 @@
 # Fuentes de videos de referencia
 
+Los cuatro videos de esta lista se retiraron de la portada de Zenith Trails. El recuadro principal y los tres de historias quedan reservados para videos del equipo. Los enlaces del catálogo a los perfiles de TikTok e Instagram se conservan.
+
+El selector de idioma de las ocho páginas públicas usaba tres imágenes externas: `https://flagcdn.com/w40/es.png`, `https://flagcdn.com/w40/us.png` y `https://flagcdn.com/w40/br.png`. Se sustituyeron por ES, EN y PT. En la revisión del catálogo, Bienes Raíces y el contenido guardado en el panel local no se encontraron otras fotos editoriales con URL de terceros.
+
+## Registro histórico de la maqueta
+
 Verificación más reciente: 2026-10-03 mediante la respuesta pública oEmbed de YouTube y la carga HTTP de cada página youtube-nocookie.com/embed/.
 
 Estos videos son referencias temporales externas para evaluar el diseño. No pertenecen a El Salvador Trails, no se descargan ni se redistribuyen y ninguno está aprobado para producción.

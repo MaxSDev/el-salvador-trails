@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     { titleKey: "slide3.title", descKey: "slide3.desc", img: "assets/img/slide_3.jpg" }
   ];
 
+  const originalSlideImages = slides.map(slide => slide.img);
+  if (window.ESTContent) slides.forEach(function (slide, index) { if (window.ESTContent.images['hero' + index]) slide.img = window.ESTContent.images['hero' + index]; });
+
   /** Resolve slide text via i18n helper if available, fallback to ES */
   function slideText(key) {
     if (window.__estI18n && typeof window.__estI18n.t === 'function') {
@@ -63,13 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!image) return;
     var data = window.ESTMedia ? window.ESTMedia.sourceData(src) : null;
     var picture = image.closest('picture');
-    if (data && picture) {
+    if (picture) {
       var avif = picture.querySelector('source[type="image/avif"]');
       var webp = picture.querySelector('source[type="image/webp"]');
-      if (avif) avif.srcset = data.avif;
-      if (webp) webp.srcset = data.webp;
-      image.width = data.width;
-      image.height = data.height;
+      if (avif) avif.srcset = data ? data.avif : '';
+      if (webp) webp.srcset = data ? data.webp : '';
+      if (data) { image.width = data.width; image.height = data.height; }
     }
     image.src = src;
   }
@@ -96,7 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initial Background
-  bgLayers[0].style.backgroundImage = `url(${backgroundSource(slides[0].img)})`;
+  updateResponsiveImage(mainImage, slides[0].img);
+  bgLayers[0].style.backgroundImage = `url(${JSON.stringify(backgroundSource(slides[0].img))})`;
 
   const renderThumbnails = () => {
     thumbnailsContainer.innerHTML = slides.map((slide, index) => `
@@ -140,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Update Background Layer (Cross-fade)
     const nextBgLayer = 1 - activeBgLayer;
-    bgLayers[nextBgLayer].style.backgroundImage = `url(${backgroundSource(slide.img)})`;
+    bgLayers[nextBgLayer].style.backgroundImage = `url(${JSON.stringify(backgroundSource(slide.img))})`;
     bgLayers[nextBgLayer].classList.add('active');
     bgLayers[activeBgLayer].classList.remove('active');
     activeBgLayer = nextBgLayer;
@@ -251,6 +254,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderThumbnails();
+  refreshSlideText();
+  document.addEventListener('est:content-loaded', function () {
+    slides.forEach(function (slide, index) { slide.img = window.ESTContent.images['hero' + index] || originalSlideImages[index]; });
+    renderThumbnails(); updateSlide(currentIndex); refreshSlideText();
+  });
   syncCarouselCounter();
   syncPauseButton();
   startAutoplay();

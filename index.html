@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script src="js/admin-preview.js"></script>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>El Salvador Trails</title>
+  <title>Zenith Trails</title>
 
   <!-- Font Imports -->
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,300..800;1,300..800&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -45,11 +46,11 @@
   <!-- Cambio de tema: se ejecuta en la cabecera para evitar parpadeo -->
   <script src="js/theme.js"></script>
 
-  <meta name="description" content="El Salvador Trails — Descubre El Salvador: volcanes, lagos, playas, Ruta de las Flores y Centro Histórico con guías certificados." />
-  <meta property="og:title" content="El Salvador Trails" />
+  <meta name="description" content="Zenith Trails — Descubre El Salvador: volcanes, lagos, playas, Ruta de las Flores y Centro Histórico con guías certificados." />
+  <meta property="og:title" content="Zenith Trails" />
   <meta property="og:description" content="Top destinos más buscados del país con guías locales certificados." />
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/brand-placeholder.svg" />
 
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/carrousel.css">
@@ -62,9 +63,9 @@
   <!-- Barra de navegación fija -->
   <nav class="fixed-nav-light" aria-label="Principal">
     <div class="brand">
-      <img src="assets/icons/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
+      <img src="assets/icons/brand-placeholder.svg" class="brand-mark-svg" alt="" aria-hidden="true">
       <div>
-        <span class="brand-word-title">El Salvador Trails</span>
+        <span class="brand-word-title">Zenith Trails</span>
         <span class="brand-subtext"></span>
       </div>
     </div>
@@ -92,9 +93,9 @@
       </button>
 
       <div class="lang-switcher-pill" role="group" aria-label="Idioma / Language">
-        <button type="button" class="active" data-lang="es" title="Español" aria-label="Español"><img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon"></button>
-        <button type="button" data-lang="en" title="English" aria-label="English"><img src="https://flagcdn.com/w40/us.png" alt="English" class="flag-icon"></button>
-        <button type="button" data-lang="pt" title="Português (Brasil)" aria-label="Português (Brasil)"><img src="https://flagcdn.com/w40/br.png" alt="Português" class="flag-icon"></button>
+        <button type="button" class="active" data-lang="es" title="Español" aria-label="Español">ES</button>
+        <button type="button" data-lang="en" title="English" aria-label="English">EN</button>
+        <button type="button" data-lang="pt" title="Português (Brasil)" aria-label="Português (Brasil)">PT</button>
       </div>
 
       <button class="nav-hamburger" type="button" data-menu-toggle data-i18n-aria="nav.menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
@@ -105,7 +106,7 @@
   <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" data-i18n-aria="nav.expanded" aria-label="Navegación del sitio">
     <div class="menu-shell">
       <div class="menu-intro">
-        <img src="assets/icons/logo.svg" class="menu-logo" alt="" aria-hidden="true">
+        <img src="assets/icons/brand-placeholder.svg" class="menu-logo" alt="" aria-hidden="true">
         <p class="menu-title" data-i18n="nav.menuTitle">Explora El Salvador</p>
       </div>
       <div class="menu-index">
@@ -137,7 +138,6 @@
       </div>
       <div class="menu-footer">
         <span data-i18n="nav.menuFoot">Rutas locales y atención directa</span>
-        <span>@elsalvadortrails</span>
       </div>
     </div>
   </nav>
@@ -268,7 +268,7 @@
           <div class="testimonials-section w-full home-reveal">
             <header class="faq-heading">
               <h2 id="feedback-title" class="section-title" data-i18n="feedback.title">Historias que nos hacen seguir</h2>
-              <p class="section-copy" data-i18n="feedback.subtitle">Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de El Salvador Trails.</p>
+              <p class="section-copy" data-i18n="feedback.subtitle">Viajeros de todo el mundo comparten cómo fue descubrir El Salvador de la mano de Zenith Trails.</p>
             </header>
             <div id="testimonials-viewport" class="testimonials-viewport" aria-live="polite">
               <div id="testimonials-track" class="testimonials-track"></div>
@@ -298,39 +298,12 @@
     </section>
 
     <section class="home-shell home-video-chapter relative w-full z-10 flex justify-center" aria-labelledby="main-video-title">
-      <div class="video-feature video-feature--reference w-full max-w-6xl">
+      <div class="video-feature video-feature--reserved w-full max-w-6xl">
         <div class="video-feature-copy">
           <p class="section-kicker" data-i18n="home.video.eyebrow">El Salvador en movimiento</p>
           <h2 id="main-video-title" class="section-title" data-i18n="home.video.title">Un país que se entiende caminándolo</h2>
-          <p class="section-copy" data-i18n="home.video.text">Una referencia audiovisual para sentir el Pacífico antes de iniciar el recorrido.</p>
         </div>
-        <div class="reference-video reference-video--main video-placeholder--main" data-video-shell data-video-placeholder="main">
-          <div class="reference-video-frame" data-video-frame>
-            <picture class="reference-video-poster" aria-hidden="true">
-              <source type="image/avif" srcset="assets/optimized/img/slide_0-480.avif 480w, assets/optimized/img/slide_0-768.avif 768w, assets/optimized/img/slide_0-1200.avif 1200w, assets/optimized/img/slide_0-1920.avif 1920w" sizes="(max-width: 900px) 100vw, 62vw">
-              <source type="image/webp" srcset="assets/optimized/img/slide_0-480.webp 480w, assets/optimized/img/slide_0-768.webp 768w, assets/optimized/img/slide_0-1200.webp 1200w, assets/optimized/img/slide_0-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 62vw">
-              <img src="assets/img/slide_0.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async">
-            </picture>
-            <span class="reference-video-scrim" aria-hidden="true"></span>
-            <span class="reference-video-badge" data-i18n="video.reference">Video de referencia</span>
-            <button class="reference-video-trigger reference-video-trigger--main" type="button" data-video-trigger="main" aria-expanded="false" data-i18n-aria="video.watch" aria-label="Ver video de referencia">
-              <span class="reference-video-play" aria-hidden="true"><span class="material-symbols-outlined">play_arrow</span></span>
-              <span class="reference-video-action" data-i18n="video.watch">Ver video de referencia</span>
-            </button>
-            <div class="reference-video-caption">
-              <h3>World Surf League en El Salvador 2024</h3>
-              <p><span data-i18n="video.by">Por</span> MITUR El Salvador</p>
-            </div>
-          </div>
-          <div class="reference-video-meta">
-            <p data-i18n="video.temporaryNote">Referencia temporal externa; no pertenece a El Salvador Trails.</p>
-            <p class="reference-video-fallback" data-video-fallback hidden data-i18n="video.unavailable">El video no está disponible; abre la fuente original.</p>
-            <a data-video-source-static href="https://www.youtube.com/watch?v=zwagQ8pF9hs" target="_blank" rel="noopener noreferrer">
-              <span data-i18n="video.source">Abrir fuente en YouTube</span>
-              <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
-            </a>
-          </div>
-        </div>
+        <div class="video-placeholder video-placeholder--main" data-video-placeholder="main" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -399,58 +372,18 @@
         <div class="text-center mb-8">
           <p class="section-kicker" data-i18n="home.stories.eyebrow">Historias del sendero</p>
           <h2 id="story-video-title" class="section-title" data-i18n="home.stories.title">Tres miradas de El Salvador</h2>
-          <p class="section-copy section-copy--center" data-i18n="home.stories.text">Tres referencias externas para recorrer paisajes distintos antes de elegir tu ruta.</p>
         </div>
         <div class="story-video-grid">
           <article class="story-video-card">
-            <div class="video-placeholder video-placeholder--story reference-story-media" data-video-placeholder="story">
-              <picture aria-hidden="true">
-                <source type="image/avif" srcset="assets/optimized/img/slide_2-480.avif 480w, assets/optimized/img/slide_2-768.avif 768w, assets/optimized/img/slide_2-1200.avif 1200w" sizes="(max-width: 760px) 82vw, 22vw">
-                <source type="image/webp" srcset="assets/optimized/img/slide_2-480.webp 480w, assets/optimized/img/slide_2-768.webp 768w, assets/optimized/img/slide_2-1200.webp 1200w" sizes="(max-width: 760px) 82vw, 22vw">
-                <img src="assets/img/slide_2.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async">
-              </picture>
-              <span class="reference-video-scrim" aria-hidden="true"></span>
-              <span class="reference-video-badge" data-i18n="video.reference">Video de referencia</span>
-              <button class="reference-video-trigger reference-video-trigger--story" type="button" data-video-trigger="volcano" aria-describedby="story-volcano-title" data-i18n-aria="video.watch" aria-label="Ver video de referencia">
-                <span class="reference-video-play" aria-hidden="true"><span class="material-symbols-outlined">play_arrow</span></span>
-                <span class="reference-video-action" data-i18n="video.watch">Ver video de referencia</span>
-              </button>
-              <span class="story-video-author"><span data-i18n="video.by">Por</span> Pato Viajes y Aventuras</span>
-            </div>
+            <div class="video-placeholder video-placeholder--story" data-video-placeholder="story" aria-hidden="true"></div>
             <h3 id="story-volcano-title" data-i18n="home.stories.volcano">Lago y volcán</h3>
           </article>
           <article class="story-video-card">
-            <div class="video-placeholder video-placeholder--story reference-story-media" data-video-placeholder="story">
-              <picture aria-hidden="true">
-                <source type="image/avif" srcset="assets/optimized/img/slide_1-480.avif 480w, assets/optimized/img/slide_1-768.avif 768w, assets/optimized/img/slide_1-1200.avif 1200w" sizes="(max-width: 760px) 82vw, 22vw">
-                <source type="image/webp" srcset="assets/optimized/img/slide_1-480.webp 480w, assets/optimized/img/slide_1-768.webp 768w, assets/optimized/img/slide_1-1200.webp 1200w" sizes="(max-width: 760px) 82vw, 22vw">
-                <img src="assets/img/slide_1.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async">
-              </picture>
-              <span class="reference-video-scrim" aria-hidden="true"></span>
-              <span class="reference-video-badge" data-i18n="video.reference">Video de referencia</span>
-              <button class="reference-video-trigger reference-video-trigger--story" type="button" data-video-trigger="flowers" aria-describedby="story-flowers-title" data-i18n-aria="video.watch" aria-label="Ver video de referencia">
-                <span class="reference-video-play" aria-hidden="true"><span class="material-symbols-outlined">play_arrow</span></span>
-                <span class="reference-video-action" data-i18n="video.watch">Ver video de referencia</span>
-              </button>
-              <span class="story-video-author"><span data-i18n="video.by">Por</span> Santi Foci</span>
-            </div>
+            <div class="video-placeholder video-placeholder--story" data-video-placeholder="story" aria-hidden="true"></div>
             <h3 id="story-flowers-title" data-i18n="home.stories.flowers">Ruta de las Flores</h3>
           </article>
           <article class="story-video-card">
-            <div class="video-placeholder video-placeholder--story reference-story-media" data-video-placeholder="story">
-              <picture aria-hidden="true">
-                <source type="image/avif" srcset="assets/optimized/img/slide_3-480.avif 480w, assets/optimized/img/slide_3-768.avif 768w, assets/optimized/img/slide_3-1200.avif 1200w" sizes="(max-width: 760px) 82vw, 22vw">
-                <source type="image/webp" srcset="assets/optimized/img/slide_3-480.webp 480w, assets/optimized/img/slide_3-768.webp 768w, assets/optimized/img/slide_3-1200.webp 1200w" sizes="(max-width: 760px) 82vw, 22vw">
-                <img src="assets/img/slide_3.jpg" alt="" width="4032" height="2268" loading="lazy" decoding="async">
-              </picture>
-              <span class="reference-video-scrim" aria-hidden="true"></span>
-              <span class="reference-video-badge" data-i18n="video.reference">Video de referencia</span>
-              <button class="reference-video-trigger reference-video-trigger--story" type="button" data-video-trigger="city" aria-describedby="story-city-title" data-i18n-aria="video.watch" aria-label="Ver video de referencia">
-                <span class="reference-video-play" aria-hidden="true"><span class="material-symbols-outlined">play_arrow</span></span>
-                <span class="reference-video-action" data-i18n="video.watch">Ver video de referencia</span>
-              </button>
-              <span class="story-video-author"><span data-i18n="video.by">Por</span> DelvisD</span>
-            </div>
+            <div class="video-placeholder video-placeholder--story" data-video-placeholder="story" aria-hidden="true"></div>
             <h3 id="story-city-title" data-i18n="home.stories.city">Centro Histórico desde el aire</h3>
           </article>
         </div>
@@ -524,8 +457,8 @@
             <img src="assets/guide/mario-tazumal-home.jpg" width="1200" height="2133" alt="Mario Domínguez frente a las ruinas de Tazumal" data-i18n-aria="home.guide.photo" loading="lazy" decoding="async">
           </picture>
           <figcaption>
-            <div><span class="guide-signature">Mario Domínguez</span><span class="guide-signature-brand">El Salvador Trails</span></div>
-            <img class="guide-brand-seal" src="assets/icons/logo.svg" alt="" aria-hidden="true" loading="lazy">
+            <div><span class="guide-signature">Mario Domínguez</span><span class="guide-signature-brand">Zenith Trails</span></div>
+            <img class="guide-brand-seal" src="assets/icons/brand-placeholder.svg" alt="" aria-hidden="true" loading="lazy">
           </figcaption>
         </figure>
         <div class="guide-copy">
@@ -587,7 +520,6 @@
       <span class="social-band-kicker" data-i18n="social.eyebrow">El viaje continúa</span>
       <h2 id="social-title" class="social-connect-title mb-2" data-i18n="social.title">Síguenos y viaja con nosotros</h2>
       <p class="text-sm mb-2 text-muted px-6 text-center" data-i18n="social.subtitle">Volcanes al amanecer, cafetales, playas y la calidez de nuestra gente: síguenos y empieza a soñar con tu próxima aventura.</p>
-      <p class="text-sm font-bold mb-6 text-brand" data-i18n="social.handle">@elsalvadortrails</p>
       <div class="flex gap-5 flex-wrap justify-center">
         <a class="social-connect-icon" href="https://www.facebook.com/elsalvadortrails" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
         <a class="social-connect-icon" href="https://www.instagram.com/elsalvadortrails" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -600,9 +532,9 @@
 
   <!-- Footer (tipografía oficial del brand: Adlery Pro bajo el ícono) -->
   <footer class="footer-light flex flex-col items-center py-16 w-full" data-home-layout="footer">
-    <img src="assets/icons/logo.svg" alt="El Salvador Trails" class="w-32 h-32 mb-4" loading="lazy">
+    <img src="assets/icons/brand-placeholder.svg" alt="" aria-hidden="true" class="w-32 h-32 mb-4" loading="lazy">
 
-    <span class="footer-wordmark mb-6" data-i18n="footer.brand">EL SALVADOR TRAILS</span>
+    <span class="footer-wordmark mb-6" data-i18n="footer.brand">ZENITH TRAILS</span>
 
     <div class="footer-links flex gap-10 mb-6 flex-wrap justify-center px-6">
       <a href="privacy.html" data-i18n="footer.privacy">Política de Privacidad</a>
@@ -618,32 +550,11 @@
       <a href="https://wa.me/50370000000" target="_blank" rel="noopener" class="footer-social text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
 
-    <p class="copyright-text uppercase" data-i18n="footer.copyright">© 2026 El Salvador Trails.</p>
+    <p class="copyright-text uppercase" data-i18n="footer.copyright">© 2026 Zenith Trails.</p>
   </footer>
 
   <!-- Botón flotante WhatsApp -->
   <a class="wa-float" href="https://wa.me/50370000000?text=%C2%A1Hola%20Mario!%20Quiero%20cotizar%20un%20tour." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
-
-  <!-- Modal tutorial -->
-  <div class="reference-video-modal" data-video-modal role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="reference-video-modal-title">
-    <div class="reference-video-dialog" role="document">
-      <button class="reference-video-close" type="button" data-video-close data-i18n-aria="video.close" aria-label="Cerrar video">
-        <span class="material-symbols-outlined" aria-hidden="true">close</span>
-        <span data-i18n="video.close">Cerrar video</span>
-      </button>
-      <div class="reference-video-modal-frame" data-video-frame></div>
-      <div class="reference-video-modal-copy">
-        <p class="reference-video-modal-label" data-i18n="video.reference">Video de referencia</p>
-        <h2 id="reference-video-modal-title" data-video-modal-title>Video de referencia</h2>
-        <p><span data-i18n="video.by">Por</span> <strong data-video-modal-author></strong></p>
-        <p class="reference-video-fallback" data-video-fallback hidden data-i18n="video.unavailable">El video no está disponible; abre la fuente original.</p>
-        <a data-video-source href="#" target="_blank" rel="noopener noreferrer">
-          <span data-i18n="video.source">Abrir fuente en YouTube</span>
-          <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
-        </a>
-      </div>
-    </div>
-  </div>
 
   <div id="feedback-modal" class="feedback-dialog-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="feedback-modal-title">
     <div class="feedback-dialog-box" role="document">
@@ -686,7 +597,7 @@
           <select class="form-control" name="tourSlug" id="feedback-tour"><option value="" data-i18n="feedback.form.noTour">Experiencia general</option></select>
         </label>
         <div class="review-honeypot" aria-hidden="true"><label>Website<input class="form-control" type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-        <label class="review-consent"><input class="form-control" type="checkbox" name="consent" required><span data-i18n="feedback.form.consent">Acepto publicar mi nombre, país, calificación, reseña y fotos. Tengo permiso para compartir estas imágenes.</span></label>
+        <label class="review-consent"><input class="form-control" type="checkbox" name="consent" required><span data-i18n="feedback.form.consent">Acepto publicar mi nombre, país, calificación y reseña. Las fotos adjuntas son para moderación. Tengo permiso para compartirlas con el equipo.</span></label>
         <a class="review-privacy-link" href="privacy.html#review-privacy" target="_blank" rel="noopener" data-i18n="feedback.form.privacy">Información de privacidad</a>
         <p id="feedback-local-notice" class="review-notice" hidden data-i18n="feedback.form.local">Prueba local: esta reseña se guardará solo en esta PC y quedará en revisión.</p>
         <div id="feedback-captcha"></div>
@@ -712,12 +623,13 @@
   <script src="data/media-manifest.js"></script>
   <script src="js/media.js"></script>
   <script src="data/tours-data.js"></script>
+  <script src="js/reviews-config.js"></script>
+  <script src="js/content-client.js"></script>
+  <script src="js/content-loader.js"></script>
+
   <script src="js/script.js"></script>
   <script src="js/site.js"></script>
   <script src="js/home.js"></script>
-  <script src="data/reference-videos.js"></script>
-  <script src="js/video-player.js"></script>
-  <script src="js/reviews-config.js"></script>
   <script src="js/reviews-api.js"></script>
   <script src="js/reviews-view.js"></script>
   <script src="js/testimonials.js"></script>

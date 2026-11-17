@@ -52,7 +52,7 @@ test('anonymous and ordinary signed-in users cannot read pending reviews or chan
 test('manual mode is checked at insertion and prevents auto publication, including in-flight requests', async () => {
   const db = await setup();
   try {
-    await db.query('select public.set_review_manual_mode($1, true)', [admin]);
+    assert.equal((await db.query('select manual_only from public.review_settings')).rows[0].manual_only, true);
     const result = await create(db, draft('approved'));
     assert.equal(result.status, 'pending');
     assert.ok((await db.query('select moderation_reasons from public.reviews')).rows[0].moderation_reasons.includes('manual-mode'));

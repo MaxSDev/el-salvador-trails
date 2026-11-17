@@ -30,18 +30,25 @@ function pagination(url) {
 
 export function createReviewHandler(deps, { allowedOrigins }) {
   async function representation(row, admin = false) {
-    const photos = await Promise.all((row.review_photos || []).sort((a, b) => a.position - b.position).map(async photo => ({ url: await deps.storage.signedUrl(photo.storage_path) })));
+    const photos = admin
+      ? await Promise.all((row.review_photos || []).slice().sort((a, b) => a.position - b.position)
+        .map(async photo => ({ url: await deps.storage.signedUrl(photo.storage_path) })))
+      : [];
     const result = { id: row.id, author: { name: row.author_name, country: row.country }, rating: row.rating, comment: row.body, lang: row.lang, tourRef: row.tour_slug, photos, createdAt: row.created_at, publishedAt: row.published_at };
     if (admin) Object.assign(result, { status: row.status, reasons: row.moderation_reasons, version: row.version, reviewedAt: row.reviewed_at });
     return result;
   }
   function outcome(row) { return { id: row.id, status: row.status === 'approved' ? 'published' : 'pending' }; }
-  async function adminUser(request) {
+  async function authenticatedUser(request) {
     const token = /^Bearer\s+(.+)$/i.exec(request.headers.get('authorization') || '')?.[1];
     if (!token) throw new ReviewError('session-required', 401);
     let user;
     try { user = await deps.auth.user(token); } catch { throw new ReviewError('session-required', 401); }
     if (!user?.id) throw new ReviewError('session-required', 401);
+    return user;
+  }
+  async function adminUser(request) {
+    const user = await authenticatedUser(request);
     if (!await deps.store.isAdmin(user.id)) throw new ReviewError('admin-required', 403);
     return user;
   }
@@ -134,6 +141,10 @@ export function createReviewHandler(deps, { allowedOrigins }) {
       if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: { ...headers, 'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, apikey' } });
       if (request.method !== 'GET' && (!origin || !allowedOrigins.includes(origin))) throw new ReviewError('origin', 403);
       const url = new URL(request.url); const route = url.pathname.split('/').filter(Boolean).at(-1);
+      if (route === 'access' && request.method === 'GET') {
+        const user = await authenticatedUser(request);
+        return json({ allowed: Boolean(await deps.store.isAdmin(user.id)) });
+      }
       if (route === 'public' && request.method === 'GET') {
         if (url.searchParams.has('status')) throw new ReviewError('status');
         const list = await deps.store.listPublic(pagination(url));
