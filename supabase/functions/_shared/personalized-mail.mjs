@@ -9,7 +9,7 @@ export function resendPersonalizedMailer({key,from,to,fetcher=fetch}) {
     const display=value=>typeof value==='boolean'?(value?'Sí':'No'):(options[value]||value||'No indicado');
     const text=[`Solicitud personalizada ${job.id}`,`Fecha: ${r.created_at}`,`Idioma: ${r.lang}`,`Nombre: ${c.full_name}`,`Correo: ${c.email}`,`WhatsApp: ${c.whatsapp}`,
       ...Object.entries(p).map(([name,value])=>`${labels[name]}: ${Array.isArray(value)?value.map(display).join(', '):display(value)}`)].join('\n');
-    const response=await fetcher('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json','Idempotency-Key':`personalized/${job.id}`},body:JSON.stringify({from,to:[to],reply_to:c.email,subject:`El Salvador Trails · Solicitud ${job.id.slice(0,8)}`,text}),signal:AbortSignal.timeout(15000)});
+    const response=await fetcher('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json','Idempotency-Key':`personalized/${job.id}`},body:JSON.stringify({from,to:[to],reply_to:c.email,subject:`Zenith Trails · Solicitud ${job.id.slice(0,8)}`,text}),signal:AbortSignal.timeout(15000)});
     if(!response.ok)throw new Error('Mail transport unavailable');
     const receipt=await response.json();if(!receipt.id)throw new Error('Invalid mail receipt');return receipt.id;
   }};

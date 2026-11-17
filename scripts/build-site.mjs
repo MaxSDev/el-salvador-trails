@@ -15,7 +15,8 @@ export async function publicConfiguration() {
   const key = value('PUBLIC_SUPABASE_PUBLISHABLE_KEY');
   if (key && !key.startsWith('sb_publishable_')) throw new Error('Use a publishable key. Private service keys must never be bundled.');
   if (url && (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(url))) throw new Error('PUBLIC_SUPABASE_URL must be the HTTPS Supabase project URL.');
-  return { apiBaseUrl: url ? url + '/functions/v1/reviews-api' : '', supabaseUrl: url, publishableKey: key, turnstileSiteKey: value('PUBLIC_TURNSTILE_SITE_KEY'), localPreview: false };
+  const contentEnabled = value('PUBLIC_CONTENT_ENABLED') === 'true';
+  return { apiBaseUrl: url ? url + '/functions/v1/reviews-api' : '', contentApiBaseUrl: contentEnabled && url ? url + '/functions/v1/content-api' : '', supabaseUrl: url, publishableKey: key, turnstileSiteKey: value('PUBLIC_TURNSTILE_SITE_KEY'), localPreview: false };
 }
 export async function browserBundle() {
   const result = await build({ entryPoints: [join(projectRoot, 'admin/supabase-client-entry.js')], bundle: true, format: 'esm', target: ['es2022'], minify: true, write: false });
@@ -35,7 +36,10 @@ export async function buildSite() {
     await cp(join(projectRoot, 'data', name), join(output, 'data', name));
   }
   for (const name of await readdir(projectRoot)) if (name.endsWith('.html')) await cp(join(projectRoot, name), join(output, name));
-  for (const name of ['index.html', 'reviews-admin.css', 'reviews-admin.js']) await cp(join(projectRoot, 'admin', name), join(output, 'admin', name));
+  for (const name of await readdir(join(projectRoot, 'admin'))) {
+    if (!/\.(?:html|css|js)$/.test(name) || name === 'supabase-client-entry.js') continue;
+    await cp(join(projectRoot, 'admin', name), join(output, 'admin', name));
+  }
   await writeFile(join(output, 'admin/supabase-client.js'), await browserBundle());
   await writeFile(join(output, 'js/reviews-config.js'), 'window.ESTReviewsConfig = Object.freeze(' + JSON.stringify(await publicConfiguration()) + ');\n');
   console.log('Site built in dist/. No private configuration or review records are included.');

@@ -1,4 +1,4 @@
-/* El Salvador Trails — UI compartida: menú móvil + modal tutorial */
+/* Zenith Trails — UI compartida: menú móvil + modal tutorial */
 (function () {
   'use strict';
   document.addEventListener('DOMContentLoaded', function () {

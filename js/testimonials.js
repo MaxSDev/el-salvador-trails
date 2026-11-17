@@ -1,5 +1,5 @@
 /* ==========================================================================
-   El Salvador Trails — Carrusel de Testimonios & Feedback Modal
+   Zenith Trails — Carrusel de Testimonios & Feedback Modal
    - Consume únicamente reseñas públicas aprobadas por el servidor
    - Los estados privados se filtran en el servidor
    - Fallback a monograma/iniciales si no hay foto de autor

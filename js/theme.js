@@ -1,5 +1,5 @@
 /* ==========================================================================
-   El Salvador Trails — Cambio de tema (Claro / Oscuro)
+   Zenith Trails — Cambio de tema (Claro / Oscuro)
 
    Comportamiento:
    - Por defecto sigue la preferencia del sistema (prefers-color-scheme).

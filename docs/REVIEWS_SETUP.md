@@ -133,7 +133,7 @@ La web con conexión real se abre en `http://127.0.0.1:8001/`. `npm run dev` sig
 
 1. Enviar una reseña sin fotos desde la web real y comprobar el guardado y dictamen del proveedor.
 2. Verificar que una reseña ofensiva queda pendiente y que un fallo de OpenAI también la retiene.
-3. Enviar fotos: no deben aparecer en el listado público ni abrirse sin una URL autorizada antes de aprobarlas.
+3. Enviar fotos y aprobar la reseña. El texto aparece en el listado público con `photos: []`; el panel autorizado conserva acceso a las fotos.
 4. Entrar con un administrador, aprobar y ocultar; repetir con una cuenta no autorizada y comprobar el rechazo.
 5. Probar Turnstile real, token vencido/reutilizado, límites de envíos y reintentos de red.
 6. Confirmar contactos y texto de privacidad con los dueños antes de recoger reseñas reales.

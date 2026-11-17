@@ -9,7 +9,14 @@ export async function localReviewStore(directory) {
   const file = join(directory, 'reviews.json');
   let state;
   try { state = JSON.parse(await readFile(file, 'utf8')); }
-  catch (error) { if (error.code !== 'ENOENT') throw error; state = { reviews: [], manual_only: false, audit: [], limits: {} }; }
+  catch (error) { if (error.code !== 'ENOENT') throw error; state = { reviews: [], manual_only: true, audit: [], limits: {} }; }
+  // One-time upgrade reflects the agreed manual moderation policy without deleting reviews.
+  // A later explicit administrator setting survives every restart.
+  if (!state.manual_policy_v1) {
+    state.manual_only = true;
+    state.manual_policy_v1 = true;
+    await writeFile(file, JSON.stringify(state, null, 2));
+  }
   let queue = Promise.resolve();
   function transaction(change) {
     const task = queue.then(async () => {

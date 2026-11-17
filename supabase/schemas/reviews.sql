@@ -5,7 +5,7 @@ create table public.review_admins (
 );
 create table public.review_settings (
   singleton boolean primary key default true check (singleton),
-  manual_only boolean not null default false
+  manual_only boolean not null default true
 );
 insert into public.review_settings (singleton) values (true);
 create table public.reviews (

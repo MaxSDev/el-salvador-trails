@@ -16,11 +16,13 @@
   let currentTourId = null;
   let modalOpen = false;
   const quoteDrafts = new Map();
+  function escapeHtml(value) { return String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+  function safeHTTPS(value) { try { const url = new URL(value); return url.protocol === 'https:' ? escapeHtml(url.href) : ''; } catch (_) { return ''; } }
 
   function mediaPicture(src, alt, options) {
     options = Object.assign({ alt: alt }, options || {});
     if (window.ESTMedia) return window.ESTMedia.picture(src, options);
-    return '<img src="' + src + '" alt="' + alt + '"'
+    return '<img src="' + escapeHtml(src) + '" alt="' + escapeHtml(alt) + '"'
       + (options.id ? ' id="' + options.id + '"' : '')
       + (options.className ? ' class="' + options.className + '"' : '')
       + (options.loading ? ' loading="' + options.loading + '"' : '')
@@ -31,13 +33,12 @@
     if (!image) return;
     var data = window.ESTMedia ? window.ESTMedia.sourceData(src) : null;
     var picture = image.closest('picture');
-    if (data && picture) {
+    if (picture) {
       var avif = picture.querySelector('source[type="image/avif"]');
       var webp = picture.querySelector('source[type="image/webp"]');
-      if (avif) avif.srcset = data.avif;
-      if (webp) webp.srcset = data.webp;
-      image.width = data.width;
-      image.height = data.height;
+      if (avif) avif.srcset = data ? data.avif : '';
+      if (webp) webp.srcset = data ? data.webp : '';
+      if (data) { image.width = data.width; image.height = data.height; }
     }
     image.src = src;
   }
@@ -59,13 +60,24 @@
       setupEventListeners();
       renderCurrentView();
       applyTranslations();
+      if (window.ESTAdminPreviewFocus) renderPreview(window.ESTAdminPreviewFocus);
     } catch (error) {
       console.error('Error initializing tours catalog:', error);
     }
   }
 
   /* ── Carga de datos (funciona en http:// y en file://) ── */
+  function renderPreview(focus) {
+    if (!window.ESTAdminPreview || !focus || focus.kind !== 'tour' || !toursData) return;
+    toursData = window.__TOURS_DATA;
+    closeModal();
+    showCategoryList(focus.category || 'day');
+    if (focus.view !== 'card') showTourDetail(focus.id);
+  }
+  document.addEventListener('est:preview-updated', event => renderPreview(event.detail));
+
   async function loadToursData() {
+    if (window.ESTContentReady) { await window.ESTContentReady; toursData = window.__TOURS_DATA; return; }
     // 1. Fallback embebido primero (siempre disponible aunque se abra con doble clic)
     if (window.__TOURS_DATA && window.__TOURS_DATA.tours) {
       toursData = window.__TOURS_DATA;
@@ -221,7 +233,7 @@
             <span class="material-symbols-outlined">arrow_back</span>
             <span data-i18n="catalog.back">Volver</span>
           </button>
-          <h2 class="font-display text-3xl font-bold text-brand">${title}</h2>
+          <h2 class="font-display text-3xl font-bold text-brand">${escapeHtml(title)}</h2>
         </div>
     `;
 
@@ -269,7 +281,7 @@
     const displayHighlights = highlights.slice(0, 2);
 
     return `
-      <article class="tour-card flex flex-col cursor-pointer" data-tour-id="${tour.id}" tabindex="0" role="button" aria-label="${title}">
+      <article class="tour-card flex flex-col cursor-pointer" data-tour-id="${escapeHtml(tour.id)}" tabindex="0" role="button" aria-label="${escapeHtml(title)}">
         <div class="aspect-[16/10] w-full overflow-hidden">
           ${mediaPicture(image, imageAlt || title, {
             className: 'w-full h-full object-cover transition-transform duration-700 hover:scale-105',
@@ -278,21 +290,21 @@
           })}
         </div>
         <div class="p-6 flex flex-col flex-grow">
-          <h3 class="font-display text-xl font-bold mb-3 text-brand">${title}</h3>
-          <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">${shortDesc}</p>
+          <h3 class="font-display text-xl font-bold mb-3 text-brand">${escapeHtml(title)}</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">${escapeHtml(shortDesc)}</p>
           ${displayHighlights.length > 0 ? `
             <ul class="text-sm space-y-2 mb-4 flex-grow">
               ${displayHighlights.map(h => `
                 <li class="flex items-start gap-2">
                   <span class="text-accent font-bold mt-1">✶</span>
-                  <span>${h}</span>
+                  <span>${escapeHtml(h)}</span>
                 </li>
               `).join('')}
             </ul>
           ` : ''}
           <div class="mb-4 pt-3 border-t flex items-center gap-1.5 text-xs text-muted" style="border-color:var(--border);">
             <span class="material-symbols-outlined text-sm text-accent">price_check</span>
-            <span class="font-medium" data-i18n="tour.pricing.heading">Precios y condiciones: contáctenos</span>
+            <span class="font-medium">${escapeHtml(window.ESTContent && window.ESTContent.price(tour) || getTranslation('tour.pricing.heading'))}</span>
           </div>
           <button class="btn-accent w-full py-3 rounded-lg flex items-center justify-center gap-2 font-label uppercase tracking-widest text-sm mt-auto">
             <span data-i18n="tour.viewDetails">Ver detalles</span>
@@ -312,11 +324,11 @@
     const label = (tour.galleryLabel && (tour.galleryLabel[lang] || tour.galleryLabel.es)) || title;
     const image = tour.images[0] || 'assets/img/slide_0.jpg';
     const imageAlt = tour.imageDescriptions ? (tour.imageDescriptions[lang] || tour.imageDescriptions.es || [])[0] : title;
-    const delay = (index * 90) + 'ms';
+    const delay = (Math.min(index, 5) * 90) + 'ms';
     const ctaText = t('tour.viewTour') !== 'tour.viewTour' ? t('tour.viewTour') : 'Presiona aquí para ver el tour';
 
     return `
-      <article class="dest-tile dest-tile-${index + 1}" data-tour-id="${tour.id}" tabindex="0" role="button" aria-label="${title} — ${ctaText}" style="--d:${delay}">
+      <article class="dest-tile dest-tile-${index + 1}" data-tour-id="${escapeHtml(tour.id)}" tabindex="0" role="button" aria-label="${escapeHtml(title)} — ${escapeHtml(ctaText)}" style="--d:${delay}">
         ${mediaPicture(image, imageAlt || title, {
           className: 'dest-tile-img',
           sizes: '(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw',
@@ -324,12 +336,12 @@
         })}
         <div class="dest-tile-overlay" aria-hidden="true"></div>
         <div class="dest-tile-sign" aria-hidden="true">
-          <span class="trail-sign"><span class="material-symbols-outlined">signpost</span><span class="trail-sign-label">${label}</span></span>
+          <span class="trail-sign"><span class="material-symbols-outlined">signpost</span><span class="trail-sign-label">${escapeHtml(label)}</span></span>
         </div>
         <div class="dest-tile-label">
-          <span class="dest-tile-name">${label}</span>
+          <span class="dest-tile-name">${escapeHtml(label)}</span>
           <span class="dest-tile-cta">
-            <span class="dest-tile-cta-text">${ctaText}</span>
+            <span class="dest-tile-cta-text">${escapeHtml(ctaText)}</span>
             <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
           </span>
         </div>
@@ -377,6 +389,14 @@
     const quickFacts = window.ESTTourOptions.quickFacts(tour, lang);
     const optionalExtras = tour.optionalExtras || [];
     const isNewSource = Boolean(tour.contentSource);
+    const socialHref = safeHTTPS(tour.socialVideo?.url);
+    const socialPlatform = tour.socialVideo?.platform === 'instagram' ? 'instagram' : 'tiktok';
+    const socialPath = socialHref ? new URL(tour.socialVideo.url).pathname : '';
+    const isSocialProfile = socialPlatform === 'tiktok'
+      ? /^\/@[^/]+\/?$/.test(socialPath)
+      : /^\/[\w.]+\/?$/.test(socialPath) && !/^\/(?:p|reels?|stories|explore|tv|accounts)\/?$/i.test(socialPath);
+    const socialTitleKey = isSocialProfile ? 'tour.video.profile' : 'tour.video.button';
+    const socialLinkKey = 'tour.video.' + (isSocialProfile ? 'profile.' : '') + socialPlatform;
 
     // Array helpers — empty-array fallback to ES
     const includedRaw = tour.included ? tour.included[lang] : null;
@@ -389,7 +409,7 @@
         <div class="modal-content rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto mx-4 my-8 shadow-2xl" style="background:var(--surface-raised);color:var(--text);border:1px solid var(--border);" role="dialog" aria-modal="true" aria-labelledby="modal-title">
           <!-- Header del modal -->
           <div class="sticky top-0 border-b p-6 flex justify-between items-center z-10" style="background:var(--surface-raised);border-color:var(--border);">
-            <h2 id="modal-title" class="font-display text-2xl font-bold text-brand pr-8">${title}</h2>
+            <h2 id="modal-title" class="font-display text-2xl font-bold text-brand pr-8">${escapeHtml(title)}</h2>
             <button data-close-modal class="p-2 rounded-full transition-colors" style="color:var(--brand);" aria-label="${t('tour.modal.close')}">
               <span class="material-symbols-outlined">close</span>
             </button>
@@ -424,7 +444,7 @@
               </div>
             ` : ''}
             
-            ${tour.mediaNote ? `<p class="tour-media-note">${tour.mediaNote[lang] || tour.mediaNote.es}</p>` : ''}
+            ${tour.mediaNote ? `<p class="tour-media-note">${escapeHtml(tour.mediaNote[lang] || tour.mediaNote.es)}</p>` : ''}
 
             <!-- Descripción completa -->
             <div class="prose prose-lg max-w-none mb-8" style="color:var(--text);">
@@ -438,8 +458,8 @@
                 <div class="space-y-4">
                   ${tour.itinerary.map(day => `
                     <div class="border-l-4 border-brand pl-4 py-2">
-                      <h4 class="font-bold text-lg mb-2">${day.day}: ${day.title[lang] || day.title.es || ''}</h4>
-                      <p style="color:var(--text-muted);">${day.text[lang] || day.text.es || ''}</p>
+                      <h4 class="font-bold text-lg mb-2">${escapeHtml(day.day)}: ${escapeHtml(day.title[lang] || day.title.es || '')}</h4>
+                      <p style="color:var(--text-muted);">${escapeHtml(day.text[lang] || day.text.es || '')}</p>
                     </div>
                   `).join('')}
                 </div>
@@ -456,7 +476,7 @@
                       <span class="text-green-500 mt-1">
                         <span class="material-symbols-outlined text-xl">check_circle</span>
                       </span>
-                      <span>${item}</span>
+                      <span>${escapeHtml(item)}</span>
                     </li>
                   `).join('')}
                 </ul>
@@ -470,14 +490,14 @@
                 ${highlightsItems.map(h => `
                   <li class="flex items-start gap-3">
                     <span class="text-accent font-bold mt-1">✶</span>
-                    <span>${h}</span>
+                    <span>${escapeHtml(h)}</span>
                   </li>
                 `).join('')}
               </ul>
             </div>
 
             <!-- Mostrar solo datos confirmados; sin valoración predeterminada. -->
-            ${quickFacts.length ? `<div class="tour-quick-facts">${quickFacts.map(fact => `<div><span class="material-symbols-outlined text-accent" aria-hidden="true">${fact.icon}</span><span>${fact.text}</span></div>`).join('')}</div>` : ''}
+            ${quickFacts.length ? `<div class="tour-quick-facts">${quickFacts.map(fact => `<div><span class="material-symbols-outlined text-accent" aria-hidden="true">${escapeHtml(fact.icon)}</span><span>${escapeHtml(fact.text)}</span></div>`).join('')}</div>` : ''}
 
             <!-- Punto de encuentro con foto -->
             ${tour.meetingPoint ? `
@@ -489,26 +509,23 @@
                 })}
                 <div class="flex-grow">
                   <h4 class="font-bold text-sm text-brand mb-1" data-i18n="tour.meeting.title">${t('tour.meeting.title')}</h4>
-                  <p class="text-sm text-muted mb-2">${tour.meetingPoint.address ? (tour.meetingPoint.address[lang] || tour.meetingPoint.address.es || '') : ''}</p>
-                  ${tour.meetingPoint.mapUrl ? `<a href="${tour.meetingPoint.mapUrl}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-sm font-semibold text-brand"><span class="material-symbols-outlined text-base">map</span><span data-i18n="tour.meeting.map">${t('tour.meeting.map')}</span></a>` : ''}
+                  <p class="text-sm text-muted mb-2">${escapeHtml(tour.meetingPoint.address ? (tour.meetingPoint.address[lang] || tour.meetingPoint.address.es || '') : '')}</p>
+                  ${tour.meetingPoint.mapUrl ? `<a href="${safeHTTPS(tour.meetingPoint.mapUrl)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-sm font-semibold text-brand"><span class="material-symbols-outlined text-base">map</span><span data-i18n="tour.meeting.map">${t('tour.meeting.map')}</span></a>` : ''}
                 </div>
               </div>
             ` : ''}
 
             <!-- Video en Redes Sociales (TikTok / Instagram) -->
-            ${tour.socialVideo ? `
+            ${socialHref ? `
               <div class="mb-8 p-4 rounded-xl flex items-center justify-between gap-4 border" style="background:var(--brand-soft);border-color:var(--border);">
                 <div class="flex items-center gap-3">
-                  <span class="material-symbols-outlined text-2xl text-accent">play_circle</span>
-                  <div>
-                    <h4 class="font-bold text-sm text-brand" data-i18n="tour.video.button">Ver video del tour</h4>
-                    <p class="text-xs text-muted">Disponible en ${tour.socialVideo.platform === 'tiktok' ? 'TikTok' : 'Instagram'}</p>
-                  </div>
+                  <span class="material-symbols-outlined text-2xl text-accent" aria-hidden="true">${isSocialProfile ? 'public' : 'play_circle'}</span>
+                  <h4 class="font-bold text-sm text-brand" data-i18n="${socialTitleKey}">${t(socialTitleKey)}</h4>
                 </div>
-                <a href="${tour.socialVideo.url}" target="_blank" rel="noopener noreferrer" class="btn-accent px-4 py-2 rounded-lg text-xs font-label uppercase tracking-wider inline-flex items-center gap-2">
-                  <i class="fa-brands fa-${tour.socialVideo.platform}"></i>
-                  <span data-i18n="tour.video.${tour.socialVideo.platform}">${tour.socialVideo.platform === 'tiktok' ? 'TikTok' : 'Instagram'}</span>
-                  <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <a href="${socialHref}" target="_blank" rel="noopener noreferrer" class="btn-accent px-4 py-2 rounded-lg text-xs font-label uppercase tracking-wider inline-flex items-center gap-2">
+                  <i class="fa-brands fa-${socialPlatform}" aria-hidden="true"></i>
+                  <span data-i18n="${socialLinkKey}">${t(socialLinkKey)}</span>
+                  <span class="material-symbols-outlined text-sm" aria-hidden="true">open_in_new</span>
                 </a>
               </div>
             ` : ''}
@@ -525,6 +542,7 @@
                 </div>
               </div>
 
+              ${window.ESTContent && window.ESTContent.price(tour) ? `<p class="text-brand font-semibold">${escapeHtml(window.ESTContent.price(tour))}</p>` : ''}
               <!-- Selector interactivo de grupo -->
               <div class="mt-6 pt-6 border-t" style="border-color:var(--border);">
                 <h4 class="text-xs font-semibold uppercase tracking-wider mb-4 text-brand" data-i18n="tour.pricing.groupTitle">Indique la composición de su grupo para cotizar:</h4>
@@ -543,7 +561,7 @@
                   </div>
                 </div>
 
-                ${optionalExtras.length ? `<fieldset class="tour-extra-options"><legend data-i18n="tour.optionalExtras">${t('tour.optionalExtras')}</legend>${optionalExtras.map(extra => `<label><input type="checkbox" name="quote-extra" value="${extra.id}"><span>${extra.label[lang] || extra.label.es}</span></label>`).join('')}<p data-i18n="tour.optionalExtras.note">${t('tour.optionalExtras.note')}</p></fieldset>` : ''}
+                ${optionalExtras.length ? `<fieldset class="tour-extra-options"><legend data-i18n="tour.optionalExtras">${t('tour.optionalExtras')}</legend>${optionalExtras.map(extra => `<label><input type="checkbox" name="quote-extra" value="${escapeHtml(extra.id)}"><span>${escapeHtml(extra.label[lang] || extra.label.es)}</span></label>`).join('')}<p data-i18n="tour.optionalExtras.note">${t('tour.optionalExtras.note')}</p></fieldset>` : ''}
 
                 <!-- Botones de acción directa con mensaje pre-armado -->
                 <div class="flex flex-col sm:flex-row gap-4">
@@ -619,6 +637,12 @@
   function setupQuotationActions(tour, tourTitle) {
     const whatsappBtn = document.getElementById('btn-quote-whatsapp');
     const emailBtn = document.getElementById('btn-quote-email');
+    if (window.ESTAdminPreview) {
+      for (const button of [whatsappBtn, emailBtn]) {
+        if (button) { button.disabled = true; button.title = 'Los envíos están desactivados en la vista previa.'; }
+      }
+      return;
+    }
     const adultsInput = document.getElementById('quote-adults');
     const childrenInput = document.getElementById('quote-children');
     const dateInput = document.getElementById('quote-date');
@@ -655,15 +679,15 @@
                      `• Niños (${tour.contentSource ? '<12 años' : '<12 años - 50%'}): ${q.children}\n` +
                      `• Fecha estimada: ${q.date}\n` +
                      `• Idioma de preferencia: ${q.langName}${q.extras}`;
-        const url = `https://wa.me/50370000000?text=${encodeURIComponent(text)}`;
-        window.open(url, '_blank');
+        const url = `https://wa.me/${window.ESTContent && window.ESTContent.contacts.whatsapp || '50370000000'}?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener');
       });
     }
 
     if (emailBtn) {
       emailBtn.addEventListener('click', () => {
         const q = getQuoteData();
-        const subject = `Solicitud de Cotización: ${tourTitle} - El Salvador Trails`;
+        const subject = `Solicitud de Cotización: ${tourTitle} - Zenith Trails`;
         const body = `Hola Mario y Ellen,\n\n` +
                      `Deseo solicitar una cotización personalizada para el siguiente tour:\n` +
                      `• Tour: ${tourTitle}\n` +
@@ -672,7 +696,7 @@
                      `• Fecha estimada de viaje: ${q.date}\n` +
                      `• Idioma de preferencia: ${q.langName}${q.extras}\n\n` +
                      `Quedo a la espera de sus comentarios.\n\nSaludos cordiales,`;
-        window.location.href = `mailto:info@elsalvadortrails.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:${window.ESTContent && window.ESTContent.contacts.email || 'info@elsalvadortrails.com'}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       });
     }
   }
@@ -706,7 +730,7 @@
   function formatDescription(text) {
     if (!text) return '';
     // Convertir saltos de línea en párrafos
-    return text.split('\n\n').map(p => `<p class="mb-4">${p}</p>`).join('');
+    return text.split('\n\n').map(p => `<p class="mb-4">${escapeHtml(p)}</p>`).join('');
   }
 
   function updateCategoryButtons() {

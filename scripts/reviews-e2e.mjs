@@ -43,7 +43,27 @@ try {
   await admin.locator('[name=email]').fill('pruebas@local.invalid');
   await admin.locator('#login-form [name=password]').fill('resenas-local');
   await admin.locator('#login-form button[type=submit]').click();
+  await admin.locator('#dashboard-section').waitFor({ state: 'visible' });
+  await admin.getByRole('link', { name: 'Administrar tours', exact: true }).waitFor({ state: 'visible' });
+  assert.equal(await admin.locator('.module-card:visible').count(), 3, 'The hub should show the three authorized sections');
+  await admin.route(preview.url + '/content-api/access', route => route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ allowed: false }) }));
+  await admin.locator('#reload-access').click();
+  await admin.locator('#tours-module').waitFor({ state: 'hidden' });
+  assert.equal(await admin.locator('#partners-module').isVisible(), false);
+  assert.equal(await admin.locator('#site-module').isVisible(), false);
+  assert.equal(await admin.getByRole('link', { name: 'Administrar reseñas', exact: true }).isVisible(), true, 'Review access must remain available when content membership is denied');
+  await admin.unroute(preview.url + '/content-api/access');
+  await admin.route(preview.url + '/content-api/access', route => route.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ error: 'unavailable' }) }));
+  await admin.locator('#reload-access').click();
+  await admin.locator('#tours-module').waitFor({ state: 'visible' });
+  assert.equal(await admin.locator('#tours-module a').isVisible(), false);
+  assert.ok((await admin.locator('#tours-module .module-status').textContent()).includes('No pudimos comprobar'));
+  assert.equal(await admin.getByRole('link', { name: 'Administrar reseñas', exact: true }).isVisible(), true, 'An unavailable content API must not block reviews');
+  await admin.unroute(preview.url + '/content-api/access');
+  await admin.getByRole('link', { name: 'Administrar reseñas', exact: true }).click();
   await admin.locator('.admin-review').waitFor();
+  assert.equal(await admin.locator('#manual-status').textContent(), 'Revisión manual activada');
+  assert.equal(await admin.locator('#manual-mode').count(), 0, 'Automatic publication should not be toggled from the ordinary review flow');
   assert.equal(await admin.locator('.admin-review h3').textContent(), 'Viajera de prueba');
   admin.on('dialog', dialog => dialog.accept());
   await admin.locator('.admin-review').getByRole('button', { name: 'Publicar', exact: true }).click();
@@ -69,8 +89,6 @@ try {
   assert.equal(await guest.locator('.testimonial-comment img').count(), 0);
   assert.equal(await guest.evaluate(() => window.reviewAttack), undefined);
 
-  await admin.locator('#manual-mode').check();
-  await admin.waitForFunction(() => document.querySelector('#admin-message').textContent.includes('revisión manual'));
   await guest.locator('#open-feedback-btn').click();
   await guest.locator('[name=name]').fill('Viajero con foto');
   await guest.locator('[name=rating][value="5"]').check();
@@ -91,7 +109,10 @@ try {
   await admin.waitForFunction(() => document.querySelector('#review-list').textContent.includes('No hay reseñas'));
   await guest.reload({ waitUntil: 'domcontentloaded' });
   await guest.locator('.testimonial-author-name').filter({ hasText: 'Viajero con foto' }).waitFor();
-  assert.equal((await (await fetch(preview.url + '/reviews-api/public')).json()).reviews[0].photos.length, 1);
+  const publishedReviews = await (await fetch(preview.url + '/reviews-api/public')).json();
+  const publishedWithPhoto = publishedReviews.reviews.find(review => review.author.name === 'Viajero con foto');
+  assert.deepEqual(publishedWithPhoto.photos, []);
+  assert.equal(await guest.locator('.review-photo-gallery').count(), 0);
 
   await guest.locator('#open-feedback-btn').click();
   await guest.locator('[name=name]').fill('Prueba de límite');
@@ -105,7 +126,9 @@ try {
 
   await admin.locator('#status-filter').selectOption('approved');
   await admin.locator('.admin-review').filter({ hasText: 'Viajera de prueba' }).waitFor();
-  await admin.locator('.admin-review').filter({ hasText: 'Viajera de prueba' }).getByRole('button', { name: 'Ocultar', exact: true }).click();
+  const approvedCard = admin.locator('.admin-review').filter({ hasText: 'Viajera de prueba' });
+  await approvedCard.locator('summary').click();
+  await approvedCard.getByRole('button', { name: 'Ocultar', exact: true }).click();
   await admin.waitForFunction(() => !document.querySelector('#review-list').textContent.includes('Viajera de prueba'));
   assert.equal((await (await fetch(preview.url + '/reviews-api/public')).json()).reviews.some(review => review.author.name === 'Viajera de prueba'), false);
   await guest.locator('#close-feedback-btn').click();
@@ -116,7 +139,10 @@ try {
   assert.equal(await guest.locator('#open-feedback-btn').evaluate(node => node === document.activeElement), true);
   const deleteCard = admin.locator('.admin-review').filter({ hasText: 'Viajero con foto' });
   await deleteCard.waitFor();
+  assert.equal(await deleteCard.locator('img').count(), 1, 'The approved photo must still be available to moderators');
   const deleteButton = deleteCard.getByRole('button', { name: 'Borrar', exact: true });
+  assert.equal(await deleteButton.isVisible(), false, 'Permanent deletion belongs under More options');
+  await deleteCard.locator('summary').click();
   await deleteButton.waitFor({ timeout: 5000 });
   admin.removeAllListeners('dialog');
   admin.once('dialog', async dialog => { assert.ok(dialog.message().includes('no se puede deshacer')); await dialog.dismiss(); });
@@ -132,6 +158,7 @@ try {
   await admin.locator('#status-filter').selectOption('hidden');
   const hiddenCard = admin.locator('.admin-review').filter({ hasText: 'Viajera de prueba' });
   await hiddenCard.waitFor();
+  await hiddenCard.locator('summary').click();
   await hiddenCard.getByRole('button', { name: 'Borrar', exact: true }).click();
   await admin.waitForFunction(() => !document.querySelector('#review-list').textContent.includes('Viajera de prueba'));
   await admin.setViewportSize({ width: 390, height: 844 });
@@ -143,7 +170,7 @@ try {
   const fragment = new URLSearchParams({ access_token: session.access_token, refresh_token: session.refresh_token, expires_in: '3600', token_type: 'bearer', type: 'recovery' });
   await recovery.goto(preview.url + '/admin/#' + fragment, { waitUntil: 'domcontentloaded' });
   await recovery.locator('#password-section').waitFor({ state: 'visible' });
-  assert.equal(await recovery.locator('#review-section').isVisible(), false, 'Recovery link must keep the password form open');
+  assert.equal(await recovery.locator('#dashboard-section').isVisible(), false, 'Recovery link must keep the password form open');
   const privacy = await browser.newPage({ viewport: { width: 390, height: 844 } });
   privacy.on('pageerror', error => errors.push(error.message));
   await privacy.route('**/*', route => new URL(route.request().url()).origin === preview.url ? route.continue() : route.abort());
@@ -152,5 +179,5 @@ try {
   await privacy.evaluate(() => window.__estI18n.setLang('en'));
   assert.equal(await privacy.locator('#review-privacy-title').textContent(), 'Information about your reviews');
   assert.deepEqual(errors, []);
-  console.log('Browser checks passed: guest submission, approval, XSS safety, photos, privacy, limits, hiding, permanent deletion and cancellation, translation, focus and mobile panel.');
+  console.log('Browser checks passed: shared admin hub, module permissions and availability, manual reviews, guest submission, approval, XSS safety, photos, privacy, limits, secondary hiding/deletion and cancellation, recovery, translation, focus and mobile panel.');
 } finally { await browser.close(); preview.server.closeAllConnections(); await new Promise(resolve => preview.server.close(resolve)); }

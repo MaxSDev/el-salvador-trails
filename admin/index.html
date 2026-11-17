@@ -2,39 +2,60 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow"><title>Reseñas — El Salvador Trails</title>
-  <link rel="stylesheet" href="reviews-admin.css">
+  <meta name="robots" content="noindex,nofollow"><title>Administración — Zenith Trails</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/brand-placeholder.svg">
+  <link rel="stylesheet" href="admin-shell.css">
 </head>
 <body>
-  <header class="admin-header"><a href="../index.html"><img src="../assets/icons/logo.svg" alt="El Salvador Trails" width="160" height="54"></a><a href="../index.html#feedback">Ver la página</a></header>
-  <main class="admin-shell">
-    <h1>Administrar reseñas</h1>
-    <p class="intro">Revisa las experiencias de los viajeros y decide cuáles publicar.</p>
-    <p id="local-notice" class="notice" hidden>Prueba local. Los cambios se guardan solo en esta PC. Acceso: pruebas@local.invalid / resenas-local.</p>
+  <a class="skip-link" href="#admin-main">Ir al contenido</a>
+  <header class="admin-header"><a class="admin-brand" href="index.html" aria-label="Zenith Trails, inicio del panel"><img src="../assets/icons/brand-placeholder.svg" alt="" aria-hidden="true" width="52" height="52"><span>Zenith Trails</span></a><nav aria-label="Panel de administración"><a href="index.html" aria-current="page">Inicio</a><a href="../index.html" target="_blank" rel="noopener">Ver página ↗</a></nav></header>
+  <main id="admin-main" class="admin-shell">
+    <p class="eyebrow">Zenith Trails</p>
+    <h1>Tu página, al día</h1>
+    <p class="intro">Actualiza tus tours y alojamientos, o revisa las experiencias de tus viajeros.</p>
+    <p id="local-notice" class="notice" hidden><strong>Estás en la versión de prueba local.</strong>Los cambios se guardan en esta computadora. Acceso de prueba: pruebas@local.invalid / resenas-local.</p>
     <p id="admin-message" class="message" role="status" aria-live="polite" hidden></p>
-    <section id="login-section" aria-labelledby="login-title">
-      <h2 id="login-title">Entrar al panel</h2>
+    <section id="login-section" class="login-card" aria-labelledby="login-title">
+      <h2 id="login-title">Entrar a administración</h2>
+      <p class="support">Usa la cuenta que el equipo te ha autorizado.</p>
       <form id="login-form" class="login-form">
-        <label>Correo<input name="email" type="email" autocomplete="username" required></label>
+        <label>Correo electrónico<input name="email" type="email" autocomplete="username" required></label>
         <label>Contraseña<input name="password" type="password" autocomplete="current-password" required></label>
-        <button class="primary" type="submit">Entrar</button>
+        <button class="primary" type="submit">Entrar al panel</button>
         <button type="button" id="reset-password">Recuperar contraseña</button>
       </form>
-      <p class="support">El acceso está reservado al equipo autorizado de El Salvador Trails.</p>
+      <p class="support">Para recuperar tu acceso, escribe tu correo y pulsa “Recuperar contraseña”.</p>
     </section>
-    <section id="password-section" hidden>
-      <h2>Define tu contraseña</h2>
+    <section id="password-section" class="login-card" hidden aria-labelledby="password-title">
+      <h2 id="password-title">Define tu contraseña</h2>
+      <p class="support">Elige una contraseña de al menos 12 caracteres para proteger el panel.</p>
       <form id="password-form" class="login-form"><label>Nueva contraseña<input name="password" type="password" autocomplete="new-password" minlength="12" required></label><button class="primary" type="submit">Guardar contraseña</button></form>
     </section>
-    <section id="review-section" hidden aria-labelledby="queue-title">
-      <div class="session-row"><p id="account-email"></p><button type="button" id="logout">Salir</button></div>
-      <div class="manual-setting"><label><input id="manual-mode" type="checkbox"> Revisar todas las reseñas antes de publicarlas</label><p>Si está desactivado, se publican automáticamente las reseñas de texto que pasan los controles. Las fotos siempre requieren revisión.</p></div>
-      <div class="queue-toolbar"><h2 id="queue-title">Reseñas</h2><label>Mostrar<select id="status-filter"><option value="pending">Pendientes</option><option value="approved">Publicadas</option><option value="rejected">Rechazadas</option><option value="hidden">Ocultas</option></select></label><button type="button" id="reload">Actualizar lista</button></div>
-      <div id="review-list" aria-busy="false"></div>
-      <nav class="pagination" aria-label="Páginas de reseñas"><button id="previous-page" type="button">Anterior</button><span id="page-label"></span><button id="next-page" type="button">Siguiente</button></nav>
+    <section id="dashboard-section" hidden aria-labelledby="dashboard-title">
+      <div class="session-row"><p>Sesión de <strong id="account-email"></strong></p><button type="button" id="logout">Cerrar sesión</button></div>
+      <div class="dashboard-heading"><div><h2 id="dashboard-title">¿Qué quieres actualizar?</h2><p>Elige una sección para empezar.</p></div><button id="reload-access" type="button">Actualizar accesos</button></div>
+      <div id="module-grid" class="module-grid" aria-busy="true">
+        <article id="tours-module" class="module-card" data-module="content">
+          <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 19 6-13 5 8 3-5 4 10Z"/><path d="m7 10 2 2 2-2"/></svg></span>
+          <h3>Tours</h3><p>Crea y actualiza Day Tours y Tour Packages, con sus fotos y detalles.</p>
+          <p class="module-status" hidden></p><a class="button-link primary" href="content.html" hidden>Administrar tours</a>
+        </article>
+        <article id="partners-module" class="module-card" data-module="content">
+          <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7"/></svg></span>
+          <h3>Bienes Raíces</h3><p>Edita Art Haus y añade alojamientos o negocios aliados a la página.</p>
+          <p class="module-status" hidden></p><a class="button-link primary" href="real-estate.html" hidden>Administrar bienes raíces</a>
+        </article>
+        <article id="reviews-module" class="module-card" data-module="reviews">
+          <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l-3 3V11.5A7.5 7.5 0 0 1 9.5 4H18a2 2 0 0 1 2 2Z"/><path d="m11 8 .9 1.8 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3Z"/></svg></span>
+          <h3>Reseñas</h3><p>Lee las experiencias pendientes y elige cuáles publicar.</p>
+          <p class="module-status" hidden></p><a class="button-link primary" href="reviews.html" hidden>Administrar reseñas</a>
+        </article>
+      </div>
+      <div id="site-module" class="secondary-module" data-module="content"><div><h3>Información del sitio</h3><p>Actualiza contactos, textos e imágenes generales de la página.</p><p class="module-status" hidden></p></div><a class="button-link" href="site.html" hidden>Editar información</a></div>
+      <p id="no-access" class="notice" hidden>Tu cuenta está conectada, pero todavía no tiene secciones asignadas. Pide al equipo que revise tus permisos.</p>
+      <p class="admin-help">En Tours y Bienes Raíces puedes guardar borradores y revisar una vista previa antes de publicar. Los borradores te permiten preparar cambios sin que aparezcan todavía en la página.</p>
     </section>
   </main>
-  <script src="../js/reviews-config.js"></script><script src="../js/reviews-api.js"></script>
-  <script type="module" src="reviews-admin.js"></script>
+  <script src="../js/reviews-config.js"></script><script type="module" src="dashboard.js"></script>
 </body>
 </html>

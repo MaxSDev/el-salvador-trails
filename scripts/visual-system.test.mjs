@@ -154,7 +154,6 @@ test('Bienes Raíces presenta Art Haus con dirección confirmada y consulta sin 
   assert.match(html, /mailto:hola@elsalvadortrails\.com\?subject=Consulta%20sobre%20Art%20Haus/);
   assert.doesNotMatch(html, /\$\d|\d+ habitaciones|\d+ huéspedes/);
   assert.doesNotMatch(html, /id="partners-grid"/);
-  assert.doesNotMatch(html, /data\/real-estate-data\.js|js\/real-estate\.js/);
 });
 
 test('Pago en Línea permanece como una promesa editorial sin pasarela inventada', async () => {

@@ -1,106 +1,135 @@
-/* El Salvador Trails — Bienes Raíces / Socios multi-negocio
-   - Lee data/real-estate.json (soporta N socios, Art Haus es solo el primero)
-   - Renderiza grid de cards con imagen, badge socio, descripción y CTA externo
-   - Si json vacío o falla, muestra estado Próximamente sin romper la página */
+/* Alojamientos y aliados: same public renderer for published data and editor previews. */
 (function () {
   'use strict';
-  var container = null;
-
-  document.addEventListener('DOMContentLoaded', init);
-
-  async function init() {
-    container = document.getElementById('partners-grid');
-    if (!container) return;
-    // Fallback embebido para file:// (doble clic sin servidor)
-    if (window.__REAL_ESTATE_DATA && window.__REAL_ESTATE_DATA.partners) {
-      var fb = window.__REAL_ESTATE_DATA.partners || [];
-      if (!fb.length) { renderEmpty(); return; }
-      renderPartners(fb);
+  var container;
+  var focusedId = '';
+  function pick(value) {
+    if (typeof value === 'string') return value;
+    var language = window.__estI18n?.getLang() || 'es';
+    return value?.[language] || value?.es || '';
+  }
+  function words(es,en,pt) { return pick({es:es,en:en,pt:pt}); }
+  function node(tag, text, className) {
+    var element = document.createElement(tag);
+    if (text !== undefined) element.textContent = text;
+    if (className) element.className = className;
+    return element;
+  }
+  function picture(path, alt, hero) {
+    if (window.ESTMedia) {
+      var holder = document.createElement('div');
+      holder.innerHTML = window.ESTMedia.picture(path, { alt:alt, loading:'lazy', sizes:hero ? '(max-width:800px) 90vw,52vw' : '(max-width:640px) 90vw,42vw' });
+      return holder.firstElementChild;
+    }
+    var image = node('img'); image.src = path; image.alt = alt; image.loading = 'lazy';
+    return image;
+  }
+  function photo(partner, index) {
+    var figure = node('figure', undefined, 'estate-gallery-item');
+    var caption = pick(partner.imageCaptions?.[index]) || pick(partner.name);
+    figure.append(picture(partner.images[index], caption, false), node('figcaption', caption));
+    return figure;
+  }
+  function contact(partner) {
+    var name = pick(partner.name);
+    var link = node('a', words('Consultar sobre ', 'Ask about ', 'Consultar sobre ') + name, 'estate-button');
+    var email = window.ESTContent?.contacts.email || 'hola@elsalvadortrails.com';
+    link.href = 'mailto:' + email + '?subject=' + encodeURIComponent(words('Consulta sobre ','Question about ','Consulta sobre ') + name);
+    return link;
+  }
+  function renderPartner(partner) {
+    var name = pick(partner.name);
+    var slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(partner.slug || '') ? partner.slug : 'alojamiento';
+    var feature = node('section', undefined, 'estate-section estate-feature');
+    feature.id = slug; feature.dataset.partnerId = partner.id;
+    feature.setAttribute('aria-labelledby', slug + '-title');
+    var image = node('figure', undefined, 'estate-feature-photo');
+    if (partner.images?.length) image.append(picture(partner.images[0], pick(partner.imageCaptions?.[0]) || name, true));
+    var copy = node('div', undefined, 'estate-feature-copy');
+    var title = node('h2', name); title.id = slug + '-title';
+    copy.append(title);
+    var tagline = pick(partner.tagline) || (partner.type === 'lodging' ? words('Alojamiento','Accommodation','Hospedagem') : words('Negocio aliado','Partner business','Negócio parceiro'));
+    copy.append(node('p', tagline, 'estate-property-type'), node('p', pick(partner.shortDescription)));
+    if (pick(partner.location)) copy.append(node('p', pick(partner.location), 'estate-property-location'));
+    if (partner.address) { var address = node('address', partner.address); address.style.whiteSpace = 'pre-line'; copy.append(address); }
+    copy.append(contact(partner));
+    if (partner.url) {
       try {
-        var res = await fetch('data/real-estate.json');
-        if (res.ok) {
-          var data = await res.json();
-          var partners = (data && data.partners) || [];
-          if (partners.length) renderPartners(partners);
+        var url = new URL(partner.url);
+        if (url.protocol === 'https:' && !url.username && !url.password) {
+          var external = node('a', words('Visitar sitio del aliado','Visit partner website','Visitar site do parceiro'), 'estate-link');
+          external.href = url.href; external.target = '_blank'; external.rel = 'noopener noreferrer'; copy.append(external);
         }
-      } catch (_) { /* file://: mantener fallback */ }
-      if (window.__estI18n && typeof window.__estI18n.applyTranslations === 'function') {
-        try { window.__estI18n.applyTranslations(); } catch (_) {}
+      } catch (_) {}
+    }
+    copy.append(node('p', words('Escríbenos para conocer las opciones disponibles para tu visita.','Write to us to learn about the options available for your visit.','Escreva para conhecer as opções disponíveis para sua visita.'), 'estate-contact-note'));
+    feature.append(image, copy);
+    var gallery = node('section', undefined, 'estate-section estate-gallery');
+    gallery.setAttribute('aria-labelledby', slug + '-gallery-title');
+    var heading = node('header', undefined, 'estate-gallery-heading');
+    var galleryTitle = node('h2', words('Una mirada a ','A look inside ','Um olhar sobre ') + name); galleryTitle.id = slug + '-gallery-title';
+    heading.append(galleryTitle, node('p', pick(partner.description))); gallery.append(heading);
+    var images = partner.images || [];
+    if (images.length) {
+      var grid = node('div', undefined, 'estate-photo-grid');
+      images.slice(0,4).forEach(function (_,index) { grid.append(photo(partner,index)); }); gallery.append(grid);
+      if (images.length > 4) {
+        var details = node('details', undefined, 'estate-more-photos');
+        var summary = node('summary');
+        summary.append(node('span', words('Ver todas las fotos','See all photos','Ver todas as fotos')), node('span', String(images.length), 'estate-photo-count'));
+        var more = node('div', undefined, 'estate-photo-grid');
+        images.slice(4).forEach(function (_,index) { more.append(photo(partner,index+4)); });
+        details.append(summary,more); gallery.append(details);
       }
-      return;
     }
-    try {
-      var res2 = await fetch('data/real-estate.json');
-      if (!res2.ok) throw new Error('no json');
-      var data2 = await res2.json();
-      var partners2 = (data2 && data2.partners) || [];
-      if (!partners2.length) { renderEmpty(); return; }
-      renderPartners(partners2);
-    } catch (e) {
-      renderEmpty();
+    return [feature,gallery];
+  }
+  function render() {
+    if (!container) return;
+    var partners = window.__REAL_ESTATE_DATA?.partners || [];
+    container.replaceChildren(); container.setAttribute('aria-busy','false');
+    partners.slice().sort(function(a,b) { return (a.sortOrder || 0)-(b.sortOrder || 0); }).forEach(function (partner) { container.append(...renderPartner(partner)); });
+    var explore = document.querySelector('.estate-photo-hero .secondary-hero-link');
+    var caption = document.querySelector('.estate-hero-caption');
+    if (explore) {
+      explore.hidden = !partners.length;
+      if (partners.length) {
+        explore.href = '#' + partners[0].slug;
+        var text = explore.querySelector('span');
+        if (text) { text.removeAttribute('data-i18n'); text.textContent = words('Conoce ','Discover ','Conheça ') + pick(partners[0].name); }
+      }
     }
-    if (window.__estI18n && typeof window.__estI18n.applyTranslations === 'function') {
-      try { window.__estI18n.applyTranslations(); } catch (_) {}
+    if (caption) {
+      caption.hidden = !partners.length;
+      caption.textContent = partners.length ? pick(partners[0].name) + (pick(partners[0].location) ? ' · ' + pick(partners[0].location) : '') : '';
+    }
+    if (!partners.length && !window.ESTContent?.failed) container.append(node('p', words('Pronto compartiremos nuevos alojamientos y aliados.','New accommodation and partners will be available soon.','Em breve compartilharemos novas hospedagens e parceiros.'), 'estate-section'));
+  }
+  async function init() {
+    var first = document.querySelector('.estate-feature');
+    container = node('div'); container.id = 'estate-partners'; container.setAttribute('aria-busy','true');
+    if (first) first.before(container);
+    else document.querySelector('.estate-outlook')?.before(container);
+    document.querySelectorAll('.estate-feature,.estate-gallery').forEach(function (element) { element.remove(); });
+    if (window.ESTContentReady) await window.ESTContentReady;
+    else if (!window.__REAL_ESTATE_DATA) {
+      try { var response = await fetch('data/real-estate.json'); if (response.ok) window.__REAL_ESTATE_DATA = await response.json(); }
+      catch (_) { window.__REAL_ESTATE_DATA = {partners:[]}; }
+    }
+    render();
+    if (window.__estI18n) {
+      var original = window.__estI18n.setLang;
+      window.__estI18n.setLang = function (language) { original.call(window.__estI18n,language); render(); };
     }
   }
-
-  function lang() { return window.__estI18n ? window.__estI18n.getLang() : 'es'; }
-  function t(k) { return window.__estI18n ? window.__estI18n.t(k) : k; }
-  function pick(obj) {
-    var l = lang();
-    return (obj && (obj[l] || obj.es)) || '';
-  }
-
-  function renderEmpty() {
-    container.innerHTML =
-      '<div class="coming-soon-icon"><span class="material-symbols-outlined">construction</span></div>' +
-      '<h2 class="coming-soon-title" data-i18n="realestate.empty">' + t('realestate.empty') + '</h2>' +
-      '<p class="coming-soon-message" data-i18n="realestate.emptyMsg">' + t('realestate.emptyMsg') + '</p>';
-  }
-
-  function renderPartners(partners) {
-    var html = '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">';
-    partners.forEach(function (p) {
-      var name = pick(p.name);
-      var tag = pick(p.tagline);
-      var desc = pick(p.description);
-      var loc = pick(p.location);
-      var img = (p.images && p.images[0]) || 'assets/img/slide_2.jpg';
-      var imageMarkup = window.ESTMedia
-        ? window.ESTMedia.picture(img, {
-            alt: name,
-            className: 'w-full h-full object-cover transition-transform duration-700 hover:scale-105',
-            sizes: '(max-width: 767px) 100vw, 50vw',
-            loading: 'lazy'
-          })
-        : '<img src="' + img + '" alt="' + name + '" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">';
-      html +=
-        '<article class="tour-card flex flex-col">' +
-          '<div class="aspect-[16/10] w-full overflow-hidden relative">' +
-            imageMarkup +
-            '<span class="trail-sign dest-tile-sign" style="position:absolute"><span class="material-symbols-outlined">handshake</span><span class="trail-sign-label" data-i18n="realestate.partner">' + t('realestate.partner') + '</span></span>' +
-          '</div>' +
-          '<div class="p-8 flex flex-col flex-grow">' +
-            '<h2 class="font-display text-2xl font-bold mb-2 text-brand">' + name + '</h2>' +
-            (tag ? '<p class="text-sm font-semibold mb-3 text-brand">' + tag + '</p>' : '') +
-            (loc ? '<p class="text-xs uppercase tracking-widest mb-3 text-muted">' + loc + '</p>' : '') +
-            (desc ? '<p class="text-sm leading-relaxed mb-6 flex-grow text-muted">' + desc + '</p>' : '') +
-            '<div class="flex flex-col gap-3 mt-auto">' +
-              (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener" class="btn-accent w-full py-3 rounded-lg flex items-center justify-center gap-2 text-sm"><span data-i18n="realestate.visit">' + t('realestate.visit') + '</span><span class="material-symbols-outlined text-base">open_in_new</span></a>' : '') +
-              '<button type="button" class="btn-accent w-full py-3 rounded-lg flex items-center justify-center gap-2 text-sm" style="background:transparent;border:1.4px solid var(--brand);color:var(--brand)" data-partner-contact="' + name + '"><span class="material-symbols-outlined text-base">mail</span><span data-i18n="realestate.contact">' + t('realestate.contact') + '</span></button>' +
-            '</div>' +
-          '</div>' +
-        '</article>';
-    });
-    html += '</div>';
-    container.innerHTML = html;
-
-    container.querySelectorAll('[data-partner-contact]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var name = btn.getAttribute('data-partner-contact') || '';
-        var msg = '¡Hola! Me interesa el negocio aliado: ' + name + '. ¿Podrían contarme más?';
-        window.open('https://wa.me/50370000000?text=' + encodeURIComponent(msg), '_blank');
-      });
-    });
-  }
+  document.addEventListener('DOMContentLoaded',init);
+  document.addEventListener('est:content-loaded',render);
+  document.addEventListener('est:preview-updated',function (event) {
+    render();
+    var focus = event.detail;
+    if (focus?.kind === 'partner' && focus.id !== focusedId) {
+      focusedId = focus.id;
+      Array.from(container?.querySelectorAll('[data-partner-id]') || []).find(function (element) { return element.dataset.partnerId === focus.id; })?.scrollIntoView({block:'start'});
+    }
+  });
 })();

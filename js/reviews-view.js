@@ -6,9 +6,6 @@
     if (text != null) node.textContent = text;
     return node;
   }
-  function photoUrl(url) {
-    try { var parsed = new URL(url, window.location.href); return ['http:', 'https:'].includes(parsed.protocol) ? parsed.href : null; } catch (_) { return null; }
-  }
   window.ESTReviewView = {
     card: function (review, t) {
       var article = el('article', 'testimonial-card');
@@ -28,18 +25,6 @@
       article.appendChild(stars);
       article.appendChild(el('p', 'testimonial-comment', review.comment));
       var details = el('div');
-      if (review.photos && review.photos.length) {
-        var gallery = el('details', 'review-photo-gallery');
-        gallery.appendChild(el('summary', 'testimonial-photo-badge', review.photos.length + ' · ' + t('testimonials.photos')));
-        var images = el('div', 'review-photo-grid');
-        review.photos.forEach(function (photo, index) {
-          var url = photoUrl(photo.url); if (!url) return;
-          var link = el('a'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
-          var image = el('img'); image.src = url; image.alt = t('testimonials.photos') + ' ' + (index + 1); image.loading = 'lazy';
-          link.appendChild(image); images.appendChild(link);
-        });
-        gallery.appendChild(images); details.appendChild(gallery);
-      }
       var name = review.author && review.author.name || '';
       var parts = name.trim().split(/\s+/);
       var initials = parts.length > 1 ? (parts[0][0] || '') + (parts[parts.length - 1][0] || '') : name.slice(0, 2);
