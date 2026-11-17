@@ -98,7 +98,7 @@ export async function startLocalReviewPreview({ port = 8000, directory = join(pr
       if (url.pathname === '/admin/supabase-client.js') { outgoing.writeHead(200, { 'Content-Type': 'text/javascript' }); outgoing.end(sdk); return; }
       let name = decodeURIComponent(url.pathname).slice(1); if (!name || name === 'admin/') name += 'index.html';
       const parts = name.split('/');
-      if (parts.some(part => part.startsWith('.') || part.includes('\\')) || !(parts.length === 1 && name.endsWith('.html') || ['css', 'js', 'assets', 'data', 'admin'].includes(parts[0]))) { outgoing.writeHead(404).end(); return; }
+      if (parts.some(part => part.startsWith('.') || part.includes('\\')) || !(parts.length === 1 && name.endsWith('.html') || ['css', 'js', 'assets', 'data', 'admin', 'prototypes'].includes(parts[0]))) { outgoing.writeHead(404).end(); return; }
       const target = await realpath(resolve(projectRoot, name));
       if (!target.startsWith(resolve(projectRoot) + sep)) { outgoing.writeHead(404).end(); return; }
       const content = await readFile(target); outgoing.writeHead(200, { 'Content-Type': mime[extname(name).toLowerCase()] || 'application/octet-stream', 'X-Content-Type-Options': 'nosniff' }); outgoing.end(content);

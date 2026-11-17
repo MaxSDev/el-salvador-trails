@@ -28,6 +28,7 @@
 
       // ---- Navegación ----
       "nav.home":             "Página Inicial",
+      "nav.homeLink":         "Zenith Trails, ir a la página inicial",
       "nav.tours":            "Catálogo de Tours",
       "nav.about":            "About Us",
       "nav.realestate":       "Bienes Raíces",
@@ -352,6 +353,8 @@
       "page.about.title":     "Zenith Trails — About Us",
 
       "nav.home":             "Home",
+
+      "nav.homeLink":         "Zenith Trails, go to the home page",
       "nav.tours":            "Tour Catalog",
       "nav.about":            "About Us",
       "nav.realestate":       "Real Estate",
@@ -664,6 +667,8 @@
       "page.about.title":     "Zenith Trails — About Us",
 
       "nav.home":             "Página Inicial",
+
+      "nav.homeLink":         "Zenith Trails, ir para a página inicial",
       "nav.tours":            "Catálogo de Tours",
       "nav.about":            "About Us",
       "nav.realestate":       "Imóveis",

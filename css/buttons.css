@@ -1,0 +1,158 @@
+/* App-style buttons — option B, approved by Ellen and Mario on 2026-10-17.
+   Rounded rectangle, Work Sans in sentence case, an icon where it helps, scale on press.
+   Hover and press shift the color a little toward the brand wine: visible, never a flip. */
+.app-btn {
+  --radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-block-size: 52px;
+  max-inline-size: 100%;
+  padding-inline: 1.35rem;
+  border: 0;
+  border-radius: var(--radius);
+  font: 600 1rem/1.2 var(--font-body);
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: none;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.app-btn .material-symbols-outlined { font-size: 1.3rem; line-height: 1; }
+.app-btn:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+.app-btn:active { scale: .97; }
+.app-btn:disabled { opacity: .6; cursor: default; scale: 1; }
+
+.app-btn.is-primary { background: var(--cta-bg); color: var(--cta-text); }
+.app-btn.is-tonal { background: var(--brand-soft); color: var(--brand); }
+.app-btn.is-text { background: transparent; color: var(--brand); padding-inline: .6rem; }
+.app-btn.is-icon { inline-size: 52px; padding: 0; background: var(--brand-soft); color: var(--brand); }
+.app-btn.is-small { min-block-size: 42px; padding-inline: 1rem; font-size: .9375rem; }
+.app-btn.is-whatsapp { background: oklch(from #4BC000 calc(l - .2) c h); color: #fff; }
+/* Over a photo: compact, so the label marks the action without covering the picture. */
+.app-btn.is-on-photo {
+  --radius: 12px;
+  min-block-size: 40px;
+  gap: .35rem;
+  padding-inline: .9rem .7rem;
+  font-size: .875rem;
+  background: var(--bg);
+  color: var(--brand);
+  box-shadow: 0 4px 12px oklch(0.2 0.02 40 / .22);
+}
+.app-btn.is-on-photo .material-symbols-outlined { font-size: 1.1rem; }
+
+.app-chip {
+  --radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-block-size: 44px;
+  padding-inline: 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  color: var(--text);
+  font: 500 .9375rem/1.2 var(--font-body);
+  cursor: pointer;
+}
+.app-chip .material-symbols-outlined { display: none; font-size: 1.1rem; }
+.app-chip[aria-pressed=true], .app-chip:has(input:checked) { background: var(--brand-soft); border-color: var(--brand); color: var(--brand); font-weight: 600; }
+.app-chip[aria-pressed=true] .material-symbols-outlined, .app-chip:has(input:checked) .material-symbols-outlined { display: inline; }
+.app-chip:focus-visible, .app-chip:has(input:focus-visible) { outline: 3px solid var(--brand); outline-offset: 2px; }
+.app-chip:active { scale: .97; }
+
+/* Pressed states hold on touch screens too, so they live outside the hover query. */
+.app-btn.is-primary:active { background: color-mix(in oklch, var(--cta-bg) 76%, var(--brand)); }
+.app-btn:is(.is-tonal, .is-icon, .is-text):active { background: color-mix(in oklch, var(--brand) 20%, transparent); }
+.app-btn.is-on-photo:active { background: color-mix(in oklch, var(--bg) 86%, var(--brand)); }
+.app-btn.is-whatsapp:active { background: oklch(from #4BC000 calc(l - .29) c h); }
+@media (hover: hover) and (pointer: fine) {
+  .app-btn.is-primary:hover { background: color-mix(in oklch, var(--cta-bg) 85%, var(--brand)); }
+  .app-btn:is(.is-tonal, .is-icon, .is-text):hover { background: color-mix(in oklch, var(--brand) 14%, transparent); }
+  .app-btn.is-on-photo:hover { background: color-mix(in oklch, var(--bg) 92%, var(--brand)); }
+  .app-btn.is-whatsapp:hover { background: oklch(from #4BC000 calc(l - .25) c h); }
+  .app-chip:hover { border-color: var(--brand); background: color-mix(in oklch, var(--brand) 5%, var(--surface-raised)); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .app-btn, .app-chip { transition: scale .16s cubic-bezier(.22, 1, .36, 1), background-color .2s cubic-bezier(.22, 1, .36, 1), border-color .2s cubic-bezier(.22, 1, .36, 1); }
+}
+
+/* Shape icons: a solid approved accent behind a dark line glyph, after Ellen's icon reference.
+   Circle (sky), diamond (green) and map pin (gold). */
+:root {
+  --tone-sky: oklch(from #00C9B9 l c h);
+  --tone-green: oklch(from #4BC000 l c h);
+  --tone-gold: oklch(from #FAD170 l c h);
+  --tone-ink: oklch(from #1C1714 l c h);
+}
+.shape-icon {
+  --tone: var(--tone-sky);
+  position: relative;
+  isolation: isolate;
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  color: var(--tone-ink);
+  font-size: 1.5rem;
+  font-variation-settings: 'wght' 500, 'FILL' 0;
+}
+.shape-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--tone);
+  border-radius: 50%;
+}
+/* Diamond: a rounded square turned 45°, scaled so its corners stay inside the box. */
+.shape-icon[data-tone=green] { --tone: var(--tone-green); }
+.shape-icon[data-tone=green]::before { inset: 15%; border-radius: 22%; rotate: 45deg; scale: 1.2; }
+/* Pin: one sharp corner turned to point down, like a map marker. */
+.shape-icon[data-tone=gold] { --tone: var(--tone-gold); padding-block-end: .3rem; }
+.shape-icon[data-tone=gold]::before { inset: 5%; border-radius: 50% 50% 0 50%; rotate: 45deg; }
+
+/* Over a dark photo: light outline that keeps the white label readable. */
+.app-btn.is-outline-light { background: rgba(28, 23, 20, .28); color: #fff8ec; box-shadow: inset 0 0 0 1px rgba(255, 248, 236, .7); }
+.app-btn.is-outline-light:active { background: rgba(28, 23, 20, .5); }
+@media (hover: hover) and (pointer: fine) { .app-btn.is-outline-light:hover { background: rgba(28, 23, 20, .42); } }
+
+/* ---- Site-wide harmonization (2026-10-20) ----
+   Page-specific CTAs keep their colors and placement but take option B's type, case and shape.
+   Selectors mirror the page rules they override; this file loads last on every page. */
+.cta-btn,
+.home-cinematic .home-hero-section .cta-btn,
+.estate-button,
+.home-cinematic .home-tours-cta,
+.personalized-submit {
+  min-block-size: 52px;
+  border-radius: 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.home-cinematic .home-hero-section .cta-btn:active, .estate-button:active, .home-cinematic .home-tours-cta:active { scale: .97; }
+.tab-btn, .dark .tab-btn,
+.home-cinematic .home-hero-section .tab-btn,
+.carousel-pause-btn,
+.home-cinematic .home-hero-section .carousel-pause-btn {
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.help-tutorial-btn { border-radius: 12px; font-size: 13px; font-weight: 600; letter-spacing: 0; }
+.dest-tile-cta { border-radius: 12px; font-size: .875rem; font-weight: 600; letter-spacing: 0; }
+.secondary-hero-link, .estate-link, .coming-soon-link { font-family: var(--font-body); font-size: 1rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.tab-btn:active, .carousel-pause-btn:active, .help-tutorial-btn:active, .dest-tile:active .dest-tile-cta { scale: .97; }
+@media (max-width: 767px) {
+  .home-cinematic .home-hero-section .cta-btn { min-block-size: 48px; font-size: .9375rem; }
+  .home-cinematic .home-hero-section .tab-btn, .home-cinematic .home-hero-section .carousel-pause-btn { font-size: .8125rem; }
+}
