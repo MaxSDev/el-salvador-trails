@@ -86,8 +86,8 @@
             (loc ? '<p class="text-xs uppercase tracking-widest mb-3 text-muted">' + loc + '</p>' : '') +
             (desc ? '<p class="text-sm leading-relaxed mb-6 flex-grow text-muted">' + desc + '</p>' : '') +
             '<div class="flex flex-col gap-3 mt-auto">' +
-              (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener" class="btn-accent w-full py-3 rounded-lg flex items-center justify-center gap-2 text-sm"><span data-i18n="realestate.visit">' + t('realestate.visit') + '</span><span class="material-symbols-outlined text-base">open_in_new</span></a>' : '') +
-              '<button type="button" class="btn-accent w-full py-3 rounded-lg flex items-center justify-center gap-2 text-sm" style="background:transparent;border:1.4px solid var(--brand);color:var(--brand)" data-partner-contact="' + name + '"><span class="material-symbols-outlined text-base">mail</span><span data-i18n="realestate.contact">' + t('realestate.contact') + '</span></button>' +
+              (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener" class="app-btn is-primary w-full"><span data-i18n="realestate.visit">' + t('realestate.visit') + '</span><span class="material-symbols-outlined text-base">open_in_new</span></a>' : '') +
+              '<button type="button" class="app-btn is-primary w-full" style="background:transparent;border:1.4px solid var(--brand);color:var(--brand)" data-partner-contact="' + name + '"><span class="material-symbols-outlined text-base">mail</span><span data-i18n="realestate.contact">' + t('realestate.contact') + '</span></button>' +
             '</div>' +
           '</div>' +
         '</article>';

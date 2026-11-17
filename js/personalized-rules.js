@@ -1,6 +1,9 @@
 // Generated from personalized-fields.mjs; tested for parity.
 (function(){
 var COUNTRY_CODES=window.ESTNationalityCodes;
+var DIAL_CODES=window.ESTDialCodes;
+const SUPPORT_OPTIONS=['wheelchair','limited_walking','frequent_rests','visual','hearing','dietary','small_children','service_animal'];
+const OTHER_EXPERIENCES=['coffee_cacao','crafts','hot_springs','lakes_boats','festivals','faith_heritage','markets','nightlife'];
 function emailFormat(value){
   const parts=value.split('@');if(parts.length!==2)return false;
   const [local,domain]=parts;
@@ -23,6 +26,8 @@ function fieldIssues(input) {
   const email=text('email',254);if(email&&!emailFormat(email))add('email','emailFormat');
   const phone=text('whatsapp',30);
   if(phone&&(!/^\+[1-9][\d ()-]+$/.test(phone)||phone.replace(/\D/g,'').length<7||phone.replace(/\D/g,'').length>15))add('whatsapp','phoneFormat');
+  const dial=p.whatsapp_country??'';
+  if(typeof dial!=='string'||dial&&(!Object.hasOwn(DIAL_CODES,dial)||phone&&!phone.replace(/\D/g,'').startsWith(DIAL_CODES[dial])))add('whatsapp','phoneCountry');
   const choices={group_size:['one','two','3_5','6_10','over_10'],age_range:['under_18','18_30','31_45','46_60','over_60','mixed'],stay_length:['one_day','2_3_days','4_5_days','6_7_days','over_week'],budget:['under_100','100_300','300_600','over_600'],accommodation:['economy','boutique','hotel_4_5','beach_resort','no_preference']};
   for(const [field,allowed] of Object.entries(choices))if(!allowed.includes(p[field]))add(field,'selectOne');
   if(!Array.isArray(p.nationalities)||!p.nationalities.length)add('nationalities','countrySelect',0);
@@ -36,13 +41,17 @@ function fieldIssues(input) {
   text('other_nationalities',120,Array.isArray(p.nationalities)&&p.nationalities.includes('OTHER'));
   const interests=['adventure','archaeology_history','nature','beach_relaxation','gastronomy','surf','extreme_sports','culture','birdwatching','photography','other'];
   if(!Array.isArray(p.interests)||!p.interests.length||p.interests.some(value=>!interests.includes(value))||p.interests.length>11)add('interests','selectMany');
-  text('other_interest',200,Array.isArray(p.interests)&&p.interests.includes('other'));
-  if(p.needs_support===true)text('accessibility_notes',600,false);
+  const picks=(field,allowed)=>{const value=p[field]??[];if(!Array.isArray(value)||value.length>allowed.length||value.some(v=>!allowed.includes(v))||new Set(value).size!==value.length){add(field,'selectMany');return [];}return value;};
+  const wantsOther=Array.isArray(p.interests)&&p.interests.includes('other');
+  const otherPicks=wantsOther?picks('other_interest_options',OTHER_EXPERIENCES):[];
+  const otherText=text('other_interest',200,false);
+  if(wantsOther&&!otherPicks.length&&!otherText&&!issues.some(issue=>issue.field==='other_interest_options'))add('other_interest','chooseOrWrite');
+  if(p.needs_support===true){picks('support_options',SUPPORT_OPTIONS);text('accessibility_notes',600,false);}
   text('wishes',1000,false);
   if(p.adult!==true)add('adult','adultRequired');
   if(p.consent!==true)add('consent','consentRequired');
   return issues;
 }
 
-window.ESTPersonalizedFields={fieldIssues:fieldIssues};
+window.ESTPersonalizedFields={fieldIssues:fieldIssues,SUPPORT_OPTIONS:SUPPORT_OPTIONS,OTHER_EXPERIENCES:OTHER_EXPERIENCES};
 })();

@@ -55,19 +55,20 @@
   <link rel="stylesheet" href="css/carrousel.css">
   <link rel="stylesheet" href="css/home-cinematic.css">
   <link rel="stylesheet" href="css/reviews.css">
+  <link rel="stylesheet" href="css/buttons.css">
 </head>
 <body class="font-body home-cinematic site-immersive has-photo-hero" data-i18n-page-title="page.index.title">
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <!-- Barra de navegación fija -->
   <nav class="fixed-nav-light" aria-label="Principal">
-    <div class="brand">
-      <img src="assets/icons/logo.svg" class="brand-mark-svg" alt="Logo El Salvador Trails">
+    <a class="brand" href="index.html" data-i18n-aria="nav.homeLink" aria-label="El Salvador Trails, ir a la página inicial" aria-current="page">
+      <img src="assets/icons/logo.svg" class="brand-mark-svg" alt="">
       <div>
         <span class="brand-word-title">El Salvador Trails</span>
         <span class="brand-subtext"></span>
       </div>
-    </div>
+    </a>
 
     <ul class="nav-links-list">
       <li><a href="index.html" class="active" aria-current="page" data-i18n="nav.home">Página Inicial</a></li>
@@ -228,7 +229,7 @@
               <option value="Grupo 7+">Grupo 7+</option>
             </select>
           </label>
-          <button type="submit" class="btn-accent quote-submit">
+          <button type="submit" class="app-btn is-primary quote-submit">
             <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
             <span data-i18n="home.quote.submit">Cotizar por WhatsApp</span>
           </button>
@@ -282,14 +283,14 @@
                 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
               </button>
             </div>
-            <button type="button" id="open-feedback-btn" class="btn-accent" data-i18n="testimonials.cta">¿Viajaste con nosotros? Comparte tu experiencia</button>
+            <button type="button" id="open-feedback-btn" class="app-btn is-primary" data-i18n="testimonials.cta">¿Viajaste con nosotros? Comparte tu experiencia</button>
             <p id="feedback-form-success" class="feedback-form-success hidden" role="status" aria-live="polite"></p>
           </div>
         </section>
         <div id="home-featured-day" class="home-tour-grid"></div>
         <div id="home-featured-pkg" class="home-package-row"></div>
         <div class="home-tours-cta">
-          <a href="tours.html" class="btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-lg">
+          <a href="tours.html" class="app-btn is-primary">
             <span data-i18n="home.featured.all">Ver catálogo completo</span>
             <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
           </a>
@@ -533,7 +534,7 @@
           <h2 id="guide-title" class="section-title section-title--small" data-i18n="home.guide.title">Hola, soy Mario</h2>
           <blockquote class="guide-quote" data-i18n="home.guide.quote">“Mi trabajo es ayudarte a entender cada lugar, no solo llevarte hasta él.”</blockquote>
           <p class="guide-text" data-i18n="home.guide.text">Diseño cada recorrido para que conozcas el país con contexto, calma y atención directa.</p>
-          <a href="about.html" class="btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-lg"><span data-i18n="home.guide.cta">Conoce mi historia</span><span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span></a>
+          <a href="about.html" class="app-btn is-primary"><span data-i18n="home.guide.cta">Conoce mi historia</span><span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span></a>
         </div>
       </div>
     </section>
@@ -573,7 +574,7 @@
           <h2 id="final-title" data-i18n="home.final.title">¿Listo para tu sendero?</h2>
           <p data-i18n="home.final.sub">Cuéntanos qué te gustaría conocer y armamos una ruta para tu grupo.</p>
           <div class="final-cta-actions">
-          <a class="btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-lg" href="https://wa.me/50370000000?text=%C2%A1Hola%20Mario!%20Quiero%20cotizar%20un%20tour." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span data-i18n="home.final.quote">Cotizar por WhatsApp</span></a>
+          <a class="app-btn is-primary" href="https://wa.me/50370000000?text=%C2%A1Hola%20Mario!%20Quiero%20cotizar%20un%20tour." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span data-i18n="home.final.quote">Cotizar por WhatsApp</span></a>
           <a class="final-ghost" href="tours.html"><span data-i18n="home.final.catalog">Ver catálogo</span></a>
           </div>
         </div>
@@ -690,7 +691,7 @@
         <a class="review-privacy-link" href="privacy.html#review-privacy" target="_blank" rel="noopener" data-i18n="feedback.form.privacy">Información de privacidad</a>
         <p id="feedback-local-notice" class="review-notice" hidden data-i18n="feedback.form.local">Prueba local: esta reseña se guardará solo en esta PC y quedará en revisión.</p>
         <div id="feedback-captcha"></div>
-        <button type="submit" class="btn-accent w-full py-3 mt-4 rounded-lg" data-i18n="feedback.form.submit">Enviar para revisión</button>
+        <button type="submit" class="app-btn is-primary w-full mt-4" data-i18n="feedback.form.submit">Enviar para revisión</button>
       </form>
     </div>
   </div>
@@ -703,7 +704,7 @@
         <li data-i18n="help.step2">2. Presiona el botón dorado para ver fotos, itinerario y detalles.</li>
         <li data-i18n="help.step3">3. Indica adultos, niños y fecha, y cotiza por WhatsApp o correo.</li>
       </ol>
-      <button type="button" class="btn-accent w-full py-3 mt-6 rounded-lg" data-help-close data-i18n="help.close">Entendido</button>
+      <button type="button" class="app-btn is-primary w-full mt-6" data-help-close data-i18n="help.close">Entendido</button>
     </div>
   </div>
 

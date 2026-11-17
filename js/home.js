@@ -39,7 +39,7 @@
           '<h3>' + title + '</h3>' +
           '<p class="home-meta">' + grp + ' · ' + pick(tour.pickup) + '</p>' +
           '<p class="home-from">' + t('home.featured.quote') + '</p>' +
-          '<a href="tours.html" class="btn-accent tour-card-link"><span>' + t('tour.viewTour') + '</span><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>' +
+          '<a href="tours.html" class="app-btn is-text tour-card-link"><span>' + t('tour.viewTour') + '</span><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>' +
         '</div>' +
       '</article>'
     );

@@ -12,11 +12,14 @@
     }
     return table[a.length][b.length];
   }
+  // Chromium ships no display name for some regions and echoes the code back ("EH").
+  var fallbackNames={EH:{es:'Sáhara Occidental',en:'Western Sahara',pt:'Saara Ocidental'}};
+  function regionName(display,locale,code){var name=display.of(code);return name&&name!==code?name:(fallbackNames[code]&&fallbackNames[code][locale])||name;}
   function catalog(codes,lang,other){
     var key=lang+other;if(cache.has(key))return cache.get(key);
-    var names=['es','en','pt'].map(locale=>new Intl.DisplayNames([locale],{type:'region'}));
+    var locales=['es','en','pt'],names=locales.map(locale=>new Intl.DisplayNames([locale],{type:'region'}));
     var local=new Intl.DisplayNames([lang],{type:'region'});
-    var list=codes.map(code=>({code,label:code==='OTHER'?other:local.of(code),terms:code==='OTHER'?[normalize(other),normalize('Otra otra nacionalidad other outro')]:[code,...names.map(name=>name.of(code)),...(aliases[code]||'').split(' ')].map(normalize)}));
+    var list=codes.map(code=>({code,label:code==='OTHER'?other:regionName(local,lang,code),terms:code==='OTHER'?[normalize(other),normalize('Otra otra nacionalidad other outro')]:[code,...names.map((name,i)=>regionName(name,locales[i],code)),...(aliases[code]||'').split(' ')].map(normalize)}));
     list.sort((a,b)=>a.code==='OTHER'?1:b.code==='OTHER'?-1:a.label.localeCompare(b.label,lang));cache.set(key,list);return list;
   }
   function search(codes,query,lang,other){

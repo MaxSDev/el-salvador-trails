@@ -294,7 +294,7 @@
             <span class="material-symbols-outlined text-sm text-accent">price_check</span>
             <span class="font-medium" data-i18n="tour.pricing.heading">Precios y condiciones: contáctenos</span>
           </div>
-          <button class="btn-accent w-full py-3 rounded-lg flex items-center justify-center gap-2 font-label uppercase tracking-widest text-sm mt-auto">
+          <button class="app-btn is-tonal w-full mt-auto">
             <span data-i18n="tour.viewDetails">Ver detalles</span>
             <span class="material-symbols-outlined text-base">info</span>
           </button>
@@ -505,7 +505,7 @@
                     <p class="text-xs text-muted">Disponible en ${tour.socialVideo.platform === 'tiktok' ? 'TikTok' : 'Instagram'}</p>
                   </div>
                 </div>
-                <a href="${tour.socialVideo.url}" target="_blank" rel="noopener noreferrer" class="btn-accent px-4 py-2 rounded-lg text-xs font-label uppercase tracking-wider inline-flex items-center gap-2">
+                <a href="${tour.socialVideo.url}" target="_blank" rel="noopener noreferrer" class="app-btn is-tonal is-small">
                   <i class="fa-brands fa-${tour.socialVideo.platform}"></i>
                   <span data-i18n="tour.video.${tour.socialVideo.platform}">${tour.socialVideo.platform === 'tiktok' ? 'TikTok' : 'Instagram'}</span>
                   <span class="material-symbols-outlined text-sm">open_in_new</span>
@@ -513,51 +513,47 @@
               </div>
             ` : ''}
 
-            <!-- Precios y Condiciones: Contáctenos -->
-            <div class="p-6 md:p-8 rounded-xl border mt-8" style="background:var(--surface);border-color:var(--accent);">
-              <div class="flex items-start gap-4 mb-4">
-                <span class="material-symbols-outlined text-3xl text-accent">request_quote</span>
-                <div>
-                  <h3 class="font-display text-xl md:text-2xl font-bold text-brand" data-i18n="tour.pricing.heading">Precios y condiciones: contáctenos</h3>
-                  <p class="text-sm mt-2 leading-relaxed text-muted" data-i18n="${isNewSource ? 'tour.pricing.unconfirmed' : 'tour.pricing.notice'}">
-                    Nuestras tarifas se adaptan al tamaño y necesidades específicas de su grupo (los niños menores de 12 años gozan de tarifa especial al 50%). Permítanos diseñar su cotización personalizada.
-                  </p>
+            <!-- Cotización: mismo lenguaje visual que el formulario de Experiencia Personalizada -->
+            <section class="tour-quote" aria-labelledby="tour-quote-title">
+              <h3 id="tour-quote-title" class="tour-quote-title"><span class="shape-icon material-symbols-outlined" data-tone="gold" aria-hidden="true">request_quote</span><span data-i18n="tour.pricing.heading">Precios y condiciones: contáctenos</span></h3>
+              <p class="tour-quote-note" data-i18n="${isNewSource ? 'tour.pricing.unconfirmed' : 'tour.pricing.notice'}">Nuestras tarifas se adaptan al tamaño y necesidades específicas de su grupo (los niños menores de 12 años gozan de tarifa especial al 50%). Permítanos diseñar su cotización personalizada.</p>
+
+              <fieldset class="tour-quote-group">
+                <legend data-i18n="tour.pricing.groupTitle">Indique la composición de su grupo para cotizar:</legend>
+                <div class="tour-quote-fields">
+                  ${[['quote-adults', 'tour.pricing.adults', 'Adultos', 1, 2, 'tour.quote.adultsHint'], ['quote-children', isNewSource ? 'tour.pricing.childrenPlain' : 'tour.pricing.children', 'Niños (<12 años - 50%)', 0, 0, '']].map(([id, key, fallback, min, value, hint]) => `
+                  <div class="tour-quote-field">
+                    <label for="${id}" data-i18n="${key}">${fallback}</label>
+                    <div class="quote-stepper">
+                      <button type="button" class="app-btn is-icon" data-step="-1" data-target="${id}" aria-controls="${id}" aria-label="${t('tour.quote.less')}" data-i18n-aria="tour.quote.less"><span class="material-symbols-outlined" aria-hidden="true">remove</span></button>
+                      <input type="number" id="${id}" min="${min}" max="50" value="${value}" inputmode="numeric" class="form-control"${hint ? ` aria-describedby="${id}-hint"` : ''}>
+                      <button type="button" class="app-btn is-icon" data-step="1" data-target="${id}" aria-controls="${id}" aria-label="${t('tour.quote.more')}" data-i18n-aria="tour.quote.more"><span class="material-symbols-outlined" aria-hidden="true">add</span></button>
+                    </div>
+                    ${hint ? `<p class="tour-quote-hint" id="${id}-hint" data-i18n="${hint}">${t(hint)}</p>` : ''}
+                  </div>`).join('')}
+                  <div class="tour-quote-field">
+                    <label for="quote-date" data-i18n="tour.pricing.date">Fecha estimada</label>
+                    <input type="date" id="quote-date" class="form-control" min="${new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10)}" aria-describedby="quote-date-hint">
+                    <p class="tour-quote-hint" id="quote-date-hint" data-i18n="tour.quote.dateHint">${t('tour.quote.dateHint')}</p>
+                  </div>
                 </div>
+              </fieldset>
+
+              ${optionalExtras.length ? `<fieldset class="tour-extra-options"><legend data-i18n="tour.optionalExtras">${t('tour.optionalExtras')}</legend><div class="tour-extra-chips">${optionalExtras.map(extra => `<label class="app-chip"><input type="checkbox" name="quote-extra" value="${extra.id}"><span class="material-symbols-outlined" aria-hidden="true">check</span><span>${extra.label[lang] || extra.label.es}</span></label>`).join('')}</div><p data-i18n="tour.optionalExtras.note">${t('tour.optionalExtras.note')}</p></fieldset>` : ''}
+
+              <!-- Botones de acción directa con mensaje pre-armado -->
+              <p class="tour-quote-channel" data-i18n="tour.quote.channel">${t('tour.quote.channel')}</p>
+              <div class="tour-quote-actions">
+                <button type="button" id="btn-quote-whatsapp" class="app-btn is-whatsapp">
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                  <span data-i18n="tour.pricing.whatsappBtn">Cotizar por WhatsApp</span>
+                </button>
+                <button type="button" id="btn-quote-email" class="app-btn is-tonal">
+                  <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                  <span data-i18n="tour.pricing.emailBtn">Cotizar por Correo</span>
+                </button>
               </div>
-
-              <!-- Selector interactivo de grupo -->
-              <div class="mt-6 pt-6 border-t" style="border-color:var(--border);">
-                <h4 class="text-xs font-semibold uppercase tracking-wider mb-4 text-brand" data-i18n="tour.pricing.groupTitle">Indique la composición de su grupo para cotizar:</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                  <div>
-                    <label class="block text-xs font-medium mb-1 text-muted" data-i18n="tour.pricing.adults">Adultos</label>
-                    <input type="number" id="quote-adults" min="1" max="50" value="2" class="form-control w-full">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-medium mb-1 text-muted" data-i18n="${isNewSource ? 'tour.pricing.childrenPlain' : 'tour.pricing.children'}">Niños (<12 años - 50%)</label>
-                    <input type="number" id="quote-children" min="0" max="50" value="0" class="form-control w-full">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-medium mb-1 text-muted" data-i18n="tour.pricing.date">Fecha estimada</label>
-                    <input type="date" id="quote-date" class="form-control w-full">
-                  </div>
-                </div>
-
-                ${optionalExtras.length ? `<fieldset class="tour-extra-options"><legend data-i18n="tour.optionalExtras">${t('tour.optionalExtras')}</legend>${optionalExtras.map(extra => `<label><input type="checkbox" name="quote-extra" value="${extra.id}"><span>${extra.label[lang] || extra.label.es}</span></label>`).join('')}<p data-i18n="tour.optionalExtras.note">${t('tour.optionalExtras.note')}</p></fieldset>` : ''}
-
-                <!-- Botones de acción directa con mensaje pre-armado -->
-                <div class="flex flex-col sm:flex-row gap-4">
-                  <button type="button" id="btn-quote-whatsapp" class="btn-accent flex-1 py-3 px-6 rounded-lg font-label uppercase tracking-widest text-xs flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span data-i18n="tour.pricing.whatsappBtn">Cotizar por WhatsApp</span>
-                  </button>
-                  <button type="button" id="btn-quote-email" class="btn-secondary flex-1 py-3 px-6 rounded-lg font-label uppercase tracking-widest text-xs flex items-center justify-center gap-2 border" style="border-color:var(--border);">
-                    <span class="material-symbols-outlined text-lg">mail</span>
-                    <span data-i18n="tour.pricing.emailBtn">Cotizar por Correo</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+            </section>
           </div>
         </div>
       </div>
@@ -637,6 +633,24 @@
       input.addEventListener('input', remember);
       input.addEventListener('change', remember);
     });
+
+    // − / + steppers: one tap per person, kept inside the input's min and max.
+    const steppers = Array.from(tourDetailContainer.querySelectorAll('[data-step]'));
+    function syncSteppers() {
+      steppers.forEach(btn => {
+        const input = document.getElementById(btn.dataset.target);
+        const value = parseInt(input.value, 10) || 0;
+        btn.disabled = btn.dataset.step < 0 ? value <= Number(input.min) : value >= Number(input.max);
+      });
+    }
+    steppers.forEach(btn => btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      const next = (parseInt(input.value, 10) || 0) + Number(btn.dataset.step);
+      input.value = Math.min(Number(input.max), Math.max(Number(input.min), next));
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    }));
+    [adultsInput, childrenInput].forEach(input => input.addEventListener('input', syncSteppers));
+    syncSteppers();
 
     function getQuoteData() {
       const adults = adultsInput ? parseInt(adultsInput.value, 10) || 1 : 1;

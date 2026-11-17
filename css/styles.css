@@ -443,6 +443,10 @@ nav.fixed-nav-light::after {
   align-items: center;
   gap: 12px;
 }
+/* The logo links home: it keeps its look, gains a focus ring and a press response. */
+a.brand { color: inherit; text-decoration: none; border-radius: 14px; }
+a.brand:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
+a.brand:active { scale: .98; }
 
 .brand-mark-svg {
   width: 64px;
@@ -2004,7 +2008,7 @@ textarea.form-control {
   flex: 1 1 auto;
 }
 
-.tour-category-copy .btn-accent {
+.tour-category-copy .app-btn {
   margin-top: auto;
   white-space: nowrap;
 }
