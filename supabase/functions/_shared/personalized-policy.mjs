@@ -1,6 +1,6 @@
 import { COUNTRY_CODES } from './country-codes.mjs';
-import { fieldIssues } from './personalized-fields.mjs';
-export { COUNTRY_CODES };
+import { fieldIssues, SUPPORT_OPTIONS, OTHER_EXPERIENCES } from './personalized-fields.mjs';
+export { COUNTRY_CODES, SUPPORT_OPTIONS, OTHER_EXPERIENCES };
 export const OPTIONS = Object.freeze({
   group_size: ['one','two','3_5','6_10','over_10'],
   age_range: ['under_18','18_30','31_45','46_60','over_60','mixed'],
@@ -31,11 +31,13 @@ export function validatePersonalized(input) {
   const nationalities=list(input.nationalities,COUNTRY_CODES,8), interests=list(input.interests,OPTIONS.interests,11);
   const other_nationalities=clean(input.other_nationalities||'',120), other_interest=clean(input.other_interest||'',200);
   const accessibility_notes=input.needs_support?clean(input.accessibility_notes||'',600):'';
-  if(nationalities.includes('OTHER')&&!other_nationalities || interests.includes('other')&&!other_interest) throw new QuoteError('validation');
+  const support_options=input.needs_support?[...(input.support_options||[])].sort():[];
+  const other_interest_options=interests.includes('other')?[...(input.other_interest_options||[])].sort():[];
+  if(nationalities.includes('OTHER')&&!other_nationalities || interests.includes('other')&&!other_interest&&!other_interest_options.length) throw new QuoteError('validation');
   return {
     submission_id:input.submission_id,schema_version:1,lang:input.lang,
-    contact:{full_name,email,whatsapp},
-    profile:{group_size:choice('group_size',input.group_size),age_range:choice('age_range',input.age_range),nationalities,other_nationalities,needs_support:input.needs_support,accessibility_notes,interests,other_interest,stay_length:choice('stay_length',input.stay_length),budget:choice('budget',input.budget),accommodation:choice('accommodation',input.accommodation),wishes:clean(input.wishes||'',1000)},
+    contact:{full_name,email,whatsapp,whatsapp_country:input.whatsapp_country||''},
+    profile:{group_size:choice('group_size',input.group_size),age_range:choice('age_range',input.age_range),nationalities,other_nationalities,needs_support:input.needs_support,support_options,accessibility_notes,interests,other_interest_options,other_interest,stay_length:choice('stay_length',input.stay_length),budget:choice('budget',input.budget),accommodation:choice('accommodation',input.accommodation),wishes:clean(input.wishes||'',1000)},
     consent_version:'personalized-v1'
   };
 }

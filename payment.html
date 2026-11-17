@@ -125,19 +125,20 @@
       transition: background 0.35s ease, color 0.35s ease;
     }
   </style>
+  <link rel="stylesheet" href="css/buttons.css">
 </head>
 <body class="font-body secondary-page site-immersive page-solid-header payment-page" data-i18n-page-title="page.payment.title">
   <a href="#main-content" class="skip-link" data-i18n="nav.skip">Saltar al contenido</a>
 
   <!-- Barra de navegación fija -->
   <nav class="fixed-nav-light" aria-label="Principal">
-    <div class="brand">
+    <a class="brand" href="index.html" data-i18n-aria="nav.homeLink" aria-label="Zenith Trails, ir a la página inicial">
       <img src="assets/icons/brand-placeholder.svg" class="brand-mark-svg" alt="" aria-hidden="true">
       <div>
         <span class="brand-word-title">Zenith Trails</span>
         <span class="brand-subtext"></span>
       </div>
-    </div>
+    </a>
 
     <ul class="nav-links-list">
       <li><a href="index.html" data-i18n="nav.home">Página Inicial</a></li>
@@ -284,7 +285,7 @@
         <li data-i18n="help.step2">2. Presiona el botón dorado para ver fotos, itinerario y detalles.</li>
         <li data-i18n="help.step3">3. Indica adultos, niños y fecha, y cotiza por WhatsApp o correo.</li>
       </ol>
-      <button type="button" class="btn-accent w-full py-3 mt-6 rounded-lg" data-help-close data-i18n="help.close">Entendido</button>
+      <button type="button" class="app-btn is-primary w-full mt-6" data-help-close data-i18n="help.close">Entendido</button>
     </div>
   </div>
 

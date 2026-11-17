@@ -65,7 +65,7 @@ window.__TOURS_DATA = {
         "en": "Hotel pickup",
         "pt": "Traslado do hotel"
       },
-      "rating": 5.0,
+      "rating": 5,
       "ratingCount": 4,
       "badge": {
         "es": "Más pedido",
@@ -142,7 +142,7 @@ window.__TOURS_DATA = {
         "en": "Hotel pickup",
         "pt": "Traslado do hotel"
       },
-      "rating": 5.0,
+      "rating": 5,
       "ratingCount": 3,
       "badge": null,
       "meetingPoint": {
@@ -215,7 +215,7 @@ window.__TOURS_DATA = {
         "en": "Hotel pickup",
         "pt": "Traslado do hotel"
       },
-      "rating": 5.0,
+      "rating": 5,
       "ratingCount": 3,
       "badge": null,
       "meetingPoint": {
@@ -289,7 +289,7 @@ window.__TOURS_DATA = {
         "en": "Hotel pickup",
         "pt": "Traslado do hotel"
       },
-      "rating": 5.0,
+      "rating": 5,
       "ratingCount": 5,
       "badge": {
         "es": "Aventura top",
@@ -686,17 +686,29 @@ window.__TOURS_DATA = {
         ]
       },
       "images": [
-        "assets/tours/city-tour-san-salvador/IMG_3557.JPG"
+        "assets/tours/day-updates/lago-ilopango/1.jpg",
+        "assets/tours/day-updates/lago-ilopango/2.jpg",
+        "assets/tours/day-updates/lago-ilopango/3.jpg",
+        "assets/tours/day-updates/lago-ilopango/4.jpg"
       ],
       "imageDescriptions": {
         "es": [
-          "Centro Histórico de San Salvador"
+          "Vista panorámica del Lago de Ilopango desde las alturas",
+          "Terraza del café con vista al lago",
+          "Jardines frente al Lago de Ilopango",
+          "Palacio Nacional en el Centro Histórico de San Salvador"
         ],
         "en": [
-          "San Salvador Historic Center"
+          "Panoramic view of Lake Ilopango from the heights",
+          "Café terrace overlooking the lake",
+          "Gardens facing Lake Ilopango",
+          "National Palace in San Salvador Historic Center"
         ],
         "pt": [
-          "Centro Histórico de San Salvador"
+          "Vista panorâmica do Lago de Ilopango das alturas",
+          "Terraço do café com vista para o lago",
+          "Jardins diante do Lago de Ilopango",
+          "Palácio Nacional no Centro Histórico de San Salvador"
         ]
       },
       "galleryLabel": {
@@ -717,11 +729,6 @@ window.__TOURS_DATA = {
         "receivedDate": "2026-10-11",
         "sourceNumber": 9,
         "translations": "assisted-en-pt"
-      },
-      "mediaNote": {
-        "es": "Las fotografías muestran el Centro Histórico, que forma parte de este recorrido. Las fotos del Lago de Ilopango están pendientes.",
-        "en": "The photographs show the Historic Center, which is part of this tour. Photos of Lake Ilopango are pending.",
-        "pt": "As fotografias mostram o Centro Histórico, que faz parte deste passeio. As fotos do Lago de Ilopango estão pendentes."
       }
     },
     {
@@ -872,7 +879,7 @@ window.__TOURS_DATA = {
         "en": "Hotel pickup",
         "pt": "Traslado do hotel"
       },
-      "rating": 5.0,
+      "rating": 5,
       "ratingCount": 2,
       "badge": {
         "es": "Recomendado",
@@ -1023,7 +1030,7 @@ window.__TOURS_DATA = {
         "en": "Hotel pickup",
         "pt": "Traslado do hotel"
       },
-      "rating": 5.0,
+      "rating": 5,
       "ratingCount": 0,
       "badge": null,
       "meetingPoint": {

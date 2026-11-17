@@ -33,14 +33,15 @@ test('los cinco nuevos conservan el texto del cliente sin emojis y traducciones 
   }
 });
 
-test('las fotos de cada tour nuevo existen y tienen variantes; Ilopango identifica fotos del centro',async()=>{
+test('las fotos de cada tour nuevo existen y tienen variantes; Ilopango ya muestra el lago',async()=>{
   const manifest=JSON.parse(await read('data/media-manifest.json'));
   for(const tour of additions)for(const [i,src] of tour.images.entries()){
     await access(new URL(src,root));const media=manifest.images[src.replace(/^assets\//,'')];assert.ok(media,src);
     for(const lang of ['es','en','pt'])assert.ok(tour.imageDescriptions[lang][i]);
     for(const format of ['avif','webp'])for(const variant of media.variants[format])await access(new URL(manifest.outputRoot+'/'+variant.src,root));
   }
-  const ilopango=days.find(tour=>tour.id==='ciudad-lago-ilopango');assert.match(ilopango.mediaNote.es,/Centro Histórico/);assert.match(ilopango.mediaNote.es,/pendientes/);
+  // Fotos del lago recibidas el 2026-10-16: la portada es el lago y ya no hay aviso de fotos pendientes.
+  const ilopango=days.find(tour=>tour.id==='ciudad-lago-ilopango');assert.equal(ilopango.mediaNote,undefined);assert.match(ilopango.images[0],/lago-ilopango\/1\.jpg$/);assert.match(ilopango.imageDescriptions.es[0],/Lago de Ilopango/);
 });
 
 test('solo hechos confirmados y extras válidos entran en ficha y cotización',()=>{
@@ -57,7 +58,7 @@ test('la cotización real añade surf seleccionado y conserva grupo al cambiar i
   for(const id of ['quote-adults','quote-children','quote-date','btn-quote-whatsapp','btn-quote-email'])nodes[id]=node();
   nodes['quote-adults'].value='4';nodes['quote-children'].value='1';nodes['quote-date'].value='2026-12-01';
   const extra=node('surf-lesson-1h');extra.checked=true;
-  nodes['tour-detail-container']={querySelectorAll:()=>[extra]};
+  nodes['tour-detail-container']={querySelectorAll:selector=>selector.includes('quote-extra')?[extra]:[]};
   let opened='';let lang='es';
   const window={ESTTourOptions:options,__estI18n:{getLang:()=>lang},open:url=>{opened=url;},location:{href:''}};
   const document={querySelector:()=>null,getElementById:id=>nodes[id]||null,addEventListener(){}};
@@ -71,4 +72,22 @@ test('la cotización real añade surf seleccionado y conserva grupo al cambiar i
   assert.equal(extra.checked,true);assert.equal(nodes['quote-adults'].value,'4');nodes['btn-quote-email'].listeners.click();
   message=new URL(window.location.href).searchParams.get('body');assert.match(message,/Aula de surf de uma hora/);
   extra.checked=false;nodes['btn-quote-whatsapp'].listeners.click();assert.doesNotMatch(new URL(opened).searchParams.get('text'),/Extra opcional/);
+});
+
+test('cotización con pasos − / + respeta mínimos y máximos y usa los botones aprobados',async()=>{
+  const nodes={};const node=(value='')=>({value,min:'',max:'',checked:false,disabled:false,listeners:{},dataset:{},addEventListener(name,fn){(this.listeners[name]||=[]).push(fn);},dispatchEvent(e){(this.listeners[e.type]||[]).forEach(fn=>fn(e));}});
+  for(const id of ['quote-adults','quote-children','quote-date','btn-quote-whatsapp','btn-quote-email'])nodes[id]=node();
+  Object.assign(nodes['quote-adults'],{value:'1',min:'1',max:'50'});Object.assign(nodes['quote-children'],{value:'0',min:'0',max:'50'});
+  const step=(target,dir)=>Object.assign(node(),{dataset:{target,step:String(dir)}});
+  const steppers=[step('quote-adults',-1),step('quote-adults',1),step('quote-children',-1),step('quote-children',1)];
+  nodes['tour-detail-container']={querySelectorAll:selector=>selector==='[data-step]'?steppers:[]};
+  const window={ESTTourOptions:options,__estI18n:{getLang:()=>'es'},open(){},location:{href:''}};
+  const document={querySelector:()=>null,getElementById:id=>nodes[id]||null,addEventListener(){}};
+  const source=(await read('js/tours.js')).replace(/\}\)\(\);\s*$/,'window.testQuote = setupQuotationActions;})();');
+  vm.runInNewContext(source,{window,document,console,setTimeout,Event:class{constructor(type){this.type=type;}}});
+  const coast=days.find(tour=>tour.id==='la-libertad-paraiso-del-surf');window.testQuote(coast,coast.title.es);
+  assert.equal(steppers[0].disabled,true);assert.equal(steppers[2].disabled,true);
+  steppers[0].listeners.click[0]();assert.equal(nodes['quote-adults'].value,1);
+  steppers[3].listeners.click[0]();assert.equal(nodes['quote-children'].value,1);assert.equal(steppers[2].disabled,false);
+  const js=await read('js/tours.js');assert.match(js,/class="app-btn is-whatsapp"/);assert.match(js,/shape-icon material-symbols-outlined" data-tone="gold"/);assert.doesNotMatch(js,/btn-quote-whatsapp" class="btn-accent/);
 });

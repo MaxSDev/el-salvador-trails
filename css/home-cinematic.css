@@ -1448,8 +1448,8 @@
   line-height: 1.7;
 }
 
-.home-cinematic .guide-copy .btn-accent {
-  border-radius: 3px;
+.home-cinematic .guide-copy .app-btn {
+  border-radius: 16px;
 }
 
 /* FAQ: preguntas como lista de lectura. */
@@ -1612,10 +1612,10 @@
   gap: 0.8rem;
 }
 
-.home-cinematic .final-cta-actions .btn-accent,
+.home-cinematic .final-cta-actions .app-btn,
 .home-cinematic .final-cta-actions .final-ghost {
   min-height: 48px;
-  border-radius: 3px;
+  border-radius: 16px;
 }
 
 .home-cinematic .social-band {
@@ -1903,7 +1903,7 @@
   margin-inline: auto;
 }
 
-.home-cinematic .testimonials-section .btn-accent {
+.home-cinematic .testimonials-section .app-btn {
   margin-top: 1.75rem;
 }
 

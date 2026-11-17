@@ -40,7 +40,7 @@
           '<h3>' + escape(title) + '</h3>' +
           '<p class="home-meta">' + escape(grp) + ' · ' + escape(pick(tour.pickup)) + '</p>' +
           '<p class="home-from">' + escape(window.ESTContent && window.ESTContent.price(tour) || t('home.featured.quote')) + '</p>' +
-          '<a href="tours.html" class="btn-accent tour-card-link"><span>' + t('tour.viewTour') + '</span><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>' +
+          '<a href="tours.html" class="app-btn is-text tour-card-link"><span>' + t('tour.viewTour') + '</span><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>' +
         '</div>' +
       '</article>'
     );

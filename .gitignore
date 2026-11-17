@@ -24,3 +24,7 @@ dist/
 admin/supabase-client.js
 supabase/.temp/
 
+
+# Material de trabajo local
+.qa-client-update/
+.stitch/

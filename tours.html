@@ -8,7 +8,7 @@
 
   <!-- Font Imports -->
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:ital,wght@0,300..800;1,300..800&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=arrow_back,arrow_forward,arrow_outward,badge,chat,check_circle,chevron_left,chevron_right,close,construction,dark_mode,directions_bus,forum,group,handshake,info,landscape,light_mode,location_city,mail,map,menu,open_in_new,pause,photo_camera,pin_drop,play_arrow,play_circle,price_check,public,request_quote,restaurant,route,schedule,signpost,south,star,star_border,surfing,temple_buddhist,translate&amp;display=block" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=arrow_back,arrow_forward,arrow_outward,badge,add,chat,check,check_circle,chevron_left,chevron_right,close,construction,dark_mode,directions_bus,forum,group,handshake,info,landscape,light_mode,location_city,mail,map,menu,open_in_new,pause,photo_camera,pin_drop,play_arrow,play_circle,price_check,public,remove,request_quote,restaurant,route,schedule,signpost,south,star,star_border,surfing,temple_buddhist,translate&amp;display=block" rel="stylesheet"/>
 
   <!-- Font Awesome Brands CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -48,19 +48,20 @@
 
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/day-tours.css">
+  <link rel="stylesheet" href="css/buttons.css">
 </head>
 <body class="font-body secondary-page site-immersive has-photo-hero tours-page" data-i18n-page-title="page.tours.title">
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <!-- Barra de navegación fija -->
   <nav class="fixed-nav-light" aria-label="Principal">
-    <div class="brand">
+    <a class="brand" href="index.html" data-i18n-aria="nav.homeLink" aria-label="Zenith Trails, ir a la página inicial">
       <img src="assets/icons/brand-placeholder.svg" class="brand-mark-svg" alt="" aria-hidden="true">
       <div>
         <span class="brand-word-title">Zenith Trails</span>
         <span class="brand-subtext"></span>
       </div>
-    </div>
+    </a>
 
     <ul class="nav-links-list">
       <li><a href="index.html" data-i18n="nav.home">Página Inicial</a></li>
@@ -177,7 +178,7 @@
               <li><span class="text-accent font-bold mt-1">✶</span> <span data-i18n="dayTours.item3">Transporte cómodo de ida y vuelta incluido.</span></li>
               <li><span class="text-accent font-bold mt-1">✶</span> <span data-i18n="dayTours.item4">Almuerzos tradicionales con comida local.</span></li>
             </ul>
-            <button class="btn-accent w-full py-4 rounded-lg flex items-center justify-center gap-2 font-label uppercase tracking-widest text-sm" data-category="day">
+            <button class="app-btn is-primary w-full" data-category="day">
               <span data-i18n="dayTours.cta">Ver más</span> <span class="material-symbols-outlined text-base">arrow_forward</span>
             </button>
           </div>
@@ -197,7 +198,7 @@
               <li><span class="text-accent font-bold mt-1">✶</span> <span data-i18n="tourPackages.item3">Exploración exhaustiva de los mejores destinos.</span></li>
               <li><span class="text-accent font-bold mt-1">✶</span> <span data-i18n="tourPackages.item4">Guías dedicados durante todo el viaje.</span></li>
             </ul>
-            <button class="btn-accent w-full py-4 rounded-lg flex items-center justify-center gap-2 font-label uppercase tracking-widest text-sm" data-category="package">
+            <button class="app-btn is-primary w-full" data-category="package">
               <span data-i18n="tourPackages.cta">Ver más</span> <span class="material-symbols-outlined text-base">arrow_forward</span>
             </button>
           </div>
@@ -218,7 +219,7 @@
               <li><span class="text-accent font-bold mt-1">✶</span> <span data-i18n="personalized.item4">Perfecto para parejas, familias o grupos selectos.</span></li>
             </ul>
             <p class="text-sm mb-4 text-muted" data-i18n="personalized.note">Cuéntanos tu idea y diseñamos tu ruta a medida.</p>
-            <a href="personalized.html" class="btn-accent w-full py-4 rounded-lg flex items-center justify-center gap-2 font-label uppercase tracking-widest text-sm">
+            <a href="personalized.html" class="app-btn is-primary w-full">
               <span data-i18n="personalized.contact">Llenar formulario</span> <span class="material-symbols-outlined text-base">arrow_forward</span>
             </a>
           </div>
@@ -282,7 +283,7 @@
         <li data-i18n="help.step2">2. Presiona el botón dorado para ver fotos, itinerario y detalles.</li>
         <li data-i18n="help.step3">3. Indica adultos, niños y fecha, y cotiza por WhatsApp o correo.</li>
       </ol>
-      <button type="button" class="btn-accent w-full py-3 mt-6 rounded-lg" data-help-close data-i18n="help.close">Entendido</button>
+      <button type="button" class="app-btn is-primary w-full mt-6" data-help-close data-i18n="help.close">Entendido</button>
     </div>
   </div>
 
